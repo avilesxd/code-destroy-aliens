@@ -25,14 +25,14 @@ In a console or terminal open the file named main.py
 
 ### Moment when opening the game
 
-![Game](https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/main/imagenes/README/foto1.PNG?token=GHSAT0AAAAAABXR4YANLUWU5IY7HKKYGSUQYZ2OHEA)
+![Game](./imagenes/README/foto1.PNG)
 <br/>
 
 ### Starting game level
 
-![Game](https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/main/imagenes/README/foto2.PNG?token=GHSAT0AAAAAABXR4YANER2ZEMM75B3QAOJ6YZ2OHGQ)
+![Game](./imagenes/README/foto2.PNG)
 <br/>
 
 ### Remaining game lives and current score
 
-![Game](https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/main/imagenes/README/foto3.PNG?token=GHSAT0AAAAAABXR4YANNIKHIS2VDCINUWEKYZ2OHHQ)
+![Game](./imagenes/README/foto3.PNG)
