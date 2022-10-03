@@ -3,8 +3,8 @@ class configuracion():
 
     def __init__(self):
         """Inicializa las configuraciones del  juego"""
-        self.screen_width = 854
-        self.screen_height = 480
+        self.screen_width = 1280
+        self.screen_height = 720
         self.bg_color = (230, 230, 230)
 
         # Configuraciones de la nave
