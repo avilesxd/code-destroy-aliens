@@ -27,7 +27,7 @@ class Marcador():
     def prep_puntaje(self):
         """Convierte el marcador en una imagen renderizada"""
         puntaje_redendeado = int(round(self.estadisticas.puntaje, -1))
-        puntaje_str = "{:,}".format(puntaje_redendeado)
+        puntaje_str = "Puntaje: "+"{:,}".format(puntaje_redendeado)
         self.puntaje_imagen = self.font.render(
             puntaje_str, True, self.text_color, self.ai_configuracion.bg_color)
 
