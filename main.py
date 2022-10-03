@@ -13,13 +13,12 @@ import funciones_juego as fj
 icono = pygame.image.load("./imagenes/icono.png")
 pygame.display.set_icon(icono)
 
-# Función para ejecutar la música al iniciar el juego
-musica()
-
 
 def runGame():
     # Inicializar el juego, las configuraciones y crear un objeto pantalla
     pygame.init()
+    # Función para ejecutar la música
+    musica()
     ai_configuracion = configuracion()
     pantalla = pygame.display.set_mode(
         (ai_configuracion.screen_width, ai_configuracion.screen_height))
