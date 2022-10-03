@@ -1,12 +1,12 @@
 # Destroy the aliens
 
-My first game with python
+The library called pygame was used in this project for my first game made with python.
 
 # How to start?
 
-Go to the main folder and look for the file called main.exe
+In a console or terminal open the file named main.py
 
-# Keys
+# Game controls
 
 - Left arrow
 - Right arrow

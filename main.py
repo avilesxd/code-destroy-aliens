@@ -8,6 +8,11 @@ from nave import Nave
 from musica import musica
 import funciones_juego as fj
 
+
+# Icono de la ventana del juego
+icono = pygame.image.load("./imagenes/icono.png")
+pygame.display.set_icon(icono)
+
 # Función para ejecutar la música al iniciar el juego
 musica()
 
@@ -37,10 +42,9 @@ def runGame():
 
     # Iniciar el bucle principal del juego
     while True:
-
         # Escuchar los eventos del teclado o del ratón
-        fj.verificar_eventos(ai_configuracion, pantalla,
-                             estadisticas, marcador, play_button, nave, aliens, balas)
+        fj.verificar_eventos(ai_configuracion, pantalla, estadisticas,
+                             marcador, play_button, nave, aliens, balas)
 
         if estadisticas.game_active:
             nave.update()
