@@ -8,5 +8,5 @@ def musica():
     sonido = pygame.mixer.Sound("./musica/musica.mp3")
     # Configuración del volumen de la música
     sonido.set_volume(0.5)
-    # Valor "-1" para poder reproducir la música infinitamente
+    # Pasamos la variable con la musica y agregamos el valor "-1" para poder reproducir la música infinitamente
     pygame.mixer.Sound.play(sonido, -1)

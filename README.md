@@ -1,12 +1,8 @@
-# Destroy the aliens
-
-The library called pygame was used in this project for my first game made with python.
-
-<p><a href="https://ignacioaviles.netlify.app/" target="_blank" rel="noreferrer"> <img src="./imagenes/README/autor.png" alt="Website"  width="162" height="32"/></p>
+# Code Destroy the aliens
 
 # How to start?
 
-In a console or terminal open the file named main.py
+construction
 
 # Game controls
 
@@ -17,11 +13,15 @@ In a console or terminal open the file named main.py
 - Space (shoot)
 - Q (Exit game)
 
-# Photos
+# libraries and modules used in the project
 
-## The size of the alien rows and columns depends on the size of the window
+- Time
+- Sys
+- Pygame
+- Pygame.sprite
+- Pygame.font
 
-<br/>
+# Early game designs
 
 ### Moment when opening the game
 
@@ -36,3 +36,32 @@ In a console or terminal open the file named main.py
 ### Remaining game lives and current score
 
 ![Game](./imagenes/README/foto3.PNG)
+
+# New game designs
+
+### Moment when opening the game
+
+![Game](./imagenes/README/foto4.PNG)
+<br/>
+
+### Starting game level
+
+![Game](./imagenes/README/foto5.PNG)
+<br/>
+
+### Remaining game lives and current score
+
+![Game](./imagenes/README/foto6.PNG)
+
+# Creator and designer
+
+- Ignacio Avilés
+- Juan Galaz
+
+# Social media
+
+- [Github](http://github.com/avilesxd/)
+- [Instagram](https://www.instagram.com/avilesxd/)
+- [Facebook](https://www.facebook.com/ignacio.avilescardenasso)
+- [Youtube](https://www.youtube.com/channel/UCYPsgamO7XeWOrXriOpJBqw)
+- [TikTok](https://www.tiktok.com/@chle_igns)
