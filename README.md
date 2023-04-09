@@ -9,7 +9,7 @@ construction
 - Left arrow
 - Right arrow
 - Up arrow
-- Arrow down
+- Down arrow
 - Space (shoot)
 - Q (Exit game)
 
