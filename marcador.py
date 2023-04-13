@@ -39,7 +39,7 @@ class Marcador():
     def prep_alto_puntaje(self):
         """Convierte la puntuacion mas alta en una imagen renderizada"""
         puntaje_alto = int(round(self.estadisticas.alto_puntaje, -1))
-        alto_puntaje_str = "{:,}".format(puntaje_alto)
+        alto_puntaje_str = "Puntaje máximo {:,}".format(puntaje_alto)
         self.alto_puntaje_imagen = self.font.render(
             alto_puntaje_str, True, self.text_color, self.ai_configuracion.bg_color)
 
