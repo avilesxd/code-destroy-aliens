@@ -1,12 +1,12 @@
 import pygame
 from pygame.sprite import Group
-from configuracion import configuracion
-from estadisticas import Estadisticas
-from marcador import Marcador
-from button import Button
-from nave import Nave
-from musica import musica
-import funciones_juego as fj
+from src.configuracion.configuracion import configuracion
+from src.configuracion.estadisticas import Estadisticas
+from src.objetos.marcador import Marcador
+from src.objetos.button import Button
+from src.objetos.nave import Nave
+from src.configuracion.musica import musica
+import src.configuracion.funciones_juego as fj
 
 
 # Icono de la ventana del juego

@@ -1,8 +1,8 @@
 import sys
 from time import sleep
 import pygame
-from bala import Bala
-from alien import Alien
+from src.objetos.bala import Bala
+from src.objetos.alien import Alien
 
 
 def verificar_eventos_keydown(event, ai_configuracion, pantalla, nave, balas):

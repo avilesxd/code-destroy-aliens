@@ -1,6 +1,6 @@
 import pygame.font
 from pygame.sprite import Group
-from nave import Nave
+from src.objetos.nave import Nave
 
 
 class Marcador():
