@@ -25,33 +25,33 @@ construction
 
 ### Moment when opening the game
 
-![Foto1](./imagenes/README/foto1.PNG)
+![Foto1](./src/imagenes/README/foto1.PNG)
 <br/>
 
 ### Starting game level
 
-![Foto2](./imagenes/README/foto2.PNG)
+![Foto2](./src/imagenes/README/foto2.PNG)
 <br/>
 
 ### Remaining game lives and current score
 
-![Foto3](./imagenes/README/foto3.PNG)
+![Foto3](./src/imagenes/README/foto3.PNG)
 
 # New game designs
 
 ### Moment when opening the game
 
-![Foto4](./imagenes/README/foto4.PNG)
+![Foto4](./src/imagenes/README/foto4.PNG)
 <br/>
 
 ### Starting game level
 
-![Foto5](./imagenes/README/foto5.PNG)
+![Foto5](./src/imagenes/README/foto5.PNG)
 <br/>
 
 ### Remaining game lives and current score
 
-![Foto6](./imagenes/README/foto6.PNG)
+![Foto6](./src/imagenes/README/foto6.PNG)
 
 # Creator and designer
 
