@@ -10,7 +10,7 @@ import funciones_juego as fj
 
 
 # Icono de la ventana del juego
-icono = pygame.image.load("./imagenes/icono.png")
+icono = pygame.image.load("./src/imagenes/icono.png")
 pygame.display.set_icon(icono)
 
 

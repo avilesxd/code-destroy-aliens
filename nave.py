@@ -12,7 +12,7 @@ class Nave(Sprite):
         self.ai_configuracion = ai_configuracion
 
         # Carga la imagen de la nave y obtiene su rect(rectángulo)
-        self.image = pygame.image.load("./imagenes/F16.png")
+        self.image = pygame.image.load("./src/imagenes/F16.png")
         self.rect = self.image.get_rect()
         self.pantalla_rect = pantalla.get_rect()
 
