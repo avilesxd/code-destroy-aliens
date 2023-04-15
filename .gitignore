@@ -1,3 +1,6 @@
+# Files generated automatically by the system
+.DS_Store
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
