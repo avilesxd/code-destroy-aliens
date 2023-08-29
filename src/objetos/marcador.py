@@ -50,7 +50,7 @@ class Marcador():
 
     def prep_nivel(self):
         """Convierte el nivel en una imagen renderizada"""
-        self.nivel_imagen = self.font.render(str(
+        self.nivel_imagen = self.font.render("Nivel: "+str(
             self.estadisticas.nivel), True, self.text_color, self.ai_configuracion.bg_color)
 
         # Posiciona el nivel debajo del puntaje
