@@ -26,7 +26,7 @@ class configuracion():
         # Configuraciones de alien
 
         # velocidad a la que los aliens van bajando cuando llegan al borde de la pantalla
-        self.fleet_drop_speed = 3
+        self.fleet_drop_speed = 1
         # Que tan rápido se acelera el juego
         self.escala_aceleracion = 1.1
         # Que tan rápido aumentan los valores de puntos por aliens
