@@ -1,8 +1,24 @@
 # Code Destroy the aliens
 
-# How to start?
+# Start developing
 
-construction
+1.- Create a virtual environment
+
+```python
+python -m venv env
+```
+
+2.- Activate virtual environment
+
+```bash
+env\Scripts\Activate
+```
+
+3.- Install packages
+
+```bash
+pip install -r requirements.txt
+```
 
 # Game controls
 
