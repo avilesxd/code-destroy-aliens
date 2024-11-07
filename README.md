@@ -1,6 +1,6 @@
 # Code Destroy the aliens
 
-# Start developing
+## Start developing
 
 1.- Create a virtual environment
 
@@ -20,7 +20,7 @@ env\Scripts\Activate
 pip install -r requirements.txt
 ```
 
-# Game controls
+## Game controls
 
 - Left arrow
 - Right arrow
@@ -29,7 +29,7 @@ pip install -r requirements.txt
 - Space (shoot)
 - Q (Exit game)
 
-# libraries and modules used in the project
+## libraries and modules used in the project
 
 - Time
 - Sys
@@ -37,44 +37,26 @@ pip install -r requirements.txt
 - Pygame.sprite
 - Pygame.font
 
-# Early game designs
+## Early game designs
 
 ### Moment when opening the game
 
 ![Foto1](./src/imagenes/README/foto1.PNG)
-<br/>
 
 ### Starting game level
 
 ![Foto2](./src/imagenes/README/foto2.PNG)
-<br/>
 
 ### Remaining game lives and current score
 
 ![Foto3](./src/imagenes/README/foto3.PNG)
 
-# New game designs
-
-### Moment when opening the game
-
-![Foto4](./src/imagenes/README/foto4.PNG)
-<br/>
-
-### Starting game level
-
-![Foto5](./src/imagenes/README/foto5.PNG)
-<br/>
-
-### Remaining game lives and current score
-
-![Foto6](./src/imagenes/README/foto6.PNG)
-
-# Creator and designer
+## Creator and designer
 
 - Ignacio Avilés
 - Juan Galaz
 
-# Social media
+## Social media
 
 - [Github](http://github.com/avilesxd/)
 - [Instagram](https://www.instagram.com/avilesxd/)
