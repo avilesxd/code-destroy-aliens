@@ -41,15 +41,15 @@ pip install -r requirements.txt
 
 ### Moment when opening the game
 
-![Foto1](./src/imagenes/README/foto1.PNG)
+![Foto1](./docs/README/foto1.PNG)
 
 ### Starting game level
 
-![Foto2](./src/imagenes/README/foto2.PNG)
+![Foto2](./docs/README/foto2.PNG)
 
 ### Remaining game lives and current score
 
-![Foto3](./src/imagenes/README/foto3.PNG)
+![Foto3](./docs/README/foto3.PNG)
 
 ## Creator and designer
 
