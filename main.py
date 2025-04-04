@@ -7,10 +7,12 @@ from src.objetos.button import Button
 from src.objetos.nave import Nave
 from src.configuracion.musica import musica
 import src.configuracion.funciones_juego as fj
+from src.utils import resource_path
 
 
 # Icono de la ventana del juego
-icono = pygame.image.load("./src/imagenes/icono.png")
+icono_path = resource_path("./src/imagenes/icono.png")
+icono = pygame.image.load(icono_path)
 pygame.display.set_icon(icono)
 
 

@@ -1,6 +1,6 @@
 import pygame
 from pygame.sprite import Sprite
-
+from src.utils import resource_path
 
 class Alien(Sprite):
     """Sirve para representar a un solo alienígena en la flota"""
@@ -12,8 +12,11 @@ class Alien(Sprite):
         self.pantalla = pantalla
         self.ai_configuracion = ai_configuracion
 
+        # Usamos resource_path() para obtener la ruta correcta de la imagen del alien
+        imagen_path = resource_path("src/imagenes/alien.bmp")
+        
         # Carga la imagen del alien y establece su atributo rect
-        self.image = pygame.image.load("./src/imagenes/alien.bmp")
+        self.image = pygame.image.load(imagen_path)
         self.rect = self.image.get_rect()
 
         # Inicia cada nuevo alien cerca de la parte superior izquierda de la pantalla

@@ -1,6 +1,6 @@
 import pygame
 from pygame.sprite import Sprite
-
+from src.utils import resource_path
 
 class Nave(Sprite):
     """Sirve para gestionar el comportamiento de la nave"""
@@ -11,8 +11,11 @@ class Nave(Sprite):
         self.pantalla = pantalla
         self.ai_configuracion = ai_configuracion
 
+        # Usa resource_path() para obtener la ruta correcta de la imagen de la nave
+        imagen_path = resource_path("src/imagenes/F16.png")
+        
         # Carga la imagen de la nave y obtiene su rect(rectángulo)
-        self.image = pygame.image.load("./src/imagenes/F16.png")
+        self.image = pygame.image.load(imagen_path)
         self.rect = self.image.get_rect()
         self.pantalla_rect = pantalla.get_rect()
 
@@ -35,7 +38,7 @@ class Nave(Sprite):
         if self.moving_left and self.rect.left > 0:
             self.center -= self.ai_configuracion.factor_velocidad_nave
 
-        # Actualiza el objeto  rect desde self.center
+        # Actualiza el objeto rect desde self.center
         self.rect.centerx = self.center
 
     def blitme(self):
