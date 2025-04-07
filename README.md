@@ -34,18 +34,8 @@ pyinstaller '.\Destroy Aliens.spec'
 
 - Left arrow
 - Right arrow
-- Up arrow
-- Down arrow
 - Space (shoot)
 - Q (Exit game)
-
-## libraries and modules used in the project
-
-- Time
-- Sys
-- Pygame
-- Pygame.sprite
-- Pygame.font
 
 ## Early game designs
 
