@@ -32,9 +32,9 @@ OPTIONS = {
     'iconfile': 'src/imagenes/icono.icns',  
     'resources': [],
     'plist': {
-        'CFBundleName': 'Code Destroy Aliens',
-        'CFBundleDisplayName': 'Code Destroy Aliens',
-        'CFBundleIdentifier': 'com.avilesxd.codeDestroyAliens',
+        'CFBundleName': 'Destroy Aliens',
+        'CFBundleDisplayName': 'Destroy Aliens',
+        'CFBundleIdentifier': 'com.CodeWaveInnovation.DestroyAliens',
         'CFBundleVersion': '1.0.0',
         'CFBundleShortVersionString': '1.0',
     }
@@ -42,9 +42,9 @@ OPTIONS = {
 
 setup(
     app=APP,
-    name='Code Destroy Aliens',
+    name='Destroy Aliens',
     version='1.0.0',
-    description='Un juego clásico tipo Space Invaders',
+    description='Space Invader 2D Game',
     author='Ignacio Avilés',
     data_files=DATA_FILES,
     options={'py2app': OPTIONS},
