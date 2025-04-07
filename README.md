@@ -20,6 +20,16 @@ env\Scripts\Activate
 pip install -r requirements.txt
 ```
 
+4.- Compile Game on Windows
+
+```bash
+pyi-makespec main.py --name="Destroy Aliens" --icon="src\imagenes\icono.ico" --onefile --noconsole --add-data="src\configuracion;src\configuracion" --add-data="src\imagenes;src\imagenes" --add-data="src\musica;src\musica" --add-data="src\objetos;src\objetos" --add-data="src\utils.py;src" --version-file="version.txt"
+```
+
+```bash
+pyinstaller '.\Destroy Aliens.spec'
+```
+
 ## Game controls
 
 - Left arrow
