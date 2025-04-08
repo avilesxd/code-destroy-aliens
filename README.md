@@ -1,65 +1,95 @@
-# Code Destroy the aliens
+# 🚀 Code Destroy the Aliens
 
-## Start developing
+Welcome to the **Code Destroy the Aliens** project, a *Space Invaders*-style game developed in Python. Get ready to defend Earth!
 
-1.- Create a virtual environment
+---
 
-```python
+## 🛠️ Start developing
+
+### 1. Create a virtual environment
+
+```bash
 python -m venv env
 ```
 
-2.- Activate virtual environment
+### 2. Activate a virtual environment
+
+- **Windows:**
 
 ```bash
-env\Scripts\Activate
+env\Scripts\activate
 ```
 
-3.- Install packages
+### 3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-4.- Compile Game on Windows
+---
+
+## 🧱 Compile the game (Windows)
+
+### 1. Create a custom `.spec` file
 
 ```bash
-pyi-makespec main.py --name="Destroy Aliens" --icon="src\imagenes\icono.ico" --onefile --noconsole --add-data="src\configuracion;src\configuracion" --add-data="src\imagenes;src\imagenes" --add-data="src\musica;src\musica" --add-data="src\objetos;src\objetos" --add-data="src\utils.py;src" --version-file="version.txt"
+pyi-makespec main.py \
+--name="Destroy Aliens" \
+--icon="src\imagenes\icono.ico" \
+--onefile \
+--noconsole \
+--add-data="src\configuracion;src\configuracion" \
+--add-data="src\images;src\images" \
+--add-data="src\music;src\music" \
+--add-data="src\objects;src\objects" \
+--add-data="src\utils.py;src" \
+--version-file="version.txt"
 ```
+
+### 2. Compile the game
 
 ```bash
-pyinstaller '.\Destroy Aliens.spec'
+pyinstaller ".\Destroy Aliens.spec"
 ```
 
-## Game controls
+---
 
-- Left arrow
-- Right arrow
-- Space (shoot)
-- Q (Exit game)
+## 🎮 Game Controls
 
-## Early game designs
+- ⬅️ Left Arrow: Move left
+- ➡️ Right Arrow: Move right
+- 🔫 Spacebar: Shoot
+- ❌ Q: Quit the game
 
-### Moment when opening the game
+---
 
-![Foto1](./docs/README/foto1.PNG)
+## 🖼️ Game Design (early)
 
-### Starting game level
+### 🕹️ Start Screen
 
-![Foto2](./docs/README/foto2.PNG)
+![Game Start](./docs/README/foto1.PNG)
 
-### Remaining game lives and current score
+### 🧑‍🚀 Level Running
 
-![Foto3](./docs/README/foto3.PNG)
+![Initial Level](./docs/README/foto2.PNG)
 
-## Creator and designer
+### ❤️ Remaining Lives and Current Score
 
-- Ignacio Avilés
-- Juan Galaz
+![Game UI](./docs/README/foto3.PNG)
 
-## Social media
+---
 
-- [Github](http://github.com/avilesxd/)
-- [Instagram](https://www.instagram.com/avilesxd/)
-- [Facebook](https://www.facebook.com/ignacio.avilescardenasso)
-- [Youtube](https://www.youtube.com/channel/UCYPsgamO7XeWOrXriOpJBqw)
-- [TikTok](https://www.tiktok.com/@chle_igns)
+## 👨‍💻 Creators
+
+- **Ignacio Avilés**
+- **Juan Galaz**
+
+---
+
+## 🌐 Social Media
+
+- [🐱 GitHub](http://github.com/avilesxd/)
+- [📸 Instagram](https://www.instagram.com/avilesxd/)
+- [📘 Facebook](https://www.facebook.com/ignacio.avilescardenasso)
+- [📺 YouTube](https://www.youtube.com/channel/UCYPsgamO7XeWOrXriOpJBqw)
+- [🎵 TikTok](https://www.tiktok.com/@chle_igns)
