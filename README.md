@@ -1,6 +1,6 @@
-# 🚀 Code Destroy the Aliens
-
-Welcome to the **Code Destroy the Aliens** project, a *Space Invaders*-style game developed in Python. Get ready to defend Earth!
+# 🚀 Alien Invasion
+  
+Welcome to the **Alien Invasion** project, a *Space Invaders*-style game developed in Python. Get ready to defend Earth!
 
 ---
 
@@ -34,22 +34,22 @@ pip install -r requirements.txt
 
 ```bash
 pyi-makespec main.py \
---name="Destroy Aliens" \
---icon="src\imagenes\icono.ico" \
+--name="Alien Invasion" \
+--icon="src\icons\icon.ico" \
 --onefile \
 --noconsole \
---add-data="src\configuracion;src\configuracion" \
+--add-data="src\configuration;src\configuration" \
 --add-data="src\images;src\images" \
 --add-data="src\music;src\music" \
 --add-data="src\objects;src\objects" \
---add-data="src\utils.py;src" \
+--add-data="src\utils.py;." \
 --version-file="version.txt"
 ```
 
 ### 2. Compile the game
 
 ```bash
-pyinstaller ".\Destroy Aliens.spec"
+pyinstaller ".\Alien Invasion.spec"
 ```
 
 ---
@@ -67,29 +67,45 @@ pyinstaller ".\Destroy Aliens.spec"
 
 ### 🕹️ Start Screen
 
-![Game Start](./docs/README/foto1.PNG)
+![Game Start][game_start_url]
 
 ### 🧑‍🚀 Level Running
 
-![Initial Level](./docs/README/foto2.PNG)
+![Initial Level][game_over_url]
 
 ### ❤️ Remaining Lives and Current Score
 
-![Game UI](./docs/README/foto3.PNG)
+![Game UI][high_score_url]
 
 ---
 
 ## 👨‍💻 Creators
 
-- **Ignacio Avilés**
-- **Juan Galaz**
+- [@avilesxd][avilesxd_account_url]
+- [@JGalaz7][jgalaz7_account_url]
 
 ---
 
 ## 🌐 Social Media
 
-- [🐱 GitHub](http://github.com/avilesxd/)
-- [📸 Instagram](https://www.instagram.com/avilesxd/)
-- [📘 Facebook](https://www.facebook.com/ignacio.avilescardenasso)
-- [📺 YouTube](https://www.youtube.com/channel/UCYPsgamO7XeWOrXriOpJBqw)
-- [🎵 TikTok](https://www.tiktok.com/@chle_igns)
+- [🐱 GitHub][github_account]
+- [📸 Instagram][instagram_account]
+- [📘 Facebook][facebook_account]
+- [📺 YouTube][youtube_account]
+- [🎵 TikTok][tiktok_account]
+
+<!-- IMAGES -->
+[game_start_url]: ./docs/README/game_start.PNG
+[game_over_url]: ./docs/README/game_over.PNG
+[high_score_url]: ./docs/README/high_score.PNG
+
+<!-- CREATORS -->
+[avilesxd_account_url]: http://github.com/avilesxd/
+[jgalaz7_account_url]: http://github.com/JGalaz7/
+
+<!-- SOCIAL MEDIA -->
+[github_account]: http://github.com/avilesxd/
+[instagram_account]: https://www.instagram.com/avilesxd/
+[facebook_account]: https://www.facebook.com/ignacio.avilescardenasso
+[youtube_account]: https://www.youtube.com/channel/UCYPsgamO7XeWOrXriOpJBqw
+[tiktok_account]: https://www.tiktok.com/@chle_igns
