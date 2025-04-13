@@ -6,34 +6,33 @@ Usage:
 """
 
 from setuptools import setup
-import os
 
 APP = ['main.py']
 
 DATA_FILES = [
-    ('src/imagenes', [
-        'src/imagenes/alien.bmp',
-        'src/imagenes/aliens.png',
-        'src/imagenes/F16.png',
-        'src/imagenes/icono.ico',
-        'src/imagenes/icono.png',
-        'src/imagenes/nave.bmp',
-        'src/imagenes/rocket.png',
+    ('src/images', [
+        'src/images/aliens.png',
+        'src/images/F16.png',
+        'src/images/rocket.png',
     ]),
-    ('src/musica', [
-        'src/musica/musica.mp3',
+    ('src/music', [
+        'src/music/music.mp3',
+    ]),
+    ('src/icons', [
+      'src/icons/icon.ico',
+      'src/icons/icon.png'
     ]),
 ]
 
 OPTIONS = {
     'argv_emulation': True,
     'includes': [],
-    'packages': ['src.configuracion', 'src.objetos'],
-    'iconfile': 'src/imagenes/icono.icns',  
-    'resources': [],
+    'packages': ['src.configuration', 'src.objects'],
+    'iconfile': 'src/icons/icon-apple.icns',
+
     'plist': {
-        'CFBundleName': 'Destroy Aliens',
-        'CFBundleDisplayName': 'Destroy Aliens',
+        'CFBundleName': 'Aliens Invasion',
+        'CFBundleDisplayName': 'Aliens Invasion',
         'CFBundleIdentifier': 'com.CodeWaveInnovation.DestroyAliens',
         'CFBundleVersion': '1.0.0',
         'CFBundleShortVersionString': '1.0',
@@ -42,7 +41,7 @@ OPTIONS = {
 
 setup(
     app=APP,
-    name='Destroy Aliens',
+    name='Aliens Invasion',
     version='1.0.0',
     description='Space Invader 2D Game',
     author='Ignacio Avilés',
