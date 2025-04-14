@@ -8,7 +8,7 @@ Welcome to the technical documentation for **Alien Invasions**, an arcade shoote
 
 | Start | Game | End |
 |-------|-------|-----|
-| ![Start](./images/game_start.png) | ![Game](./images/game_score.png) | ![End](./images/game_over.png) |
+| ![Start][game_start_url] | ![Game][game_score_url] | ![End][game_over_url] |
 
 ---
 
@@ -36,7 +36,7 @@ The project is organized to clearly separate the different game components:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/usuario/code-destroy-aliens.git
+git clone https://github.com/avilesxd/code-destroy-aliens.git
 cd code-destroy-aliens
 ```
 
@@ -97,3 +97,8 @@ pyinstaller ".\Alien Invasion.spec"
 ## 📄 License
 
 This project is licensed under the [MIT License](../LICENSE)
+
+<!-- IMAGES -->
+[game_start_url]: https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.PNG
+[game_over_url]: https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_over.PNG
+[game_score_url]: https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_score.PNG
