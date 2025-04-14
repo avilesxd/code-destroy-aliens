@@ -11,7 +11,7 @@ APP = ['main.py']
 
 DATA_FILES = [
     ('src/images', [
-        'src/images/aliens.png',
+        'src/images/alien.png',
         'src/images/F16.png',
         'src/images/rocket.png',
     ]),
