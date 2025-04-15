@@ -14,7 +14,7 @@ class Alien(Sprite):
         self.ai_configuration = ai_configuration
 
         # We use resource_path() to get the correct path of the alien image
-        image_path = resource_path("src/assets/images/alien.bmp")
+        image_path = resource_path("src/assets/images/alien.png")
 
         # Loads the alien image and sets its rect attribute
         self.image = pygame.image.load(image_path)

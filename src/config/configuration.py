@@ -37,7 +37,7 @@ class Configuration:
     def initialize_dynamic_configurations(self):
         """Initializes the configuration that changes throughout the game"""
         # Ship speed
-        self.ship_speed_factor = 0.5
+        self.ship_speed_factor = 1
         # Bullet speed
         self.bullets_speed_factor = 0.5
         # Alien speed
