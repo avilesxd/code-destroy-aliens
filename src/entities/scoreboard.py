@@ -1,6 +1,6 @@
 import pygame.font
 from pygame.sprite import Group
-from src.entities.ship import Ship
+from src.entities.heart import Heart
 
 
 class Scoreboard:
@@ -65,21 +65,21 @@ class Scoreboard:
         self.level_rect.top = self.rect_score.bottom + 10
 
     def prep_ships(self):
-        """Display how many ships are left"""
-        self.ships = Group()
-        for number_ships in range(self.stats.ships_remaining):
-            ship = Ship(self.ai_configuration, self.screen)
-            ship.rect.x = 10 + number_ships * ship.rect.width
-            ship.rect.y = 10
-            self.ships.add(ship)
+        """Display how many lives are left"""
+        self.hearts = Group()
+        for number_hearts in range(self.stats.ships_remaining):
+            heart = Heart(self.screen)
+            heart.rect.x = 10 + number_hearts * (heart.rect.width + 5)  # Add 5 pixels spacing between hearts
+            heart.rect.y = 10
+            self.hearts.add(heart)
 
     def show_score(self):
         """Draw the score onscreen"""
         self.screen.blit(self.image_score, self.rect_score)
         self.screen.blit(self.high_score_image, self.high_score_rect)
         self.screen.blit(self.level_image, self.level_rect)
-        # Draw the ships
-        self.ships.draw(self.screen)
+        # Draw the hearts
+        self.hearts.draw(self.screen)
         
         # Show pause text if game is paused
         if self.stats.game_paused:
