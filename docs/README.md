@@ -74,8 +74,8 @@ pyi-makespec main.py \
 --add-data="src\configuration;src\configuration" \
 --add-data="src\images;src\images" \
 --add-data="src\music;src\music" \
---add-data="src\objects;src\objects" \
---add-data="src\utils.py;." \
+--add-data="src\entities;src\entities" \
+--add-data="src\core\utils.py;." \
 --version-file="version.txt"
 ```
 
