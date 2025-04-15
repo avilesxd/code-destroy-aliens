@@ -179,6 +179,7 @@ def check_high_score(statistics, scoreboard):
     if statistics.score > statistics.high_score:
         statistics.high_score = statistics.score
         scoreboard.prep_high_score()
+        statistics.save_high_score()  # Save the new high score
 
 
 def fire_bullet(ai_configuration, display, ship, bullets):
