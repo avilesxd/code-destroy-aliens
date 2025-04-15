@@ -4,9 +4,10 @@ import pygame
 from src.entities.bullet import Bullet
 from src.entities.alien import Alien
 from src.entities.ship import Ship
+from src.config.statistics import Statistics as statistics
 
 
-def verify_events_keydown(event, ai_configuration, screen, ship, bullets):
+def verify_events_keydown(event, ai_configuration, screen, ship, bullets, statistics, music):
     """Responds to keystrokes"""
     if event.key == pygame.K_RIGHT:
         ship.moving_right = True
@@ -16,6 +17,14 @@ def verify_events_keydown(event, ai_configuration, screen, ship, bullets):
         fire_bullet(ai_configuration, screen, ship, bullets)
     elif event.key == pygame.K_q:
         sys.exit()
+    elif event.key == pygame.K_p:
+        # Toggle pause state
+        statistics.game_paused = not statistics.game_paused
+        # Pause/resume music
+        if statistics.game_paused:
+            music.pause()
+        else:
+            music.resume()
 
 
 def verify_events_keyup(event, ship):
@@ -27,14 +36,14 @@ def verify_events_keyup(event, ship):
 
 
 def verify_events(
-    ai_configuration, screen, statistics, scoreboard, play_button, ship, aliens, bullets
+    ai_configuration, screen, statistics, scoreboard, play_button, ship, aliens, bullets, music
 ):
     """Responds to keystrokes and mouse events"""
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
         elif event.type == pygame.KEYDOWN:
-            verify_events_keydown(event, ai_configuration, screen, ship, bullets)
+            verify_events_keydown(event, ai_configuration, screen, ship, bullets, statistics, music)
 
         elif event.type == pygame.KEYUP:
             verify_events_keyup(event, ship)
@@ -79,6 +88,7 @@ def check_play_button(
         # Resets the game statistics
         statistics.reset_stats()
         statistics.game_active = True
+        statistics.game_paused = False  # Reset pause state
 
         # Resets the scoreboard images
         scoreboard.prep_score()
@@ -257,6 +267,7 @@ def ship_hit(ai_configuration, statistics, screen, scoreboard, ship, aliens, bul
 
     else:
         statistics.game_active = False
+        statistics.game_paused = False  # Reset pause state when game ends
         pygame.mouse.set_visible(True)
 
 

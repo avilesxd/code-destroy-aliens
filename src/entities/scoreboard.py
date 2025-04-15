@@ -80,3 +80,12 @@ class Scoreboard:
         self.screen.blit(self.level_image, self.level_rect)
         # Draw the ships
         self.ships.draw(self.screen)
+        
+        # Show pause text if game is paused
+        if self.stats.game_paused:
+            pause_font = pygame.font.SysFont(None, 72)
+            pause_image = pause_font.render("PAUSED", True, (255, 0, 0), self.ai_configuration.bg_color)
+            pause_rect = pause_image.get_rect()
+            pause_rect.centerx = self.screen_rect.centerx
+            pause_rect.centery = self.screen_rect.centery
+            self.screen.blit(pause_image, pause_rect)

@@ -8,6 +8,9 @@ class Statistics:
 
         # Starts Alien Invasion in an active state
         self.game_active = False
+        
+        # Game pause state
+        self.game_paused = False
 
         # The high score should never be reset
         self.high_score = 0

@@ -20,7 +20,7 @@ def runGame():
     # Initialize the game, settings and create a screen object
     pygame.init()
     # Function to play music
-    Music()
+    music = Music()
     ai_configuration = Configuration()
     screen = pygame.display.set_mode(
         (ai_configuration.screen_width, ai_configuration.screen_height)
@@ -54,9 +54,10 @@ def runGame():
             ship,
             aliens,
             bullet,
+            music,
         )
 
-        if statistics.game_active:
+        if statistics.game_active and not statistics.game_paused:
             ship.update()
             fj.update_bullets(
                 ai_configuration, screen, statistics, scoreboard, ship, aliens, bullet
