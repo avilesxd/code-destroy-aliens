@@ -1,61 +1,80 @@
 import pygame
 from pygame.sprite import Group
-from src.configuracion.configuracion import configuracion
-from src.configuracion.estadisticas import Estadisticas
-from src.objetos.marcador import Marcador
-from src.objetos.button import Button
-from src.objetos.nave import Nave
-from src.configuracion.musica import musica
-import src.configuracion.funciones_juego as fj
-from src.utils import resource_path
+from src.config.configuration import Configuration
+from src.config.statistics import Statistics
+from src.entities.scoreboard import Scoreboard
+from src.entities.button import Button
+from src.entities.ship import Ship
+from src.config.music import Music
+import src.config.game_functions as fj
+from src.core.utils import resource_path
 
 
-# Icono de la ventana del juego
-icono_path = resource_path("./src/imagenes/icono.png")
-icono = pygame.image.load(icono_path)
-pygame.display.set_icon(icono)
+# Game window icon
+icon_path = resource_path("src/assets/icons/icon.png")
+icon = pygame.image.load(icon_path)
+pygame.display.set_icon(icon)
 
 
 def runGame():
-    # Inicializar el juego, las configuraciones y crear un objeto pantalla
+    # Initialize the game, settings and create a screen object
     pygame.init()
-    # Función para ejecutar la música
-    musica()
-    ai_configuracion = configuracion()
-    pantalla = pygame.display.set_mode(
-        (ai_configuracion.screen_width, ai_configuracion.screen_height))
-    pygame.display.set_caption("Invasión alienígena")
+    # Function to play music
+    Music()
+    ai_configuration = Configuration()
+    screen = pygame.display.set_mode(
+        (ai_configuration.screen_width, ai_configuration.screen_height)
+    )
+    pygame.display.set_caption("Alien Invasion")
 
-    # Crea el botón Play
-    play_button = Button(ai_configuracion, pantalla, "Jugar")
+    # Create the Play button
+    play_button = Button(ai_configuration, screen, "Play")
 
-    # crea una instancia para almacenar estadísticas del juego y crea un marcador
-    estadisticas = Estadisticas(ai_configuracion)
-    marcador = Marcador(ai_configuracion, pantalla, estadisticas)
+    # Create an instance to store game statistics and create a scoreboard
+    statistics = Statistics(ai_configuration)
+    scoreboard = Scoreboard(ai_configuration, screen, statistics)
 
-    # Crea una nave, un grupo de balas y un grupo de aliens
-    nave = Nave(ai_configuracion, pantalla)
-    balas = Group()
+    # Create a ship, a group of bullets, and a group of aliens
+    ship = Ship(ai_configuration, screen)
+    bullet = Group()
     aliens = Group()
 
-    # Crea la flota de alienígenas
-    fj.crear_flota(ai_configuracion, pantalla, nave, aliens)
+    # Create the alien fleet
+    fj.create_fleet(ai_configuration, screen, ship, aliens)
 
-    # Iniciar el bucle principal del juego
+    # Start the main game loop
     while True:
-        # Escuchar los eventos del teclado o del ratón
-        fj.verificar_eventos(ai_configuracion, pantalla, estadisticas,
-                             marcador, play_button, nave, aliens, balas)
+        # Listen for keyboard or mouse events
+        fj.verify_events(
+            ai_configuration,
+            screen,
+            statistics,
+            scoreboard,
+            play_button,
+            ship,
+            aliens,
+            bullet,
+        )
 
-        if estadisticas.game_active:
-            nave.update()
-            fj.update_balas(ai_configuracion, pantalla,
-                            estadisticas, marcador, nave, aliens, balas)
-            fj.update_aliens(ai_configuracion, estadisticas,
-                             pantalla, marcador, nave, aliens, balas)
+        if statistics.game_active:
+            ship.update()
+            fj.update_bullets(
+                ai_configuration, screen, statistics, scoreboard, ship, aliens, bullet
+            )
+            fj.update_aliens(
+                ai_configuration, statistics, screen, scoreboard, ship, aliens, bullet
+            )
 
-        fj.actualizar_pantalla(ai_configuracion, pantalla,
-                               estadisticas, marcador, nave, aliens, balas, play_button)
+        fj.update_screen(
+            ai_configuration,
+            screen,
+            statistics,
+            scoreboard,
+            ship,
+            aliens,
+            bullet,
+            play_button,
+        )
 
 
 runGame()
