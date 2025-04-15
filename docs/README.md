@@ -66,7 +66,7 @@ python main.py
 ### 1. Create a custom `.spec` file
 
 ```bash
-pyi-makespec main.py --name="Alien Invasion" --icon="src\assets\icons\icon.ico" --onefile --noconsole --add-data="src\config;src\config" --add-data="src\assets\images;src\images" --add-data="src\assets\music;src\music" --add-data="src\entities;src\entities" --add-data="src\core\utils.py;." --version-file="version.txt"
+pyi-makespec main.py --name="Alien Invasion" --icon="src\assets\icons\icon.ico" --onefile --noconsole --add-data="src;src" --version-file="version.txt"
 ```
 
 ### 2. Compile the game
