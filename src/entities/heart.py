@@ -15,8 +15,8 @@ class Heart(Sprite):
         image_path = resource_path("src/assets/images/heart.png")
         self.image = pygame.image.load(image_path)
         
-        # Scale the heart to a smaller size (adjust these values as needed)
-        self.image = pygame.transform.scale(self.image, (20, 20))
+        # Scale the heart to a larger size (increased from 20x20 to 30x30)
+        self.image = pygame.transform.scale(self.image, (30, 30))
         
         self.rect = self.image.get_rect()
 
