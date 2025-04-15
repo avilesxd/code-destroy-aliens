@@ -83,9 +83,25 @@ class Scoreboard:
         
         # Show pause text if game is paused
         if self.stats.game_paused:
+            # Pause text
             pause_font = pygame.font.SysFont(None, 72)
             pause_image = pause_font.render("PAUSED", True, (255, 0, 0), self.ai_configuration.bg_color)
             pause_rect = pause_image.get_rect()
             pause_rect.centerx = self.screen_rect.centerx
-            pause_rect.centery = self.screen_rect.centery
+            pause_rect.centery = self.screen_rect.centery - 40
             self.screen.blit(pause_image, pause_rect)
+            
+            # Instruction text for resume
+            instruction_font = pygame.font.SysFont(None, 36)
+            instruction_image = instruction_font.render("Press 'P' to resume", True, (255, 0, 0), self.ai_configuration.bg_color)
+            instruction_rect = instruction_image.get_rect()
+            instruction_rect.centerx = self.screen_rect.centerx
+            instruction_rect.centery = self.screen_rect.centery + 20
+            self.screen.blit(instruction_image, instruction_rect)
+            
+            # Instruction text for quit
+            quit_image = instruction_font.render("Press 'Q' to quit", True, (255, 0, 0), self.ai_configuration.bg_color)
+            quit_rect = quit_image.get_rect()
+            quit_rect.centerx = self.screen_rect.centerx
+            quit_rect.centery = self.screen_rect.centery + 60
+            self.screen.blit(quit_image, quit_rect)
