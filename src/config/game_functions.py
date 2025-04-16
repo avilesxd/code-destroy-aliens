@@ -27,7 +27,7 @@ def create_gradient_surface(screen, top_color, bottom_color):
     return gradient
 
 
-def update_stars(screen, ai_configuration, is_paused=False):
+def update_stars(screen, ai_configuration, is_paused=False, is_game_over=False):
     """Updates and draws the stars"""
     global stars, last_star_time
     current_time = pygame.time.get_ticks()
@@ -41,8 +41,8 @@ def update_stars(screen, ai_configuration, is_paused=False):
             speed = random.uniform(0.5, 2)
             stars.append([x, y, size, speed])
 
-    # Update star positions only if the game is not paused
-    if not is_paused:
+    # Update star positions only if the game is not paused and not game over
+    if not is_paused and not is_game_over:
         for star in stars:
             star[1] += star[3]  # Move the star downward
             if star[1] > ai_configuration.screen_height:
@@ -184,7 +184,7 @@ def update_screen(
 
         # Update and draw stars if they are enabled
         if ai_configuration.use_stars:
-            update_stars(screen, ai_configuration, statistics.game_paused)
+            update_stars(screen, ai_configuration, statistics.game_paused, statistics.game_over)
     else:
         # Use solid background color if gradient is disabled
         screen.fill(ai_configuration.bg_color)

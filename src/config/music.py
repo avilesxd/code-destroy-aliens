@@ -92,4 +92,9 @@ class Music:
     def play_game_over(self):
         """Play game over sound effect"""
         if not self.is_test:
+            # Pause the background music
+            pygame.mixer.pause()
+            # Increase volume for game over sound
+            self.game_over_sound.set_volume(1.0)
+            # Play the game over sound
             self.game_over_sound.play()
