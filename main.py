@@ -43,7 +43,7 @@ def runGame():
     controls_screen = ControlsScreen(ai_configuration, screen, language)
 
     # Create a ship, a group of bullets, and a group of aliens
-    ship = Ship(ai_configuration, screen)
+    ship = Ship(ai_configuration, screen, statistics)
     bullet = Group()
     aliens = Group()
 

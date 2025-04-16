@@ -42,6 +42,16 @@ class Music:
         
         self._initialized = True
 
+    @property
+    def volume(self):
+        """Get the current volume of the main sound"""
+        return self.sound.get_volume()
+
+    @volume.setter
+    def volume(self, value):
+        """Set the volume of the main sound"""
+        self.sound.set_volume(value)
+
     def pause(self):
         """Pause the music"""
         pygame.mixer.pause()

@@ -7,12 +7,13 @@ from src.config.music import Music
 class Ship(Sprite):
     """Used to manage the ship's behavior"""
 
-    def __init__(self, ai_configuration, screen):
+    def __init__(self, ai_configuration, screen, statistics=None):
         """Initializes the ship and sets its starting position"""
         super(Ship, self).__init__()
         self.screen = screen
         self.ai_configuration = ai_configuration
         self.music = Music()
+        self.statistics = statistics
 
         # Use resource_path() to get the correct path of the ship image
         image_path = resource_path("src/assets/images/ship.png")
@@ -35,14 +36,22 @@ class Ship(Sprite):
 
     def update(self):
         """Updates the ship's position based on the movement flags"""
+        # Don't move if the game is paused
+        if self.statistics and self.statistics.game_paused:
+            return
+
+        # Store the initial position
+        initial_center = self.center
+
         if self.moving_right and self.rect.right < self.screen_rect.right:
             self.center += self.ai_configuration.ship_speed_factor
 
         if self.moving_left and self.rect.left > 0:
             self.center -= self.ai_configuration.ship_speed_factor
 
-        # Updates the rect object from self.center
-        self.rect.centerx = self.center
+        # Only update rect if position actually changed
+        if self.center != initial_center:
+            self.rect.centerx = self.center
 
     def blitme(self):
         """Draws the ship at its current location"""
