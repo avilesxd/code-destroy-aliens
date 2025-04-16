@@ -1,6 +1,7 @@
 import pygame
 from pygame.sprite import Sprite
 from src.core.path_utils import resource_path
+from src.config.music import Music
 
 
 class Alien(Sprite):
@@ -12,6 +13,7 @@ class Alien(Sprite):
 
         self.screen = screen
         self.ai_configuration = ai_configuration
+        self.music = Music()
 
         # We use resource_path() to get the correct path of the alien image
         image_path = resource_path("src/assets/images/alien.png")
@@ -46,3 +48,7 @@ class Alien(Sprite):
             * self.ai_configuration.fleet_direction
         )
         self.rect.x = self.x
+
+    def explode(self):
+        """Play explosion sound effect"""
+        self.music.play_explosion()

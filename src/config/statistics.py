@@ -3,6 +3,7 @@ import os
 import ctypes
 import sys
 from src.core.path_utils import get_app_directory, ensure_data_directory, load_json_file, save_json_file
+from src.config.music import Music
 
 
 class Statistics:
@@ -11,6 +12,7 @@ class Statistics:
     def __init__(self, ai_configuration):
         """Initializes statistics"""
         self.ai_configuration = ai_configuration
+        self.music = Music()
         
         # Game state flags
         self.game_active = False
@@ -60,6 +62,7 @@ class Statistics:
         self.game_paused = False
         self.game_over = True
         self.save_high_score()
+        self.music.play_game_over()
 
     def start_game(self):
         """Starts a new game"""

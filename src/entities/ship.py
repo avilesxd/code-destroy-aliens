@@ -1,6 +1,7 @@
 import pygame
 from pygame.sprite import Sprite
 from src.core.path_utils import resource_path
+from src.config.music import Music
 
 
 class Ship(Sprite):
@@ -11,6 +12,7 @@ class Ship(Sprite):
         super(Ship, self).__init__()
         self.screen = screen
         self.ai_configuration = ai_configuration
+        self.music = Music()
 
         # Use resource_path() to get the correct path of the ship image
         image_path = resource_path("src/assets/images/ship.png")
@@ -49,3 +51,7 @@ class Ship(Sprite):
     def center_ship(self):
         """Centers the ship on the screen"""
         self.center = self.screen_rect.centerx
+
+    def shoot(self):
+        """Play shoot sound effect"""
+        self.music.play_shoot()

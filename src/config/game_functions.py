@@ -229,28 +229,24 @@ def update_bullets(
 def check_bullet_alien_collisions(
     ai_configuration, screen, statistics, scoreboard, ship, aliens, bullets
 ):
-    """Responds to collisions between bullets and aliens"""
-    # Remove colliding bullets and aliens
+    """Responds to bullet-alien collisions"""
+    # Removes any bullets and aliens that have collided
     collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
 
     if collisions:
-        for aliens in collisions.values():
-            statistics.score += ai_configuration.alien_points * len(aliens)
+        for aliens_hit in collisions.values():
+            statistics.score += ai_configuration.alien_points * len(aliens_hit)
+            for alien in aliens_hit:
+                alien.explode()  # Play explosion sound
             scoreboard.prep_score()
         check_high_score(statistics, scoreboard)
 
     if len(aliens) == 0:
-        # Destroy existing bullets and create a new fleet
+        # If the entire fleet is destroyed, start a new level
         bullets.empty()
-
-        # We only increase speed when a level is completed
-        # Not every time an alien is eliminated
-        ai_configuration.boost_speed()
-
-        # Increases level
+        ai_configuration.increase_speed()
         statistics.level += 1
         scoreboard.prep_level()
-
         create_fleet(ai_configuration, screen, ship, aliens)
 
 
@@ -263,11 +259,11 @@ def check_high_score(statistics, scoreboard):
 
 
 def fire_bullet(ai_configuration, display, ship, bullets):
-    """Fire a bullet if it hasn't reached the limit yet"""
-    # Create a new bullet and add it to the bullet pool
+    """Fires a bullet if the limit has not been reached"""
     if len(bullets) < ai_configuration.bullets_allowed:
         new_bullet = Bullet(ai_configuration, display, ship)
         bullets.add(new_bullet)
+        ship.shoot()  # Play shoot sound
 
 
 def get_number_aliens_x(ai_configuration, alien_width):
@@ -326,13 +322,12 @@ def change_fleet_direction(ai_configuration, aliens):
 
 
 def ship_hit(ai_configuration, statistics, screen, scoreboard, ship, aliens, bullets):
-    """Responds to a ship being hit by an alien"""
-
+    """Responds to the ship being hit by an alien"""
     if statistics.ships_remaining > 0:
-        # Decrease ships_remaining
+        # Decrements ships_remaining
         statistics.ships_remaining -= 1
 
-        # Update the scoreboard
+        # Updates the scoreboard
         scoreboard.prep_ships()
 
         # Empty the list of aliens and bullets
@@ -345,10 +340,9 @@ def ship_hit(ai_configuration, statistics, screen, scoreboard, ship, aliens, bul
 
         # Pause
         sleep(0.5)
-
     else:
         statistics.game_active = False
-        statistics.game_paused = False  # Reset pause state when game ends
+        statistics.end_game()  # This will play the game over sound
         pygame.mouse.set_visible(True)
 
 
