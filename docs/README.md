@@ -67,7 +67,6 @@ code-destroy-aliens/
 
  ```bash
  pip install -r requirements.txt
- pygame==2.5.2
  ```
 
 4. Start the game with:
