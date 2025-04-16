@@ -1,6 +1,8 @@
 import json
 import os
 import ctypes
+import sys
+from src.core.path_utils import get_app_directory, ensure_data_directory, load_json_file, save_json_file
 
 
 class Statistics:
@@ -11,44 +13,51 @@ class Statistics:
         self.ai_configuration = ai_configuration
         self.reset_stats()
 
-        # Starts Alien Invasion in an active state
+        # Game state flags
         self.game_active = False
-
-        # Game pause state
         self.game_paused = False
+        self.game_over = False
 
-        # Create .data directory if it doesn't exist
-        self.data_dir = os.path.join(
-            os.path.dirname(os.path.dirname(os.path.dirname(__file__))), ".data"
-        )
-        os.makedirs(self.data_dir, exist_ok=True)
-
-        # Make the directory hidden in Windows
-        if os.name == "nt":  # Check if running on Windows
-            try:
-                # Set the directory as hidden using Windows API
-                ctypes.windll.kernel32.SetFileAttributesW(
-                    self.data_dir, 0x02
-                )  # 0x02 is FILE_ATTRIBUTE_HIDDEN
-            except Exception:
-                pass  # Silently fail if we can't set the attribute
+        # Get the data directory and ensure it exists
+        self.data_dir = ensure_data_directory()
 
         # Load high score from .data directory or initialize to 0
-        try:
-            high_score_path = os.path.join(self.data_dir, "high_score.json")
-            with open(high_score_path, "r") as f:
-                self.high_score = json.load(f)["high_score"]
-        except (FileNotFoundError, json.JSONDecodeError):
-            self.high_score = 0
+        high_score_path = os.path.join(self.data_dir, "high_score.json")
+        data = load_json_file(high_score_path, {"high_score": 0})
+        self.high_score = data["high_score"]
 
     def reset_stats(self):
         """Initializes statistics that can change during the game"""
         self.ships_remaining = self.ai_configuration.ship_count
         self.score = 0
         self.level = 1
+        self.aliens_destroyed = 0
+        self.bullets_fired = 0
+        self.game_over = False
 
     def save_high_score(self):
         """Saves the current high score to .data directory"""
-        high_score_path = os.path.join(self.data_dir, "high_score.json")
-        with open(high_score_path, "w") as f:
-            json.dump({"high_score": self.high_score}, f)
+        try:
+            high_score_path = os.path.join(self.data_dir, "high_score.json")
+            save_json_file(high_score_path, {"high_score": self.high_score})
+        except Exception as e:
+            print(f"Error saving high score: {e}")
+
+    def toggle_pause(self):
+        """Toggles the game pause state"""
+        self.game_paused = not self.game_paused
+        return self.game_paused
+
+    def end_game(self):
+        """Ends the current game"""
+        self.game_active = False
+        self.game_paused = False
+        self.game_over = True
+        self.save_high_score()
+
+    def start_game(self):
+        """Starts a new game"""
+        self.reset_stats()
+        self.game_active = True
+        self.game_paused = False
+        self.game_over = False

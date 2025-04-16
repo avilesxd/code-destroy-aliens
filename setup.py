@@ -28,10 +28,16 @@ for file in os.listdir("src/assets/icons"):
     if file.endswith((".ico", ".png", ".icns")):
         icon_files.append(os.path.join("src/assets/icons", file))
 
+# Create .data directory if it doesn't exist
+data_dir = ".data"
+if not os.path.exists(data_dir):
+    os.makedirs(data_dir)
+
 DATA_FILES = [
     ("src/assets/images", image_files),
     ("src/assets/music", music_files),
     ("src/assets/icons", icon_files),
+    (".data", []),  # Include the .data directory
 ]
 
 OPTIONS = {

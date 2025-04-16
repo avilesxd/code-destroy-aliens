@@ -7,7 +7,7 @@ from src.entities.button import Button
 from src.entities.ship import Ship
 from src.config.music import Music
 import src.config.game_functions as fj
-from src.core.utils import resource_path
+from src.core.path_utils import resource_path
 
 
 # Game window icon

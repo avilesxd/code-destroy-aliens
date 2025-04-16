@@ -1,6 +1,6 @@
 import pygame
 from pygame.sprite import Sprite
-from src.core.utils import resource_path
+from src.core.path_utils import resource_path
 
 
 class Ship(Sprite):
