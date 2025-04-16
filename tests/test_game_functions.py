@@ -1,5 +1,13 @@
 import pytest
 import pygame
+import sys
+import os
+
+# Configurar el modo headless para Pygame
+os.environ['SDL_VIDEODRIVER'] = 'dummy'
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
+
+# Importar los módulos del juego después de configurar el entorno
 from pygame.sprite import Group
 from src.config.configuration import Configuration
 from src.config.statistics import Statistics

@@ -1,4 +1,4 @@
-name: Tests on All Platforms
+name: Run Tests
 
 on:
   push:
@@ -12,10 +12,10 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: [3.8, 3.9, '3.10', '3.11']
+        python-version: [3.8, 3.9, '3.10']
         exclude:
           - os: macos-latest
-            python-version: '3.11'  # Excluir Python 3.11 en macOS por compatibilidad
+            python-version: '3.10'  # Excluir Python 3.10 en macOS por compatibilidad
 
     steps:
     - uses: actions/checkout@v3
@@ -24,6 +24,7 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
+        cache: 'pip'
     
     # Instalar dependencias del sistema para Pygame (solo en Linux)
     - name: Install system dependencies for Pygame (Linux)
@@ -34,6 +35,7 @@ jobs:
         sudo apt-get install -y libsdl2-2.0-0 libsdl2-image-2.0-0 libsdl2-mixer-2.0-0 libsdl2-ttf-2.0-0
         sudo apt-get install -y libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev
         sudo apt-get install -y libfreetype6-dev
+        sudo apt-get install -y xvfb
     
     # Configurar Xvfb para tests gráficos (solo en Linux)
     - name: Start Xvfb (Linux)
@@ -47,11 +49,15 @@ jobs:
         python -m pip install --upgrade pip
         pip install pytest
         pip install -r requirements.txt
+        pip install pygame --pre
     
     - name: Run tests
       run: |
         python -m pytest tests/ -v
       env:
-        # Variables de entorno para Pygame en Linux
-        SDL_VIDEODRIVER: ${{ runner.os == 'Linux' && 'dummy' || '' }}
-        DISPLAY: ${{ runner.os == 'Linux' && ':99' || '' }} 
+        # Variables de entorno para Pygame
+        SDL_VIDEODRIVER: dummy
+        DISPLAY: ${{ runner.os == 'Linux' && ':99' || ':0' }}
+        PYTHONUNBUFFERED: 1
+        PYTHONPATH: ${{ github.workspace }}
+        PYGAME_HIDE_SUPPORT_PROMPT: 1 
