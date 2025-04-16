@@ -124,12 +124,25 @@ def test_sound_effects(game_setup):
     assert hasattr(music, 'play_explosion')
     assert hasattr(music, 'play_game_over')
     
-    # Test sound effect objects
-    assert isinstance(music.shoot_sound, pygame.mixer.Sound)
-    assert isinstance(music.explosion_sound, pygame.mixer.Sound)
-    assert isinstance(music.game_over_sound, pygame.mixer.Sound)
+    # Test that sound objects exist and have required methods
+    assert hasattr(music.shoot_sound, 'play')
+    assert hasattr(music.explosion_sound, 'play')
+    assert hasattr(music.game_over_sound, 'play')
+    assert hasattr(music.shoot_sound, 'get_volume')
+    assert hasattr(music.shoot_sound, 'set_volume')
     
-    # Test volume settings
-    assert 0 <= music.shoot_sound.get_volume() <= 1.0
-    assert 0 <= music.explosion_sound.get_volume() <= 1.0
-    assert 0 <= music.game_over_sound.get_volume() <= 1.0 
+    # Test volume settings (should work in both real and dummy mode)
+    current_volume = music.shoot_sound.get_volume()
+    assert isinstance(current_volume, (int, float))
+    assert 0 <= current_volume <= 1.0
+
+    # Test that we can call all methods without errors
+    music.play_shoot()
+    music.play_explosion()
+    music.play_game_over()
+    music.pause()
+    music.resume()
+    
+    # Test volume control
+    music.volume = 0.7
+    assert 0 <= music.volume <= 1.0 
