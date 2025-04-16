@@ -14,12 +14,12 @@ class Heart(Sprite):
         # Load the heart image and get its rect
         image_path = resource_path("src/assets/images/heart.png")
         self.image = pygame.image.load(image_path)
-        
+
         # Scale the heart to a larger size (increased from 20x20 to 30x30)
         self.image = pygame.transform.scale(self.image, (30, 30))
-        
+
         self.rect = self.image.get_rect()
 
     def blitme(self):
         """Draw the heart at its current location"""
-        self.screen.blit(self.image, self.rect) 
+        self.screen.blit(self.image, self.rect)

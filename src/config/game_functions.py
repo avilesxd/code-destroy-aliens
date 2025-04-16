@@ -1,13 +1,62 @@
 import sys
 from time import sleep
 import pygame
+import random
 from src.entities.bullet import Bullet
 from src.entities.alien import Alien
 from src.entities.ship import Ship
 from src.config.statistics import Statistics as statistics
 
+# Global variables for stars
+stars = []
+last_star_time = 0
 
-def verify_events_keydown(event, ai_configuration, screen, ship, bullets, statistics, music):
+
+def create_gradient_surface(screen, top_color, bottom_color):
+    """Creates a surface with a vertical gradient"""
+    gradient = pygame.Surface((screen.get_width(), screen.get_height()))
+    for y in range(screen.get_height()):
+        # Calculate the color for this line
+        ratio = y / screen.get_height()
+        color = [
+            int(top_color[i] + (bottom_color[i] - top_color[i]) * ratio)
+            for i in range(3)
+        ]
+        # Draw a horizontal line with the calculated color
+        pygame.draw.line(gradient, color, (0, y), (screen.get_width(), y))
+    return gradient
+
+
+def update_stars(screen, ai_configuration, is_paused=False):
+    """Updates and draws the stars"""
+    global stars, last_star_time
+    current_time = pygame.time.get_ticks()
+
+    # Create initial stars if they don't exist
+    if not stars:
+        for _ in range(ai_configuration.star_count):
+            x = random.randint(0, ai_configuration.screen_width)
+            y = random.randint(0, ai_configuration.screen_height)
+            size = random.randint(1, 3)
+            speed = random.uniform(0.5, 2)
+            stars.append([x, y, size, speed])
+
+    # Update star positions only if the game is not paused
+    if not is_paused:
+        for star in stars:
+            star[1] += star[3]  # Move the star downward
+            if star[1] > ai_configuration.screen_height:
+                star[1] = 0
+                star[0] = random.randint(0, ai_configuration.screen_width)
+
+    # Draw the stars
+    for x, y, size, _ in stars:
+        pygame.draw.circle(screen, ai_configuration.star_color, (int(x), int(y)), size)
+
+
+def verify_events_keydown(
+    event, ai_configuration, screen, ship, bullets, statistics, music
+):
     """Responds to keystrokes"""
     if event.key == pygame.K_RIGHT:
         ship.moving_right = True
@@ -36,14 +85,24 @@ def verify_events_keyup(event, ship):
 
 
 def verify_events(
-    ai_configuration, screen, statistics, scoreboard, play_button, ship, aliens, bullets, music
+    ai_configuration,
+    screen,
+    statistics,
+    scoreboard,
+    play_button,
+    ship,
+    aliens,
+    bullets,
+    music,
 ):
     """Responds to keystrokes and mouse events"""
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
         elif event.type == pygame.KEYDOWN:
-            verify_events_keydown(event, ai_configuration, screen, ship, bullets, statistics, music)
+            verify_events_keydown(
+                event, ai_configuration, screen, ship, bullets, statistics, music
+            )
 
         elif event.type == pygame.KEYUP:
             verify_events_keyup(event, ship)
@@ -110,8 +169,22 @@ def update_screen(
 ):
     """Updates the images on the screen and switches to the new screen"""
 
-    # Redraws the screen during each loop
-    screen.fill(ai_configuration.bg_color)
+    if ai_configuration.use_gradient_background:
+        # Create and draw the gradient
+        gradient = create_gradient_surface(
+            screen,
+            ai_configuration.gradient_top_color,
+            ai_configuration.gradient_bottom_color,
+        )
+        screen.blit(gradient, (0, 0))
+
+        # Update and draw stars if they are enabled
+        if ai_configuration.use_stars:
+            update_stars(screen, ai_configuration, statistics.game_paused)
+    else:
+        # Use solid background color if gradient is disabled
+        screen.fill(ai_configuration.bg_color)
+
     # Redraws all bullets behind the ship and aliens
     for bullet in bullets.sprites():
         bullet.draw_bullet()
@@ -125,7 +198,7 @@ def update_screen(
     if not statistics.game_active:
         play_button.draw_button()
 
-    # Make the most recent screen visible
+    # Make the most recently drawn screen visible
     pygame.display.flip()
 
 
