@@ -19,8 +19,16 @@ for file in os.listdir("src/assets/images"):
 # Get the list of music files
 music_files = []
 for file in os.listdir("src/assets/music"):
-    if file.endswith(".mp3"):
+    if file.endswith((".mp3", ".wav", ".ogg", ".mid", ".midi")):
         music_files.append(os.path.join("src/assets/music", file))
+
+# Get the list of sound effect files
+sound_files = []
+sound_dir = "src/assets/sounds"
+if os.path.exists(sound_dir):
+    for file in os.listdir(sound_dir):
+        if file.endswith((".mp3", ".wav", ".ogg")):
+            sound_files.append(os.path.join(sound_dir, file))
 
 # Get the list of icon files
 icon_files = []
@@ -36,31 +44,55 @@ if not os.path.exists(data_dir):
 DATA_FILES = [
     ("src/assets/images", image_files),
     ("src/assets/music", music_files),
+    ("src/assets/sounds", sound_files),
     ("src/assets/icons", icon_files),
     (".data", []),  # Include the .data directory
 ]
 
 OPTIONS = {
     "argv_emulation": True,
-    "includes": [],
-    "packages": ["src.config", "src.entities", "src.core"],
+    "includes": [
+        "pygame",
+        "random",
+        "math",
+        "json",
+        "os",
+        "sys",
+        "time",
+        "datetime"
+    ],
+    "packages": [
+        "src.config",
+        "src.entities",
+        "src.core",
+        "src.utils",
+        "src.assets"
+    ],
     "iconfile": "src/assets/icons/icon-apple.icns",
     "plist": {
         "CFBundleName": "Alien Invasion",
         "CFBundleDisplayName": "Alien Invasion",
-        "CFBundleIdentifier": "com.CodeWaveInnovation.DestroyAliens",
+        "CFBundleIdentifier": "com.CodeWaveInnovation.AlienInvasion",
         "CFBundleVersion": "1.0.0",
         "CFBundleShortVersionString": "1.0",
+        "CFBundlePackageType": "APPL",
+        "CFBundleSignature": "????",
+        "LSMinimumSystemVersion": "10.10.0",
+        "NSHighResolutionCapable": True,
+        "NSRequiresAquaSystemAppearance": False,
     },
 }
 
 setup(
     app=APP,
-    name="Alien Invasion",
+    name="Alien Invasions",
     version="1.0.0",
-    description="Space Invader 2D Game",
+    description="A modern Space Invaders game with unique mechanics",
     author="Ignacio Avilés",
     data_files=DATA_FILES,
     options={"py2app": OPTIONS},
     setup_requires=["py2app"],
+    install_requires=[
+        "pygame>=2.5.0",
+    ],
 )
