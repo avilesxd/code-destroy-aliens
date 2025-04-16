@@ -1,4 +1,12 @@
-# Technical Documentation
+# 📚 Technical Documentation - Alien Invasion
+
+Welcome to the technical documentation for **Alien Invasion**, an arcade shooter in which you must defend Earth from waves of aliens.
+
+## 🎮 Game Images
+
+ | Start | Game | End |
+ |-------|------|-----|
+ | ![Start][game_start_url] | ![Game][game_score_url] | ![End][game_over_url] |
 
 ## Project Structure
 
@@ -27,6 +35,62 @@ code-destroy-aliens/
 └── docs/                 # Documentation
     └── README.md         # This file
 ```
+
+## 🧰 Requirements
+
+- Python 3.8+
+- pygame 2.5.0+
+- Additional dependencies listed in `requirements.txt`
+
+## ⚙️ Installation
+
+1. Clone the repository:
+
+```bash
+ git clone https://github.com/avilesxd/code-destroy-aliens.git
+ cd code-destroy-aliens
+```
+
+2. Create and activate a virtual environment:
+
+```bash
+ # Windows
+ python -m venv venv
+ venv\Scripts\activate
+ 
+ # Linux/MacOS
+ python3 -m venv venv
+ source venv/bin/activate
+ ```
+
+ 3. Install dependencies:
+
+ ```bash
+ pip install -r requirements.txt
+ pygame==2.5.2
+ ```
+
+4. Start the game with:
+
+ ```bash
+ python main.py
+ ```
+
+## 🧱 Building the Game
+
+### Windows Build
+
+1. Create the spec file:
+
+```bash
+ pyi-makespec main.py --name="Alien Invasion" --icon="src/assets/icons/icon.ico" --onefile --noconsole --add-data="src;src" --version-file="version.txt"
+ ```
+
+ 2. Build the executable:
+
+ ```bash
+ pyinstaller ".\Alien Invasion.spec"
+ ```
 
 ## Core Components
 
@@ -131,21 +195,17 @@ pygame==2.5.2
 - Add docstrings to classes and methods
 - Keep methods focused and concise
 
-## Testing
-
-- Manual testing for gameplay mechanics
-- Performance testing for frame rate
-- Language system testing
-- Cross-platform compatibility
-
-## Known Issues
-
-- None currently reported
-
 ## Future Improvements
 
 - Additional language support
 - More alien types
 - Power-up system
-- Sound effects and music
-- Level progression system
+
+## 📄 License
+
+This project is licensed under the [MIT License](../LICENSE)
+
+<!-- IMAGES -->
+ [game_start_url]: https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.PNG
+ [game_over_url]: https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_over.PNG
+ [game_score_url]: https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_score.PNG
