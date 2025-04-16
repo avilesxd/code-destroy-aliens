@@ -3,7 +3,7 @@
 Welcome to **Alien Invasion**!
 A classic arcade game where you pilot a spaceship and must destroy hordes of aliens before they invade Earth.
 
-![Gameplay][game_score_url]
+![Gameplay][game_start_url]
 ---
 
 ## 🎮 Game Features
@@ -72,9 +72,9 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 🎮 Get ready to save the galaxy!
 
 <!-- IMAGES -->
-[game_start_url]: https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.PNG
-[game_over_url]: https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_over.PNG
-[game_score_url]: https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_score.PNG
+[game_start_url]: https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.png
+[game_over_url]: https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_over.png
+[game_score_url]: https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_score.png
 
 <!-- GAME -->
 [official website_url]: https://avilesxd.github.io/code-destroy-aliens/
