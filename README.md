@@ -14,6 +14,14 @@ A classic arcade game where you pilot a spaceship and must destroy hordes of ali
 - 🎵 Immersive sound effects and background music
 - 💯 High score tracking system
 - 🎨 Retro-style graphics
+- **Multilingual Support**:
+  - Automatic language detection based on system settings
+  - Supports English and Spanish and more (coming soon)
+  - All game texts are translated
+- **Visual Improvements**:
+  - High contrast text with semi-transparent backgrounds
+  - Clear visibility of game information
+  - Smooth animations and transitions
 
 ## 🎯 How to Play
 

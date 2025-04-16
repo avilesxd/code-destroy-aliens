@@ -1,117 +1,151 @@
-# 📚 Technical Documentation - Alien Invasion
+# Technical Documentation
 
-Welcome to the technical documentation for **Alien Invasion**, an arcade shooter in which you must defend Earth from waves of aliens.
-
-## 🎮 Game Images
-
-| Start | Game | End |
-|-------|------|-----|
-| ![Start][game_start_url] | ![Game][game_score_url] | ![End][game_over_url] |
-
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 code-destroy-aliens/
-├── src/                  # Source code
-│   ├── assets/           # Game resources
-│   │   ├── images/       # Sprites
-│   │   ├── music/        # Music
-│   │   └── icons/        # Application icons
-│   ├── config/           # Configuration files
+├── main.py                 # Main game entry point
+├── requirements.txt        # Project dependencies
+├── src/
+│   ├── config/            # Configuration files
 │   │   ├── configuration.py  # Game settings
 │   │   ├── game_functions.py # Core game functions
 │   │   ├── music.py      # Music and sound settings
 │   │   └── statistics.py # Game statistics
-│   ├── core/             # Core game logic
-│   │   └── utils.py      # Utility functions
-│   └── entities/         # Game entities
-│       ├── alien.py      # Alien enemies
-│       ├── bullet.py     # Projectiles
-│       ├── button.py     # UI buttons
-│       ├── heart.py      # Life indicators
-│       ├── scoreboard.py # Score display
-│       └── ship.py       # Player ship
-├── docs/                 # Documentation
-├── website/              # Website files
-├── main.py               # Entry point
-├── setup.py              # Installation script to compile the game for MacOS
-├── requirements.txt      # Dependencies
-└── version.txt           # Version information
+│   │   └── language.py    # Language system implementation
+│   ├── entities/          # Game entities
+│   │   ├── ship.py       # Player's spaceship
+│   │   ├── alien.py      # Alien invaders
+│   │   ├── bullet.py     # Projectiles
+│   │   ├── heart.py      # Life indicators
+│   │   ├── scoreboard.py # Score display
+│   │   └── controls_screen.py # Controls information
+│   └── assets/           # Game assets
+│       └── translations/ # Language files
+│           ├── en.json   # English translations
+│           └── es.json   # Spanish translations
+└── docs/                 # Documentation
+    └── README.md         # This file
 ```
 
-## 🧰 Requirements
+## Core Components
 
-- Python 3.8+
-- pygame 2.5.0+
-- Additional dependencies listed in `requirements.txt`
+### Game Engine
 
-## ⚙️ Installation
+- Built with Pygame
+- Main game loop in `main.py`
+- Handles game states: menu, playing, paused, game over
 
-1. Clone the repository:
+### Entity System
 
-```bash
-git clone https://github.com/avilesxd/code-destroy-aliens.git
-cd code-destroy-aliens
+- `Ship`: Player-controlled spaceship
+  - Movement controls
+  - Shooting mechanics
+  - Collision detection
+- `Alien`: Enemy entities
+  - Movement patterns
+  - Different types and behaviors
+  - Spawning system
+- `Bullet`: Projectile system
+  - Speed and damage properties
+  - Collision detection
+- `Heart`: Life indicator
+  - Visual representation of remaining lives
+  - Position management
+
+### Scoring System
+
+- `Scoreboard` class handles:
+  - Current score display
+  - High score tracking
+  - Level progression
+  - Lives remaining
+  - Pause screen overlay
+
+### Internationalization System
+
+- `Language` class in `config/language.py`
+- Features:
+  - Automatic language detection
+  - JSON-based translation files
+  - Fallback to English
+  - Easy addition of new languages
+- Supported languages:
+  - English (default)
+  - Spanish
+  - Extensible for more languages
+
+### Visual Improvements
+
+- Text rendering:
+  - High contrast white text
+  - Semi-transparent black backgrounds
+  - Alpha value: 180/255 for optimal visibility
+- UI elements:
+  - Consistent padding and margins
+  - Clear visual hierarchy
+  - Responsive positioning
+
+## Technical Details
+
+### Performance Considerations
+
+- Sprite groups for efficient rendering
+- Object pooling for bullets
+- Optimized collision detection
+- Memory management for game objects
+
+### Code Architecture
+
+- Object-oriented design
+- Separation of concerns
+- Modular components
+- Easy to extend and maintain
+
+### Dependencies
+
+```
+pygame==2.5.2
 ```
 
-2. Create and activate a virtual environment:
+## Development Guidelines
 
-```bash
-# Windows
-python -m venv venv
-venv\Scripts\activate
+### Adding New Features
 
-# Linux/MacOS
-python3 -m venv venv
-source venv/bin/activate
-```
+1. Create new entity class in `src/entities/`
+2. Update main game loop if necessary
+3. Add configuration in `settings.py`
+4. Update documentation
 
-3. Install dependencies:
+### Adding New Languages
 
-```bash
-pip install -r requirements.txt
-```
+1. Create new JSON file in `src/assets/translations/`
+2. Follow existing translation structure
+3. Add language code to detection system
+4. Test translations
 
-## 🎮 Running the Game
+### Code Style
 
-Start the game with:
+- Follow PEP 8 guidelines
+- Use meaningful variable names
+- Add docstrings to classes and methods
+- Keep methods focused and concise
 
-```bash
-python main.py
-```
+## Testing
 
-## 🧱 Building the Game
+- Manual testing for gameplay mechanics
+- Performance testing for frame rate
+- Language system testing
+- Cross-platform compatibility
 
-### Windows Build
+## Known Issues
 
-1. Create the spec file:
+- None currently reported
 
-```bash
-pyi-makespec main.py --name="Alien Invasion" --icon="src/assets/icons/icon.ico" --onefile --noconsole --add-data="src;src" --version-file="version.txt"
-```
+## Future Improvements
 
-2. Build the executable:
-
-```bash
-pyinstaller ".\Alien Invasion.spec"
-```
-
-The executable will be created in the `dist` directory.
-
-## 🔧 Configuration
-
-The game can be configured through various files:
-
-- `src/config/configuration.py`: Game settings, screen size, FPS, etc.
-- `src/config/statistics.py`: Game statistics and scoring system
-- `src/config/game_functions.py`: Core game mechanics
-- `src/assets/`: Customize sprites, sounds, and other assets
-
-## 📄 License
-
-This project is licensed under the [MIT License](../LICENSE)
-
-<!-- IMAGES -->
-[game_start_url]: https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.PNG
-[game_over_url]: https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_over.PNG
-[game_score_url]: https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_score.PNG
+- Additional language support
+- More alien types
+- Power-up system
+- Sound effects and music
+- Level progression system
