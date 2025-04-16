@@ -7,23 +7,39 @@ from src.entities.alien import Alien
 from src.entities.ship import Ship
 from src.config.statistics import Statistics as statistics
 
-# Global variables for stars
+# Global variables for stars and gradient
 stars = []
 last_star_time = 0
+cached_gradient = None
+last_screen_size = None
+
+# Global variables for spatial grid
+spatial_grid = {}
+grid_cell_size = 64  # Size of each grid cell in pixels
 
 
 def create_gradient_surface(screen, top_color, bottom_color):
     """Creates a surface with a vertical gradient"""
-    gradient = pygame.Surface((screen.get_width(), screen.get_height()))
-    for y in range(screen.get_height()):
-        # Calculate the color for this line
-        ratio = y / screen.get_height()
+    global cached_gradient, last_screen_size
+    
+    # Check if we can reuse the cached gradient
+    current_size = (screen.get_width(), screen.get_height())
+    if cached_gradient and last_screen_size == current_size:
+        return cached_gradient
+        
+    # Create new gradient if needed
+    gradient = pygame.Surface(current_size)
+    for y in range(current_size[1]):
+        ratio = y / current_size[1]
         color = [
             int(top_color[i] + (bottom_color[i] - top_color[i]) * ratio)
             for i in range(3)
         ]
-        # Draw a horizontal line with the calculated color
-        pygame.draw.line(gradient, color, (0, y), (screen.get_width(), y))
+        pygame.draw.line(gradient, color, (0, y), (current_size[0], y))
+    
+    # Cache the gradient
+    cached_gradient = gradient
+    last_screen_size = current_size
     return gradient
 
 
@@ -31,7 +47,7 @@ def update_stars(screen, ai_configuration, is_paused=False, is_game_over=False):
     """Updates and draws the stars"""
     global stars, last_star_time
     current_time = pygame.time.get_ticks()
-
+    
     # Create initial stars if they don't exist
     if not stars:
         for _ in range(ai_configuration.star_count):
@@ -40,15 +56,16 @@ def update_stars(screen, ai_configuration, is_paused=False, is_game_over=False):
             size = random.randint(1, 3)
             speed = random.uniform(0.5, 2)
             stars.append([x, y, size, speed])
-
-    # Update star positions only if the game is not paused and not game over
-    if not is_paused and not is_game_over:
+    
+    # Update star positions only if enough time has passed and game is not paused
+    if not is_paused and not is_game_over and (current_time - last_star_time) > 16:  # ~60 FPS
         for star in stars:
             star[1] += star[3]  # Move the star downward
             if star[1] > ai_configuration.screen_height:
                 star[1] = 0
                 star[0] = random.randint(0, ai_configuration.screen_width)
-
+        last_star_time = current_time
+    
     # Draw the stars
     for x, y, size, _ in stars:
         pygame.draw.circle(screen, ai_configuration.star_color, (int(x), int(y)), size)
@@ -215,36 +232,76 @@ def update_bullets(
     """Updates the bullet positions and removes old ones"""
     # Updates the bullet positions
     bullets.update()
-
-    # Undoes bullets that have disappeared
-    for bullet in bullets.copy():
-        if bullet.rect.bottom <= 0:
+    
+    # Remove inactive bullets from the group
+    for bullet in bullets.sprites():
+        if not bullet.active:
             bullets.remove(bullet)
+    
+    check_bullet_alien_collisions(ai_configuration, screen, statistics, scoreboard, ship, aliens, bullets)
 
-    check_bullet_alien_collisions(
-        ai_configuration, screen, statistics, scoreboard, ship, aliens, bullets
-    )
+
+def get_grid_cells(rect):
+    """Get the grid cells that an object occupies"""
+    start_x = rect.left // grid_cell_size
+    end_x = rect.right // grid_cell_size
+    start_y = rect.top // grid_cell_size
+    end_y = rect.bottom // grid_cell_size
+    
+    cells = []
+    for x in range(start_x, end_x + 1):
+        for y in range(start_y, end_y + 1):
+            cells.append((x, y))
+    return cells
+
+
+def update_spatial_grid(aliens, bullets):
+    """Update the spatial grid with current object positions"""
+    global spatial_grid
+    spatial_grid.clear()
+    
+    # Add aliens to grid
+    for alien in aliens:
+        for cell in get_grid_cells(alien.rect):
+            if cell not in spatial_grid:
+                spatial_grid[cell] = {'aliens': [], 'bullets': []}
+            spatial_grid[cell]['aliens'].append(alien)
+    
+    # Add bullets to grid
+    for bullet in bullets:
+        for cell in get_grid_cells(bullet.rect):
+            if cell not in spatial_grid:
+                spatial_grid[cell] = {'aliens': [], 'bullets': []}
+            spatial_grid[cell]['bullets'].append(bullet)
 
 
 def check_bullet_alien_collisions(
     ai_configuration, screen, statistics, scoreboard, ship, aliens, bullets
 ):
-    """Responds to bullet-alien collisions"""
-    # Removes any bullets and aliens that have collided
-    collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
-
-    if collisions:
-        for aliens_hit in collisions.values():
-            statistics.score += ai_configuration.alien_points * len(aliens_hit)
-            for alien in aliens_hit:
-                alien.explode()  # Play explosion sound
-            scoreboard.prep_score()
-        check_high_score(statistics, scoreboard)
-
+    """Responds to bullet-alien collisions using spatial grid"""
+    # Update spatial grid
+    update_spatial_grid(aliens, bullets)
+    
+    # Check collisions only in cells that contain both bullets and aliens
+    for cell_data in spatial_grid.values():
+        if cell_data['aliens'] and cell_data['bullets']:
+            # Check collisions between bullets and aliens in this cell
+            for bullet in cell_data['bullets']:
+                for alien in cell_data['aliens']:
+                    if bullet.rect.colliderect(alien.rect):
+                        bullet.active = False
+                        alien.kill()
+                        statistics.score += ai_configuration.alien_points
+                        alien.explode()
+                        scoreboard.prep_score()
+                        break
+    
+    check_high_score(statistics, scoreboard)
+    
     if len(aliens) == 0:
         # If the entire fleet is destroyed, start a new level
         bullets.empty()
-        ai_configuration.increase_speed()
+        ai_configuration.boost_speed()
         statistics.level += 1
         scoreboard.prep_level()
         create_fleet(ai_configuration, screen, ship, aliens)
@@ -258,12 +315,12 @@ def check_high_score(statistics, scoreboard):
         statistics.save_high_score()  # Save the new high score
 
 
-def fire_bullet(ai_configuration, display, ship, bullets):
-    """Fires a bullet if the limit has not been reached"""
+def fire_bullet(ai_configuration, screen, ship, bullets):
+    """Fire a bullet if limit not reached yet"""
+    # Create a new bullet and add it to the bullets group
     if len(bullets) < ai_configuration.bullets_allowed:
-        new_bullet = Bullet(ai_configuration, display, ship)
+        new_bullet = Bullet.get_bullet(ai_configuration, screen, ship)
         bullets.add(new_bullet)
-        ship.shoot()  # Play shoot sound
 
 
 def get_number_aliens_x(ai_configuration, alien_width):

@@ -14,6 +14,7 @@ from src.config.statistics import Statistics
 from src.config.language import Language
 from src.entities.ship import Ship
 from src.entities.button import Button
+from src.entities.bullet import Bullet
 import src.config.game_functions as fj
 
 @pytest.fixture
@@ -154,3 +155,106 @@ def test_game_over(game_components):
     assert stats.ships_left == 0
     assert play_button.rect.centerx == screen.get_rect().centerx
     assert play_button.rect.centery == screen.get_rect().centery 
+
+def test_bullet_pooling(game_components):
+    """Test the bullet pooling system."""
+    config, screen, stats, ship, bullets, aliens, play_button = game_components
+    
+    # Create initial bullets
+    for _ in range(5):
+        fj.fire_bullet(config, screen, ship, bullets)
+    
+    initial_bullet_count = len(bullets)
+    
+    # Remove bullets (they should go to the pool)
+    for bullet in bullets.sprites():
+        bullet.active = False
+        Bullet.return_to_pool(bullet)
+    
+    # Create new bullets (should reuse from pool)
+    for _ in range(5):
+        fj.fire_bullet(config, screen, ship, bullets)
+    
+    # Verify that bullets are being reused
+    assert len(Bullet._bullet_pool) <= Bullet._max_pool_size
+    assert len(bullets) == initial_bullet_count
+
+def test_spatial_grid(game_components):
+    """Test the spatial grid system for collision detection."""
+    config, screen, stats, ship, bullets, aliens, play_button = game_components
+    
+    # Create a bullet and an alien
+    fj.fire_bullet(config, screen, ship, bullets)
+    fj.create_fleet(config, screen, ship, aliens)
+    
+    # Get the first bullet and alien
+    bullet = next(iter(bullets))
+    alien = next(iter(aliens))
+    
+    # Position bullet and alien in the same grid cell
+    bullet.rect.center = alien.rect.center
+    
+    # Update spatial grid
+    fj.update_spatial_grid(aliens, bullets)
+    
+    # Get the grid cells for the bullet and alien
+    bullet_cells = fj.get_grid_cells(bullet.rect)
+    alien_cells = fj.get_grid_cells(alien.rect)
+    
+    # Verify that they share at least one grid cell
+    shared_cells = set(bullet_cells) & set(alien_cells)
+    assert len(shared_cells) > 0
+    
+    # Verify that the collision is detected in the shared cell
+    for cell in shared_cells:
+        if cell in fj.spatial_grid:
+            cell_data = fj.spatial_grid[cell]
+            assert bullet in cell_data['bullets']
+            assert alien in cell_data['aliens']
+
+def test_gradient_caching(game_components):
+    """Test the gradient caching system."""
+    config, screen, stats, ship, bullets, aliens, play_button = game_components
+    
+    # Create gradient twice with same screen size
+    gradient1 = fj.create_gradient_surface(screen, config.gradient_top_color, config.gradient_bottom_color)
+    gradient2 = fj.create_gradient_surface(screen, config.gradient_top_color, config.gradient_bottom_color)
+    
+    # Verify that the same cached gradient is returned
+    assert gradient1 is gradient2
+    assert fj.cached_gradient is not None
+    
+    # Change screen size and create new gradient
+    new_screen = pygame.display.set_mode((config.screen_width + 100, config.screen_height + 100))
+    gradient3 = fj.create_gradient_surface(new_screen, config.gradient_top_color, config.gradient_bottom_color)
+    
+    # Verify that a new gradient is created
+    assert gradient3 is not gradient1
+    assert gradient3 is not gradient2
+
+def test_star_system(game_components):
+    """Test the optimized star system."""
+    config, screen, stats, ship, bullets, aliens, play_button = game_components
+    
+    # Initialize stars
+    fj.update_stars(screen, config)
+    
+    # Verify that stars are created
+    assert len(fj.stars) == config.star_count
+    
+    # Verify star properties
+    for star in fj.stars:
+        x, y, size, speed = star
+        assert 0 <= x <= config.screen_width
+        assert 0 <= y <= config.screen_height
+        assert 1 <= size <= 3
+        assert 0.5 <= speed <= 2
+    
+    # Test star movement
+    initial_positions = [(star[0], star[1]) for star in fj.stars]
+    fj.last_star_time = pygame.time.get_ticks() - 17  # Force update
+    fj.update_stars(screen, config)
+    
+    # Verify that stars have moved
+    for i, star in enumerate(fj.stars):
+        assert (star[0], star[1]) != initial_positions[i] 
