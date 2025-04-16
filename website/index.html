@@ -130,12 +130,28 @@
       <a href="#screenshots" class="hover:text-green-400 transition">Screenshots</a>
       <a href="#download" class="hover:text-green-400 transition">Download</a>
     </nav>
-    <button class="md:hidden text-white">
+    <button id="mobile-menu-button" class="md:hidden text-white">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
   </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden fixed inset-0 bg-gray-900 bg-opacity-95 z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
+    <div class="flex justify-end p-4">
+      <button id="close-menu" class="text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <nav class="flex flex-col items-center space-y-8 p-8">
+      <a href="#features" class="text-2xl text-white hover:text-green-400 transition">Features</a>
+      <a href="#screenshots" class="text-2xl text-white hover:text-green-400 transition">Screenshots</a>
+      <a href="#download" class="text-2xl text-white hover:text-green-400 transition">Download</a>
+    </nav>
+  </div>
 
   <main class="flex-grow container mx-auto px-4 py-12">
     <!-- Hero Section -->
@@ -333,6 +349,27 @@
 <!-- Custom carousel script -->
       <script>
         document.addEventListener('DOMContentLoaded', function() {
+          // Mobile menu functionality
+          const mobileMenuButton = document.getElementById('mobile-menu-button');
+          const closeMenuButton = document.getElementById('close-menu');
+          const mobileMenu = document.getElementById('mobile-menu');
+          const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+
+          function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+          }
+
+          mobileMenuButton.addEventListener('click', toggleMenu);
+          closeMenuButton.addEventListener('click', toggleMenu);
+
+          // Close menu when clicking on a link
+          mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+              mobileMenu.classList.add('translate-x-full');
+            });
+          });
+
+          // Carousel functionality
           const carousel = document.getElementById('carousel-items');
           const items = carousel.querySelectorAll('.carousel-item');
           const indicators = document.querySelectorAll('.carousel-indicator');
