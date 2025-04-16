@@ -50,7 +50,7 @@ git push origin descriptive-fix-or-improve
 
 ### 8. Create a Pull Request
 
-Go to your fork on GitHub and click “Compare & pull request”.
+Go to your fork on GitHub and click "Compare & pull request".
 
 ---
 
@@ -64,7 +64,38 @@ Go to your fork on GitHub and click “Compare & pull request”.
 
 ## 🧪 Tests
 
-If your contribution requires it, add or modify tests to cover the changes made.
+### Testing Guidelines
+
+1. **Test Coverage**
+   - Write tests for all new features and bug fixes
+   - Aim for at least 80% test coverage for new code
+   - Include both unit tests and integration tests where appropriate
+
+2. **Test Structure**
+   - Place test files in the `tests` directory
+   - Name test files with the pattern `test_*.py`
+   - Use clear and descriptive test function names
+
+3. **Running Tests**
+   ```bash
+   # Run all tests
+   python -m pytest
+
+   # Run specific test file
+   python -m pytest tests/test_specific.py
+   ```
+
+4. **Test Best Practices**
+   - Follow the AAA pattern (Arrange, Act, Assert)
+   - Keep tests independent and isolated
+   - Use meaningful test data
+   - Document complex test scenarios
+   - Mock external dependencies when necessary
+
+5. **Continuous Integration**
+   - All tests must pass before merging
+   - Pull requests will be automatically tested
+   - Fix any failing tests before requesting review
 
 ---
 
