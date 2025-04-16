@@ -165,11 +165,6 @@ code-destroy-aliens/
 - Modular components
 - Easy to extend and maintain
 
-### Dependencies
-
-```
-pygame==2.5.2
-```
 
 ## Development Guidelines
 
