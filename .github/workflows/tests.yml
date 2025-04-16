@@ -31,9 +31,5 @@ jobs:
       run: |
         python -m pytest tests/ -v
       env:
-        # Environment variables for Pygame
-        SDL_VIDEODRIVER: dummy
-        DISPLAY: ':0'
-        PYTHONUNBUFFERED: 1
         PYTHONPATH: ${{ github.workspace }}
-        PYGAME_HIDE_SUPPORT_PROMPT: 1 
+        PYTHONUNBUFFERED: 1 
