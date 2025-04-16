@@ -1,0 +1,16 @@
+{
+    "game_controls": "Game Controls",
+    "move_left_right": "Move left/right",
+    "shoot": "Shoot",
+    "pause_game": "Pause game",
+    "quit_game": "Quit game",
+    "press_space": "Press SPACE to continue",
+    "play": "Play",
+    "score": "Score",
+    "high_score": "High Score",
+    "level": "Level",
+    "ships": "Ships",
+    "game_over": "Game Over",
+    "press_p": "Press 'P' to resume",
+    "press_q": "Press 'Q' to quit"
+}

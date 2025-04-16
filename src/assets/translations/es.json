@@ -1,0 +1,16 @@
+{
+    "game_controls": "Controles del Juego",
+    "move_left_right": "Mover izquierda/derecha",
+    "shoot": "Disparar",
+    "pause_game": "Pausar juego",
+    "quit_game": "Salir del juego",
+    "press_space": "Presiona ESPACIO para continuar",
+    "play": "Jugar",
+    "score": "Puntuación",
+    "high_score": "Puntuación Máxima",
+    "level": "Nivel",
+    "ships": "Naves",
+    "game_over": "Juego Terminado",
+    "press_p": "Presiona 'P' para reanudar",
+    "press_q": "Presiona 'Q' para salir"
+}

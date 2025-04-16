@@ -2,6 +2,7 @@ import pygame
 from pygame.sprite import Group
 from src.config.configuration import Configuration
 from src.config.statistics import Statistics
+from src.config.language import Language
 from src.entities.scoreboard import Scoreboard
 from src.entities.button import Button
 from src.entities.ship import Ship
@@ -28,15 +29,18 @@ def runGame():
     )
     pygame.display.set_caption("Alien Invasion")
 
+    # Initialize language system
+    language = Language()
+
     # Create the Play button
-    play_button = Button(ai_configuration, screen, "Play")
+    play_button = Button(ai_configuration, screen, language.get_text("play"))
 
     # Create an instance to store game statistics and create a scoreboard
     statistics = Statistics(ai_configuration)
-    scoreboard = Scoreboard(ai_configuration, screen, statistics)
+    scoreboard = Scoreboard(ai_configuration, screen, statistics, language)
 
     # Create the controls screen
-    controls_screen = ControlsScreen(ai_configuration, screen)
+    controls_screen = ControlsScreen(ai_configuration, screen, language)
 
     # Create a ship, a group of bullets, and a group of aliens
     ship = Ship(ai_configuration, screen)
