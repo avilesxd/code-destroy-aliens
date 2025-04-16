@@ -5,6 +5,7 @@ from src.config.statistics import Statistics
 from src.entities.scoreboard import Scoreboard
 from src.entities.button import Button
 from src.entities.ship import Ship
+from src.entities.controls_screen import ControlsScreen
 from src.config.music import Music
 import src.config.game_functions as fj
 from src.core.path_utils import resource_path
@@ -33,6 +34,9 @@ def runGame():
     # Create an instance to store game statistics and create a scoreboard
     statistics = Statistics(ai_configuration)
     scoreboard = Scoreboard(ai_configuration, screen, statistics)
+
+    # Create the controls screen
+    controls_screen = ControlsScreen(ai_configuration, screen)
 
     # Create a ship, a group of bullets, and a group of aliens
     ship = Ship(ai_configuration, screen)
@@ -75,6 +79,7 @@ def runGame():
             aliens,
             bullet,
             play_button,
+            controls_screen,
         )
 
 

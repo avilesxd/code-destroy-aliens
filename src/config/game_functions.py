@@ -63,7 +63,11 @@ def verify_events_keydown(
     elif event.key == pygame.K_LEFT:
         ship.moving_left = True
     elif event.key == pygame.K_SPACE:
-        fire_bullet(ai_configuration, screen, ship, bullets)
+        if statistics.show_controls:
+            statistics.show_controls = False
+            statistics.controls_seen = True  # Mark controls as seen
+        else:
+            fire_bullet(ai_configuration, screen, ship, bullets)
     elif event.key == pygame.K_q:
         sys.exit()
     elif event.key == pygame.K_p:
@@ -165,7 +169,7 @@ def check_play_button(
 
 
 def update_screen(
-    ai_configuration, screen, statistics, scoreboard, ship, aliens, bullets, play_button
+    ai_configuration, screen, statistics, scoreboard, ship, aliens, bullets, play_button, controls_screen
 ):
     """Updates the images on the screen and switches to the new screen"""
 
@@ -194,8 +198,11 @@ def update_screen(
     # Draw the score information
     scoreboard.show_score()
 
-    # Draw the Play button if the game is inactive
-    if not statistics.game_active:
+    # Draw the controls screen if it's active
+    if statistics.show_controls:
+        controls_screen.draw_controls()
+    # Draw the Play button if the game is inactive and controls are not showing
+    elif not statistics.game_active:
         play_button.draw_button()
 
     # Make the most recently drawn screen visible

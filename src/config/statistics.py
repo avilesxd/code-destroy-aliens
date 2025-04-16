@@ -11,12 +11,13 @@ class Statistics:
     def __init__(self, ai_configuration):
         """Initializes statistics"""
         self.ai_configuration = ai_configuration
-        self.reset_stats()
-
+        
         # Game state flags
         self.game_active = False
         self.game_paused = False
         self.game_over = False
+        self.show_controls = True
+        self.controls_seen = False  # Initialize controls_seen first
 
         # Get the data directory and ensure it exists
         self.data_dir = ensure_data_directory()
@@ -25,6 +26,9 @@ class Statistics:
         high_score_path = os.path.join(self.data_dir, "high_score.json")
         data = load_json_file(high_score_path, {"high_score": 0})
         self.high_score = data["high_score"]
+        
+        # Initialize the rest of the stats
+        self.reset_stats()
 
     def reset_stats(self):
         """Initializes statistics that can change during the game"""
@@ -34,6 +38,8 @@ class Statistics:
         self.aliens_destroyed = 0
         self.bullets_fired = 0
         self.game_over = False
+        # Only show controls if they haven't been seen before
+        self.show_controls = not self.controls_seen
 
     def save_high_score(self):
         """Saves the current high score to .data directory"""
