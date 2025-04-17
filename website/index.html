@@ -4,6 +4,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Play Alien Invasion, a modern take on the classic Space Invaders game. Defend Earth from alien attacks with fast-paced action and challenging levels." />
+  <meta name="keywords" content="space invaders, alien invasion, arcade game, retro game, space shooter, classic game" />
+  <meta name="author" content="Ignacio Avilés" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta property="og:title" content="Alien Invasion - Space Invader Game" />
+  <meta property="og:description" content="Defend Earth from alien attacks in this modern take on the classic Space Invaders game. Download now and start playing!" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.png" />
+  <meta property="og:url" content="https://avilesxd.github.io/code-destroy-aliens/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Alien Invasion - Space Invader Game" />
+  <meta name="twitter:description" content="Defend Earth from alien attacks in this modern take on the classic Space Invaders game. Download now and start playing!" />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.png" />
   <title>Alien Invasion - Space Invader Game</title>
   <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/src/assets/icons/icon.png">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -11,10 +29,40 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap');
     
+    :root {
+      --primary-color: #4ade80;
+      --background-color: #0f172a;
+      --text-color: #ffffff;
+    }
+    
     body {
       font-family: 'Orbitron', sans-serif;
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      background: linear-gradient(135deg, var(--background-color) 0%, #1e293b 100%);
       background-attachment: fixed;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    
+    /* High contrast mode support */
+    @media (prefers-contrast: high) {
+      :root {
+        --primary-color: #00ff00;
+        --text-color: #ffffff;
+      }
+      
+      .text-green-400 {
+        color: var(--primary-color) !important;
+      }
+    }
+    
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
     }
     
     .space-bg {
@@ -63,6 +111,28 @@
       align-items: center;
       justify-content: center;
       margin-bottom: 1rem;
+    }
+    
+    /* Focus styles for better keyboard navigation */
+    a:focus, button:focus {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 2px;
+    }
+    
+    /* Skip to main content link */
+    .skip-to-main {
+      position: absolute;
+      left: -9999px;
+      z-index: 999;
+      padding: 1em;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      text-decoration: none;
+    }
+    
+    .skip-to-main:focus {
+      left: 50%;
+      transform: translateX(-50%);
     }
     
     /* Carousel styles */
@@ -118,42 +188,45 @@
 </head>
 
 <body class="text-white min-h-screen flex flex-col">
-  <div class="space-bg"></div>
+  <!-- Skip to main content link -->
+  <a href="#main-content" class="skip-to-main">Skip to main content</a>
   
-  <header class="container mx-auto px-4 py-6 flex justify-between items-center">
+  <div class="space-bg" role="presentation" aria-hidden="true"></div>
+  
+  <header class="container mx-auto px-4 py-6 flex justify-between items-center" role="banner">
     <div class="flex items-center">
       <img src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/src/assets/icons/icon.png" alt="Destroy Aliens Logo" class="h-12 w-12 mr-3">
       <h1 class="text-2xl font-bold text-green-400 glow">Alien Invasion</h1>
     </div>
-    <nav class="hidden md:flex space-x-6">
+    <nav class="hidden md:flex space-x-6" role="navigation" aria-label="Main navigation">
       <a href="#features" class="hover:text-green-400 transition">Features</a>
       <a href="#screenshots" class="hover:text-green-400 transition">Screenshots</a>
       <a href="#download" class="hover:text-green-400 transition">Download</a>
     </nav>
-    <button id="mobile-menu-button" class="md:hidden text-white">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <button id="mobile-menu-button" class="md:hidden text-white" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
   </header>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="md:hidden fixed inset-0 bg-gray-900 bg-opacity-95 z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
+  <div id="mobile-menu" class="md:hidden fixed inset-0 bg-gray-900 bg-opacity-95 z-50 transform translate-x-full transition-transform duration-300 ease-in-out" role="dialog" aria-label="Mobile menu">
     <div class="flex justify-end p-4">
-      <button id="close-menu" class="text-white">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <button id="close-menu" class="text-white" aria-label="Close mobile menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
     </div>
-    <nav class="flex flex-col items-center space-y-8 p-8">
+    <nav class="flex flex-col items-center space-y-8 p-8" role="navigation" aria-label="Mobile navigation">
       <a href="#features" class="text-2xl text-white hover:text-green-400 transition">Features</a>
       <a href="#screenshots" class="text-2xl text-white hover:text-green-400 transition">Screenshots</a>
       <a href="#download" class="text-2xl text-white hover:text-green-400 transition">Download</a>
     </nav>
   </div>
 
-  <main class="flex-grow container mx-auto px-4 py-12">
+  <main id="main-content" class="flex-grow container mx-auto px-4 py-12" role="main">
     <!-- Hero Section -->
     <section class="text-center mb-20">
       <h2 class="text-5xl md:text-6xl font-bold mb-6 glow">Defend Earth from Alien Invasion</h2>
@@ -342,7 +415,7 @@
 
   </main>
 
-  <footer class="bg-gray-900 py-8">
+  <footer class="bg-gray-900 py-8" role="contentinfo">
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <div class="mb-4 md:mb-0">
@@ -375,77 +448,91 @@
 </body>
 
 <!-- Custom carousel script -->
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          // Mobile menu functionality
-          const mobileMenuButton = document.getElementById('mobile-menu-button');
-          const closeMenuButton = document.getElementById('close-menu');
-          const mobileMenu = document.getElementById('mobile-menu');
-          const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu functionality
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const closeMenuButton = document.getElementById('close-menu');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuLinks = mobileMenu.querySelectorAll('a');
 
-          function toggleMenu() {
-            mobileMenu.classList.toggle('translate-x-full');
-          }
+    function toggleMenu() {
+      const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+      mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+      mobileMenu.classList.toggle('translate-x-full');
+    }
 
-          mobileMenuButton.addEventListener('click', toggleMenu);
-          closeMenuButton.addEventListener('click', toggleMenu);
+    mobileMenuButton.addEventListener('click', toggleMenu);
+    closeMenuButton.addEventListener('click', toggleMenu);
 
-          // Close menu when clicking on a link
-          mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-              mobileMenu.classList.add('translate-x-full');
-            });
-          });
+    // Close menu when clicking on a link
+    mobileMenuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('translate-x-full');
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+      });
+    });
 
-          // Carousel functionality
-          const carousel = document.getElementById('carousel-items');
-          const items = carousel.querySelectorAll('.carousel-item');
-          const indicators = document.querySelectorAll('.carousel-indicator');
-          const prevButton = document.getElementById('prev-button');
-          const nextButton = document.getElementById('next-button');
-          
-          let currentIndex = 0;
-          const totalItems = items.length;
-          
-          // Function to update the carousel
-          function updateCarousel() {
-            // Update carousel position
-            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-            
-            // Update indicators
-            indicators.forEach((indicator, index) => {
-              if (index === currentIndex) {
-                indicator.classList.add('active');
-              } else {
-                indicator.classList.remove('active');
-              }
-            });
-          }
-          
-          // Events for buttons
-          prevButton.addEventListener('click', function() {
-            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-            updateCarousel();
-          });
-          
-          nextButton.addEventListener('click', function() {
-            currentIndex = (currentIndex + 1) % totalItems;
-            updateCarousel();
-          });
-          
-          // Events for indicators
-          indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', function() {
-              currentIndex = index;
-              updateCarousel();
-            });
-          });
-          
-          // Automatic change every 5 seconds
-          setInterval(function() {
-            currentIndex = (currentIndex + 1) % totalItems;
-            updateCarousel();
-          }, 5000);
-        });
-      </script>
+    // Carousel functionality
+    const carousel = document.getElementById('carousel-items');
+    const items = carousel.querySelectorAll('.carousel-item');
+    const indicators = document.querySelectorAll('.carousel-indicator');
+    const prevButton = document.getElementById('prev-button');
+    const nextButton = document.getElementById('next-button');
+    
+    let currentIndex = 0;
+    const totalItems = items.length;
+    
+    // Function to update the carousel
+    function updateCarousel() {
+      // Update carousel position
+      carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+      
+      // Update indicators
+      indicators.forEach((indicator, index) => {
+        if (index === currentIndex) {
+          indicator.classList.add('active');
+          indicator.setAttribute('aria-current', 'true');
+        } else {
+          indicator.classList.remove('active');
+          indicator.removeAttribute('aria-current');
+        }
+      });
+    }
+    
+    // Events for buttons
+    prevButton.addEventListener('click', function() {
+      currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+      updateCarousel();
+    });
+    
+    nextButton.addEventListener('click', function() {
+      currentIndex = (currentIndex + 1) % totalItems;
+      updateCarousel();
+    });
+    
+    // Events for indicators
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', function() {
+        currentIndex = index;
+        updateCarousel();
+      });
+    });
+    
+    // Automatic change every 5 seconds
+    let autoplayInterval = setInterval(function() {
+      currentIndex = (currentIndex + 1) % totalItems;
+      updateCarousel();
+    }, 5000);
+
+    // Pause autoplay on hover
+    carousel.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
+    carousel.addEventListener('mouseleave', () => {
+      autoplayInterval = setInterval(function() {
+        currentIndex = (currentIndex + 1) % totalItems;
+        updateCarousel();
+      }, 5000);
+    });
+  });
+</script>
 </html>
