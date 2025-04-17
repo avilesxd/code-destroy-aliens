@@ -63,7 +63,7 @@ jobs:
     - name: Get version
       id: get_version
       run: |
-        $version = Get-Content version.txt
+        $version = (Get-Content version.txt | Select-String -Pattern "filevers=\((\d+),(\d+),(\d+),(\d+)\)" | ForEach-Object { $_.Matches.Groups[1].Value + "." + $_.Matches.Groups[2].Value + "." + $_.Matches.Groups[3].Value })
         echo "version=$version" >> $env:GITHUB_OUTPUT
 
     - name: Generate changelog
