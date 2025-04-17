@@ -34,7 +34,7 @@ class Configuration:
         # Alien settings
 
         # Speed at which aliens descend when they reach the edge of the screen
-        self.fleet_drop_speed = 1
+        self.fleet_drop_speed = 4.5
         # How fast the game accelerates
         self.acceleration_scale = 1.1
         # How fast the point values for aliens increase
