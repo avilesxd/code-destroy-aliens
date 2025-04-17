@@ -2,12 +2,64 @@ import json
 import os
 import ctypes
 import sys
-from src.core.path_utils import get_app_directory, ensure_data_directory, load_json_file, save_json_file
+import hashlib
+import base64
+from cryptography.fernet import Fernet
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+from src.core.path_utils import get_app_directory, ensure_data_directory, load_json_file, save_json_file, resource_path
 from src.config.music import Music
 
 
 class Statistics:
     """Alien Invasion stats tracker"""
+
+    # Encryption key derived from a fixed password (this is not secure for real applications,
+    # but it's enough to prevent casual edits by players)
+    _SALT = b'code-destroy-aliens-salt'
+    _PASSWORD = b'code-destroy-aliens-password'
+    
+    @classmethod
+    def _get_encryption_key(cls):
+        """Generates an encryption key from the password and salt"""
+        kdf = PBKDF2HMAC(
+            algorithm=hashes.SHA256(),
+            length=32,
+            salt=cls._SALT,
+            iterations=100000,
+        )
+        key = base64.urlsafe_b64encode(kdf.derive(cls._PASSWORD))
+        return Fernet(key)
+    
+    @classmethod
+    def _encrypt_data(cls, data):
+        """Encrypts JSON data"""
+        json_data = json.dumps(data)
+        fernet = cls._get_encryption_key()
+        encrypted_data = fernet.encrypt(json_data.encode())
+        
+        # Add a verification hash
+        data_hash = hashlib.sha256(json_data.encode()).hexdigest()
+        return encrypted_data, data_hash
+    
+    @classmethod
+    def _decrypt_data(cls, encrypted_data, stored_hash):
+        """Decrypts JSON data and verifies its integrity"""
+        try:
+            fernet = cls._get_encryption_key()
+            decrypted_data = fernet.decrypt(encrypted_data)
+            json_data = decrypted_data.decode()
+            
+            # Verify the hash
+            data_hash = hashlib.sha256(json_data.encode()).hexdigest()
+            if data_hash != stored_hash:
+                # If the hash doesn't match, the data has been tampered with
+                return None
+            
+            return json.loads(json_data)
+        except Exception:
+            # If there's any error in decryption, return None
+            return None
 
     def __init__(self, ai_configuration):
         """Initializes statistics"""
@@ -25,9 +77,7 @@ class Statistics:
         self.data_dir = ensure_data_directory()
 
         # Load high score from .data directory or initialize to 0
-        high_score_path = os.path.join(self.data_dir, "high_score.json")
-        data = load_json_file(high_score_path, {"high_score": 0})
-        self.high_score = data["high_score"]
+        self.load_high_score()
         
         # Initialize the rest of the stats
         self.reset_stats()
@@ -45,11 +95,41 @@ class Statistics:
 
     def save_high_score(self):
         """Saves the current high score to .data directory"""
-        try:
-            high_score_path = os.path.join(self.data_dir, "high_score.json")
-            save_json_file(high_score_path, {"high_score": self.high_score})
-        except Exception as e:
-            print(f"Error saving high score: {e}")
+        data = {
+            'high_score': self.high_score,
+            'hash': None  # Will be updated later
+        }
+        
+        # Encrypt the data
+        encrypted_data, data_hash = self._encrypt_data({'high_score': self.high_score})
+        
+        # Save the encrypted data and hash
+        file_path = os.path.join(self.data_dir, 'high_score.dat')
+        with open(file_path, 'wb') as f:
+            f.write(encrypted_data)
+            f.write(b'\n')  # Separator
+            f.write(data_hash.encode())
+
+    def load_high_score(self):
+        """Load high score from a file"""
+        file_path = os.path.join(self.data_dir, 'high_score.dat')
+        self.high_score = 0
+        
+        if os.path.exists(file_path):
+            try:
+                with open(file_path, 'rb') as f:
+                    content = f.read()
+                    # Separate the encrypted data from the hash
+                    parts = content.split(b'\n')
+                    if len(parts) == 2:
+                        encrypted_data, stored_hash = parts
+                        # Decrypt and verify the data
+                        data = self._decrypt_data(encrypted_data, stored_hash.decode())
+                        if data and 'high_score' in data:
+                            self.high_score = data['high_score']
+            except Exception:
+                # If there's an error, use the default value
+                self.high_score = 0
 
     def toggle_pause(self):
         """Toggles the game pause state"""
