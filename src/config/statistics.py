@@ -12,7 +12,28 @@ from src.config.music import Music
 
 
 class Statistics:
-    """Alien Invasion stats tracker"""
+    """A class to manage game statistics and state.
+    
+    This class handles game statistics tracking, high score management,
+    and game state flags. It includes encryption for high score storage
+    to prevent tampering.
+    
+    Attributes:
+        ai_configuration (Settings): Game configuration settings
+        music (Music): Sound effects manager
+        game_active (bool): Whether the game is currently active
+        game_paused (bool): Whether the game is paused
+        game_over (bool): Whether the game is over
+        show_controls (bool): Whether to show the controls screen
+        controls_seen (bool): Whether the controls have been seen
+        ships_remaining (int): Number of ships remaining
+        score (int): Current game score
+        level (int): Current game level
+        aliens_destroyed (int): Total aliens destroyed
+        bullets_fired (int): Total bullets fired
+        high_score (int): Highest score achieved
+        data_dir (str): Path to the data directory
+    """
 
     # Encryption key derived from a fixed password (this is not secure for real applications,
     # but it's enough to prevent casual edits by players)
@@ -21,7 +42,14 @@ class Statistics:
     
     @classmethod
     def _get_encryption_key(cls):
-        """Generates an encryption key from the password and salt"""
+        """Generate an encryption key from the password and salt.
+        
+        Returns:
+            Fernet: A Fernet encryption key instance
+            
+        This method uses PBKDF2HMAC to derive a secure key from
+        the password and salt for encrypting high scores.
+        """
         kdf = PBKDF2HMAC(
             algorithm=hashes.SHA256(),
             length=32,
@@ -33,7 +61,17 @@ class Statistics:
     
     @classmethod
     def _encrypt_data(cls, data):
-        """Encrypts JSON data"""
+        """Encrypt JSON data and add a verification hash.
+        
+        Args:
+            data (dict): Data to encrypt
+            
+        Returns:
+            tuple: (encrypted_data, data_hash)
+            
+        This method encrypts the data and adds a hash for integrity
+        verification when decrypting.
+        """
         json_data = json.dumps(data)
         fernet = cls._get_encryption_key()
         encrypted_data = fernet.encrypt(json_data.encode())
@@ -44,7 +82,18 @@ class Statistics:
     
     @classmethod
     def _decrypt_data(cls, encrypted_data, stored_hash):
-        """Decrypts JSON data and verifies its integrity"""
+        """Decrypt JSON data and verify its integrity.
+        
+        Args:
+            encrypted_data (bytes): Encrypted data to decrypt
+            stored_hash (str): Hash of the original data
+            
+        Returns:
+            dict or None: Decrypted data if valid, None if tampered with
+            
+        This method decrypts the data and verifies its integrity
+        using the stored hash.
+        """
         try:
             fernet = cls._get_encryption_key()
             decrypted_data = fernet.decrypt(encrypted_data)
@@ -62,7 +111,14 @@ class Statistics:
             return None
 
     def __init__(self, ai_configuration):
-        """Initializes statistics"""
+        """Initialize statistics and game state.
+        
+        Args:
+            ai_configuration (Settings): Game configuration settings
+            
+        This sets up the initial game state and loads the high score
+        from persistent storage.
+        """
         self.ai_configuration = ai_configuration
         self.music = Music()
         
@@ -83,7 +139,12 @@ class Statistics:
         self.reset_stats()
 
     def reset_stats(self):
-        """Initializes statistics that can change during the game"""
+        """Reset game statistics to their initial values.
+        
+        This method is called when starting a new game or when
+        the game is reset. It initializes all statistics to their
+        starting values and manages the controls screen visibility.
+        """
         self.ships_remaining = self.ai_configuration.ship_count
         self.score = 0
         self.level = 1

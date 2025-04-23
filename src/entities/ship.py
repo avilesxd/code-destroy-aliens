@@ -5,29 +5,44 @@ from src.config.music import Music
 
 
 class Ship(Sprite):
-    """Used to manage the ship's behavior"""
+    """A class to manage the player's ship in the game.
+    
+    This class handles the ship's movement, shooting, and rendering.
+    It inherits from pygame.sprite.Sprite to enable sprite-based
+    collision detection and rendering.
+    
+    Attributes:
+        screen (pygame.Surface): The game screen surface
+        screen_rect (pygame.Rect): The screen's rectangle
+        image (pygame.Surface): The ship's image
+        rect (pygame.Rect): The ship's rectangle for positioning
+        center (float): The ship's center x-coordinate
+        music (Music): Sound effects manager
+    """
 
     def __init__(self, ai_configuration, screen, statistics=None):
-        """Initializes the ship and sets its starting position"""
+        """Initialize the ship and set its starting position.
+        
+        Args:
+            ai_configuration (Settings): Game configuration settings
+            screen (pygame.Surface): The game screen surface
+        """
         super(Ship, self).__init__()
         self.screen = screen
         self.ai_configuration = ai_configuration
         self.music = Music()
         self.statistics = statistics
 
-        # Use resource_path() to get the correct path of the ship image
-        image_path = resource_path("src/assets/images/ship.png")
-
-        # Load the ship image and get its rect (rectangle)
-        self.image = pygame.image.load(image_path)
+        # Load the ship image and get its rect
+        self.image = pygame.image.load(resource_path("src/assets/images/ship.png"))
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
 
-        # Start each New ship at the bottom center of the screen
+        # Start each new ship at the bottom center of the screen
         self.rect.centerx = self.screen_rect.centerx
         self.rect.bottom = self.screen_rect.bottom
 
-        # Stores a decimal value for the center of the ship
+        # Store a decimal value for the ship's center
         self.center = float(self.rect.centerx)
 
         # Movement flags
@@ -35,7 +50,12 @@ class Ship(Sprite):
         self.moving_left = False
 
     def update(self):
-        """Updates the ship's position based on the movement flags"""
+        """Update the ship's position based on movement flags.
+        
+        This method is called every frame to update the ship's position.
+        It checks the movement flags and moves the ship accordingly,
+        ensuring it stays within the screen boundaries.
+        """
         # Don't move if the game is paused
         if self.statistics and self.statistics.game_paused:
             return
@@ -54,13 +74,24 @@ class Ship(Sprite):
             self.rect.centerx = self.center
 
     def blitme(self):
-        """Draws the ship at its current location"""
+        """Draw the ship at its current location.
+        
+        This method is called every frame to render the ship
+        at its current position on the screen.
+        """
         self.screen.blit(self.image, self.rect)
 
     def center_ship(self):
-        """Centers the ship on the screen"""
+        """Center the ship on the screen.
+        
+        This method is called when a new ship is created or
+        when the game is reset.
+        """
         self.center = self.screen_rect.centerx
 
     def shoot(self):
-        """Play shoot sound effect"""
+        """Play the shooting sound effect.
+        
+        This method is called whenever the player fires a bullet.
+        """
         self.music.play_shoot()

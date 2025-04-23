@@ -8,18 +8,31 @@ from src.entities.ship import Ship
 from src.config.statistics import Statistics as statistics
 
 # Global variables for stars and gradient
-stars = []
-last_star_time = 0
-cached_gradient = None
-last_screen_size = None
+stars = []  # List to store star positions and properties
+last_star_time = 0  # Timestamp of the last star creation
+cached_gradient = None  # Cached gradient surface to avoid recreation
+last_screen_size = None  # Last screen dimensions used for gradient
 
 # Global variables for spatial grid
-spatial_grid = {}
-grid_cell_size = 64  # Size of each grid cell in pixels
+spatial_grid = {}  # Dictionary to store objects in a spatial grid for collision detection
+grid_cell_size = 64  # Size of each grid cell in pixels for spatial partitioning
 
 
 def create_gradient_surface(screen, top_color, bottom_color):
-    """Creates a surface with a vertical gradient"""
+    """Creates a surface with a vertical gradient from top_color to bottom_color.
+    
+    Args:
+        screen (pygame.Surface): The screen surface to get dimensions from
+        top_color (tuple): RGB color tuple for the top of the gradient
+        bottom_color (tuple): RGB color tuple for the bottom of the gradient
+        
+    Returns:
+        pygame.Surface: A surface with the gradient applied
+        
+    Note:
+        This function caches the gradient surface to improve performance
+        when the screen size hasn't changed.
+    """
     global cached_gradient, last_screen_size
     
     # Check if we can reuse the cached gradient
@@ -229,7 +242,22 @@ def update_screen(
 def update_bullets(
     ai_configuration, screen, statistics, scoreboard, ship, aliens, bullets
 ):
-    """Updates the bullet positions and removes old ones"""
+    """Updates the bullet positions and handles bullet-alien collisions.
+    
+    Args:
+        ai_configuration (Settings): Game configuration settings
+        screen (pygame.Surface): The game screen
+        statistics (Statistics): Game statistics object
+        scoreboard (Scoreboard): Score display object
+        ship (Ship): Player's ship
+        aliens (pygame.sprite.Group): Group of alien sprites
+        bullets (pygame.sprite.Group): Group of bullet sprites
+        
+    This function:
+    1. Updates all bullet positions
+    2. Removes inactive bullets
+    3. Checks for bullet-alien collisions
+    """
     # Updates the bullet positions
     bullets.update()
     
@@ -242,7 +270,16 @@ def update_bullets(
 
 
 def get_grid_cells(rect):
-    """Get the grid cells that an object occupies"""
+    """Calculates which grid cells a rectangle occupies in the spatial grid.
+    
+    Args:
+        rect (pygame.Rect): The rectangle to check
+        
+    Returns:
+        list: List of (x, y) tuples representing grid cell coordinates
+        
+    The grid is used for spatial partitioning to optimize collision detection.
+    """
     start_x = rect.left // grid_cell_size
     end_x = rect.right // grid_cell_size
     start_y = rect.top // grid_cell_size
@@ -256,7 +293,16 @@ def get_grid_cells(rect):
 
 
 def update_spatial_grid(aliens, bullets):
-    """Update the spatial grid with current object positions"""
+    """Updates the spatial grid with current positions of aliens and bullets.
+    
+    Args:
+        aliens (pygame.sprite.Group): Group of alien sprites
+        bullets (pygame.sprite.Group): Group of bullet sprites
+        
+    This function rebuilds the spatial grid to reflect current object positions,
+    which is used to optimize collision detection by only checking objects
+    that are in the same grid cells.
+    """
     global spatial_grid
     spatial_grid.clear()
     
@@ -308,7 +354,15 @@ def check_bullet_alien_collisions(
 
 
 def check_high_score(statistics, scoreboard):
-    """Checks if a higher score exists"""
+    """Checks if the current score is higher than the high score.
+    
+    Args:
+        statistics (Statistics): Game statistics object
+        scoreboard (Scoreboard): Score display object
+        
+    If the current score is higher than the high score, updates the high score
+    and saves it to persistent storage.
+    """
     if statistics.score > statistics.high_score:
         statistics.high_score = statistics.score
         scoreboard.prep_high_score()
@@ -316,7 +370,14 @@ def check_high_score(statistics, scoreboard):
 
 
 def fire_bullet(ai_configuration, screen, ship, bullets):
-    """Fire a bullet if limit not reached yet"""
+    """Creates and fires a new bullet if the bullet limit hasn't been reached.
+    
+    Args:
+        ai_configuration (Settings): Game configuration settings
+        screen (pygame.Surface): The game screen
+        ship (Ship): Player's ship
+        bullets (pygame.sprite.Group): Group of bullet sprites
+    """
     # Create a new bullet and add it to the bullets group
     if len(bullets) < ai_configuration.bullets_allowed:
         new_bullet = Bullet.get_bullet(ai_configuration, screen, ship)
@@ -324,14 +385,37 @@ def fire_bullet(ai_configuration, screen, ship, bullets):
 
 
 def get_number_aliens_x(ai_configuration, alien_width):
-    """Determines the number of aliens that fit in a row"""
+    """Calculates how many aliens can fit in a single row.
+    
+    Args:
+        ai_configuration (Settings): Game configuration settings
+        alien_width (int): Width of an alien sprite
+        
+    Returns:
+        int: Number of aliens that can fit in a row
+        
+    The calculation takes into account the screen width and leaves space
+    for margins on both sides.
+    """
     available_space_x = ai_configuration.screen_width - 2 * alien_width
     number_aliens_x = int(available_space_x / (2 * alien_width))
     return number_aliens_x
 
 
 def get_number_rows(ai_configuration, ship_height, alien_height):
-    """Determines the number of rows of aliens that fit on the screen"""
+    """Calculates how many rows of aliens can fit on the screen.
+    
+    Args:
+        ai_configuration (Settings): Game configuration settings
+        ship_height (int): Height of the ship sprite
+        alien_height (int): Height of an alien sprite
+        
+    Returns:
+        int: Number of rows of aliens that can fit on the screen
+        
+    The calculation takes into account the screen height, ship height,
+    and leaves space for margins.
+    """
     available_space_y = (
         ai_configuration.screen_height - (3 * alien_height) - ship_height
     )
@@ -340,7 +424,15 @@ def get_number_rows(ai_configuration, ship_height, alien_height):
 
 
 def create_alien(ai_configuration, screen, aliens, alien_number, row_number):
-    """Create an alien and queue it up"""
+    """Creates a single alien and adds it to the aliens group.
+    
+    Args:
+        ai_configuration (Settings): Game configuration settings
+        screen (pygame.Surface): The game screen
+        aliens (pygame.sprite.Group): Group of alien sprites
+        alien_number (int): Position in the row (0-based)
+        row_number (int): Row number (0-based)
+    """
     alien = Alien(ai_configuration, screen)
     alien_width = alien.rect.width
     alien.x = alien_width + 2 * alien_width * alien_number
@@ -350,7 +442,17 @@ def create_alien(ai_configuration, screen, aliens, alien_number, row_number):
 
 
 def create_fleet(ai_configuration, screen, ship, aliens):
-    """Create an entire fleet of aliens"""
+    """Creates a complete fleet of aliens arranged in rows and columns.
+    
+    Args:
+        ai_configuration (Settings): Game configuration settings
+        screen (pygame.Surface): The game screen
+        ship (Ship): Player's ship
+        aliens (pygame.sprite.Group): Group of alien sprites
+        
+    The fleet is created based on the available screen space and
+    the dimensions of the ship and aliens.
+    """
     # Create an alien and find the number of aliens in a row
     # The space between each alien is equal to one width of the alien
     alien = Alien(ai_configuration, screen)
@@ -372,7 +474,15 @@ def check_fleet_edges(ai_configuration, aliens):
 
 
 def change_fleet_direction(ai_configuration, aliens):
-    """Drops the entire fleet and changes the fleet's direction"""
+    """Changes the direction of the alien fleet and moves it down.
+    
+    Args:
+        ai_configuration (Settings): Game configuration settings
+        aliens (pygame.sprite.Group): Group of alien sprites
+        
+    This function is called when the fleet hits the edge of the screen.
+    It drops the fleet down and reverses its horizontal direction.
+    """
     for alien in aliens.sprites():
         alien.rect.y += ai_configuration.fleet_drop_speed
     ai_configuration.fleet_direction *= -1
