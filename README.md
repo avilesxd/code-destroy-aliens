@@ -1,75 +1,105 @@
 # 👾 Alien Invasion
 
-Welcome to **Alien Invasion**!
-A classic arcade game where you pilot a spaceship and must destroy hordes of aliens before they invade Earth.
+<div align="center">
+  <img src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.png" alt="Alien Invasion Game" width="600"/>
+  
+  [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+  [![Downloads](https://img.shields.io/github/downloads/avilesxd/code-destroy-aliens/total.svg)](https://github.com/avilesxd/code-destroy-aliens/releases)
+  [![Stars](https://img.shields.io/github/stars/avilesxd/code-destroy-aliens.svg)](https://github.com/avilesxd/code-destroy-aliens/stargazers)
+</div>
 
-![Gameplay][game_start_url]
----
+## 🎮 About the Game
 
-## 🎮 Game Features
+**Alien Invasion** is a modern take on the classic arcade shooter, where you pilot a spaceship to defend Earth from waves of alien invaders. With stunning visuals, immersive sound effects, and addictive gameplay, it's a perfect blend of nostalgia and modern gaming.
 
-- 🚀 Fast-paced arcade action
-- 👽 Multiple alien types with different behaviors
-- 💥 Explosive combat and particle effects
-- 🎵 Immersive sound effects and background music
-- 💯 High score tracking system
-- 🎨 Retro-style graphics
-- **Multilingual Support**:
-  - Automatic language detection based on system settings
-  - Supports English and Spanish and more (coming soon)
-  - All game texts are translated
-- **Visual Improvements**:
-  - High contrast text with semi-transparent backgrounds
-  - Clear visibility of game information
+### 🌟 Key Features
+
+- 🚀 **Fast-Paced Action**: Quick reflexes and strategic shooting
+- 👽 **Dynamic Enemies**: Multiple alien types with unique behaviors
+- 💥 **Explosive Combat**: Satisfying particle effects and animations
+- 🎵 **Immersive Audio**: Dynamic sound effects and background music
+- 💯 **High Score System**: Track your best performances
+- 🎨 **Retro-Modern Style**: Classic arcade feel with modern polish
+- 🌍 **Multilingual Support**: 
+  - Automatic language detection
+  - English and Spanish support
+  - More languages coming soon
+- 🎯 **Visual Enhancements**:
+  - High-contrast UI with semi-transparent overlays
   - Smooth animations and transitions
+  - Clear game information display
 
-## 🎯 How to Play
+## 🕹️ How to Play
 
-- 🕹️ **Movement**: Use the arrow keys to move the ship
-- 🔫 **Shoot**: Press the spacebar to fire shots
-- 👽 **Objective**: Eliminate all the aliens and prevent them from reaching the base
-- 💯 **Score**: Increases by destroying enemies. Try to beat your own high score!
+| Control | Action |
+|---------|--------|
+| ← → | Move Ship |
+| Space | Fire |
+| P | Pause |
+| Q | Quit |
 
-## 📸 Screenshots
+**Objective**: Destroy all aliens before they reach Earth! Each wave gets faster and more challenging.
 
-| Home Screen | Active Game | Game Over |
-|-------------|-------------|-----------|
-| ![Start][game_start_url] | ![Game][game_score_url] | ![End][game_over_url] |
+## 📸 Game Screenshots
 
-## 🌐 Download the Game
+<div align="center">
+  <img src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.png" alt="Start Screen" width="300"/>
+  <img src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_score.png" alt="Gameplay" width="300"/>
+  <img src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_over.png" alt="Game Over" width="300"/>
+</div>
 
-Visit our [official website][official website_url] to download the game and start defending Earth!
+## 🚀 Quick Start
 
-## 🛠️ Development
+1. **Download** the latest release from our [official website][official website_url]
+2. **Launch** and start defending Earth!
 
-Want to contribute? Check out [CONTRIBUTING.md](CONTRIBUTING.md)
+## 🛠️ For Developers
 
-## 📚 Documentation
-
+Interested in contributing? Check out our:
 - [Technical Documentation](docs/README.md)
 - [Contributing Guidelines](CONTRIBUTING.md)
-- [License](LICENSE)
+- [Development Setup Guide](docs/README.md#installation)
 
-## 👨‍💻 Creators
+## 👥 Meet the Team
 
-- [@avilesxd][avilesxd_account_url]
-- [@JGalaz7][jgalaz7_account_url]
+<div align="center" style="display: flex; justify-content: center; gap: 40px;">
+  <div style="text-align: center; margin: 20px;">
+    <a href="http://github.com/avilesxd/">
+      <img src="https://avatars.githubusercontent.com/avilesxd" width="100" height="100" style="border-radius: 50%;" alt="Ignacio Avilés"/>
+      <br/>
+      <sub><b>Ignacio Avilés</b></sub>
+    </a>
+  </div>
+  <div style="text-align: center; margin: 20px;">
+    <a href="http://github.com/JGalaz7/">
+      <img src="https://avatars.githubusercontent.com/JGalaz7" width="100" height="100" style="border-radius: 50%;" alt="Juan Galaz"/>
+      <br/>
+      <sub><b>Juan Galaz</b></sub>
+    </a>
+  </div>
+</div>
 
-## 🌐 Social Media
+## 🌐 Connect With Us
 
-- [🐱 GitHub][github_account]
-- [📸 Instagram][instagram_account]
-- [📘 Facebook][facebook_account]
-- [📺 YouTube][youtube_account]
-- [🎵 TikTok][tiktok_account]
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)][github_account]
+[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)][instagram_account]
+[![Facebook](https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white)][facebook_account]
+[![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)][youtube_account]
+[![TikTok](https://img.shields.io/badge/TikTok-000000?style=for-the-badge&logo=tiktok&logoColor=white)][tiktok_account]
 
 ## 📝 License
 
-This project is licensed under the MIT License. See the `LICENSE` file for more information.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-🎮 Get ready to save the galaxy!
+<div align="center">
+  <h3>🎮 Ready to save the galaxy?</h3>
+  <a href="https://avilesxd.github.io/code-destroy-aliens/">
+    <img src="https://img.shields.io/badge/Download-Game-brightgreen?style=for-the-badge&logo=game-controller" alt="Download Game"/>
+  </a>
+</div>
 
 <!-- IMAGES -->
 [game_start_url]: https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.png
@@ -78,10 +108,6 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 
 <!-- GAME -->
 [official website_url]: https://avilesxd.github.io/code-destroy-aliens/
-
-<!-- CREATORS -->
-[avilesxd_account_url]: http://github.com/avilesxd/
-[jgalaz7_account_url]: http://github.com/JGalaz7/
 
 <!-- SOCIAL MEDIA -->
 [github_account]: http://github.com/avilesxd/

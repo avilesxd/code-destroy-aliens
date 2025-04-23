@@ -1,14 +1,26 @@
 # 📚 Technical Documentation - Alien Invasion
 
-Welcome to the technical documentation for **Alien Invasion**, an arcade shooter in which you must defend Earth from waves of aliens.
+<div align="center">
+  <img src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.png" alt="Alien Invasion Game" width="600"/>
+  
+  [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
+  [![Pygame Version](https://img.shields.io/badge/pygame-2.5.0%2B-green.svg)](https://www.pygame.org/)
+  [![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+</div>
 
-## 🎮 Game Images
+## 📋 Table of Contents
 
- | Start | Game | End |
- |-------|------|-----|
- | ![Start][game_start_url] | ![Game][game_score_url] | ![End][game_over_url] |
+- [Project Structure](#-project-structure)
+- [Requirements](#-requirements)
+- [Installation](#-installation)
+- [Building](#-building)
+- [Core Components](#-core-components)
+- [Game Architecture](#-game-architecture)
+- [Development Guidelines](#-development-guidelines)
+- [Testing](#-testing)
+- [Performance Optimization](#-performance-optimization)
 
-## Project Structure
+## 🗂️ Project Structure
 
 ```
 code-destroy-aliens/
@@ -16,190 +28,199 @@ code-destroy-aliens/
 ├── requirements.txt        # Project dependencies
 ├── src/
 │   ├── config/            # Configuration files
-│   │   ├── configuration.py  # Game settings
-│   │   ├── game_functions.py # Core game functions
-│   │   ├── music.py      # Music and sound settings
-│   │   └── statistics.py # Game statistics
-│   │   └── language.py    # Language system implementation
-│   ├── entities/          # Game entities
-│   │   ├── ship.py       # Player's spaceship
-│   │   ├── alien.py      # Alien invaders
-│   │   ├── bullet.py     # Projectiles
-│   │   ├── heart.py      # Life indicators
-│   │   ├── scoreboard.py # Score display
-│   │   └── controls_screen.py # Controls information
-│   └── assets/           # Game assets
+│   │   ├── configuration.py  # Game settings and constants
+│   │   ├── game_functions.py # Core game logic and functions
+│   │   ├── music.py      # Audio system implementation
+│   │   ├── statistics.py # Game statistics and persistence
+│   │   └── language.py   # Internationalization system
+│   ├── entities/         # Game entities
+│   │   ├── ship.py      # Player's spaceship implementation
+│   │   ├── alien.py     # Alien behavior and types
+│   │   ├── bullet.py    # Projectile system
+│   │   ├── heart.py     # Life indicator system
+│   │   ├── scoreboard.py # Score display and UI
+│   │   └── controls_screen.py # Controls information display
+│   └── assets/          # Game assets
+│       ├── images/      # Image resources
+│       ├── sounds/      # Audio resources
 │       └── translations/ # Language files
-│           ├── en.json   # English translations
-│           └── es.json   # Spanish translations
-└── docs/                 # Documentation
-    └── README.md         # This file
+│           ├── en.json  # English translations
+│           └── es.json  # Spanish translations
+└── docs/               # Documentation
+    └── README.md      # This file
 ```
 
 ## 🧰 Requirements
 
-- Python 3.8+
-- pygame 2.5.0+
-- Additional dependencies listed in `requirements.txt`
+### System Requirements
+- Python 3.8 or higher
+- Pygame 2.5.0 or higher
+- Operating System: Windows, macOS, or Linux
+
+### Dependencies
+All required packages are listed in `requirements.txt`:
+```
+pygame>=2.5.0
+cryptography>=3.4.7
+```
 
 ## ⚙️ Installation
 
-1. Clone the repository:
+### Development Setup
 
+1. **Clone the Repository**:
 ```bash
- git clone https://github.com/avilesxd/code-destroy-aliens.git
- cd code-destroy-aliens
+git clone https://github.com/avilesxd/code-destroy-aliens.git
+cd code-destroy-aliens
 ```
 
-2. Create and activate a virtual environment:
-
+2. **Create Virtual Environment**:
 ```bash
- # Windows
- python -m venv venv
- venv\Scripts\activate
- 
- # Linux/MacOS
- python3 -m venv venv
- source venv/bin/activate
- ```
+# Windows
+python -m venv venv
+venv\Scripts\activate
 
- 3. Install dependencies:
+# Linux/MacOS
+python3 -m venv venv
+source venv/bin/activate
+```
 
- ```bash
- pip install -r requirements.txt
- ```
+3. **Install Dependencies**:
+```bash
+pip install -r requirements.txt
+```
 
-4. Start the game with:
+4. **Run the Game**:
+```bash
+python main.py
+```
 
- ```bash
- python main.py
- ```
-
-## 🧱 Building the Game
+## 🧱 Building
 
 ### Windows Build
 
-1. Create the spec file:
-
+1. **Create Spec File**:
 ```bash
- pyi-makespec main.py --name="Alien Invasion" --icon="src/assets/icons/icon.ico" --onefile --noconsole --add-data="src;src" --version-file="version.txt"
- ```
+pyi-makespec main.py \
+  --name="Alien Invasion" \
+  --icon="src/assets/icons/icon.ico" \
+  --onefile \
+  --noconsole \
+  --add-data="src;src" \
+  --version-file="version.txt"
+```
 
- 2. Build the executable:
+2. **Build Executable**:
+```bash
+pyinstaller ".\Alien Invasion.spec"
+```
 
- ```bash
- pyinstaller ".\Alien Invasion.spec"
- ```
+### Build Options
+- `--onefile`: Creates a single executable
+- `--noconsole`: Hides the console window
+- `--add-data`: Includes game assets
+- `--version-file`: Adds version information
 
-## Core Components
+## 🎮 Core Components
 
 ### Game Engine
-
-- Built with Pygame
+- Built with Pygame for graphics and input handling
 - Main game loop in `main.py`
-- Handles game states: menu, playing, paused, game over
+- State management system for different game screens
 
 ### Entity System
+- Sprite-based collision detection
+- Custom entity classes for game objects
+- Particle effects system
 
-- `Ship`: Player-controlled spaceship
-  - Movement controls
-  - Shooting mechanics
-  - Collision detection
-- `Alien`: Enemy entities
-  - Movement patterns
-  - Different types and behaviors
-  - Spawning system
-- `Bullet`: Projectile system
-  - Speed and damage properties
-  - Collision detection
-- `Heart`: Life indicator
-  - Visual representation of remaining lives
-  - Position management
+### Audio System
+- Background music management
+- Sound effect system
+- Volume control and mute options
 
-### Scoring System
+### Localization System
+- JSON-based translation files
+- Automatic language detection
+- Dynamic text rendering
 
-- `Scoreboard` class handles:
-  - Current score display
-  - High score tracking
-  - Level progression
-  - Lives remaining
-  - Pause screen overlay
+## 🏗️ Game Architecture
 
-### Internationalization System
+### Main Loop
+```python
+while running:
+    # Handle events
+    # Update game state
+    # Render frame
+    # Control frame rate
+```
 
-- `Language` class in `config/language.py`
-- Features:
-  - Automatic language detection
-  - JSON-based translation files
-  - Fallback to English
-  - Easy addition of new languages
-- Supported languages:
-  - English (default)
-  - Spanish
-  - Extensible for more languages
+### State Management
+- Menu State
+- Game State
+- Pause State
+- Game Over State
 
-### Visual Improvements
+### Collision System
+- Spatial partitioning for performance
+- Custom collision detection
+- Particle effects on collisions
 
-- Text rendering:
-  - High contrast white text
-  - Semi-transparent black backgrounds
-  - Alpha value: 180/255 for optimal visibility
-- UI elements:
-  - Consistent padding and margins
-  - Clear visual hierarchy
-  - Responsive positioning
-
-## Technical Details
-
-### Performance Considerations
-
-- Sprite groups for efficient rendering
-- Object pooling for bullets
-- Optimized collision detection
-- Memory management for game objects
-
-### Code Architecture
-
-- Object-oriented design
-- Separation of concerns
-- Modular components
-- Easy to extend and maintain
-
-
-## Development Guidelines
-
-### Adding New Features
-
-1. Create new entity class in `src/entities/`
-2. Update main game loop if necessary
-3. Add configuration in `settings.py`
-4. Update documentation
-
-### Adding New Languages
-
-1. Create new JSON file in `src/assets/translations/`
-2. Follow existing translation structure
-3. Add language code to detection system
-4. Test translations
+## 📝 Development Guidelines
 
 ### Code Style
-
 - Follow PEP 8 guidelines
-- Use meaningful variable names
-- Add docstrings to classes and methods
-- Keep methods focused and concise
+- Use type hints
+- Document all public methods
+- Keep functions focused and small
 
-## Future Improvements
+### Git Workflow
+1. Create feature branch
+2. Make changes
+3. Run tests
+4. Submit pull request
 
-- Additional language support
-- More alien types
-- Power-up system
+### Testing
+- Unit tests for core functionality
+- Integration tests for game systems
+- Performance testing for optimization
 
-## 📄 License
+## 🚀 Performance Optimization
 
-This project is licensed under the [MIT License](../LICENSE)
+### Techniques Used
+- Spatial partitioning for collision detection
+- Surface caching for gradients
+- Efficient sprite rendering
+- Memory management for particles
 
-<!-- IMAGES -->
- [game_start_url]: https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.png
- [game_over_url]: https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_over.png
- [game_score_url]: https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_score.png
+### Best Practices
+- Minimize surface creation
+- Use sprite groups efficiently
+- Optimize collision detection
+- Manage memory usage
+
+## 🔍 Debugging
+
+### Common Issues
+1. Memory leaks
+2. Performance bottlenecks
+3. Collision detection problems
+4. Audio synchronization
+
+### Debug Tools
+- Pygame debug mode
+- Performance profiler
+- Memory usage monitor
+
+## 📚 Additional Resources
+
+- [Pygame Documentation](https://www.pygame.org/docs/)
+- [Python Type Hints](https://docs.python.org/3/library/typing.html)
+- [Game Development Best Practices](https://realpython.com/pygame-a-primer/)
+
+## 🤝 Contributing
+
+See [CONTRIBUTING.md](../CONTRIBUTING.md) for detailed guidelines on how to contribute to this project.
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](../LICENSE) file for details.
