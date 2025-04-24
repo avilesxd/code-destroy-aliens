@@ -11,12 +11,6 @@ import pytest
 from src.config.configuration import Configuration
 from src.config.statistics import Statistics
 
-if platform.system() == "Windows":
-    import ctypes
-
-    import win32api
-    import win32con
-
 
 @pytest.fixture
 def temp_data_dir() -> Generator[str, None, None]:
@@ -132,6 +126,12 @@ def test_error_handling(stats_with_temp_dir: Tuple[Statistics, str]) -> None:
 )
 def test_directory_hiding() -> None:
     """Test that the .data directory is hidden on Windows"""
+
+    # Local import to prevent mypy error on non-Windows
+    import ctypes
+
+    import win32api
+    import win32con
 
     # Create a temporary directory
     temp_dir = tempfile.mkdtemp()
