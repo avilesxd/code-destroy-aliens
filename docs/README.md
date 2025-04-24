@@ -19,6 +19,7 @@
 - [Development Guidelines](#-development-guidelines)
 - [Testing](#-testing)
 - [Performance Optimization](#-performance-optimization)
+- [Code Quality Tools](#-code-quality-tools)
 
 ## 🗂️ Project Structure
 
@@ -26,6 +27,14 @@
 code-destroy-aliens/
 ├── main.py                 # Main game entry point
 ├── requirements.txt        # Project dependencies
+├── setup.py               # Project setup configuration
+├── pytest.ini            # Pytest configuration
+├── .flake8               # Flake8 linting configuration
+├── pyproject.toml        # Black and isort configuration
+├── .gitignore           # Git ignore rules
+├── .husky/              # Git hooks configuration
+│   ├── pre-commit      # Pre-commit hook script
+│   └── _/             # Husky internal files
 ├── src/
 │   ├── config/            # Configuration files
 │   │   ├── configuration.py  # Game settings and constants
@@ -46,19 +55,31 @@ code-destroy-aliens/
 │       └── translations/ # Language files
 │           ├── en.json  # English translations
 │           └── es.json  # Spanish translations
-└── docs/               # Documentation
-    └── README.md      # This file
+├── tests/               # Test files
+│   ├── __init__.py
+│   ├── test_ship.py
+│   ├── test_alien.py
+│   └── test_bullet.py
+├── docs/               # Documentation
+│   ├── README.md      # Technical documentation
+│   └── images/        # Documentation images
+└── website/           # Project website
+    ├── index.html
+    └── styles.css
 ```
 
 ## 🧰 Requirements
 
 ### System Requirements
+
 - Python 3.8 or higher
 - Pygame 2.5.0 or higher
 - Operating System: Windows, macOS, or Linux
 
 ### Dependencies
+
 All required packages are listed in `requirements.txt`:
+
 ```
 pygame>=2.5.0
 cryptography>=3.4.7
@@ -69,12 +90,14 @@ cryptography>=3.4.7
 ### Development Setup
 
 1. **Clone the Repository**:
+
 ```bash
 git clone https://github.com/avilesxd/code-destroy-aliens.git
 cd code-destroy-aliens
 ```
 
 2. **Create Virtual Environment**:
+
 ```bash
 # Windows
 python -m venv venv
@@ -86,11 +109,13 @@ source venv/bin/activate
 ```
 
 3. **Install Dependencies**:
+
 ```bash
 pip install -r requirements.txt
 ```
 
 4. **Run the Game**:
+
 ```bash
 python main.py
 ```
@@ -100,6 +125,7 @@ python main.py
 ### Windows Build
 
 1. **Create Spec File**:
+
 ```bash
 pyi-makespec main.py \
   --name="Alien Invasion" \
@@ -111,11 +137,13 @@ pyi-makespec main.py \
 ```
 
 2. **Build Executable**:
+
 ```bash
 pyinstaller ".\Alien Invasion.spec"
 ```
 
 ### Build Options
+
 - `--onefile`: Creates a single executable
 - `--noconsole`: Hides the console window
 - `--add-data`: Includes game assets
@@ -124,21 +152,25 @@ pyinstaller ".\Alien Invasion.spec"
 ## 🎮 Core Components
 
 ### Game Engine
+
 - Built with Pygame for graphics and input handling
 - Main game loop in `main.py`
 - State management system for different game screens
 
 ### Entity System
+
 - Sprite-based collision detection
 - Custom entity classes for game objects
 - Particle effects system
 
 ### Audio System
+
 - Background music management
 - Sound effect system
 - Volume control and mute options
 
 ### Localization System
+
 - JSON-based translation files
 - Automatic language detection
 - Dynamic text rendering
@@ -146,6 +178,7 @@ pyinstaller ".\Alien Invasion.spec"
 ## 🏗️ Game Architecture
 
 ### Main Loop
+
 ```python
 while running:
     # Handle events
@@ -155,12 +188,14 @@ while running:
 ```
 
 ### State Management
+
 - Menu State
 - Game State
 - Pause State
 - Game Over State
 
 ### Collision System
+
 - Spatial partitioning for performance
 - Custom collision detection
 - Particle effects on collisions
@@ -168,18 +203,21 @@ while running:
 ## 📝 Development Guidelines
 
 ### Code Style
+
 - Follow PEP 8 guidelines
 - Use type hints
 - Document all public methods
 - Keep functions focused and small
 
 ### Git Workflow
+
 1. Create feature branch
 2. Make changes
 3. Run tests
 4. Submit pull request
 
 ### Testing
+
 - Unit tests for core functionality
 - Integration tests for game systems
 - Performance testing for optimization
@@ -187,12 +225,14 @@ while running:
 ## 🚀 Performance Optimization
 
 ### Techniques Used
+
 - Spatial partitioning for collision detection
 - Surface caching for gradients
 - Efficient sprite rendering
 - Memory management for particles
 
 ### Best Practices
+
 - Minimize surface creation
 - Use sprite groups efficiently
 - Optimize collision detection
@@ -201,15 +241,107 @@ while running:
 ## 🔍 Debugging
 
 ### Common Issues
+
 1. Memory leaks
 2. Performance bottlenecks
 3. Collision detection problems
 4. Audio synchronization
 
 ### Debug Tools
+
 - Pygame debug mode
 - Performance profiler
 - Memory usage monitor
+
+## Code Quality Tools
+
+The project uses several tools to maintain code quality and consistency:
+
+### Linting and Formatting
+
+- **Flake8**: Python linter that checks for:
+  - Syntax errors (E)
+  - Style violations (F)
+  - Warnings (W)
+  - Code complexity (C)
+  - Maximum line length: 88 characters
+  - Maximum complexity: 10
+
+- **Black**: Automatic code formatter that:
+  - Applies consistent style
+  - Line length: 88 characters
+  - Python 3.9+ compatible
+
+- **isort**: Import sorter that:
+  - Automatically sorts imports
+  - Compatible with black
+  - Adds trailing commas
+  - Uses parentheses for multi-line imports
+
+### Configuration Files
+
+1. `.flake8`:
+
+```ini
+[flake8]
+max-line-length = 88
+extend-ignore = E203
+exclude =
+    .git,
+    __pycache__,
+    build,
+    dist,
+    .venv,
+    venv,
+    env,
+    .pytest_cache,
+    .tox
+per-file-ignores =
+    __init__.py:F401
+max-complexity = 10
+select = E,F,W,C
+```
+
+2. `pyproject.toml`:
+
+```toml
+[tool.black]
+line-length = 88
+target-version = ['py39']
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+line_length = 88
+```
+
+### Usage
+
+To manually run the code quality tools:
+
+```bash
+# Format code automatically
+black .
+isort .
+
+# Check code without formatting
+flake8 .
+```
+
+### Pre-commit Hooks
+
+The project uses pre-commit hooks to automatically run these tools before each commit. The hooks will:
+
+1. Check import ordering with isort
+2. Verify code formatting with black
+3. Run flake8 for linting
+4. Execute tests
+5. Only allow the commit if all checks pass
 
 ## 📚 Additional Resources
 

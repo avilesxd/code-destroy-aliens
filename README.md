@@ -21,7 +21,7 @@
 - 🎵 **Immersive Audio**: Dynamic sound effects and background music
 - 💯 **High Score System**: Track your best performances
 - 🎨 **Retro-Modern Style**: Classic arcade feel with modern polish
-- 🌍 **Multilingual Support**: 
+- 🌍 **Multilingual Support**:
   - Automatic language detection
   - English and Spanish support
   - More languages coming soon
@@ -57,28 +57,21 @@
 ## 🛠️ For Developers
 
 Interested in contributing? Check out our:
+
 - [Technical Documentation](docs/README.md)
 - [Contributing Guidelines](CONTRIBUTING.md)
 - [Development Setup Guide](docs/README.md#installation)
 
 ## 👥 Meet the Team
 
-<div align="center" style="display: flex; justify-content: center; gap: 40px;">
-  <div style="text-align: center; margin: 20px;">
-    <a href="http://github.com/avilesxd/">
-      <img src="https://avatars.githubusercontent.com/avilesxd" width="100" height="100" style="border-radius: 50%;" alt="Ignacio Avilés"/>
-      <br/>
-      <sub><b>Ignacio Avilés</b></sub>
-    </a>
-  </div>
-  <div style="text-align: center; margin: 20px;">
-    <a href="http://github.com/JGalaz7/">
-      <img src="https://avatars.githubusercontent.com/JGalaz7" width="100" height="100" style="border-radius: 50%;" alt="Juan Galaz"/>
-      <br/>
-      <sub><b>Juan Galaz</b></sub>
-    </a>
-  </div>
-</div>
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://avilesxd.vercel.app/"><img src="https://avatars.githubusercontent.com/avilesxd" width="100px;" alt="Ignacio Avilés"/><br /><sub><b>Ignacio Avilés</b></sub></a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://github.com/JGalaz7/"><img src="https://avatars.githubusercontent.com/JGalaz7" width="100px;" alt="Juan Galaz"/><br /><sub><b>Juan Galaz</b></sub></a></td>
+    </tr>
+  </tbody>
+</table>
 
 ## 🌐 Connect With Us
 
@@ -100,11 +93,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
     <img src="https://img.shields.io/badge/Download-Game-brightgreen?style=for-the-badge&logo=game-controller" alt="Download Game"/>
   </a>
 </div>
-
-<!-- IMAGES -->
-[game_start_url]: https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.png
-[game_over_url]: https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_over.png
-[game_score_url]: https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_score.png
 
 <!-- GAME -->
 [official website_url]: https://avilesxd.github.io/code-destroy-aliens/
