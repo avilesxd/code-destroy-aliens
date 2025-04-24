@@ -26,6 +26,13 @@ jobs:
       with:
         node-version: '18'
 
+    - name: Create virtual environment
+      run: python -m venv env
+
+    - name: Activate virtual environment
+      run: |
+        source env/bin/activate
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
