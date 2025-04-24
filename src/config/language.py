@@ -1,13 +1,15 @@
-import locale
 import json
+import locale
 import os
+from typing import Optional
+
 from src.core.path_utils import resource_path
 
 
 class Language:
     """Handles game language and translations"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Initialize language settings"""
         # Get system language
         self.system_language = self._get_system_language()
@@ -18,20 +20,22 @@ class Language:
         # Set current language
         self.current_language = self._get_supported_language()
 
-    def _get_system_language(self):
+    def _get_system_language(self) -> str:
         """Get the system language code"""
         try:
             # Get system locale
-            system_locale = locale.getdefaultlocale()[0]
-            # Extract language code (e.g., 'en_US' -> 'en')
-            return system_locale.split("_")[0]
-        except:
-            # Default to English if detection fails
-            return "en"
+            system_locale: Optional[str] = locale.getdefaultlocale()[0]
+            if system_locale is not None:
+                # Extract language code (e.g., 'en_US' -> 'en')
+                return system_locale.split("_")[0]
+        except Exception:
+            pass
+        # Default to English if detection fails
+        return "en"
 
-    def _load_translations(self):
+    def _load_translations(self) -> dict[str, dict[str, str]]:
         """Load all available translations"""
-        translations = {}
+        translations: dict[str, dict[str, str]] = {}
         try:
             # Get the path to the translations directory
             translations_dir = resource_path("src/assets/translations")
@@ -50,7 +54,7 @@ class Language:
 
         return translations
 
-    def _get_supported_language(self):
+    def _get_supported_language(self) -> str:
         """Get the best supported language based on system language"""
         # List of supported languages (add more as needed)
         supported_languages = ["en", "es"]
@@ -62,7 +66,7 @@ class Language:
         # Default to English if system language is not supported
         return "en"
 
-    def _get_default_translations(self):
+    def _get_default_translations(self) -> dict[str, str]:
         """Get default English translations"""
         return {
             "game_controls": "Game Controls",
@@ -81,7 +85,7 @@ class Language:
             "press_q": "Press 'Q' to quit",
         }
 
-    def get_text(self, key):
+    def get_text(self, key: str) -> str:
         """Get translated text for a given key"""
         try:
             return self.translations[self.current_language][key]
