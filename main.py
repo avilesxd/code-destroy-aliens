@@ -1,16 +1,16 @@
 import pygame
 from pygame.sprite import Group
-from src.config.configuration import Configuration
-from src.config.statistics import Statistics
-from src.config.language import Language
-from src.entities.scoreboard import Scoreboard
-from src.entities.button import Button
-from src.entities.ship import Ship
-from src.entities.controls_screen import ControlsScreen
-from src.config.music import Music
-import src.config.game_functions as fj
-from src.core.path_utils import resource_path
 
+import src.config.game_functions as fj
+from src.config.configuration import Configuration
+from src.config.language import Language
+from src.config.music import Music
+from src.config.statistics import Statistics
+from src.core.path_utils import resource_path
+from src.entities.button import Button
+from src.entities.controls_screen import ControlsScreen
+from src.entities.scoreboard import Scoreboard
+from src.entities.ship import Ship
 
 # Game window icon
 icon_path = resource_path("src/assets/icons/icon.png")
@@ -18,7 +18,7 @@ icon = pygame.image.load(icon_path)
 pygame.display.set_icon(icon)
 
 
-def runGame():
+def runGame() -> None:
     # Initialize the game, settings and create a screen object
     pygame.init()
     # Function to play music
@@ -44,8 +44,8 @@ def runGame():
 
     # Create a ship, a group of bullets, and a group of aliens
     ship = Ship(ai_configuration, screen, statistics)
-    bullet = Group()
-    aliens = Group()
+    bullet: Group = Group()
+    aliens: Group = Group()
 
     # Create the alien fleet
     fj.create_fleet(ai_configuration, screen, ship, aliens)
