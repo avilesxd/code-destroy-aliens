@@ -19,9 +19,7 @@
   ],
   "scripts": {
     "prepare": "husky",
-    "dev:windows": ".\\env\\Scripts\\activate && python main.py",
-    "dev:mac": "source .env/bin/activate && python main.py",
-    "dev:linux": "source .env/bin/activate && python main.py",
+    "dev": "node scripts/run-with-env.js python main.py",
     "format": "node scripts/run-with-env.js \"black . && isort .\"",
     "format:check": "node scripts/run-with-env.js \"black --check . && isort --check-only .\"",
     "lint": "node scripts/run-with-env.js flake8 .",
