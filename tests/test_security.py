@@ -139,7 +139,7 @@ def test_directory_hiding() -> None:
     try:
         # Try to hide the directory
         try:
-            ctypes.windll.kernel32.SetFileAttributesW( # type: ignore[attr-defined]
+            ctypes.windll.kernel32.SetFileAttributesW(  # type: ignore[attr-defined]
                 temp_dir, 0x02
             )  # 0x02 = FILE_ATTRIBUTE_HIDDEN
         except Exception as e:
