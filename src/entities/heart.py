@@ -1,12 +1,13 @@
 import pygame
 from pygame.sprite import Sprite
+
 from src.core.path_utils import resource_path
 
 
 class Heart(Sprite):
     """A class to represent a heart for lives display"""
 
-    def __init__(self, screen):
+    def __init__(self, screen: pygame.Surface) -> None:
         """Initialize the heart and set its starting position"""
         super(Heart, self).__init__()
         self.screen = screen
@@ -20,6 +21,6 @@ class Heart(Sprite):
 
         self.rect = self.image.get_rect()
 
-    def blitme(self):
+    def blitme(self) -> None:
         """Draw the heart at its current location"""
         self.screen.blit(self.image, self.rect)

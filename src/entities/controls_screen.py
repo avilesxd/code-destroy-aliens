@@ -1,10 +1,20 @@
+from typing import List, Tuple
+
 import pygame.font
+
+from src.config.configuration import Configuration
+from src.config.language import Language
 
 
 class ControlsScreen:
     """A class to display game controls"""
 
-    def __init__(self, ai_configuration, screen, language):
+    def __init__(
+        self,
+        ai_configuration: Configuration,
+        screen: pygame.Surface,
+        language: Language,
+    ) -> None:
         """Initialize the controls screen"""
         self.screen = screen
         self.screen_rect = screen.get_rect()
@@ -13,8 +23,8 @@ class ControlsScreen:
         # Set the font and colors
         self.title_font = pygame.font.SysFont(None, 64)
         self.text_font = pygame.font.SysFont(None, 36)
-        self.title_color = (0, 255, 0)  # Green
-        self.text_color = (255, 255, 255)  # White
+        self.title_color: Tuple[int, int, int] = (0, 255, 0)  # Green
+        self.text_color: Tuple[int, int, int] = (255, 255, 255)  # White
 
         # Create the title
         self.title = self.title_font.render(
@@ -25,7 +35,7 @@ class ControlsScreen:
         self.title_rect.top = 50
 
         # Create the controls text
-        self.controls = [
+        self.controls: List[Tuple[str, str]] = [
             ("Left/Right Arrow", self.language.get_text("move_left_right")),
             ("Space", self.language.get_text("shoot")),
             ("P", self.language.get_text("pause_game")),
@@ -47,7 +57,7 @@ class ControlsScreen:
         )
         self.background.fill((0, 0, 0, 200))  # Black with 78% opacity
 
-    def draw_controls(self):
+    def draw_controls(self) -> None:
         """Draw the controls screen"""
         # Draw the semi-transparent background
         self.screen.blit(self.background, (0, 0))

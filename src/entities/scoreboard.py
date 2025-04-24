@@ -1,13 +1,24 @@
+from typing import Tuple
+
 import pygame.font
 from pygame.sprite import Group
-from src.entities.ship import Ship
+
+from src.config.configuration import Configuration
+from src.config.language import Language
+from src.config.statistics import Statistics
 from src.entities.heart import Heart
 
 
 class Scoreboard:
     """A class for reporting score information"""
 
-    def __init__(self, ai_configuration, screen, statistics, language):
+    def __init__(
+        self,
+        ai_configuration: Configuration,
+        screen: pygame.Surface,
+        statistics: Statistics,
+        language: Language,
+    ) -> None:
         """Initialize scoreboard attributes"""
         self.screen = screen
         self.screen_rect = screen.get_rect()
@@ -16,7 +27,7 @@ class Scoreboard:
         self.language = language
 
         # Font settings for score information
-        self.text_color = (255, 255, 255)  # White text
+        self.text_color: Tuple[int, int, int] = (255, 255, 255)  # White text
         self.font = pygame.font.SysFont(None, 48)
 
         # Prepare the initial score image
@@ -25,7 +36,7 @@ class Scoreboard:
         self.prep_level()
         self.prep_ships()
 
-    def prep_score(self):
+    def prep_score(self) -> None:
         """Convert the score to a rendered image"""
         rounded_score = int(round(self.statistics.score, -1))
         score_str = f"{self.language.get_text('score')}: {rounded_score:,}"
@@ -48,7 +59,7 @@ class Scoreboard:
         self.score_rect.right = self.screen_rect.right - 20
         self.score_rect.top = 20
 
-    def prep_high_score(self):
+    def prep_high_score(self) -> None:
         """Convert the high score to a rendered image"""
         high_score = int(round(self.statistics.high_score, -1))
         high_score_str = f"{self.language.get_text('high_score')}: {high_score:,}"
@@ -71,7 +82,7 @@ class Scoreboard:
         self.high_score_rect.centerx = self.screen_rect.centerx
         self.high_score_rect.top = self.score_rect.top
 
-    def prep_level(self):
+    def prep_level(self) -> None:
         """Convert the level to a rendered image"""
         level_str = f"{self.language.get_text('level')}: {self.statistics.level}"
 
@@ -93,16 +104,16 @@ class Scoreboard:
         self.level_rect.right = self.score_rect.right
         self.level_rect.top = self.score_rect.bottom + 10
 
-    def prep_ships(self):
+    def prep_ships(self) -> None:
         """Show how many ships are left"""
-        self.ships = Group()
+        self.ships: Group = Group()
         for ship_number in range(self.statistics.ships_remaining):
             ship = Heart(self.screen)
             ship.rect.x = 10 + ship_number * ship.rect.width
             ship.rect.y = 10
             self.ships.add(ship)
 
-    def show_score(self):
+    def show_score(self) -> None:
         """Draw the score to the screen"""
         self.screen.blit(self.score_image, self.score_rect)
         self.screen.blit(self.high_score_image, self.high_score_rect)

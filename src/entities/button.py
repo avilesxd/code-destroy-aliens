@@ -1,12 +1,16 @@
+from typing import Tuple
+
 import pygame.font
+
+from src.config.configuration import Configuration
 
 
 class Button:
     """A class to create and manage clickable buttons in the game.
-    
+
     This class handles the creation, rendering, and positioning of buttons
     with customizable text and colors.
-    
+
     Attributes:
         screen (pygame.Surface): The game screen surface
         screen_rect (pygame.Rect): The screen's rectangle
@@ -20,9 +24,11 @@ class Button:
         msg_image_rect (pygame.Rect): Rectangle for the text surface
     """
 
-    def __init__(self, ai_configuration, screen, msg):
+    def __init__(
+        self, ai_configuration: Configuration, screen: pygame.Surface, msg: str
+    ) -> None:
         """Initialize button attributes.
-        
+
         Args:
             ai_configuration (Settings): Game configuration settings
             screen (pygame.Surface): The game screen surface
@@ -32,9 +38,10 @@ class Button:
         self.screen_rect = screen.get_rect()
 
         # Set the button's dimensions and properties
-        self.width, self.height = 200, 50
-        self.button_color = (0, 255, 0)
-        self.text_color = (255, 255, 255)
+        self.width: int = 200
+        self.height: int = 50
+        self.button_color: Tuple[int, int, int] = (0, 255, 0)
+        self.text_color: Tuple[int, int, int] = (255, 255, 255)
         self.font = pygame.font.SysFont(None, 48)
 
         # Construct the button's rect object and center it
@@ -44,12 +51,12 @@ class Button:
         # The button's message should only be set once
         self.prep_msg(msg)
 
-    def prep_msg(self, msg):
+    def prep_msg(self, msg: str) -> None:
         """Convert the message to a rendered image and center the text.
-        
+
         Args:
             msg (str): The text to render on the button
-            
+
         This method creates a rendered surface of the text and centers
         it on the button's rectangle.
         """
@@ -57,9 +64,9 @@ class Button:
         self.msg_image_rect = self.msg_image.get_rect()
         self.msg_image_rect.center = self.rect.center
 
-    def draw_button(self):
+    def draw_button(self) -> None:
         """Draw the button and its text on the screen.
-        
+
         This method is called every frame to render the button.
         It first draws the button's background color, then blits
         the text surface on top of it.

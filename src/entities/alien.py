@@ -1,13 +1,15 @@
 import pygame
 from pygame.sprite import Sprite
-from src.core.path_utils import resource_path
+
+from src.config.configuration import Configuration
 from src.config.music import Music
+from src.core.path_utils import resource_path
 
 
 class Alien(Sprite):
     """Serves to represent a single alien in the fleet"""
 
-    def __init__(self, ai_configuration, screen):
+    def __init__(self, ai_configuration: Configuration, screen: pygame.Surface) -> None:
         """Initializes the alien and sets its initial position"""
         super(Alien, self).__init__()
 
@@ -29,26 +31,26 @@ class Alien(Sprite):
         # Stores the alien's exact position
         self.x = float(self.rect.x)
 
-    def blitme(self):
+    def blitme(self) -> None:
         """Draw the alien at its current location"""
         self.screen.blit(self.image, self.rect)
 
-    def check_edges(self):
+    def check_edges(self) -> bool:
         """Returns true if the alien is on the edge of the screen"""
         screen_rect = self.screen.get_rect()
         if self.rect.right >= screen_rect.right:
             return True
         elif self.rect.left <= 0:
             return True
+        return False
 
-    def update(self):
+    def update(self) -> None:
         """Move the alien to the right"""
-        self.x += (
-            self.ai_configuration.alien_speed_factor
-            * self.ai_configuration.fleet_direction
-        )
-        self.rect.x = self.x
+        speed_factor = self.ai_configuration.alien_speed_factor
+        speed = speed_factor * self.ai_configuration.fleet_direction
+        self.x += speed
+        self.rect.x = int(self.x)
 
-    def explode(self):
+    def explode(self) -> None:
         """Play explosion sound effect"""
         self.music.play_explosion()
