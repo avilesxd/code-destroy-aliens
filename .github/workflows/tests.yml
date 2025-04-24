@@ -1,14 +1,14 @@
-name: Run Tests
+name: Code Quality & Tests
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ main ]
 
 jobs:
-  test:
-    runs-on: windows-latest
+  quality:
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ['3.13']
@@ -20,16 +20,30 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
-        cache: 'pip'
-    
-    - name: Install Python dependencies
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-    
+        npm install --no-save @commitlint/cli @commitlint/config-conventional
+
+    - name: Check formatting
+      run: npm run format:check
+
+    - name: Run linting
+      run: npm run lint
+
+    - name: Run type checking
+      run: npm run typecheck
+
     - name: Run tests
+      run: npm run test
+
+    - name: Check commit message format
       run: |
-        python -m pytest tests/ -v
-      env:
-        PYTHONPATH: ${{ github.workspace }}
-        PYTHONUNBUFFERED: 1 
+        echo "${{ github.event.head_commit.message }}" | npx commitlint 
