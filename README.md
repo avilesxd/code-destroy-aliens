@@ -4,7 +4,7 @@
   <img src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.png" alt="Alien Invasion Game" width="600"/>
   
   [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
-  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/avilesxd/code-destroy-aliens/blob/main/LICENSE)
   [![Downloads](https://img.shields.io/github/downloads/avilesxd/code-destroy-aliens/total.svg)](https://github.com/avilesxd/code-destroy-aliens/releases)
   [![Stars](https://img.shields.io/github/stars/avilesxd/code-destroy-aliens.svg)](https://github.com/avilesxd/code-destroy-aliens/stargazers)
 </div>
