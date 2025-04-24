@@ -15,16 +15,17 @@ module.exports = {
         'perf',     // Performance improvements
         'ci',       // CI/CD related changes
         'build',    // Build system changes
-        'revert'    // Revert previous changes
+        'revert',   // Revert previous changes
+        'wip',      // Work in progress
       ]
     ],
     'type-case': [2, 'always', 'lower-case'],
     'type-empty': [2, 'never'],
     'scope-case': [2, 'always', 'lower-case'],
     'subject-case': [2, 'always', 'lower-case'],
-    'subject-empty': [2, 'never'],
+    'subject-empty': [0, 'never'],
     'subject-full-stop': [2, 'never', '.'],
-    'header-max-length': [2, 'always', 72],
+    'header-max-length': [2, 'always', 100],
     'body-leading-blank': [2, 'always'],
     'body-max-line-length': [2, 'always', 100],
     'footer-leading-blank': [2, 'always'],
