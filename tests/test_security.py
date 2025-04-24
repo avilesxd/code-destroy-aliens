@@ -1,4 +1,3 @@
-import ctypes
 import json
 import os
 import platform
@@ -8,13 +7,15 @@ from typing import Generator, Tuple
 from unittest.mock import patch
 
 import pytest
-import win32api
-import win32con
 
 from src.config.configuration import Configuration
-
-# Import the modules to test
 from src.config.statistics import Statistics
+
+if platform.system() == "Windows":
+    import ctypes
+
+    import win32api
+    import win32con
 
 
 @pytest.fixture
@@ -126,11 +127,11 @@ def test_error_handling(stats_with_temp_dir: Tuple[Statistics, str]) -> None:
         assert new_stats.high_score == 0
 
 
+@pytest.mark.skipif(
+    platform.system() != "Windows", reason="This test is Windows-specific"
+)
 def test_directory_hiding() -> None:
     """Test that the .data directory is hidden on Windows"""
-    # This test is Windows-specific
-    if platform.system() != "Windows":
-        pytest.skip("This test is Windows-specific")
 
     # Create a temporary directory
     temp_dir = tempfile.mkdtemp()
