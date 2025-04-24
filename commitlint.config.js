@@ -23,12 +23,12 @@ module.exports = {
     'type-empty': [0, 'never'],
     'scope-case': [2, 'always', 'lower-case'],
     'subject-case': [2, 'always', 'lower-case'],
-    'subject-empty': [1, 'never'],
+    'subject-empty': [0, 'never'],
     'subject-full-stop': [2, 'never', '.'],
-    'header-max-length': [2, 'always', 100],
+    'header-max-length': [2, 'always', 150],
     'body-leading-blank': [2, 'always'],
-    'body-max-line-length': [2, 'always', 100],
+    'body-max-line-length': [2, 'always', 150],
     'footer-leading-blank': [2, 'always'],
-    'footer-max-line-length': [2, 'always', 100]
+    'footer-max-line-length': [2, 'always', 150]
   }
 }; 
