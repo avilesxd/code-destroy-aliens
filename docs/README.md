@@ -78,12 +78,7 @@ code-destroy-aliens/
 
 ### Dependencies
 
-All required packages are listed in `requirements.txt`:
-
-```
-pygame>=2.5.0
-cryptography>=3.4.7
-```
+All required packages are listed in `requirements.txt`.
 
 ## ⚙️ Installation
 
