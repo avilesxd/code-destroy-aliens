@@ -27,8 +27,8 @@ module.exports = {
     'subject-full-stop': [2, 'never', '.'],
     'header-max-length': [2, 'always', 150],
     'body-leading-blank': [2, 'always'],
-    'body-max-line-length': [2, 'always', 150],
+    'body-max-line-length': [2, 'always', 250],
     'footer-leading-blank': [2, 'always'],
-    'footer-max-line-length': [2, 'always', 150]
+    'footer-max-line-length': [2, 'always', 250]
   }
 }; 
