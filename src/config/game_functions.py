@@ -82,7 +82,6 @@ def update_stars(
 ) -> None:
     """Updates and draws the stars"""
     global stars, last_star_time
-    current_time: int = pygame.time.get_ticks()
 
     # Create initial stars if they don't exist
     if not stars:
@@ -90,26 +89,25 @@ def update_stars(
             x = random.randint(0, ai_configuration.screen_width)
             y = random.randint(0, ai_configuration.screen_height)
             size = random.randint(1, 3)
-            speed = random.uniform(0.5, 2)
+            speed = random.uniform(0.1, 0.5)
             stars.append([x, y, size, speed])
 
     # Update star positions only if enough time has passed and game is not paused
-    if (
-        not is_paused and not is_game_over and (current_time - last_star_time) > 16
-    ):  # ~60 FPS
+    if not is_paused and not is_game_over:
         for star in stars:
             star[1] += star[3]  # Move the star downward
             if star[1] > ai_configuration.screen_height:
                 star[1] = 0
                 star[0] = random.randint(0, ai_configuration.screen_width)
-        last_star_time = current_time
 
     # Draw the stars
     for star_x, star_y, star_size, _ in stars:
         x_int: int = int(star_x)
         y_int: int = int(star_y)
         size_int: int = int(star_size)
-    pygame.draw.circle(screen, ai_configuration.star_color, (x_int, y_int), size_int)
+        pygame.draw.circle(
+            screen, ai_configuration.star_color, (x_int, y_int), size_int
+        )
 
 
 def verify_events_keydown(

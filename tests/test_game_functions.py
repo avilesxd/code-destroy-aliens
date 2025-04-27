@@ -321,7 +321,7 @@ def test_star_system(
         assert 0 <= x <= config.screen_width
         assert 0 <= y <= config.screen_height
         assert 1 <= size <= 3
-        assert 0.5 <= speed <= 2
+        assert 0.1 <= speed <= 0.5
 
     # Test star movement
     initial_positions = [(star[0], star[1]) for star in fj.stars]
