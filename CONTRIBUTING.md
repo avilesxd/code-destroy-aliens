@@ -37,10 +37,31 @@ Make sure you follow good coding practices and maintain a clear structure.
 ### 6. Commit
 
 ```bash
+# Stage your changes
 git add .
 
-git commit -m "Clear description of what you did"
+# Create a commit following the conventional commit format
+# The commit will be validated by commitlint and husky
+# Example: git commit -m "feat: add new player movement system"
+# Example: git commit -m "fix: resolve collision detection bug"
+# Example: git commit -m "docs: update README with new features"
 ```
+
+The commit message must follow the [Conventional Commits](https://www.conventionalcommits.org/) format:
+- `feat:` for new features
+- `fix:` for bug fixes
+- `docs:` for documentation changes
+- `style:` for formatting changes
+- `refactor:` for code refactoring
+- `test:` for adding or fixing tests
+- `chore:` for maintenance tasks
+- `perf:` for performance improvements
+- `ci:` for CI/CD related changes
+- `build:` for build system changes
+- `revert:` for reverting previous changes
+- `wip:` for work in progress
+
+If your commit doesn't follow this format, husky will prevent the commit from being created.
 
 ### 7. Push your changes
 

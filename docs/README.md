@@ -13,6 +13,7 @@
 - [Project Structure](#-project-structure)
 - [Requirements](#-requirements)
 - [Installation](#-installation)
+- [Available Scripts](#-available-scripts)
 - [Building](#-building)
 - [Core Components](#-core-components)
 - [Game Architecture](#-game-architecture)
@@ -114,6 +115,30 @@ pip install -r requirements.txt
 ```bash
 python main.py
 ```
+
+## 📜 Available Scripts
+
+The project includes several npm scripts to help with development and maintenance:
+
+| Script | Description | Command |
+|--------|-------------|---------|
+| Development | Run the game in development mode | `npm run dev` |
+| Code Formatting | Format all Python code using black and isort | `npm run format` |
+| Format Check | Check if code formatting is correct | `npm run format:check` |
+| Linting | Run flake8 linter to check code style | `npm run lint` |
+| Type Checking | Run mypy to check type hints | `npm run typecheck` |
+| Testing | Run all tests using pytest | `npm run test` |
+| Building | Build the game executable using PyInstaller | `npm run build` |
+
+### Script Details
+
+- **Development**: Uses `node scripts/run-with-env.js python main.py` to run the game with proper environment setup
+- **Code Formatting**: Combines `black` for code formatting and `isort` for import sorting
+- **Format Check**: Verifies code formatting without making changes
+- **Linting**: Uses `flake8` to enforce code style and catch potential issues
+- **Type Checking**: Uses `mypy` to verify type hints and catch type-related errors
+- **Testing**: Runs all tests using `pytest` with configuration from `pytest.ini`
+- **Building**: Creates a distributable executable using PyInstaller with all necessary assets
 
 ## 🧱 Building
 
