@@ -8,68 +8,99 @@
   [![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 </div>
 
-## 📋 Table of Contents
+## Table of Contents
 
-- [Project Structure](#-project-structure)
-- [Requirements](#-requirements)
-- [Installation](#-installation)
-- [Available Scripts](#-available-scripts)
-- [Building](#-building)
-- [Core Components](#-core-components)
-- [Game Architecture](#-game-architecture)
-- [Development Guidelines](#-development-guidelines)
-- [Testing](#-testing)
-- [Performance Optimization](#-performance-optimization)
-- [Code Quality Tools](#-code-quality-tools)
+- [Project Structure](#project-structure)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Available Scripts](#available-scripts)
+- [Building](#building)
+- [Core Components](#core-components)
+- [Game Architecture](#game-architecture)
+- [Development Guidelines](#development-guidelines)
+- [Testing](#testing)
+- [Performance Optimization](#performance-optimization)
+- [Code Quality Tools](#code-quality-tools)
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 code-destroy-aliens/
-├── main.py                 # Main game entry point
-├── requirements.txt        # Project dependencies
-├── setup.py               # Project setup configuration
-├── pytest.ini            # Pytest configuration
-├── .flake8               # Flake8 linting configuration
-├── pyproject.toml        # Black and isort configuration
-├── .gitignore           # Git ignore rules
+├── .github/            # GitHub configuration
+│   ├── ISSUE_TEMPLATE/ # Issue templates
+│   │   ├── bug_report.md      # Template for bug reports
+│   │   └── feature_request.md # Template for feature requests
+│   ├── FUNDING.yml    # GitHub Sponsors configuration
+│   ├── pull_request_template.md # Pull request template
+│   └── workflows/     # GitHub Actions workflows
+│       ├── deploy.yml    # Deployment workflow
+│       ├── release.yml   # Release workflow
+│       └── tests.yml     # Testing workflow
 ├── .husky/              # Git hooks configuration
-│   ├── pre-commit      # Pre-commit hook script
-│   └── _/             # Husky internal files
-├── src/
-│   ├── config/            # Configuration files
+│   └── pre-commit      # Pre-commit hook script
+├── .vscode/            # VS Code configuration
+│   ├── extensions.json  # Recommended VS Code extensions
+│   ├── settings.json   # VS Code workspace settings
+│   └── tasks.json      # VS Code task configurations
+├── docs/             # Documentation
+│   ├── README.md    # Technical documentation
+│   └── images/      # Documentation images
+├── scripts/         # Utility scripts
+│   └── run-with-env.js  # Script to run Python with environment setup
+├── src/                # Source code
+│   ├── config/        # Configuration files
 │   │   ├── configuration.py  # Game settings and constants
 │   │   ├── game_functions.py # Core game logic and functions
 │   │   ├── music.py      # Audio system implementation
 │   │   ├── statistics.py # Game statistics and persistence
 │   │   └── language.py   # Internationalization system
-│   ├── entities/         # Game entities
+│   ├── core/          # Core utilities
+│   │   ├── path_utils.py # Path handling utilities
+│   │   └── __init__.py
+│   ├── entities/      # Game entities
 │   │   ├── ship.py      # Player's spaceship implementation
 │   │   ├── alien.py     # Alien behavior and types
 │   │   ├── bullet.py    # Projectile system
 │   │   ├── heart.py     # Life indicator system
 │   │   ├── scoreboard.py # Score display and UI
-│   │   └── controls_screen.py # Controls information display
-│   └── assets/          # Game assets
-│       ├── images/      # Image resources
-│       ├── sounds/      # Audio resources
+│   │   ├── button.py    # UI button implementation
+│   │   ├── controls_screen.py # Controls information display
+│   │   └── __init__.py
+│   └── assets/        # Game assets
+│       ├── images/    # Image resources
+│       ├── sounds/    # Sound effects
+│       ├── music/     # Background music
+│       ├── icons/     # Application icons
 │       └── translations/ # Language files
 │           ├── en.json  # English translations
 │           └── es.json  # Spanish translations
-├── tests/               # Test files
+├── tests/             # Test files
 │   ├── __init__.py
 │   ├── test_ship.py
 │   ├── test_alien.py
 │   └── test_bullet.py
-├── docs/               # Documentation
-│   ├── README.md      # Technical documentation
-│   └── images/        # Documentation images
-└── website/           # Project website
+└── website/        # Project website
     ├── index.html
     └── styles.css
+├── .flake8               # Flake8 linting configuration
+├── .gitignore           # Git ignore rules
+├── CHANGELOG.md         # Project changelog
+├── CODE_OF_CONDUCT.md   # Code of conduct for the project
+├── commitlint.config.js  # Commit message linting configuration
+├── CONTRIBUTING.md      # Contributing guidelines
+├── LICENSE             # Project license
+├── main.py                 # Main game entry point
+├── mypy.ini             # MyPy type checking configuration
+├── package.json          # Node.js dependencies
+├── pyproject.toml        # Black and isort configuration
+├── pytest.ini            # Pytest configuration
+├── README.md             # Main project documentation
+├── requirements.txt        # Python dependencies
+├── setup.py               # Project setup configuration
+└── version.txt          # Version information
 ```
 
-## 🧰 Requirements
+## Requirements
 
 ### System Requirements
 
@@ -81,7 +112,7 @@ code-destroy-aliens/
 
 All required packages are listed in `requirements.txt`.
 
-## ⚙️ Installation
+## Installation
 
 ### Development Setup
 
@@ -116,7 +147,7 @@ pip install -r requirements.txt
 python main.py
 ```
 
-## 📜 Available Scripts
+## Available Scripts
 
 The project includes several npm scripts to help with development and maintenance:
 
@@ -140,7 +171,7 @@ The project includes several npm scripts to help with development and maintenanc
 - **Testing**: Runs all tests using `pytest` with configuration from `pytest.ini`
 - **Building**: Creates a distributable executable using PyInstaller with all necessary assets
 
-## 🧱 Building
+## Building
 
 ### Windows Build
 
@@ -169,7 +200,7 @@ pyinstaller ".\Alien Invasion.spec"
 - `--add-data`: Includes game assets
 - `--version-file`: Adds version information
 
-## 🎮 Core Components
+## Core Components
 
 ### Game Engine
 
@@ -195,7 +226,7 @@ pyinstaller ".\Alien Invasion.spec"
 - Automatic language detection
 - Dynamic text rendering
 
-## 🏗️ Game Architecture
+## Game Architecture
 
 ### Main Loop
 
@@ -220,7 +251,7 @@ while running:
 - Custom collision detection
 - Particle effects on collisions
 
-## 📝 Development Guidelines
+## Development Guidelines
 
 ### Code Style
 
@@ -242,7 +273,7 @@ while running:
 - Integration tests for game systems
 - Performance testing for optimization
 
-## 🚀 Performance Optimization
+## Performance Optimization
 
 ### Techniques Used
 
@@ -257,21 +288,6 @@ while running:
 - Use sprite groups efficiently
 - Optimize collision detection
 - Manage memory usage
-
-## 🔍 Debugging
-
-### Common Issues
-
-1. Memory leaks
-2. Performance bottlenecks
-3. Collision detection problems
-4. Audio synchronization
-
-### Debug Tools
-
-- Pygame debug mode
-- Performance profiler
-- Memory usage monitor
 
 ## Code Quality Tools
 
@@ -363,16 +379,16 @@ The project uses pre-commit hooks to automatically run these tools before each c
 4. Execute tests
 5. Only allow the commit if all checks pass
 
-## 📚 Additional Resources
+## Additional Resources
 
 - [Pygame Documentation](https://www.pygame.org/docs/)
 - [Python Type Hints](https://docs.python.org/3/library/typing.html)
 - [Game Development Best Practices](https://realpython.com/pygame-a-primer/)
 
-## 🤝 Contributing
+## Contributing
 
 See [CONTRIBUTING.md](../CONTRIBUTING.md) for detailed guidelines on how to contribute to this project.
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](../LICENSE) file for details.
