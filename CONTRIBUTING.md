@@ -32,7 +32,7 @@ Make sure you follow good coding practices and maintain a clear structure.
 
 - Run the game to verify that everything works correctly.
 - Make sure you don't break anything existing.
-- Run tests (if available).
+- Run tests.
 
 ### 6. Commit
 

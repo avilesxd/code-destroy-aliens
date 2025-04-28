@@ -124,31 +124,41 @@ git clone https://github.com/avilesxd/code-destroy-aliens.git
 cd code-destroy-aliens
 ```
 
-2. **Create Virtual Environment**:
+2. **Install Node.js Dependencies**:
+
+```bash
+npm install
+```
+
+3. **Create Virtual Environment**:
 
 ```bash
 # Windows
-python -m venv venv
-venv\Scripts\activate
+python -m venv env
+env\Scripts\activate
 
 # Linux/MacOS
-python3 -m venv venv
-source venv/bin/activate
+python3 -m venv env
+source env/bin/activate
 ```
 
-3. **Install Dependencies**:
+4. **Install Python Dependencies**:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-4. **Run the Game**:
+5. **Run the Game**:
 
 ```bash
+# Using npm script (recommended)
+npm run dev
+
+# Or directly with Python
 python main.py
 ```
 
-## Available Scripts
+### Available Scripts
 
 The project includes several npm scripts to help with development and maintenance:
 
@@ -162,44 +172,15 @@ The project includes several npm scripts to help with development and maintenanc
 | Testing | Run all tests using pytest | `npm run test` |
 | Building | Build the game executable using PyInstaller | `npm run build` |
 
-### Script Details
+### Building the Game
 
-- **Development**: Uses `node scripts/run-with-env.js python main.py` to run the game with proper environment setup
-- **Code Formatting**: Combines `black` for code formatting and `isort` for import sorting
-- **Format Check**: Verifies code formatting without making changes
-- **Linting**: Uses `flake8` to enforce code style and catch potential issues
-- **Type Checking**: Uses `mypy` to verify type hints and catch type-related errors
-- **Testing**: Runs all tests using `pytest` with configuration from `pytest.ini`
-- **Building**: Creates a distributable executable using PyInstaller with all necessary assets
-
-## Building
-
-### Windows Build
-
-1. **Create Spec File**:
+To create a distributable executable:
 
 ```bash
-pyi-makespec main.py \
-  --name="Alien Invasion" \
-  --icon="src/assets/icons/icon.ico" \
-  --onefile \
-  --noconsole \
-  --add-data="src;src" \
-  --version-file="version.txt"
+npm run build
 ```
 
-2. **Build Executable**:
-
-```bash
-pyinstaller ".\Alien Invasion.spec"
-```
-
-### Build Options
-
-- `--onefile`: Creates a single executable
-- `--noconsole`: Hides the console window
-- `--add-data`: Includes game assets
-- `--version-file`: Adds version information
+This will create a single executable file using PyInstaller with all necessary assets included.
 
 ## Core Components
 
