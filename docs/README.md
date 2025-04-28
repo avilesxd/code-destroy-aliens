@@ -76,9 +76,10 @@ code-destroy-aliens/
 │           └── es.json  # Spanish translations
 ├── tests/             # Test files
 │   ├── __init__.py
-│   ├── test_ship.py
-│   ├── test_alien.py
-│   └── test_bullet.py
+│   ├── test_game_functions.py  # Tests for core game functions and utilities
+│   ├── test_game.py           # Tests for main game logic and mechanics
+│   ├── test_language.py       # Tests for internationalization and language system
+│   └── test_security.py       # Tests for security features and input validation
 └── website/        # Project website
     ├── index.html
     └── styles.css
