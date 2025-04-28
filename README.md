@@ -60,7 +60,8 @@ Interested in contributing? Check out our:
 
 - [Technical Documentation](docs/README.md)
 - [Contributing Guidelines](CONTRIBUTING.md)
-- [Development Setup Guide](docs/README.md#installation)
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [License](LICENSE)
 
 ## 👥 Meet the Team
 
