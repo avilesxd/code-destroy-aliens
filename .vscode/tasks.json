@@ -1,34 +1,34 @@
 {
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "Install Node dependencies",
-      "type": "shell",
-      "command": "npm install",
-      "group": "none",
-      "problemMatcher": [],
-      "runOptions": {
-        "runOn": "folderOpen",
-      }
-    },
-    {
-      "label": "Install Python dependencies",
-      "type": "shell",
-      "command": "source env/bin/activate && pip install -r requirements.txt",
-      "group": "none",
-      "problemMatcher": [],
-      "runOptions": {
-        "runOn": "folderOpen"
-      },
-      "windows": {
-        "command": "env\\Scripts\\activate; pip install -r requirements.txt",
-      },
-      "linux": {
-        "command": "source env/bin/activate && pip install -r requirements.txt"
-      },
-      "osx": {
-        "command": "source env/bin/activate && pip install -r requirements.txt"
-      }
-    }
-  ]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Install Node dependencies",
+            "type": "shell",
+            "command": "npm install",
+            "group": "none",
+            "problemMatcher": [],
+            "runOptions": {
+                "runOn": "folderOpen",
+            }
+        },
+        {
+            "label": "Create Python environment and install dependencies",
+            "type": "shell",
+            "command": "python3 -m venv env && source env/bin/activate && pip install -r requirements.txt",
+            "group": "none",
+            "problemMatcher": [],
+            "runOptions": {
+                "runOn": "folderOpen"
+            },
+            "windows": {
+                "command": "python -m venv env; env\\Scripts\\activate; pip install -r requirements.txt",
+            },
+            "linux": {
+                "command": "python3 -m venv env && source env/bin/activate && pip install -r requirements.txt"
+            },
+            "osx": {
+                "command": "python3 -m venv env && source env/bin/activate && pip install -r requirements.txt"
+            }
+        }
+    ]
 }
