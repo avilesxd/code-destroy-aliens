@@ -24,9 +24,7 @@ def runGame() -> None:
     # Function to play music
     music = Music()
     ai_configuration = Configuration()
-    screen = pygame.display.set_mode(
-        (ai_configuration.screen_width, ai_configuration.screen_height)
-    )
+    screen = pygame.display.set_mode((ai_configuration.screen_width, ai_configuration.screen_height))
     pygame.display.set_caption("Alien Invasion")
 
     # Initialize language system
@@ -67,12 +65,8 @@ def runGame() -> None:
 
         if statistics.game_active and not statistics.game_paused:
             ship.update()
-            fj.update_bullets(
-                ai_configuration, screen, statistics, scoreboard, ship, aliens, bullet
-            )
-            fj.update_aliens(
-                ai_configuration, statistics, screen, scoreboard, ship, aliens, bullet
-            )
+            fj.update_bullets(ai_configuration, screen, statistics, scoreboard, ship, aliens, bullet)
+            fj.update_aliens(ai_configuration, statistics, screen, scoreboard, ship, aliens, bullet)
 
         fj.update_screen(
             ai_configuration,
