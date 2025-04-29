@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide helps you resolve common issues you might encounter while working with Alien Invasion. If you don't find your issue here, please check our [GitHub Issues](https://github.com/yourusername/code-destroy-aliens/issues) or create a new one.
+This guide helps you resolve common issues you might encounter while working with Alien Invasion. If you don't find your issue here, please check our [GitHub Issues](https://github.com/avilesxd/code-destroy-aliens/issues) or create a new one.
 
 ## Installation Issues
 
@@ -250,13 +250,7 @@ KeyError: 'component_name'
 
 ## Getting Help
 
-### 1. Community Support
-
-- Join our [Discord server](https://discord.gg/your-server)
-- Check [GitHub Discussions](https://github.com/yourusername/code-destroy-aliens/discussions)
-- Search existing issues
-
-### 2. Reporting Issues
+### 1. Reporting Issues
 
 When reporting an issue, please include:
 

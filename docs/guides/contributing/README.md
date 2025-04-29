@@ -142,11 +142,6 @@ Fixes #123
 
 ## Communication
 
-### Discord
-
-Join our Discord community for real-time discussion:
-[Discord Invite Link]
-
 ### GitHub Discussions
 
 Use GitHub Discussions for:
@@ -171,4 +166,3 @@ Contributors will be:
 
 - Read the [Development Guide](../development/core-concepts.md)
 - Check out the [Testing Guide](../testing/README.md)
-- Join our [Discord Community](https://discord.gg/your-invite-link)

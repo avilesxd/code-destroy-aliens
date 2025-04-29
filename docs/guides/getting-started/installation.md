@@ -81,7 +81,6 @@ If you encounter any issues not covered here:
 
 1. Check the [Troubleshooting Guide](./reference/troubleshooting/README.md)
 2. Open an [issue](https://github.com/avilesxd/code-destroy-aliens/issues)
-3. Join our [Discord community](https://discord.gg/your-invite-link)
 
 ## Next Steps
 
