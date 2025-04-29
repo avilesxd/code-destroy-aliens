@@ -108,14 +108,6 @@ local.properties
 .loadpath
 .recommenders
 
-# VS Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-*.code-workspace
-
 # Windows
 [Dd]esktop.ini
 $RECYCLE.BIN/
@@ -142,3 +134,8 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# MkDocs build output
+site/
+website/docs/
+*.mkdocs-material/*
