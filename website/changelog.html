@@ -31,57 +31,9 @@
     <title>Alien Invasion - Space Invader Game</title>
     <link rel="icon" type="image/x-icon"
         href="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/src/assets/icons/icon.png">
+    <link rel="stylesheet" href="./assets/css/styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/flowbite@latest/dist/flowbite.min.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap');
-
-        :root {
-            --primary-color: #22c55e;
-            --primary-color-hover: #16a34a;
-            --background-color: #0f172a;
-            --text-color: #ffffff;
-            --text-color-secondary: #e2e8f0;
-        }
-
-        body {
-            font-family: 'Orbitron', sans-serif;
-            background: linear-gradient(135deg, var(--background-color) 0%, #1e293b 100%);
-            background-attachment: fixed;
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        .space-bg {
-            background-image: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            opacity: 0.15;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        .glow {
-            text-shadow: 0 0 10px rgba(74, 222, 128, 0.7);
-        }
-
-        .card {
-            backdrop-filter: blur(10px);
-            background-color: rgba(30, 41, 59, 0.7);
-            border: 1px solid rgba(74, 222, 128, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            border-color: rgba(74, 222, 128, 0.5);
-            transform: translateY(-5px);
-        }
-    </style>
 </head>
 
 <body class="text-white min-h-screen flex flex-col">
@@ -185,37 +137,7 @@
         </div>
     </footer>
 
-    <!-- Custom carousel script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Mobile menu functionality
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const closeMenuButton = document.getElementById('close-menu');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-
-            function toggleMenu() {
-                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
-                mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
-                mobileMenu.classList.toggle('translate-x-full');
-
-                // Update aria-hidden for the mobile menu
-                mobileMenu.setAttribute('aria-hidden', isExpanded);
-            }
-
-            mobileMenuButton.addEventListener('click', toggleMenu);
-            closeMenuButton.addEventListener('click', toggleMenu);
-
-            // Close menu when clicking on a link
-            mobileMenuLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('translate-x-full');
-                    mobileMenuButton.setAttribute('aria-expanded', 'false');
-                    mobileMenu.setAttribute('aria-hidden', 'true');
-                });
-            });
-        });
-    </script>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
