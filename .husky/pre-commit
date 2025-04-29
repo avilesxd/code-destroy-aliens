@@ -1,1 +1,13 @@
-npm run verify || exit 1
+echo "🔍 Checking code format..."s
+npm run format:check || exit 1
+
+echo "🔍 Running linter..."
+npm run lint || exit 1
+
+echo "🔍 Checking types..."
+npm run typecheck || exit 1
+
+echo "🔍 Running tests..."
+npm run test || exit 1
+
+echo "✅ All checks passed successfully!"
