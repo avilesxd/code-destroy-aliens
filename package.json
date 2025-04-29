@@ -1,57 +1,57 @@
 {
-  "name": "code-destroy-aliens",
-  "version": "1.0.0",
-  "private": true,
-  "description": "A Python game where you destroy aliens",
-  "author": "Ignacio Avilés <nacho72001@gmail.com>",
-  "license": "MIT",
-  "contributors": [
-    {
-      "name": "Ignacio Avilés",
-      "email": "nacho72001@gmail.com",
-      "url": "https://github.com/avilesxd"
+    "name": "code-destroy-aliens",
+    "version": "1.0.0",
+    "private": true,
+    "description": "A Python game where you destroy aliens",
+    "author": "Ignacio Avilés <nacho72001@gmail.com>",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Ignacio Avilés",
+            "email": "nacho72001@gmail.com",
+            "url": "https://github.com/avilesxd"
+        },
+        {
+            "name": "Juan Galaz",
+            "email": "juancarlosgalaz7@gmail.com",
+            "url": "https://github.com/JGalaz7"
+        }
+    ],
+    "scripts": {
+        "prepare": "husky",
+        "dev": "node scripts/run-with-env.js python main.py",
+        "format": "node scripts/run-with-env.js \"black . && isort .\"",
+        "format:check": "node scripts/run-with-env.js \"black --check . && isort --check-only .\"",
+        "lint": "node scripts/run-with-env.js flake8 .",
+        "typecheck": "node scripts/run-with-env.js python -m mypy .",
+        "test": "node scripts/run-with-env.js pytest",
+        "precommit": "npm run format && npm run lint && npm run typecheck && npm run test",
+        "build": "pyinstaller main.py --name=\"Alien Invasion\" --icon=\"src/assets/icons/icon.ico\" --onefile --noconsole --add-data=\"src;src\" --version-file=\"version.txt\""
     },
-    {
-      "name": "Juan Galaz",
-      "email": "juancarlosgalaz7@gmail.com",
-      "url": "https://github.com/JGalaz7"
-    }
-  ],
-  "scripts": {
-    "prepare": "husky",
-    "dev": "node scripts/run-with-env.js python main.py",
-    "format": "node scripts/run-with-env.js \"black . && isort .\"",
-    "format:check": "node scripts/run-with-env.js \"black --check . && isort --check-only .\"",
-    "lint": "node scripts/run-with-env.js flake8 .",
-    "typecheck": "node scripts/run-with-env.js python -m mypy .",
-    "test": "node scripts/run-with-env.js pytest",
-    "precommit": "npm run format && npm run lint && npm run typecheck && npm run test",
-    "build": "pyinstaller main.py --name=\"Alien Invasion\" --icon=\"src/assets/icons/icon.ico\" --onefile --noconsole --add-data=\"src;src\" --version-file=\"version.txt\""
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^19.8.0",
-    "@commitlint/config-conventional": "^19.8.0",
-    "husky": "^9.1.7"
-  },
-  "engines": {
-    "node": ">=14.0.0",
-    "npm": ">=6.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/avilesxd/code-destroy-aliens.git"
-  },
-  "keywords": [
-    "game",
-    "python",
-    "pygame",
-    "aliens",
-    "space-invaders",
-    "arcade"
-  ],
-  "bugs": {
-    "url": "https://github.com/avilesxd/code-destroy-aliens/issues",
-    "email": "nacho72001@gmail.com"
-  },
-  "homepage": "https://github.com/avilesxd/code-destroy-aliens#readme"
+    "devDependencies": {
+        "@commitlint/cli": "^19.8.0",
+        "@commitlint/config-conventional": "^19.8.0",
+        "husky": "^9.1.7"
+    },
+    "engines": {
+        "node": ">=14.0.0",
+        "npm": ">=6.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/avilesxd/code-destroy-aliens.git"
+    },
+    "keywords": [
+        "game",
+        "python",
+        "pygame",
+        "aliens",
+        "space-invaders",
+        "arcade"
+    ],
+    "bugs": {
+        "url": "https://github.com/avilesxd/code-destroy-aliens/issues",
+        "email": "nacho72001@gmail.com"
+    },
+    "homepage": "https://github.com/avilesxd/code-destroy-aliens#readme"
 }

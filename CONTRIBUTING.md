@@ -48,6 +48,7 @@ git add .
 ```
 
 The commit message must follow the [Conventional Commits](https://www.conventionalcommits.org/) format:
+
 - `feat:` for new features
 - `fix:` for bug fixes
 - `docs:` for documentation changes
@@ -98,6 +99,7 @@ Go to your fork on GitHub and click "Compare & pull request".
    - Use clear and descriptive test function names
 
 3. **Running Tests**
+
    ```bash
    # Run all tests
    python -m pytest
