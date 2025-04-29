@@ -52,15 +52,9 @@ class Music:
             self.sound.set_volume(0.5)
 
             # Load sound effects
-            self.shoot_sound: SoundType = pygame.mixer.Sound(
-                resource_path("src/assets/sounds/shoot.wav")
-            )
-            self.explosion_sound: SoundType = pygame.mixer.Sound(
-                resource_path("src/assets/sounds/explosion.wav")
-            )
-            self.game_over_sound: SoundType = pygame.mixer.Sound(
-                resource_path("src/assets/sounds/game_over.wav")
-            )
+            self.shoot_sound: SoundType = pygame.mixer.Sound(resource_path("src/assets/sounds/shoot.wav"))
+            self.explosion_sound: SoundType = pygame.mixer.Sound(resource_path("src/assets/sounds/explosion.wav"))
+            self.game_over_sound: SoundType = pygame.mixer.Sound(resource_path("src/assets/sounds/game_over.wav"))
 
             # Set sound effects volume
             self.shoot_sound.set_volume(0.3)

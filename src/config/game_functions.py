@@ -19,23 +19,15 @@ from src.entities.ship import Ship
 # Global variables for stars and gradient
 stars: List[List[Union[int, float]]] = []  # List to store star positions and properties
 last_star_time: int = 0  # Timestamp of the last star creation
-cached_gradient: Optional[pygame.Surface] = (
-    None  # Cached gradient surface to avoid recreation
-)
-last_screen_size: Optional[Tuple[int, int]] = (
-    None  # Last screen dimensions used for gradient
-)
+cached_gradient: Optional[pygame.Surface] = None  # Cached gradient surface to avoid recreation
+last_screen_size: Optional[Tuple[int, int]] = None  # Last screen dimensions used for gradient
 
 # Global variables for spatial grid
-spatial_grid: Dict[tuple, Dict[str, List]] = (
-    {}
-)  # Dictionary to store objects in a spatial grid for collision detection
+spatial_grid: Dict[tuple, Dict[str, List]] = {}  # Dictionary to store objects in a spatial grid for collision detection
 grid_cell_size = 64  # Size of each grid cell in pixels for spatial partitioning
 
 
-def create_gradient_surface(
-    screen: pygame.Surface, top_color: tuple, bottom_color: tuple
-) -> pygame.Surface:
+def create_gradient_surface(screen: pygame.Surface, top_color: tuple, bottom_color: tuple) -> pygame.Surface:
     """Creates a surface with a vertical gradient from top_color to bottom_color.
 
     Args:
@@ -61,10 +53,7 @@ def create_gradient_surface(
     gradient = pygame.Surface(current_size)
     for y in range(current_size[1]):
         ratio = y / current_size[1]
-        color = [
-            int(top_color[i] + (bottom_color[i] - top_color[i]) * ratio)
-            for i in range(3)
-        ]
+        color = [int(top_color[i] + (bottom_color[i] - top_color[i]) * ratio) for i in range(3)]
         pygame.draw.line(gradient, color, (0, y), (current_size[0], y))
 
     # Cache the gradient
@@ -105,9 +94,7 @@ def update_stars(
         x_int: int = int(star_x)
         y_int: int = int(star_y)
         size_int: int = int(star_size)
-        pygame.draw.circle(
-            screen, ai_configuration.star_color, (x_int, y_int), size_int
-        )
+        pygame.draw.circle(screen, ai_configuration.star_color, (x_int, y_int), size_int)
 
 
 def verify_events_keydown(
@@ -260,9 +247,7 @@ def update_screen(
 
         # Update and draw stars if they are enabled
         if ai_configuration.use_stars:
-            update_stars(
-                screen, ai_configuration, statistics.game_paused, statistics.game_over
-            )
+            update_stars(screen, ai_configuration, statistics.game_paused, statistics.game_over)
     else:
         # Use solid background color if gradient is disabled
         screen.fill(ai_configuration.bg_color)
@@ -320,9 +305,7 @@ def update_bullets(
         if not bullet.active:
             bullets.remove(bullet)
 
-    check_bullet_alien_collisions(
-        ai_configuration, screen, statistics, scoreboard, ship, aliens, bullets
-    )
+    check_bullet_alien_collisions(ai_configuration, screen, statistics, scoreboard, ship, aliens, bullets)
 
 
 def get_grid_cells(rect: pygame.Rect) -> List[tuple[int, int]]:
@@ -469,9 +452,7 @@ def get_number_aliens_x(ai_configuration: Configuration, alien_width: int) -> in
     return number_aliens_x
 
 
-def get_number_rows(
-    ai_configuration: Configuration, ship_height: int, alien_height: int
-) -> int:
+def get_number_rows(ai_configuration: Configuration, ship_height: int, alien_height: int) -> int:
     """Calculates how many rows of aliens can fit on the screen.
 
     Args:
@@ -485,9 +466,7 @@ def get_number_rows(
     The calculation takes into account the screen height, ship height,
     and leaves space for margins.
     """
-    available_space_y = (
-        ai_configuration.screen_height - (3 * alien_height) - ship_height
-    )
+    available_space_y = ai_configuration.screen_height - (3 * alien_height) - ship_height
     number_rows = int(available_space_y / (2 * alien_height))
     return number_rows
 
@@ -616,9 +595,7 @@ def check_aliens_bottom(
     for alien in aliens.sprites():
         if alien.rect.bottom >= screen_rect.bottom:
             # Treat this the same as if the ship were hit
-            ship_hit(
-                ai_configuration, statistics, screen, scoreboard, ship, aliens, bullets
-            )
+            ship_hit(ai_configuration, statistics, screen, scoreboard, ship, aliens, bullets)
             break
 
 
@@ -637,11 +614,7 @@ def update_aliens(
 
     # Check for alien-ship collisions
     if pygame.sprite.spritecollideany(ship, aliens):
-        ship_hit(
-            ai_configuration, statistics, screen, scoreboard, ship, aliens, bullets
-        )
+        ship_hit(ai_configuration, statistics, screen, scoreboard, ship, aliens, bullets)
 
     # Check for aliens hitting the bottom of the screen
-    check_aliens_bottom(
-        ai_configuration, statistics, screen, scoreboard, ship, aliens, bullets
-    )
+    check_aliens_bottom(ai_configuration, statistics, screen, scoreboard, ship, aliens, bullets)
