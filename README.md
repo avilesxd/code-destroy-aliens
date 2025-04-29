@@ -2,11 +2,37 @@
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.png" alt="Alien Invasion Game" width="600"/>
-  
-  [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
-  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/avilesxd/code-destroy-aliens/blob/main/LICENSE)
-  [![Downloads](https://img.shields.io/github/downloads/avilesxd/code-destroy-aliens/total.svg)](https://github.com/avilesxd/code-destroy-aliens/releases)
-  [![Stars](https://img.shields.io/github/stars/avilesxd/code-destroy-aliens.svg)](https://github.com/avilesxd/code-destroy-aliens/stargazers)
+
+  <table>
+    <tbody>
+      <tr>
+        <td align="center" valign="top" width="14.28%">
+          <a href="https://www.python.org/downloads/">
+            <img src="https://img.shields.io/badge/python-3.8%2B-blue.svg" width="100px;" alt="Python"/><br />
+            <sub><b>Python</b></sub>
+          </a>
+        </td>
+        <td align="center" valign="top" width="14.28%">
+          <a href="https://github.com/avilesxd/code-destroy-aliens/blob/main/LICENSE">
+            <img src="https://img.shields.io/badge/License-MIT-yellow.svg" width="100px;" alt="License: MIT"/><br />
+            <sub><b>MIT License</b></sub>
+          </a>
+        </td>
+        <td align="center" valign="top" width="14.28%">
+          <a href="https://github.com/avilesxd/code-destroy-aliens/releases">
+            <img src="https://img.shields.io/github/downloads/avilesxd/code-destroy-aliens/total.svg" width="100px;" alt="Downloads"/><br />
+            <sub><b>Downloads</b></sub>
+          </a>
+        </td>
+        <td align="center" valign="top" width="14.28%">
+          <a href="https://github.com/avilesxd/code-destroy-aliens/stargazers">
+            <img src="https://img.shields.io/github/stars/avilesxd/code-destroy-aliens.svg" width="100px;" alt="Stars"/><br />
+            <sub><b>Stars</b></sub>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 ## 🎮 About the Game
