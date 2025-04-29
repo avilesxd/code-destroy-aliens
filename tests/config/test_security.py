@@ -27,9 +27,7 @@ def stats_with_temp_dir(temp_data_dir: str) -> Tuple[Statistics, str]:
     config = Configuration()
 
     # Patch the ensure_data_directory function to return our temp directory
-    with patch(
-        "src.config.statistics.ensure_data_directory", return_value=temp_data_dir
-    ):
+    with patch("src.config.statistics.ensure_data_directory", return_value=temp_data_dir):
         stats = Statistics(config)
         return stats, temp_data_dir
 
@@ -121,9 +119,7 @@ def test_error_handling(stats_with_temp_dir: Tuple[Statistics, str]) -> None:
         assert new_stats.high_score == 0
 
 
-@pytest.mark.skipif(
-    platform.system() != "Windows", reason="This test is Windows-specific"
-)
+@pytest.mark.skipif(platform.system() != "Windows", reason="This test is Windows-specific")
 def test_directory_hiding() -> None:
     """Test that the .data directory is hidden on Windows"""
 

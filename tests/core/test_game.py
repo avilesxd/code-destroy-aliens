@@ -30,9 +30,7 @@ def game_setup() -> Tuple[Configuration, pygame.Surface, Statistics, Language]:
     return config, screen, stats, language
 
 
-def test_game_initialization(
-    game_setup: Tuple[Configuration, pygame.Surface, Statistics, Language]
-) -> None:
+def test_game_initialization(game_setup: Tuple[Configuration, pygame.Surface, Statistics, Language]) -> None:
     """Test if the game initializes correctly with basic components."""
     config, screen, stats, language = game_setup
 
@@ -53,9 +51,7 @@ def test_game_initialization(
     assert language.get_text("play") is not None
 
 
-def test_ship_creation(
-    game_setup: Tuple[Configuration, pygame.Surface, Statistics, Language]
-) -> None:
+def test_ship_creation(game_setup: Tuple[Configuration, pygame.Surface, Statistics, Language]) -> None:
     """Test if the ship is created correctly."""
     config, screen, stats, language = game_setup
     ship = Ship(config, screen)
@@ -65,9 +61,7 @@ def test_ship_creation(
     assert ship.rect.bottom == screen.get_rect().bottom
 
 
-def test_button_creation(
-    game_setup: Tuple[Configuration, pygame.Surface, Statistics, Language]
-) -> None:
+def test_button_creation(game_setup: Tuple[Configuration, pygame.Surface, Statistics, Language]) -> None:
     """Test if the play button is created correctly."""
     config, screen, stats, language = game_setup
     button = Button(config, screen, language.get_text("play"))
@@ -77,9 +71,7 @@ def test_button_creation(
     assert button.rect.centery == screen.get_rect().centery
 
 
-def test_scoreboard_creation(
-    game_setup: Tuple[Configuration, pygame.Surface, Statistics, Language]
-) -> None:
+def test_scoreboard_creation(game_setup: Tuple[Configuration, pygame.Surface, Statistics, Language]) -> None:
     """Test if the scoreboard is created correctly."""
     config, screen, stats, language = game_setup
     scoreboard = Scoreboard(config, screen, stats, language)
@@ -89,9 +81,7 @@ def test_scoreboard_creation(
     assert scoreboard.screen == screen
 
 
-def test_controls_screen_creation(
-    game_setup: Tuple[Configuration, pygame.Surface, Statistics, Language]
-) -> None:
+def test_controls_screen_creation(game_setup: Tuple[Configuration, pygame.Surface, Statistics, Language]) -> None:
     """Test if the controls screen is created correctly."""
     config, screen, stats, language = game_setup
     controls = ControlsScreen(config, screen, language)
@@ -100,9 +90,7 @@ def test_controls_screen_creation(
     assert controls.screen == screen
 
 
-def test_music_initialization(
-    game_setup: Tuple[Configuration, pygame.Surface, Statistics, Language]
-) -> None:
+def test_music_initialization(game_setup: Tuple[Configuration, pygame.Surface, Statistics, Language]) -> None:
     """Test if the music system initializes correctly."""
     config, screen, stats, language = game_setup
     music = Music()
@@ -112,9 +100,7 @@ def test_music_initialization(
     assert 0 <= music.volume <= 1.0
 
 
-def test_level_progression(
-    game_setup: Tuple[Configuration, pygame.Surface, Statistics, Language]
-) -> None:
+def test_level_progression(game_setup: Tuple[Configuration, pygame.Surface, Statistics, Language]) -> None:
     """Test level progression and difficulty increase."""
     config, screen, stats, language = game_setup
 
@@ -127,9 +113,7 @@ def test_level_progression(
     assert config.alien_points > 0
 
 
-def test_high_score_update(
-    game_setup: Tuple[Configuration, pygame.Surface, Statistics, Language]
-) -> None:
+def test_high_score_update(game_setup: Tuple[Configuration, pygame.Surface, Statistics, Language]) -> None:
     """Test high score updating."""
     config, screen, stats, language = game_setup
 
@@ -141,9 +125,7 @@ def test_high_score_update(
     assert stats.high_score > 0
 
 
-def test_sound_effects(
-    game_setup: Tuple[Configuration, pygame.Surface, Statistics, Language]
-) -> None:
+def test_sound_effects(game_setup: Tuple[Configuration, pygame.Surface, Statistics, Language]) -> None:
     """Test sound effect system."""
     config, screen, stats, language = game_setup
     music = Music()
