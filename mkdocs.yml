@@ -1,0 +1,105 @@
+site_name: Alien Invasion Documentation
+site_description: Documentation for the Alien Invasion game
+site_author: Ignacio Avilés
+site_url: https://avilesxd.github.io/code-destroy-aliens/docs
+site_dir: website/docs
+
+theme:
+  name: material
+  locale: en
+  features:
+    - navigation.tabs
+    - navigation.expand
+    - navigation.sections
+    - navigation.top
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+repo_name: avilesxd/code-destroy-aliens
+repo_url: https://github.com/avilesxd/code-destroy-aliens
+
+nav:
+  - Home: README.md
+  - Getting Started:
+    - Quick Start: guides/getting-started/quick-start.md
+    - Installation: guides/getting-started/installation.md
+    - Configuration: guides/getting-started/configuration.md
+    - Reference:
+      - Troubleshooting: guides/getting-started/reference/troubleshooting/README.md
+  - Game Guide:
+    - Gameplay Basics: guides/gameplay/basics.md
+    - Controls: guides/gameplay/controls.md
+    - Game Modes: guides/gameplay/modes.md
+    - Scoring System: guides/gameplay/scoring.md
+    - Power-ups: guides/gameplay/powerups.md
+    - Reference:
+      - Troubleshooting: guides/gameplay/reference/troubleshooting/README.md
+  - Development:
+    - Core Concepts: guides/development/core-concepts.md
+    - Game Architecture: guides/development/architecture.md
+    - Entity System: guides/development/entity-system.md
+    - Audio System: guides/development/audio-system.md
+    - Asset Management: guides/development/assets.md
+    - Reference:
+      - Troubleshooting: guides/development/reference/troubleshooting/README.md
+  - Testing & Quality:
+    - Testing Guide: guides/testing/README.md
+    - Code Quality: guides/development/code-quality.md
+    - Performance Optimization: guides/development/performance.md
+    - Reference:
+      - Troubleshooting: guides/testing/reference/troubleshooting/README.md
+  - Contributing:
+    - Contributing Guide: guides/contributing/README.md
+    - Code of Conduct: guides/contributing/CODE_OF_CONDUCT.md
+    - Development Workflow: guides/contributing/workflow.md
+  - Legal:
+    - License: LICENSE.md
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_source: true
+            show_root_heading: true
+            show_category_heading: true
+            show_if_no_docstring: true
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - footnotes
+  - meta
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde

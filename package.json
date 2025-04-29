@@ -26,7 +26,11 @@
         "typecheck": "node scripts/run-with-env.js python -m mypy .",
         "test": "node scripts/run-with-env.js pytest",
         "verify": "npm run format && npm run lint && npm run typecheck && npm run test",
-        "build": "pyinstaller main.py --name=\"Alien Invasion\" --icon=\"src/assets/icons/icon.ico\" --onefile --noconsole --add-data=\"src;src\" --version-file=\"version.txt\""
+        "build": "pyinstaller main.py --name=\"Alien Invasion\" --icon=\"src/assets/icons/icon.ico\" --onefile --noconsole --add-data=\"src;src\" --version-file=\"version.txt\"",
+        "docs:serve": "mkdocs serve",
+        "docs:build": "mkdocs build",
+        "docs:deploy": "mkdocs gh-deploy",
+        "docs:check": "mkdocs build --strict"
     },
     "devDependencies": {
         "@commitlint/cli": "^19.8.0",
