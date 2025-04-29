@@ -25,7 +25,6 @@
         "lint": "node scripts/run-with-env.js flake8 .",
         "typecheck": "node scripts/run-with-env.js python -m mypy .",
         "test": "node scripts/run-with-env.js pytest",
-        "precommit": "npm run format && npm run lint && npm run typecheck && npm run test",
         "verify": "npm run format && npm run lint && npm run typecheck && npm run test",
         "build": "pyinstaller main.py --name=\"Alien Invasion\" --icon=\"src/assets/icons/icon.ico\" --onefile --noconsole --add-data=\"src;src\" --version-file=\"version.txt\""
     },
