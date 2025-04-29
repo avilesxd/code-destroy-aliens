@@ -14,7 +14,7 @@
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Available Scripts](#available-scripts)
-- [Building](#building)
+- [Building](#building-the-game)
 - [Core Components](#core-components)
 - [Game Architecture](#game-architecture)
 - [Development Guidelines](#development-guidelines)
@@ -24,82 +24,29 @@
 
 ## Project Structure
 
+The project follows a well-organized structure to maintain code clarity and scalability. For a detailed breakdown of the architecture and how different components interact, please refer to the [ARCHITECTURE.md](ARCHITECTURE.md) document.
+
+Here's a high-level overview of the main directories:
+
 ```
 code-destroy-aliens/
-├── .github/            # GitHub configuration
-│   ├── ISSUE_TEMPLATE/ # Issue templates
-│   │   ├── bug_report.md      # Template for bug reports
-│   │   └── feature_request.md # Template for feature requests
-│   ├── FUNDING.yml    # GitHub Sponsors configuration
-│   ├── pull_request_template.md # Pull request template
-│   └── workflows/     # GitHub Actions workflows
-│       ├── deploy.yml    # Deployment workflow
-│       ├── release.yml   # Release workflow
-│       └── tests.yml     # Testing workflow
-├── .husky/              # Git hooks configuration
-│   └── pre-commit      # Pre-commit hook script
-├── .vscode/            # VS Code configuration
-│   ├── extensions.json  # Recommended VS Code extensions
-│   ├── settings.json   # VS Code workspace settings
-│   └── tasks.json      # VS Code task configurations
-├── docs/             # Documentation
-│   ├── README.md    # Technical documentation
-│   └── images/      # Documentation images
-├── scripts/         # Utility scripts
-│   └── run-with-env.js  # Script to run Python with environment setup
-├── src/                # Source code
-│   ├── config/        # Configuration files
-│   │   ├── configuration.py  # Game settings and constants
-│   │   ├── game_functions.py # Core game logic and functions
-│   │   ├── music.py      # Audio system implementation
-│   │   ├── statistics.py # Game statistics and persistence
-│   │   └── language.py   # Internationalization system
-│   ├── core/          # Core utilities
-│   │   ├── path_utils.py # Path handling utilities
-│   │   └── __init__.py
-│   ├── entities/      # Game entities
-│   │   ├── ship.py      # Player's spaceship implementation
-│   │   ├── alien.py     # Alien behavior and types
-│   │   ├── bullet.py    # Projectile system
-│   │   ├── heart.py     # Life indicator system
-│   │   ├── scoreboard.py # Score display and UI
-│   │   ├── button.py    # UI button implementation
-│   │   ├── controls_screen.py # Controls information display
-│   │   └── __init__.py
-│   └── assets/        # Game assets
-│       ├── images/    # Image resources
-│       ├── sounds/    # Sound effects
-│       ├── music/     # Background music
-│       ├── icons/     # Application icons
-│       └── translations/ # Language files
-│           ├── en.json  # English translations
-│           └── es.json  # Spanish translations
-├── tests/             # Test files
-│   ├── __init__.py
-│   ├── test_game_functions.py  # Tests for core game functions and utilities
-│   ├── test_game.py           # Tests for main game logic and mechanics
-│   ├── test_language.py       # Tests for internationalization and language system
-│   └── test_security.py       # Tests for security features and input validation
-└── website/        # Project website
-    ├── index.html
-    └── styles.css
-├── .flake8               # Flake8 linting configuration
-├── .gitignore           # Git ignore rules
-├── CHANGELOG.md         # Project changelog
-├── CODE_OF_CONDUCT.md   # Code of conduct for the project
-├── commitlint.config.js  # Commit message linting configuration
-├── CONTRIBUTING.md      # Contributing guidelines
-├── LICENSE             # Project license
-├── main.py                 # Main game entry point
-├── mypy.ini             # MyPy type checking configuration
-├── package.json          # Node.js dependencies
-├── pyproject.toml        # Black and isort configuration
-├── pytest.ini            # Pytest configuration
-├── README.md             # Main project documentation
-├── requirements.txt        # Python dependencies
-├── setup.py               # Project setup configuration
-└── version.txt          # Version information
+├── src/                    # Source code directory
+│   ├── core/              # Core game engine components
+│   ├── entities/          # Game entities and sprites
+│   ├── states/            # Game state management
+│   ├── utils/             # Utility functions and helpers
+│   └── assets/            # Game assets (images, sounds, etc.)
+├── tests/                 # Test files
+├── docs/                  # Documentation
+│   ├── images/           # Documentation images
+│   ├── ARCHITECTURE.md   # Detailed architecture documentation
+│   └── README.md         # This file
+├── requirements.txt      # Python dependencies
+├── package.json         # Node.js dependencies and scripts
+└── main.py             # Game entry point
 ```
+
+For a comprehensive understanding of the project's architecture, including detailed explanations of each component and their interactions, please visit [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ## Requirements
 
