@@ -15,9 +15,7 @@ class Bullet(Sprite):
     _max_pool_size: int = 100  # Maximum number of bullets to keep in the pool
 
     @classmethod
-    def get_bullet(
-        cls, ai_configuration: Configuration, screen: pygame.Surface, ship: Ship
-    ) -> "Bullet":
+    def get_bullet(cls, ai_configuration: Configuration, screen: pygame.Surface, ship: Ship) -> "Bullet":
         """Get a bullet from the pool or create a new one if pool is empty"""
         if cls._bullet_pool:
             bullet = cls._bullet_pool.pop()
@@ -31,17 +29,13 @@ class Bullet(Sprite):
         if len(cls._bullet_pool) < cls._max_pool_size:
             cls._bullet_pool.append(bullet)
 
-    def __init__(
-        self, ai_configuration: Configuration, screen: pygame.Surface, ship: Ship
-    ) -> None:
+    def __init__(self, ai_configuration: Configuration, screen: pygame.Surface, ship: Ship) -> None:
         """Create a bullet object at the ship's current position"""
         super().__init__()
         self.screen = screen
 
         # Create a bullet rect at (0, 0) and then set correct position
-        self.rect = pygame.Rect(
-            0, 0, ai_configuration.bullet_width, ai_configuration.bullet_height
-        )
+        self.rect = pygame.Rect(0, 0, ai_configuration.bullet_width, ai_configuration.bullet_height)
         self.rect.centerx = ship.rect.centerx
         self.rect.top = ship.rect.top
 
@@ -54,9 +48,7 @@ class Bullet(Sprite):
         # Flag to indicate if bullet is active
         self.active = True
 
-    def reset(
-        self, ai_configuration: Configuration, screen: pygame.Surface, ship: Ship
-    ) -> None:
+    def reset(self, ai_configuration: Configuration, screen: pygame.Surface, ship: Ship) -> None:
         """Reset bullet to initial state"""
         self.screen = screen
         self.rect.centerx = ship.rect.centerx

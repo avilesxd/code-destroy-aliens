@@ -24,9 +24,7 @@ class Button:
         msg_image_rect (pygame.Rect): Rectangle for the text surface
     """
 
-    def __init__(
-        self, ai_configuration: Configuration, screen: pygame.Surface, msg: str
-    ) -> None:
+    def __init__(self, ai_configuration: Configuration, screen: pygame.Surface, msg: str) -> None:
         """Initialize button attributes.
 
         Args:

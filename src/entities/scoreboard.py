@@ -45,9 +45,7 @@ class Scoreboard:
         text_surface = self.font.render(score_str, True, self.text_color)
 
         # Create background surface
-        bg_surface = pygame.Surface(
-            (text_surface.get_width() + 20, text_surface.get_height() + 10)
-        )
+        bg_surface = pygame.Surface((text_surface.get_width() + 20, text_surface.get_height() + 10))
         bg_surface.fill((0, 0, 0))  # Black background
         bg_surface.set_alpha(180)  # Semi-transparent
 
@@ -68,9 +66,7 @@ class Scoreboard:
         text_surface = self.font.render(high_score_str, True, self.text_color)
 
         # Create background surface
-        bg_surface = pygame.Surface(
-            (text_surface.get_width() + 20, text_surface.get_height() + 10)
-        )
+        bg_surface = pygame.Surface((text_surface.get_width() + 20, text_surface.get_height() + 10))
         bg_surface.fill((0, 0, 0))  # Black background
         bg_surface.set_alpha(180)  # Semi-transparent
 
@@ -90,9 +86,7 @@ class Scoreboard:
         text_surface = self.font.render(level_str, True, self.text_color)
 
         # Create background surface
-        bg_surface = pygame.Surface(
-            (text_surface.get_width() + 20, text_surface.get_height() + 10)
-        )
+        bg_surface = pygame.Surface((text_surface.get_width() + 20, text_surface.get_height() + 10))
         bg_surface.fill((0, 0, 0))  # Black background
         bg_surface.set_alpha(180)  # Semi-transparent
 
@@ -138,18 +132,14 @@ class Scoreboard:
 
             # Instruction text for resume
             instruction_font = pygame.font.SysFont(None, 36)
-            instruction_image = instruction_font.render(
-                self.language.get_text("press_p"), True, (255, 255, 255)
-            )
+            instruction_image = instruction_font.render(self.language.get_text("press_p"), True, (255, 255, 255))
             instruction_rect = instruction_image.get_rect()
             instruction_rect.centerx = self.screen_rect.centerx
             instruction_rect.centery = self.screen_rect.centery + 20
             self.screen.blit(instruction_image, instruction_rect)
 
             # Instruction text for quit
-            quit_image = instruction_font.render(
-                self.language.get_text("press_q"), True, (255, 255, 255)
-            )
+            quit_image = instruction_font.render(self.language.get_text("press_q"), True, (255, 255, 255))
             quit_rect = quit_image.get_rect()
             quit_rect.centerx = self.screen_rect.centerx
             quit_rect.centery = self.screen_rect.centery + 60

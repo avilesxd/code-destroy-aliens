@@ -27,9 +27,7 @@ class ControlsScreen:
         self.text_color: Tuple[int, int, int] = (255, 255, 255)  # White
 
         # Create the title
-        self.title = self.title_font.render(
-            self.language.get_text("game_controls"), True, self.title_color
-        )
+        self.title = self.title_font.render(self.language.get_text("game_controls"), True, self.title_color)
         self.title_rect = self.title.get_rect()
         self.title_rect.centerx = self.screen_rect.centerx
         self.title_rect.top = 50
@@ -44,17 +42,13 @@ class ControlsScreen:
 
         # Create the continue text
         self.continue_font = pygame.font.SysFont(None, 48)
-        self.continue_text = self.continue_font.render(
-            self.language.get_text("press_space"), True, self.text_color
-        )
+        self.continue_text = self.continue_font.render(self.language.get_text("press_space"), True, self.text_color)
         self.continue_rect = self.continue_text.get_rect()
         self.continue_rect.centerx = self.screen_rect.centerx
         self.continue_rect.bottom = self.screen_rect.bottom - 50
 
         # Create a semi-transparent surface for the background
-        self.background = pygame.Surface(
-            (self.screen_rect.width, self.screen_rect.height), pygame.SRCALPHA
-        )
+        self.background = pygame.Surface((self.screen_rect.width, self.screen_rect.height), pygame.SRCALPHA)
         self.background.fill((0, 0, 0, 200))  # Black with 78% opacity
 
     def draw_controls(self) -> None:
@@ -71,18 +65,14 @@ class ControlsScreen:
             # Draw the key
             key_text = self.text_font.render(key, True, self.text_color)
             key_rect = key_text.get_rect()
-            key_rect.right = (
-                self.screen_rect.centerx - 50
-            )  # Align right side of key text
+            key_rect.right = self.screen_rect.centerx - 50  # Align right side of key text
             key_rect.top = y_position
             self.screen.blit(key_text, key_rect)
 
             # Draw the action
             action_text = self.text_font.render(action, True, self.text_color)
             action_rect = action_text.get_rect()
-            action_rect.left = (
-                self.screen_rect.centerx + 50
-            )  # Align left side of action text
+            action_rect.left = self.screen_rect.centerx + 50  # Align left side of action text
             action_rect.top = y_position
             self.screen.blit(action_text, action_rect)
 
