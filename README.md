@@ -61,7 +61,7 @@ Interested in contributing? Check out our:
 - [Technical Documentation](docs/README.md)
 - [Contributing Guidelines](CONTRIBUTING.md)
 - [Code of Conduct](CODE_OF_CONDUCT.md)
-- [License](LICENSE)
+- [License](LICENSE.md)
 
 ## 👥 Meet the Team
 
