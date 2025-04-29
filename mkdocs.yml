@@ -7,11 +7,14 @@ site_dir: website/docs
 theme:
   name: material
   locale: en
+  logo: images/icon.png
   features:
     - navigation.tabs
     - navigation.expand
     - navigation.sections
     - navigation.top
+    - navigation.footer
+
   palette:
     - scheme: default
       primary: indigo
@@ -103,3 +106,20 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+
+extra:
+  generator: false
+  social:
+    - icon: material/github
+      link: https://github.com/avilesxd/
+    - icon: material/linkedin
+      link: https://www.linkedin.com/in/ignacio-nicolás-avilés-cardenasso/
+    - icon: material/instagram
+      link: https://www.instagram.com/avilesxd/
+    - icon: material/facebook
+      link: https://www.facebook.com/ignacio.avilescardenasso/
+    - icon: material/youtube
+      link: https://www.youtube.com/channel/UCYPsgamO7XeWOrXriOpJBqw
+
+copyright: Copyright &copy; 2025 Ignacio Avilés
+
