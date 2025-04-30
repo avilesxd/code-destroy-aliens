@@ -77,25 +77,23 @@
 
 ## 🚀 Quick Start
 
-1. **Download** the latest release from our [official website][official website_url]
+1. **Download** the latest release from our [official website][official_website_url]
 2. **Launch** and start defending Earth!
 
 ## 🛠️ For Developers
 
-Interested in contributing? Check out our:
+Interested in collaborating? Visit our website with all the necessary documentation at the following link.
 
-- [Technical Documentation](docs/README.md)
-- [Contributing Guidelines](CONTRIBUTING.md)
-- [Code of Conduct](CODE_OF_CONDUCT.md)
-- [License](LICENSE.md)
+[Documentation on the alien invasion][official_website_docs_url]
 
 ## 👥 Meet the Team
 
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://avilesxd.vercel.app/"><img src="https://avatars.githubusercontent.com/avilesxd" width="100px;" alt="Ignacio Avilés"/><br /><sub><b>Ignacio Avilés</b></sub></a></td>
-      <td align="center" valign="top" width="14.28%"><a href="http://github.com/JGalaz7/"><img src="https://avatars.githubusercontent.com/JGalaz7" width="100px;" alt="Juan Galaz"/><br /><sub><b>Juan Galaz</b></sub></a></td>
+    <td align="center" valign="top" width="14.28%"><a href="http://github.com/ESCOBAR741/"><img src="https://avatars.githubusercontent.com/ESCOBAR741" width="100px;" alt="Denilson Escobar"/><br /><sub><b>Denilson Escobar</b></sub></a></td>
+    <td align="center" valign="top" width="14.28%"><a href="https://avilesxd.vercel.app/"><img src="https://avatars.githubusercontent.com/avilesxd" width="100px;" alt="Ignacio Avilés"/><br /><sub><b>Ignacio Avilés</b></sub></a></td>
+    <td align="center" valign="top" width="14.28%"><a href="http://github.com/JGalaz7/"><img src="https://avatars.githubusercontent.com/JGalaz7" width="100px;" alt="Juan Galaz"/><br /><sub><b>Juan Galaz</b></sub></a></td>
     </tr>
   </tbody>
 </table>
@@ -122,7 +120,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) f
 </div>
 
 <!-- GAME -->
-[official website_url]: https://avilesxd.github.io/code-destroy-aliens/
+[official_website_url]: https://avilesxd.github.io/code-destroy-aliens/
+[official_website_docs_url]: https://avilesxd.github.io/code-destroy-aliens/docs/
 
 <!-- SOCIAL MEDIA -->
 [github_account]: http://github.com/avilesxd/
