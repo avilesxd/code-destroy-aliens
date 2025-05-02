@@ -28,7 +28,7 @@ def collect_data_files(directory: str) -> List[Tuple[str, List[str]]]:
     return paths
 
 
-def main() -> None:
+if __name__ == "__main__":
     # Ensure we're running on macOS
     if sys.platform != "darwin":
         print("This setup script is for macOS only.")
@@ -92,7 +92,3 @@ def main() -> None:
         options={"py2app": OPTIONS},
         setup_requires=["py2app"],
     )
-
-
-if __name__ == "__main__":
-    main()
