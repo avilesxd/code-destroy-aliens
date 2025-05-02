@@ -54,8 +54,34 @@ jobs:
             fi
             echo "windows_run_id=$(echo $WINDOWS_RUN | jq -r '.id')" >> $GITHUB_OUTPUT
           else
-            echo "macos_run_id=${{ github.event.workflow_run.id }}" >> $GITHUB_OUTPUT
-            echo "windows_run_id=${{ github.event.workflow_run.id }}" >> $GITHUB_OUTPUT
+            # When triggered by a workflow run, get the workflow name and run ID
+            WORKFLOW_NAME="${{ github.event.workflow_run.name }}"
+            RUN_ID="${{ github.event.workflow_run.id }}"
+            
+            if [ "$WORKFLOW_NAME" == "Build macOS" ]; then
+              echo "macos_run_id=$RUN_ID" >> $GITHUB_OUTPUT
+              # Get the latest successful Windows build
+              WINDOWS_WORKFLOW_ID=$(gh api repos/${{ github.repository }}/actions/workflows --jq '.workflows[] | select(.name=="Build Windows") | .id')
+              WINDOWS_RUN=$(gh api repos/${{ github.repository }}/actions/workflows/$WINDOWS_WORKFLOW_ID/runs --jq '.workflow_runs[0] | select(.conclusion=="success")')
+              if [ -z "$WINDOWS_RUN" ]; then
+                echo "No successful Windows build found"
+                exit 1
+              fi
+              echo "windows_run_id=$(echo $WINDOWS_RUN | jq -r '.id')" >> $GITHUB_OUTPUT
+            elif [ "$WORKFLOW_NAME" == "Build Windows" ]; then
+              echo "windows_run_id=$RUN_ID" >> $GITHUB_OUTPUT
+              # Get the latest successful macOS build
+              MACOS_WORKFLOW_ID=$(gh api repos/${{ github.repository }}/actions/workflows --jq '.workflows[] | select(.name=="Build macOS") | .id')
+              MACOS_RUN=$(gh api repos/${{ github.repository }}/actions/workflows/$MACOS_WORKFLOW_ID/runs --jq '.workflow_runs[0] | select(.conclusion=="success")')
+              if [ -z "$MACOS_RUN" ]; then
+                echo "No successful macOS build found"
+                exit 1
+              fi
+              echo "macos_run_id=$(echo $MACOS_RUN | jq -r '.id')" >> $GITHUB_OUTPUT
+            else
+              echo "Unknown workflow name: $WORKFLOW_NAME"
+              exit 1
+            fi
           fi
 
       - name: Download macOS artifact

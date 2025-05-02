@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.1.0] - 2024-05-01
+## [v1.1.0] - 2024-05-01
 
 ### Added
 - Enhanced macOS compatibility and build process
