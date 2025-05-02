@@ -1,3 +1,7 @@
+"""
+Path utilities for handling resource paths in both development and packaged environments.
+"""
+
 import json
 import logging
 import os
@@ -21,11 +25,15 @@ def get_app_directory() -> str:
         '/path/to/application'
     """
     if getattr(sys, "frozen", False):
-        # If the application is run as a bundle (compiled)
-        return os.path.dirname(sys.executable)
-    else:
-        # If the application is run from a Python interpreter
-        return os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+        if sys.platform == "darwin":
+            if hasattr(sys, "_MEIPASS"):
+                # Running from a macOS .app bundle with py2app in non-alias mode
+                return os.path.dirname(os.path.dirname(os.path.dirname(sys.executable)))
+            else:
+                # Running from a macOS .app bundle in alias mode
+                return os.path.abspath(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+    # If running from source
+    return os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 
 def ensure_data_directory() -> str:
@@ -48,8 +56,12 @@ def ensure_data_directory() -> str:
             appdata = os.path.expanduser("~\\AppData\\Local")
         data_dir = os.path.join(appdata, "Alien Invasion")
     else:  # Unix-like systems (Linux, macOS)
-        # Use Alien Invasion in the application directory for Unix-like systems
-        data_dir = os.path.join(get_app_directory(), "Alien Invasion")
+        if sys.platform == "darwin" and getattr(sys, "frozen", False):
+            # macOS .app bundle
+            data_dir = os.path.expanduser("~/Library/Application Support/Alien Invasion")
+        else:
+            # Other Unix-like systems
+            data_dir = os.path.join(get_app_directory(), "Alien Invasion")
 
     try:
         os.makedirs(data_dir, exist_ok=True)
@@ -74,13 +86,27 @@ def resource_path(relative_path: Union[str, Path]) -> str:
         '/path/to/application/assets/image.png'
     """
     try:
-        # For when the packed file is executed
-        base_path = getattr(sys, "_MEIPASS", os.path.abspath("."))
-    except Exception:
-        # For when the file is executed directly from source code
-        base_path = os.path.abspath(".")
+        if getattr(sys, "frozen", False):
+            if sys.platform == "darwin":
+                if hasattr(sys, "_MEIPASS"):
+                    # Running from a macOS .app bundle with py2app in non-alias mode
+                    base_path = sys._MEIPASS
+                else:
+                    # Running from a macOS .app bundle in alias mode
+                    base_path = os.path.abspath(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+            else:
+                # Running from a regular frozen executable
+                base_path = sys._MEIPASS
+        else:
+            # Running from source
+            base_path = os.path.abspath(".")
 
-    return os.path.join(base_path, str(relative_path))
+        path = os.path.normpath(os.path.join(base_path, str(relative_path)))
+        logger.info(f"Resolved resource path: {path}")
+        return path
+    except Exception as e:
+        logger.error(f"Error resolving resource path for {relative_path}: {e}")
+        return os.path.normpath(os.path.join(os.path.abspath("."), str(relative_path)))
 
 
 def load_json_file(file_path: Union[str, Path], default_value: Any = None) -> Any:
@@ -124,6 +150,7 @@ def save_json_file(file_path: Union[str, Path], data: Any, indent: int = 4) -> b
         True
     """
     try:
+        os.makedirs(os.path.dirname(os.path.abspath(file_path)), exist_ok=True)
         with open(file_path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=indent)
         return True

@@ -21,21 +21,34 @@ wheels/
 *.egg
 
 # Virtual Environment
-venv/
 env/
+venv/
 ENV/
-.venv/
-.env/
 
 # IDE
+.idea/
+.vscode/
 *.swp
 *.swo
-*~
 
-# Testing
-.pytest_cache/
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Project specific
+*.log
 .coverage
 htmlcov/
+.pytest_cache/
+
+# Testing
 .tox/
 
 # Distribution
@@ -118,7 +131,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # macOS
-.DS_Store
 .AppleDouble
 .LSOverride
 ._*
