@@ -15,14 +15,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Download macOS artifact
-        uses: dawidd6/action-download-artifact@v2
+        uses: dawidd6/action-download-artifact@v6
         with:
           workflow: build-macos.yml
           name: macos-build
           path: macos-build
 
       - name: Download Windows artifact
-        uses: dawidd6/action-download-artifact@v2
+        uses: dawidd6/action-download-artifact@v6
         with:
           workflow: build-windows.yml
           name: windows-build
