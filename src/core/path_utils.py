@@ -90,7 +90,7 @@ def resource_path(relative_path: Union[str, Path]) -> str:
             if sys.platform == "darwin":
                 if hasattr(sys, "_MEIPASS"):
                     # Running from a macOS .app bundle with py2app in non-alias mode
-                    base_path = sys._MEIPASS
+                    base_path = sys._MEIPASS  # type: ignore[attr-defined]
                 else:
                     # Running from a macOS .app bundle in alias mode
                     base_path = os.path.abspath(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
