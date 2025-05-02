@@ -19,11 +19,11 @@ VSVersionInfo(
         [
           StringStruct('CompanyName', 'Code Wave Innovation'),
           StringStruct('FileDescription', 'Space Invader 2D Game'),
-          StringStruct('FileVersion', '1.0.0'),
+          StringStruct('FileVersion', '1.1.0'),
           StringStruct('InternalName', 'Alien-Invasion'),
           StringStruct('OriginalFilename', 'Aliens Invasion.exe'),
           StringStruct('ProductName', 'Aliens Invasion'),
-          StringStruct('ProductVersion', '1.0.0'),
+          StringStruct('ProductVersion', '1.1.0'),
           StringStruct('LegalCopyright', '© 2025 Ignacio Avilés')
         ])
       ]),
