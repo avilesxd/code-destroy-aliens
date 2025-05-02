@@ -13,20 +13,10 @@ from typing import List, Tuple
 
 from setuptools import setup
 
-# Ensure we're running on macOS
-if sys.platform != "darwin":
-    print("This setup script is for macOS only.")
-    sys.exit(1)
-
 APP = ["main.py"]
 VERSION_FILE = "version_macOS.txt"
 
-# Load version from file
-with open(VERSION_FILE, "r") as f:
-    version = f.read().strip()
 
-
-# Collect all resource files
 def collect_data_files(directory: str) -> List[Tuple[str, List[str]]]:
     paths = []
     for root, dirs, files in os.walk(directory):
@@ -38,57 +28,71 @@ def collect_data_files(directory: str) -> List[Tuple[str, List[str]]]:
     return paths
 
 
-# Collect all resources
-data_files = collect_data_files("src/assets")
+def main() -> None:
+    # Ensure we're running on macOS
+    if sys.platform != "darwin":
+        print("This setup script is for macOS only.")
+        sys.exit(1)
 
-OPTIONS = {
-    "argv_emulation": False,
-    "iconfile": "src/assets/icons/icon-apple.icns",
-    "plist": {
-        "CFBundleName": "Alien Invasion",
-        "CFBundleDisplayName": "Alien Invasion",
-        "CFBundleGetInfoString": "Alien Invasion Game",
-        "CFBundleIdentifier": "com.codewaveinnovation.alieninvasion",
-        "CFBundleVersion": version,
-        "CFBundleShortVersionString": version,
-        "LSMinimumSystemVersion": "10.13.0",
-        "NSHighResolutionCapable": True,
-        "NSHumanReadableCopyright": "© 2025 Ignacio Avilés. All rights reserved.",
-    },
-    "packages": ["pygame", "src"],
-    "includes": [
-        "src.config",
-        "src.config.game_functions",
-        "src.config.configuration",
-        "src.config.language",
-        "src.config.music",
-        "src.config.statistics",
-        "src.core",
-        "src.core.path_utils",
-        "src.entities",
-        "src.entities.alien",
-        "src.entities.bullet",
-        "src.entities.button",
-        "src.entities.controls_screen",
-        "src.entities.heart",
-        "src.entities.scoreboard",
-        "src.entities.ship",
-    ],
-    "resources": ["src/assets"],
-    "site_packages": True,
-    "strip": True,
-    "optimize": 2,
-    "arch": "arm64",
-    "dist_dir": "dist",
-    "bdist_base": "build",
-    "alias": True,
-    "semi_standalone": True,
-}
+    # Load version from file
+    with open(VERSION_FILE, "r") as f:
+        version = f.read().strip()
 
-setup(
-    name="Alien Invasion",
-    app=APP,
-    data_files=data_files,
-    options={"py2app": OPTIONS},
-    setup_requires=["py2app"],
-)
+    # Collect all resources
+    data_files = collect_data_files("src/assets")
+
+    OPTIONS = {
+        "argv_emulation": False,
+        "iconfile": "src/assets/icons/icon-apple.icns",
+        "plist": {
+            "CFBundleName": "Alien Invasion",
+            "CFBundleDisplayName": "Alien Invasion",
+            "CFBundleGetInfoString": "Alien Invasion Game",
+            "CFBundleIdentifier": "com.codewaveinnovation.alieninvasion",
+            "CFBundleVersion": version,
+            "CFBundleShortVersionString": version,
+            "LSMinimumSystemVersion": "10.13.0",
+            "NSHighResolutionCapable": True,
+            "NSHumanReadableCopyright": "© 2025 Ignacio Avilés. All rights reserved.",
+        },
+        "packages": ["pygame", "src"],
+        "includes": [
+            "src.config",
+            "src.config.game_functions",
+            "src.config.configuration",
+            "src.config.language",
+            "src.config.music",
+            "src.config.statistics",
+            "src.core",
+            "src.core.path_utils",
+            "src.entities",
+            "src.entities.alien",
+            "src.entities.bullet",
+            "src.entities.button",
+            "src.entities.controls_screen",
+            "src.entities.heart",
+            "src.entities.scoreboard",
+            "src.entities.ship",
+        ],
+        "resources": ["src/assets"],
+        "site_packages": True,
+        "strip": True,
+        "optimize": 2,
+        "arch": "arm64",
+        "dist_dir": "dist",
+        "bdist_base": "build",
+        "alias": True,
+        "semi_standalone": True,
+    }
+
+    setup(
+        name="Alien Invasion",
+        app=APP,
+        data_files=data_files,
+        options={"py2app": OPTIONS},
+        setup_requires=["py2app"],
+    )
+
+
+if __name__ == "__main__":
+    main()
