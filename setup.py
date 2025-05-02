@@ -1,97 +1,43 @@
 """
-This is a script to compile the game for MacOS using py2app.
+Setup script to compile the Alien Invasion game for macOS using py2app.
 
 Usage:
-    python setup.py py2app
-"""
+    python3 setup.py py2app
 
-import os
-from typing import cast
+This will generate a macOS .app bundle inside the 'dist' directory.
+"""
 
 from setuptools import setup
 
-# Read version from version.txt
-with open("version.txt", "r") as f:
+APP = ["main.py"]
+VERSION_FILE = "version_macOS.txt"
+
+# Load version from file
+with open(VERSION_FILE, "r") as f:
     version = f.read().strip()
 
-APP = ["main.py"]
-
-# Get the list of image files
-image_files = []
-for file in os.listdir("src/assets/images"):
-    if file.endswith((".png", ".bmp")):
-        image_files.append(os.path.join("src/assets/images", file))
-
-# Get the list of music files
-music_files = []
-for file in os.listdir("src/assets/music"):
-    if file.endswith((".mp3", ".wav", ".ogg", ".mid", ".midi")):
-        music_files.append(os.path.join("src/assets/music", file))
-
-# Get the list of sound effect files
-sound_files = []
-sound_dir = "src/assets/sounds"
-if os.path.exists(sound_dir):
-    for file in os.listdir(sound_dir):
-        if file.endswith((".mp3", ".wav", ".ogg")):
-            sound_files.append(os.path.join(sound_dir, file))
-
-# Get the list of icon files
-icon_files = []
-for file in os.listdir("src/assets/icons"):
-    if file.endswith((".ico", ".png", ".icns")):
-        icon_files.append(os.path.join("src/assets/icons", file))
-
-# Create .data directory if it doesn't exist
-data_dir = ".data"
-if not os.path.exists(data_dir):
-    os.makedirs(data_dir)
-
-DATA_FILES = [
-    ("src/assets/images", image_files),
-    ("src/assets/music", music_files),
-    ("src/assets/sounds", sound_files),
-    ("src/assets/icons", icon_files),
-    (".data", cast(list[str], [])),  # Include the .data directory
-]
-
-# Read requirements from requirements.txt
-with open("requirements.txt", "r") as f:
-    requirements = [line.strip() for line in f if line.strip() and not line.startswith("#")]
+# Project Requirements
+with open("requirements.txt") as f:
+    requirements = f.read().splitlines()
 
 OPTIONS = {
     "argv_emulation": True,
-    "includes": [
-        "pygame",
-        "random",
-        "math",
-        "json",
-        "os",
-        "sys",
-        "time",
-        "datetime",
-        "typing",
-        "pathlib",
-    ],
+    "iconfile": "assets/icons/icon-apple.icns",
     "packages": [
-        "src.config",
-        "src.entities",
-        "src.core",
-        "src.utils",
-        "src.assets",
+        "pygame",
     ],
-    "iconfile": "src/assets/icons/icon-apple.icns",
+    "resources": [
+        "assets/icons",
+        "assets/images",
+        "assets/music",
+        "assets/sounds",
+        "assets/translations",
+    ],
     "plist": {
         "CFBundleName": "Alien Invasion",
-        "CFBundleDisplayName": "Alien Invasion",
-        "CFBundleIdentifier": "com.CodeWaveInnovation.AlienInvasion",
-        "CFBundleVersion": version,
         "CFBundleShortVersionString": version,
-        "CFBundlePackageType": "APPL",
-        "CFBundleSignature": "????",
-        "LSMinimumSystemVersion": "10.10.0",
-        "NSHighResolutionCapable": True,
-        "NSRequiresAquaSystemAppearance": False,
+        "CFBundleVersion": version,
+        "CFBundleIdentifier": "com.codewaveinnovation.alieninvasion",
     },
 }
 
@@ -114,7 +60,6 @@ setup(
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
     ],
-    data_files=DATA_FILES,
     options={"py2app": OPTIONS},
     setup_requires=["py2app"],
     install_requires=requirements,
