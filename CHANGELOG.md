@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0] - 2024-05-01
+
+### Added
+- Enhanced macOS compatibility and build process
+- Improved documentation and build guides
+- Added comprehensive type checking configuration
+
+### Changed
+- Refactored code structure for improved readability
+- Updated project configuration for better maintainability
+- Enhanced resource path handling
+
+### Fixed
+- Various bug fixes and improvements
+- Type checking issues in setup.py
+
 ## [1.0.0] - 2024-04-17
 
 ### Added

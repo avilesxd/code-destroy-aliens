@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.13'
+          python-version: '3.9'
           cache: 'pip'
 
       - name: Install dependencies
@@ -24,6 +24,10 @@ jobs:
           python3 -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install py2app
+
+      - name: Run tests
+        run: |
+          python3 -m pytest tests/
 
       - name: Build application
         run: |
@@ -74,10 +78,6 @@ jobs:
           fi
           
           echo "App bundle verification completed successfully!"
-
-      - name: Run tests
-        run: |
-          python3 -m pytest tests/
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4

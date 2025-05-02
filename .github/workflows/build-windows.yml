@@ -1,17 +1,14 @@
 name: Build Windows
 
 on:
-  workflow_run:
-    workflows: ["Run Tests"]
-    branches: [main]
-    types:
-      - completed
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: windows-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -47,6 +44,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Run tests
+      run: |
+        python -m pytest tests/
+
     - name: Generate spec file
       run: pyi-makespec main.py --name="Alien Invasion" --icon="src/assets/icons/icon.ico" --onefile --noconsole --add-data="src;src" --version-file="version.txt"
 
@@ -60,37 +61,21 @@ jobs:
           exit 1
         }
 
-    - name: Get version
-      id: get_version
-      run: |
-        $version = (Get-Content version.txt | Select-String -Pattern "filevers=\((\d+),(\d+),(\d+),(\d+)\)" | ForEach-Object { $_.Matches.Groups[1].Value + "." + $_.Matches.Groups[2].Value + "." + $_.Matches.Groups[3].Value })
-        echo "version=$version" >> $env:GITHUB_OUTPUT
-
-    - name: Generate changelog
-      id: changelog
-      run: |
-        $lastTag = git describe --tags --abbrev=0 2>$null
-        if ($lastTag) {
-          $changes = git log --pretty=format:"- %s" $lastTag..HEAD
-        } else {
-          $changes = git log --pretty=format:"- %s" -n 10
-        }
-        echo "changes<<EOF" >> $env:GITHUB_OUTPUT
-        echo "$changes" >> $env:GITHUB_OUTPUT
-        echo "EOF" >> $env:GITHUB_OUTPUT
-
-    - name: Create Release
-      uses: softprops/action-gh-release@v1
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
       with:
-        files: dist/Alien Invasion.exe
-        tag_name: v${{ steps.get_version.outputs.version }}
-        name: Release v${{ steps.get_version.outputs.version }}
-        body: |
-          New release of Alien Invasion game
-          
-          ## Version: ${{ steps.get_version.outputs.version }}
-          
-          ### Changes in this release:
-          ${{ steps.changelog.outputs.changes }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+        name: windows-build
+        path: dist/Alien Invasion.exe
+        if-no-files-found: error
+
+    - name: Notify on success
+      if: success()
+      run: |
+        echo "Build completed successfully!"
+        echo "Executable: dist/Alien Invasion.exe"
+
+    - name: Notify on failure
+      if: failure()
+      run: |
+        echo "Build failed!"
+        echo "Check the logs for more information." 
