@@ -5,11 +5,17 @@ on:
     workflows: ["Build macOS", "Build Windows"]
     types:
       - completed
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release (e.g., 1.1.0)'
+        required: true
+        type: string
 
 jobs:
   create-release:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -46,7 +52,7 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          name: Release ${{ github.ref_name }}
+          name: Release ${{ github.event.inputs.version || github.ref_name }}
           draft: false
           prerelease: false
           files: |
