@@ -2,7 +2,7 @@ import base64
 import hashlib
 import json
 import os
-from typing import Any, cast
+from typing import Any, Union, cast
 
 from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import hashes
@@ -83,7 +83,7 @@ class Statistics:
         return encrypted_data, data_hash
 
     @classmethod
-    def _decrypt_data(cls, encrypted_data: bytes, stored_hash: str) -> dict | None:
+    def _decrypt_data(cls, encrypted_data: bytes, stored_hash: str) -> Union[dict, None]:
         """Decrypt JSON data and verify its integrity.
 
         Args:
