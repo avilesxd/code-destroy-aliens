@@ -96,7 +96,7 @@ def resource_path(relative_path: Union[str, Path]) -> str:
                     base_path = os.path.abspath(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
             else:
                 # Running from a regular frozen executable
-                base_path = sys._MEIPASS
+                base_path = sys._MEIPASS  # type: ignore[attr-defined]
         else:
             # Running from source
             base_path = os.path.abspath(".")
