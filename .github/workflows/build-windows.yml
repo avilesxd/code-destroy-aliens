@@ -1,0 +1,96 @@
+name: Build Windows
+
+on:
+  workflow_run:
+    workflows: ["Run Tests"]
+    branches: [main]
+    types:
+      - completed
+
+jobs:
+  build:
+    runs-on: windows-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Cache pip packages
+      uses: actions/cache@v3
+      with:
+        path: ~\AppData\Local\pip\Cache
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
+    - name: Cache PyInstaller
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~\AppData\Local\pyinstaller
+          build
+          __pycache__
+        key: ${{ runner.os }}-pyinstaller-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pyinstaller-
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Generate spec file
+      run: pyi-makespec main.py --name="Alien Invasion" --icon="src/assets/icons/icon.ico" --onefile --noconsole --add-data="src;src" --version-file="version.txt"
+
+    - name: Build the executable
+      run: pyinstaller '.\Alien Invasion.spec'
+
+    - name: Verify executable exists
+      run: |
+        if (!(Test-Path "dist\Alien Invasion.exe")) {
+          Write-Error "Executable was not created successfully"
+          exit 1
+        }
+
+    - name: Get version
+      id: get_version
+      run: |
+        $version = (Get-Content version.txt | Select-String -Pattern "filevers=\((\d+),(\d+),(\d+),(\d+)\)" | ForEach-Object { $_.Matches.Groups[1].Value + "." + $_.Matches.Groups[2].Value + "." + $_.Matches.Groups[3].Value })
+        echo "version=$version" >> $env:GITHUB_OUTPUT
+
+    - name: Generate changelog
+      id: changelog
+      run: |
+        $lastTag = git describe --tags --abbrev=0 2>$null
+        if ($lastTag) {
+          $changes = git log --pretty=format:"- %s" $lastTag..HEAD
+        } else {
+          $changes = git log --pretty=format:"- %s" -n 10
+        }
+        echo "changes<<EOF" >> $env:GITHUB_OUTPUT
+        echo "$changes" >> $env:GITHUB_OUTPUT
+        echo "EOF" >> $env:GITHUB_OUTPUT
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: dist/Alien Invasion.exe
+        tag_name: v${{ steps.get_version.outputs.version }}
+        name: Release v${{ steps.get_version.outputs.version }}
+        body: |
+          New release of Alien Invasion game
+          
+          ## Version: ${{ steps.get_version.outputs.version }}
+          
+          ### Changes in this release:
+          ${{ steps.changelog.outputs.changes }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
