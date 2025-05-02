@@ -64,16 +64,6 @@ The game also supports gamepad controllers:
 | **Triangle** | Toggle music |
 | **Square** | Toggle sound effects |
 
-## Touch Controls (Mobile)
-
-When playing on mobile devices:
-
-| Gesture | Action |
-|---------|--------|
-| **Swipe Left/Right** | Move ship |
-| **Tap** | Fire weapon |
-| **Two-finger tap** | Pause game |
-| **Swipe down** | Return to main menu |
 
 ## Accessibility Options
 

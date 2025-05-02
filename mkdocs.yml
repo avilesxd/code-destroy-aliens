@@ -50,6 +50,9 @@ nav:
     - Reference:
       - Troubleshooting: guides/gameplay/reference/troubleshooting/README.md
   - Development:
+    - Build Guides:
+      - Windows: guides/development/windows-build.md
+      - macOS: guides/development/macos-build.md
     - Core Concepts: guides/development/core-concepts.md
     - Game Architecture: guides/development/architecture.md
     - Entity System: guides/development/entity-system.md
