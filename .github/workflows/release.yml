@@ -24,6 +24,8 @@ jobs:
 
       - name: Get latest successful workflow runs
         id: workflow_runs
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
             # Get the latest successful macOS build
