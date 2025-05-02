@@ -7,8 +7,8 @@ on:
       - completed
   workflow_dispatch:
     inputs:
-      version:
-        description: 'Version to release (e.g., 1.1.0)'
+      tag:
+        description: 'Tag to release (e.g., v1.1.0)'
         required: true
         type: string
 
@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Download macOS artifact
         uses: dawidd6/action-download-artifact@v6
@@ -27,7 +29,7 @@ jobs:
           name: macos-build
           path: macos-build
           run_id: ${{ github.event.workflow_run.id }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Download Windows artifact
         uses: dawidd6/action-download-artifact@v6
@@ -36,7 +38,7 @@ jobs:
           name: windows-build
           path: windows-build
           run_id: ${{ github.event.workflow_run.id }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Verify artifacts
         run: |
@@ -49,10 +51,32 @@ jobs:
             exit 1
           fi
 
+      - name: Get tag info
+        id: tag_info
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            TAG="${{ github.event.inputs.tag }}"
+          else
+            TAG="${{ github.ref_name }}"
+          fi
+          
+          # Verify tag exists
+          if ! git rev-parse "$TAG" >/dev/null 2>&1; then
+            echo "Tag $TAG does not exist"
+            exit 1
+          fi
+          
+          # Get tag message
+          TAG_MESSAGE=$(git tag -l --format='%(contents)' "$TAG")
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          echo "message=$TAG_MESSAGE" >> $GITHUB_OUTPUT
+
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          name: Release ${{ github.event.inputs.version || github.ref_name }}
+          tag_name: ${{ steps.tag_info.outputs.tag }}
+          name: Release ${{ steps.tag_info.outputs.tag }}
+          body: ${{ steps.tag_info.outputs.message }}
           draft: false
           prerelease: false
           files: |
