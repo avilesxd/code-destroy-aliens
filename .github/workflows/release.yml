@@ -20,6 +20,8 @@ jobs:
           workflow: build-macos.yml
           name: macos-build
           path: macos-build
+          run_id: ${{ github.event.workflow_run.id }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Download Windows artifact
         uses: dawidd6/action-download-artifact@v6
@@ -27,6 +29,19 @@ jobs:
           workflow: build-windows.yml
           name: windows-build
           path: windows-build
+          run_id: ${{ github.event.workflow_run.id }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verify artifacts
+        run: |
+          if [ ! -d "macos-build" ]; then
+            echo "macOS build artifact not found"
+            exit 1
+          fi
+          if [ ! -d "windows-build" ]; then
+            echo "Windows build artifact not found"
+            exit 1
+          fi
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
