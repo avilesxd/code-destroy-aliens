@@ -22,13 +22,37 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Get latest successful workflow runs
+        id: workflow_runs
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            # Get the latest successful macOS build
+            MACOS_RUN=$(gh api repos/${{ github.repository }}/actions/workflows/build-macos.yml/runs --jq '.workflow_runs[0] | select(.conclusion=="success")')
+            if [ -z "$MACOS_RUN" ]; then
+              echo "No successful macOS build found"
+              exit 1
+            fi
+            echo "macos_run_id=$(echo $MACOS_RUN | jq -r '.id')" >> $GITHUB_OUTPUT
+            
+            # Get the latest successful Windows build
+            WINDOWS_RUN=$(gh api repos/${{ github.repository }}/actions/workflows/build-windows.yml/runs --jq '.workflow_runs[0] | select(.conclusion=="success")')
+            if [ -z "$WINDOWS_RUN" ]; then
+              echo "No successful Windows build found"
+              exit 1
+            fi
+            echo "windows_run_id=$(echo $WINDOWS_RUN | jq -r '.id')" >> $GITHUB_OUTPUT
+          else
+            echo "macos_run_id=${{ github.event.workflow_run.id }}" >> $GITHUB_OUTPUT
+            echo "windows_run_id=${{ github.event.workflow_run.id }}" >> $GITHUB_OUTPUT
+          fi
+
       - name: Download macOS artifact
         uses: dawidd6/action-download-artifact@v6
         with:
           workflow: build-macos.yml
           name: macos-build
           path: macos-build
-          run_id: ${{ github.event.workflow_run.id }}
+          run_id: ${{ steps.workflow_runs.outputs.macos_run_id }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Download Windows artifact
@@ -37,7 +61,7 @@ jobs:
           workflow: build-windows.yml
           name: windows-build
           path: windows-build
-          run_id: ${{ github.event.workflow_run.id }}
+          run_id: ${{ steps.workflow_runs.outputs.windows_run_id }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Verify artifacts
