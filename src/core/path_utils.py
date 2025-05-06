@@ -1,7 +1,3 @@
-"""
-Path utilities for handling resource paths in both development and packaged environments.
-"""
-
 import json
 import logging
 import os
