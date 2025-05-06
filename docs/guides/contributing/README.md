@@ -13,7 +13,7 @@ Thank you for your interest in contributing to Alien Invasion! This guide will h
 3. Set up the development environment
 
 ```bash
-git clone https://github.com/your-username/code-destroy-aliens.git
+git clone https://github.com/avilesxd/code-destroy-aliens.git
 cd code-destroy-aliens
 ```
 
