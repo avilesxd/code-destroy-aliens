@@ -9,14 +9,18 @@ from src.entities.button import Button
 def button() -> Button:
     """Create a button instance for testing."""
     pygame.init()
-    screen = pygame.Surface((800, 600))
     config = Configuration()
+    # Override the screen dimensions to use the reference resolution
+    config.screen_width = 1280
+    config.screen_height = 720
+    screen = pygame.Surface((config.screen_width, config.screen_height))
     return Button(config, screen, "Test Button")
 
 
 def test_button_initialization(button: Button) -> None:
     """Test button initialization."""
     assert button.rect.center == button.screen_rect.center
+    # The button should maintain its base size since we're using the reference resolution
     assert button.width == 200
     assert button.height == 50
     assert button.button_color == (0, 255, 0)

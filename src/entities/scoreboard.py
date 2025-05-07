@@ -26,9 +26,12 @@ class Scoreboard:
         self.statistics = statistics
         self.language = language
 
+        # Calculate scale factor based on screen resolution
+        scale_factor = min(ai_configuration.screen_width / 1280, ai_configuration.screen_height / 720)
+
         # Font settings for score information
         self.text_color: Tuple[int, int, int] = (255, 255, 255)  # White text
-        self.font = pygame.font.SysFont(None, 48)
+        self.font = pygame.font.SysFont(None, int(48 * scale_factor))
 
         # Prepare the initial score image
         self.prep_score()
@@ -112,7 +115,7 @@ class Scoreboard:
         """Show how many ships are left"""
         self.ships: Group = Group()
         for ship_number in range(self.statistics.ships_remaining):
-            ship = Heart(self.screen)
+            ship = Heart(self.screen, self.ai_configuration)
             ship.rect.x = 10 + ship_number * ship.rect.width
             ship.rect.y = 10
             self.ships.add(ship)

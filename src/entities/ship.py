@@ -43,6 +43,13 @@ class Ship(Sprite):
 
         # Load the ship image and get its rect
         self.image = pygame.image.load(resource_path("src/assets/images/ship.png"))
+
+        # Calculate scale factor based on screen resolution
+        scale_factor = min(ai_configuration.screen_width / 1280, ai_configuration.screen_height / 720)
+        original_size = self.image.get_size()
+        new_size = (int(original_size[0] * scale_factor), int(original_size[1] * scale_factor))
+        self.image = pygame.transform.scale(self.image, new_size)
+
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
 

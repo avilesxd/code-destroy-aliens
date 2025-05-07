@@ -22,8 +22,12 @@ def test_bullet_initialization(bullet: Bullet) -> None:
     """Test bullet initialization."""
     assert bullet.rect is not None
     assert bullet.screen is not None
-    assert bullet.rect.width == 3  # Default bullet width from Configuration
-    assert bullet.rect.height == 15  # Default bullet height from Configuration
+    # Calculate expected dimensions based on scale factor
+    scale_factor = min(bullet.screen.get_width() / 1280, bullet.screen.get_height() / 720)
+    expected_width = int(3 * scale_factor)  # Default bullet width from Configuration
+    expected_height = int(15 * scale_factor)  # Default bullet height from Configuration
+    assert bullet.rect.width == expected_width
+    assert bullet.rect.height == expected_height
     assert bullet.active is True
 
 

@@ -34,16 +34,24 @@ class Bullet(Sprite):
         super().__init__()
         self.screen = screen
 
+        # Calculate scale factor based on screen resolution
+        scale_factor = min(ai_configuration.screen_width / 1280, ai_configuration.screen_height / 720)
+
         # Create a bullet rect at (0, 0) and then set correct position
-        self.rect = pygame.Rect(0, 0, ai_configuration.bullet_width, ai_configuration.bullet_height)
+        self.rect = pygame.Rect(
+            0,
+            0,
+            int(ai_configuration.bullet_width * scale_factor),
+            int(ai_configuration.bullet_height * scale_factor),
+        )
         self.rect.centerx = ship.rect.centerx
         self.rect.top = ship.rect.top
 
-        # Store the bullet's position as a float
+        # Store the bullet's position as a decimal value
         self.y = float(self.rect.y)
 
         self.color = ai_configuration.bullet_color
-        self.speed_factor = ai_configuration.bullets_speed_factor
+        self.speed_factor = 10 * scale_factor
 
         # Flag to indicate if bullet is active
         self.active = True
@@ -55,7 +63,7 @@ class Bullet(Sprite):
         self.rect.top = ship.rect.top
         self.y = float(self.rect.y)
         self.color = ai_configuration.bullet_color
-        self.speed_factor = ai_configuration.bullets_speed_factor
+        self.speed_factor = 10 * min(ai_configuration.screen_width / 1280, ai_configuration.screen_height / 720)
         self.active = True
 
     def update(self) -> None:

@@ -11,17 +11,21 @@ class Alien(Sprite):
 
     def __init__(self, ai_configuration: Configuration, screen: pygame.Surface) -> None:
         """Initializes the alien and sets its initial position"""
-        super(Alien, self).__init__()
+        super().__init__()
 
         self.screen = screen
         self.ai_configuration = ai_configuration
         self.music = Music()
 
-        # We use resource_path() to get the correct path of the alien image
-        image_path = resource_path("src/assets/images/alien.png")
+        # Load the alien image and set its rect attribute
+        self.image = pygame.image.load(resource_path("src/assets/images/alien.png"))
 
-        # Loads the alien image and sets its rect attribute
-        self.image = pygame.image.load(image_path)
+        # Calculate scale factor based on screen resolution
+        scale_factor = min(ai_configuration.screen_width / 1280, ai_configuration.screen_height / 720)
+        original_size = self.image.get_size()
+        new_size = (int(original_size[0] * scale_factor), int(original_size[1] * scale_factor))
+        self.image = pygame.transform.scale(self.image, new_size)
+
         self.rect = self.image.get_rect()
 
         # Starts each new alien near the top left of the screen

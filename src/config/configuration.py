@@ -1,13 +1,20 @@
 from typing import Tuple
 
+import pygame
+
 
 class Configuration:
     """Used to store all game settings"""
 
     def __init__(self) -> None:
         """Initializes the game settings"""
-        self.screen_width: int = 1280
-        self.screen_height: int = 720
+        # Initialize pygame to get screen info
+        pygame.init()
+        info = pygame.display.Info()
+
+        # Get the current screen resolution
+        self.screen_width: int = info.current_w
+        self.screen_height: int = info.current_h
 
         # Background configuration
         self.use_gradient_background: bool = True

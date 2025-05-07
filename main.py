@@ -24,7 +24,7 @@ def runGame() -> None:
     # Function to play music
     music = Music()
     ai_configuration = Configuration()
-    screen = pygame.display.set_mode((ai_configuration.screen_width, ai_configuration.screen_height))
+    screen = pygame.display.set_mode((ai_configuration.screen_width, ai_configuration.screen_height), pygame.RESIZABLE)
     pygame.display.set_caption("Alien Invasion")
 
     # Initialize language system
