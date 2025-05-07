@@ -36,10 +36,19 @@ class Scoreboard:
         self.prep_level()
         self.prep_ships()
 
+    def format_large_number(self, number: int) -> str:
+        """Format large numbers into abbreviated form (e.g., 1000 -> 1k, 1000000 -> 1m)"""
+        if number >= 1_000_000:
+            return f"{number / 1_000_000:.1f}m".replace(".0m", "m")
+        elif number >= 1_000:
+            return f"{number / 1_000:.1f}k".replace(".0k", "k")
+        return str(number)
+
     def prep_score(self) -> None:
         """Convert the score to a rendered image"""
         rounded_score = int(round(self.statistics.score, -1))
-        score_str = f"{self.language.get_text('score')}: {rounded_score:,}"
+        formatted_score = self.format_large_number(rounded_score)
+        score_str = f"{self.language.get_text('score')}: {formatted_score}"
 
         # Create text surface
         text_surface = self.font.render(score_str, True, self.text_color)
@@ -60,7 +69,8 @@ class Scoreboard:
     def prep_high_score(self) -> None:
         """Convert the high score to a rendered image"""
         high_score = int(round(self.statistics.high_score, -1))
-        high_score_str = f"{self.language.get_text('high_score')}: {high_score:,}"
+        formatted_high_score = self.format_large_number(high_score)
+        high_score_str = f"{self.language.get_text('high_score')}: {formatted_high_score}"
 
         # Create text surface
         text_surface = self.font.render(high_score_str, True, self.text_color)
