@@ -58,6 +58,7 @@ nav:
     - Entity System: guides/development/entity-system.md
     - Audio System: guides/development/audio-system.md
     - Asset Management: guides/development/assets.md
+    - Language System: guides/development/language_system.md
     - Version Control: guides/development/versioning.md
     - Reference:
       - Troubleshooting: guides/development/reference/troubleshooting/README.md
