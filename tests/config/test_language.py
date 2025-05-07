@@ -14,10 +14,10 @@ def language() -> Language:
 def test_language_initialization(language: Language) -> None:
     """Test if the language system initializes correctly."""
     assert isinstance(language, Language)
-    assert language.current_language in ["en", "es"]
+    assert language.current_language in Language.SUPPORTED_LANGUAGES
     assert isinstance(language.translations, dict)
-    assert "en" in language.translations
-    assert "es" in language.translations
+    for lang in Language.SUPPORTED_LANGUAGES:
+        assert lang in language.translations
 
 
 def test_get_text_english(language: Language) -> None:
@@ -36,6 +36,38 @@ def test_get_text_spanish(language: Language) -> None:
     assert language.get_text("game_over") == "Juego Terminado"
 
 
+def test_get_text_french(language: Language) -> None:
+    """Test getting French translations."""
+    language.current_language = "fr"
+    assert language.get_text("play") == "Jouer"
+    assert language.get_text("score") == "Score"
+    assert language.get_text("game_over") == "Partie Terminée"
+
+
+def test_get_text_german(language: Language) -> None:
+    """Test getting German translations."""
+    language.current_language = "de"
+    assert language.get_text("play") == "Spielen"
+    assert language.get_text("score") == "Punkte"
+    assert language.get_text("game_over") == "Spiel Vorbei"
+
+
+def test_get_text_italian(language: Language) -> None:
+    """Test getting Italian translations."""
+    language.current_language = "it"
+    assert language.get_text("play") == "Gioca"
+    assert language.get_text("score") == "Punteggio"
+    assert language.get_text("game_over") == "Game Over"
+
+
+def test_get_text_portuguese(language: Language) -> None:
+    """Test getting Portuguese translations."""
+    language.current_language = "pt"
+    assert language.get_text("play") == "Jogar"
+    assert language.get_text("score") == "Pontuação"
+    assert language.get_text("game_over") == "Fim de Jogo"
+
+
 def test_missing_translation_fallback(language: Language) -> None:
     """Test fallback to English for missing translations."""
     language.current_language = "es"
@@ -52,22 +84,18 @@ def test_system_language_detection(language: Language) -> None:
 
 def test_supported_language_selection(language: Language) -> None:
     """Test supported language selection."""
-    # Test with English system language
-    language.system_language = "en"
-    assert language._get_supported_language() == "en"
-
-    # Test with Spanish system language
-    language.system_language = "es"
-    assert language._get_supported_language() == "es"
+    for lang in Language.SUPPORTED_LANGUAGES:
+        language.system_language = lang
+        assert language._get_supported_language() == lang
 
     # Test with unsupported language (should default to English)
-    language.system_language = "fr"
-    assert language._get_supported_language() == "en"
+    language.system_language = "ru"
+    assert language._get_supported_language() == Language.DEFAULT_LANGUAGE
 
 
 def test_translation_file_loading(language: Language) -> None:
     """Test if translation files are loaded correctly."""
-    # Check if all required keys are present in both languages
+    # Check if all required keys are present in all languages
     required_keys: List[str] = [
         "game_controls",
         "move_left_right",
@@ -85,8 +113,26 @@ def test_translation_file_loading(language: Language) -> None:
         "press_q",
     ]
 
-    for key in required_keys:
-        assert key in language.translations["en"]
-        assert key in language.translations["es"]
-        assert isinstance(language.translations["en"][key], str)
-        assert isinstance(language.translations["es"][key], str)
+    for lang in Language.SUPPORTED_LANGUAGES:
+        for key in required_keys:
+            assert key in language.translations[lang]
+            assert isinstance(language.translations[lang][key], str)
+
+
+def test_set_language(language: Language) -> None:
+    """Test setting language."""
+    # Test setting supported language
+    assert language.set_language("es") is True
+    assert language.current_language == "es"
+
+    # Test setting unsupported language
+    assert language.set_language("ru") is False
+    assert language.current_language == "es"  # Should not change
+
+
+def test_get_available_languages(language: Language) -> None:
+    """Test getting available languages."""
+    available_languages = language.get_available_languages()
+    assert isinstance(available_languages, list)
+    assert all(lang in Language.SUPPORTED_LANGUAGES for lang in available_languages)
+    assert len(available_languages) == len(Language.SUPPORTED_LANGUAGES)
