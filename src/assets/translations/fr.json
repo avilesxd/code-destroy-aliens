@@ -1,0 +1,16 @@
+{
+    "game_controls": "Contrôles du Jeu",
+    "move_left_right": "Déplacer gauche/droite",
+    "shoot": "Tirer",
+    "pause_game": "Pause",
+    "quit_game": "Quitter",
+    "press_space": "Appuyez sur ESPACE pour continuer",
+    "play": "Jouer",
+    "score": "Score",
+    "high_score": "Meilleur Score",
+    "level": "Niveau",
+    "ships": "Vaisseaux",
+    "game_over": "Partie Terminée",
+    "press_p": "Appuyez sur 'P' pour reprendre",
+    "press_q": "Appuyez sur 'Q' pour quitter"
+}

@@ -1,0 +1,16 @@
+{
+    "game_controls": "Controlli di Gioco",
+    "move_left_right": "Muovi sinistra/destra",
+    "shoot": "Spara",
+    "pause_game": "Pausa",
+    "quit_game": "Esci",
+    "press_space": "Premi SPAZIO per continuare",
+    "play": "Gioca",
+    "score": "Punteggio",
+    "high_score": "Record",
+    "level": "Livello",
+    "ships": "Navicelle",
+    "game_over": "Game Over",
+    "press_p": "Premi 'P' per riprendere",
+    "press_q": "Premi 'Q' per uscire"
+}

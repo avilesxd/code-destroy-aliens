@@ -1,0 +1,16 @@
+{
+    "game_controls": "Spielsteuerung",
+    "move_left_right": "Links/Rechts bewegen",
+    "shoot": "Schießen",
+    "pause_game": "Spiel pausieren",
+    "quit_game": "Spiel beenden",
+    "press_space": "Drücke LEERTASTE zum Fortfahren",
+    "play": "Spielen",
+    "score": "Punkte",
+    "high_score": "Highscore",
+    "level": "Level",
+    "ships": "Raumschiffe",
+    "game_over": "Spiel Vorbei",
+    "press_p": "Drücke 'P' zum Fortsetzen",
+    "press_q": "Drücke 'Q' zum Beenden"
+}
