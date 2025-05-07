@@ -345,19 +345,29 @@ def update_spatial_grid(aliens: Group, bullets: Group) -> None:
     global spatial_grid
     spatial_grid.clear()
 
+    # Pre-allocate grid cells for better performance
+    grid_cells: Dict[tuple, Dict[str, List]] = {}
+
     # Add aliens to grid
     for alien in aliens:
-        for cell in get_grid_cells(alien.rect):
-            if cell not in spatial_grid:
-                spatial_grid[cell] = {"aliens": [], "bullets": []}
-            spatial_grid[cell]["aliens"].append(alien)
+        # Get all cells that the alien occupies
+        alien_cells = get_grid_cells(alien.rect)
+        for cell in alien_cells:
+            if cell not in grid_cells:
+                grid_cells[cell] = {"aliens": [], "bullets": []}
+            grid_cells[cell]["aliens"].append(alien)
 
     # Add bullets to grid
     for bullet in bullets:
-        for cell in get_grid_cells(bullet.rect):
-            if cell not in spatial_grid:
-                spatial_grid[cell] = {"aliens": [], "bullets": []}
-            spatial_grid[cell]["bullets"].append(bullet)
+        # Get all cells that the bullet occupies
+        bullet_cells = get_grid_cells(bullet.rect)
+        for cell in bullet_cells:
+            if cell not in grid_cells:
+                grid_cells[cell] = {"aliens": [], "bullets": []}
+            grid_cells[cell]["bullets"].append(bullet)
+
+    # Update the global spatial grid
+    spatial_grid.update(grid_cells)
 
 
 def check_bullet_alien_collisions(

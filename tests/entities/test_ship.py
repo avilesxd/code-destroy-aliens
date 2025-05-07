@@ -2,6 +2,7 @@ import pygame
 import pytest
 
 from src.config.configuration import Configuration
+from src.config.statistics import Statistics
 from src.entities.ship import Ship
 
 
@@ -11,7 +12,8 @@ def ship() -> Ship:
     pygame.init()
     screen = pygame.Surface((800, 600))
     config = Configuration()
-    return Ship(config, screen)
+    statistics = Statistics(config)
+    return Ship(config, screen, statistics)
 
 
 def test_ship_initialization(ship: Ship) -> None:

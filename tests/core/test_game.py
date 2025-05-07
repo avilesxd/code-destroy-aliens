@@ -54,7 +54,7 @@ def test_game_initialization(game_setup: Tuple[Configuration, pygame.Surface, St
 def test_ship_creation(game_setup: Tuple[Configuration, pygame.Surface, Statistics, Language]) -> None:
     """Test if the ship is created correctly."""
     config, screen, stats, language = game_setup
-    ship = Ship(config, screen)
+    ship = Ship(config, screen, stats)
 
     assert isinstance(ship, Ship)
     assert ship.rect.centerx == screen.get_rect().centerx

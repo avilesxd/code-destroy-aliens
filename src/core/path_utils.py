@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Any, Union
 
 # Configure logging
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.WARNING)
 logger = logging.getLogger(__name__)
 
 

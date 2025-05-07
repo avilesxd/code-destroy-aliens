@@ -2,6 +2,7 @@ import pygame
 import pytest
 
 from src.config.configuration import Configuration
+from src.config.statistics import Statistics
 from src.entities.bullet import Bullet
 from src.entities.ship import Ship
 
@@ -12,7 +13,8 @@ def bullet() -> Bullet:
     pygame.init()
     ai_configuration = Configuration()
     screen = pygame.Surface((ai_configuration.screen_width, ai_configuration.screen_height))
-    ship = Ship(ai_configuration, screen)
+    statistics = Statistics(ai_configuration)
+    ship = Ship(ai_configuration, screen, statistics)
     return Bullet(ai_configuration, screen, ship)
 
 

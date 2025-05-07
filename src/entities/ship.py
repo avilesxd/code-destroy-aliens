@@ -1,5 +1,3 @@
-from typing import Optional
-
 import pygame
 from pygame.sprite import Sprite
 
@@ -29,19 +27,18 @@ class Ship(Sprite):
         self,
         ai_configuration: Configuration,
         screen: pygame.Surface,
-        statistics: Optional[Statistics] = None,
+        statistics: Statistics,
     ) -> None:
         """Initialize the ship and set its starting position.
 
         Args:
             ai_configuration (Settings): Game configuration settings
             screen (pygame.Surface): The game screen surface
-            statistics (Optional[Statistics]): Game statistics manager
+            statistics (Statistics): Game statistics manager
         """
-        super(Ship, self).__init__()
+        super().__init__()
         self.screen = screen
         self.ai_configuration = ai_configuration
-        self.music = Music()
         self.statistics = statistics
 
         # Load the ship image and get its rect
@@ -54,11 +51,14 @@ class Ship(Sprite):
         self.rect.bottom = self.screen_rect.bottom
 
         # Store a decimal value for the ship's center
-        self.center: float = float(self.rect.centerx)
+        self.center = float(self.rect.centerx)
 
         # Movement flags
-        self.moving_right: bool = False
-        self.moving_left: bool = False
+        self.moving_right = False
+        self.moving_left = False
+
+        # Initialize music object
+        self.music = Music()
 
     def update(self) -> None:
         """Update the ship's position based on movement flags.
@@ -71,18 +71,14 @@ class Ship(Sprite):
         if self.statistics and self.statistics.game_paused:
             return
 
-        # Store the initial position
-        initial_center = self.center
-
+        # Calculate new position
         if self.moving_right and self.rect.right < self.screen_rect.right:
             self.center += self.ai_configuration.ship_speed_factor
-
         if self.moving_left and self.rect.left > 0:
             self.center -= self.ai_configuration.ship_speed_factor
 
-        # Only update rect if position actually changed
-        if self.center != initial_center:
-            self.rect.centerx = int(self.center)
+        # Update rect position
+        self.rect.centerx = int(self.center)
 
     def blitme(self) -> None:
         """Draw the ship at its current location.
@@ -99,6 +95,7 @@ class Ship(Sprite):
         when the game is reset.
         """
         self.center = float(self.screen_rect.centerx)
+        self.rect.centerx = int(self.center)
 
     def shoot(self) -> None:
         """Play the shooting sound effect.
