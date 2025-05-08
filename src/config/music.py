@@ -35,6 +35,8 @@ class Music:
         if self._initialized:
             return
 
+        self.is_paused: bool = False
+
         # Check if we're in a test environment
         self.is_test: bool = "PYTEST_CURRENT_TEST" in os.environ
 
@@ -86,11 +88,20 @@ class Music:
         """Pause the music"""
         if not self.is_test:
             pygame.mixer.pause()
+        self.is_paused = True
 
     def resume(self) -> None:
         """Resume the music"""
         if not self.is_test:
             pygame.mixer.unpause()
+        self.is_paused = False
+
+    def toggle_pause(self) -> None:
+        """Toggle between pause and resume"""
+        if self.is_paused:
+            self.resume()
+        else:
+            self.pause()
 
     def play_shoot(self) -> None:
         """Play shoot sound effect"""
