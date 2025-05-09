@@ -1,0 +1,33 @@
+# Ignore Python source code
+*.py
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+
+# Ignore Python virtual environments
+.venv/
+env/
+venv/
+
+# Ignore dependency directories
+node_modules/
+
+# Ignore build artifacts
+dist/
+build/
+coverage/
+
+# Ignore lock and config files
+package-lock.json
+yarn.lock
+*.config.js
+*.config.cjs
+*.yml
+
+# Ignore Git metadata
+.git/
+
+# Ignore legacy Markdown files if needed
+docs/legacy/*.md
+

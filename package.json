@@ -26,11 +26,13 @@
         "prepare": "husky",
         "dev": "node scripts/run-with-env.js python main.py",
         "format": "node scripts/run-with-env.js \"black . && isort .\"",
+        "format:prettier-check": "node scripts/run-with-env.js prettier --check .",
+        "format:prettier-format": "node scripts/run-with-env.js prettier --write .",
         "format:check": "node scripts/run-with-env.js \"black --check . && isort --check-only .\"",
         "lint": "node scripts/run-with-env.js flake8 .",
         "typecheck": "node scripts/run-with-env.js python -m mypy .",
         "test": "node scripts/run-with-env.js pytest",
-        "verify": "npm run format && npm run lint && npm run typecheck && npm run test",
+        "verify": "npm run format && npm run format:prettier-format && npm run lint && npm run typecheck && npm run test",
         "build": "pyinstaller main.py --name=\"Alien Invasion\" --icon=\"src/assets/icons/icon.ico\" --onefile --noconsole --add-data=\"src;src\" --version-file=\"version.txt\"",
         "build:macos": "python3 setup.py py2app",
         "docs:serve": "mkdocs serve",
@@ -41,7 +43,8 @@
     "devDependencies": {
         "@commitlint/cli": "^19.8.0",
         "@commitlint/config-conventional": "^19.8.0",
-        "husky": "^9.1.7"
+        "husky": "^9.1.7",
+        "prettier": "^3.5.3"
     },
     "engines": {
         "node": ">=14.0.0",

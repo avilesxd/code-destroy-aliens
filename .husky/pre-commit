@@ -1,5 +1,8 @@
-echo "🔍 Checking code format..."s
+echo "🔍 Checking code format..."
 npm run format:check || exit 1
+
+echo "🔍 Checking code format with prettier..."
+npm run format:prettier-format || exit 1
 
 echo "🔍 Running linter..."
 npm run lint || exit 1
