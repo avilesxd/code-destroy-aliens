@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
@@ -39,6 +39,9 @@ jobs:
 
     - name: Check formatting
       run: npm run format:check
+
+    - name: Check formatting with prettier
+      run: npm run format:prettier-format
 
     - name: Run linting
       run: npm run lint
