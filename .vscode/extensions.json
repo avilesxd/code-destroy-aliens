@@ -10,6 +10,7 @@
         "ms-python.debugpy",
         "ritwickdey.liveserver",
         "ms-vscode.live-server",
-        "jmkrivocapich.drawfolderstructure"
+        "jmkrivocapich.drawfolderstructure",
+        "esbenp.prettier-vscode"
     ]
 }
