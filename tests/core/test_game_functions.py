@@ -14,6 +14,7 @@ from pygame.sprite import Group
 import src.config.game_functions as fj
 from src.config.configuration import Configuration
 from src.config.language import Language
+from src.config.music import Music
 from src.config.statistics import Statistics
 from src.entities.bullet import Bullet
 from src.entities.button import Button
@@ -28,7 +29,8 @@ def game_components() -> Tuple[Configuration, pygame.Surface, Statistics, Ship, 
     screen = pygame.display.set_mode((config.screen_width, config.screen_height))
     stats = Statistics(config)
     language = Language()
-    ship = Ship(config, screen, stats)
+    music = Music()
+    ship = Ship(config, screen, stats, music)
     bullets: Group = Group()
     aliens: Group = Group()
     play_button = Button(config, screen, language.get_text("play"))

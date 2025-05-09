@@ -28,6 +28,7 @@ class Ship(Sprite):
         ai_configuration: Configuration,
         screen: pygame.Surface,
         statistics: Statistics,
+        music: Music,
     ) -> None:
         """Initialize the ship and set its starting position.
 
@@ -65,7 +66,7 @@ class Ship(Sprite):
         self.moving_left = False
 
         # Initialize music object
-        self.music = Music()
+        self.music = music
 
     def update(self) -> None:
         """Update the ship's position based on movement flags.

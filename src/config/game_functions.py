@@ -128,7 +128,9 @@ def verify_events_keydown(
         else:
             music.resume()
     elif event.key == pygame.K_m:
-        music.toggle_pause()
+        music.toggle_music()
+    elif event.key == pygame.K_x:
+        music.toggle_sound_effects()
 
 
 def verify_events_keyup(event: pygame.event.Event, ship: Ship) -> None:

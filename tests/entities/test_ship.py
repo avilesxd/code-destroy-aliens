@@ -2,6 +2,7 @@ import pygame
 import pytest
 
 from src.config.configuration import Configuration
+from src.config.music import Music
 from src.config.statistics import Statistics
 from src.entities.ship import Ship
 
@@ -13,7 +14,8 @@ def ship() -> Ship:
     screen = pygame.Surface((800, 600))
     config = Configuration()
     statistics = Statistics(config)
-    return Ship(config, screen, statistics)
+    music = Music()
+    return Ship(config, screen, statistics, music)
 
 
 def test_ship_initialization(ship: Ship) -> None:

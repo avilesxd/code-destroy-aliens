@@ -190,7 +190,7 @@ class Statistics:
                 # If there's an error, use the default value
                 self.high_score = 0
 
-    def toggle_pause(self) -> bool:
+    def toggle_music(self) -> bool:
         """Toggles the game pause state"""
         self.game_paused = not self.game_paused
         return self.game_paused

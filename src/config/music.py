@@ -36,6 +36,7 @@ class Music:
             return
 
         self.is_paused: bool = False
+        self.sound_effects_enabled: bool = True
 
         # Check if we're in a test environment
         self.is_test: bool = "PYTEST_CURRENT_TEST" in os.environ
@@ -96,8 +97,8 @@ class Music:
             pygame.mixer.unpause()
         self.is_paused = False
 
-    def toggle_pause(self) -> None:
-        """Toggle between pause and resume"""
+    def toggle_music(self) -> None:
+        """Toggle between pause and resume music"""
         if self.is_paused:
             self.resume()
         else:
@@ -105,20 +106,24 @@ class Music:
 
     def play_shoot(self) -> None:
         """Play shoot sound effect"""
-        if not self.is_test:
+        if not self.is_test and self.sound_effects_enabled:
             self.shoot_sound.play()
 
     def play_explosion(self) -> None:
         """Play explosion sound effect"""
-        if not self.is_test:
+        if not self.is_test and self.sound_effects_enabled:
             self.explosion_sound.play()
 
     def play_game_over(self) -> None:
         """Play game over sound effect"""
-        if not self.is_test:
+        if not self.is_test and self.sound_effects_enabled:
             # Pause the background music
             pygame.mixer.pause()
             # Increase volume for game over sound
             self.game_over_sound.set_volume(1.0)
             # Play the game over sound
             self.game_over_sound.play()
+
+    def toggle_sound_effects(self) -> None:
+        """Toggle sound effects on/off"""
+        self.sound_effects_enabled = not self.sound_effects_enabled
