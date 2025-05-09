@@ -41,7 +41,7 @@ jobs:
       run: npm run format:check
 
     - name: Check formatting with prettier
-      run: npm run format:prettier-format
+      run: npm run format:prettier-check
 
     - name: Run linting
       run: npm run lint
