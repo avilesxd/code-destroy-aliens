@@ -2,31 +2,31 @@
 
 ## Basic Controls
 
-| Key | Action |
-|-----|--------|
+| Key           | Action               |
+| ------------- | -------------------- |
 | **←** / **→** | Move ship left/right |
-| **Spacebar** | Fire weapon |
-| **P** | Pause game |
-| **ESC** | Return to main menu |
-| **M** | Toggle music |
-| **S** | Toggle sound effects |
+| **Spacebar**  | Fire weapon          |
+| **P**         | Pause game           |
+| **ESC**       | Return to main menu  |
+| **M**         | Toggle music         |
+| **S**         | Toggle sound effects |
 
 ## Advanced Controls
 
 ### Power-up Controls
 
-| Key | Action |
-|-----|--------|
+| Key   | Action                             |
+| ----- | ---------------------------------- |
 | **↑** | Activate power-up (when available) |
-| **↓** | Drop power-up (when carrying) |
+| **↓** | Drop power-up (when carrying)      |
 
 ### Menu Navigation
 
-| Key | Action |
-|-----|--------|
+| Key           | Action                |
+| ------------- | --------------------- |
 | **↑** / **↓** | Navigate menu options |
-| **Enter** | Select option |
-| **ESC** | Go back |
+| **Enter**     | Select option         |
+| **ESC**       | Go back               |
 
 ## Control Customization
 
@@ -44,26 +44,25 @@ The game also supports gamepad controllers:
 
 ### Xbox Controller
 
-| Button | Action |
-|--------|--------|
-| **Left Stick** | Move ship |
-| **A** | Fire weapon |
-| **Start** | Pause game |
-| **Back** | Return to main menu |
-| **Y** | Toggle music |
-| **X** | Toggle sound effects |
+| Button         | Action               |
+| -------------- | -------------------- |
+| **Left Stick** | Move ship            |
+| **A**          | Fire weapon          |
+| **Start**      | Pause game           |
+| **Back**       | Return to main menu  |
+| **Y**          | Toggle music         |
+| **X**          | Toggle sound effects |
 
 ### PlayStation Controller
 
-| Button | Action |
-|--------|--------|
-| **Left Stick** | Move ship |
-| **Cross (×)** | Fire weapon |
-| **Options** | Pause game |
-| **Share** | Return to main menu |
-| **Triangle** | Toggle music |
-| **Square** | Toggle sound effects |
-
+| Button         | Action               |
+| -------------- | -------------------- |
+| **Left Stick** | Move ship            |
+| **Cross (×)**  | Fire weapon          |
+| **Options**    | Pause game           |
+| **Share**      | Return to main menu  |
+| **Triangle**   | Toggle music         |
+| **Square**     | Toggle sound effects |
 
 ## Accessibility Options
 

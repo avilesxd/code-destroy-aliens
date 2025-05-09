@@ -2,7 +2,8 @@
 
 ## Overview
 
-Thank you for your interest in contributing to Alien Invasion! This guide will help you get started with contributing to the project.
+Thank you for your interest in contributing to Alien Invasion! This guide will
+help you get started with contributing to the project.
 
 ## Getting Started
 
@@ -20,7 +21,8 @@ cd code-destroy-aliens
 
 ### 2. Development Setup
 
-Follow the [Installation Guide](../getting-started/installation.md) to set up your development environment.
+Follow the [Installation Guide](../getting-started/installation.md) to set up
+your development environment.
 
 ## Contribution Workflow
 
@@ -67,7 +69,7 @@ git push origin feature/your-feature-name
 ```python
 def move_ship(x: int, y: int) -> None:
     """Move the ship to the specified coordinates.
-    
+
     Args:
         x: The x-coordinate
         y: The y-coordinate
@@ -101,18 +103,22 @@ mkdocs serve
 
 ```markdown
 ## Description
+
 Brief description of the changes
 
 ## Related Issues
+
 Fixes #123
 
 ## Type of Change
+
 - [ ] Bug fix
 - [ ] New feature
 - [ ] Breaking change
 - [ ] Documentation update
 
 ## Checklist
+
 - [ ] Tests added/updated
 - [ ] Documentation updated
 - [ ] Code follows style guide

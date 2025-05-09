@@ -56,21 +56,22 @@ python main.py
 
 The project includes several npm scripts for development:
 
-| Script | Description |
-|--------|-------------|
-| `npm run dev` | Run the game in development mode |
-| `npm run format` | Format code using black and isort |
-| `npm run format:check` | Check code formatting |
-| `npm run lint` | Run flake8 linter |
-| `npm run typecheck` | Run mypy type checker |
-| `npm run test` | Run all tests |
-| `npm run build` | Build the game executable |
+| Script                 | Description                       |
+| ---------------------- | --------------------------------- |
+| `npm run dev`          | Run the game in development mode  |
+| `npm run format`       | Format code using black and isort |
+| `npm run format:check` | Check code formatting             |
+| `npm run lint`         | Run flake8 linter                 |
+| `npm run typecheck`    | Run mypy type checker             |
+| `npm run test`         | Run all tests                     |
+| `npm run build`        | Build the game executable         |
 
 ## Next Steps
 
 - Read the [Installation Guide](installation.md) for detailed setup instructions
 - Check out the [Configuration Guide](configuration.md) to customize the game
-- Explore the [Development Guide](../development/core-concepts.md) to start contributing
+- Explore the [Development Guide](../development/core-concepts.md) to start
+  contributing
 
 ## Need Help?
 

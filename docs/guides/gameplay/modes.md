@@ -1,6 +1,7 @@
 # 🎮 Game Modes
 
-Alien Invasion offers several game modes to suit different playstyles and skill levels.
+Alien Invasion offers several game modes to suit different playstyles and skill
+levels.
 
 ## Classic Mode
 
@@ -44,19 +45,21 @@ Complete specific objectives:
 ### Available Challenges
 
 1. **Speed Run**
-   - Clear waves as fast as possible
-   - Time-based scoring
-   - No power-ups
+
+    - Clear waves as fast as possible
+    - Time-based scoring
+    - No power-ups
 
 2. **Precision Mode**
-   - Limited ammo
-   - Bonus points for accuracy
-   - No misses allowed
+
+    - Limited ammo
+    - Bonus points for accuracy
+    - No misses allowed
 
 3. **Boss Rush**
-   - Face powerful boss aliens
-   - Special boss mechanics
-   - Unique rewards
+    - Face powerful boss aliens
+    - Special boss mechanics
+    - Unique rewards
 
 ## Multiplayer Mode
 
@@ -85,19 +88,21 @@ Create your own game experience:
 ### Customization Options
 
 1. **Difficulty Settings**
-   - Alien speed
-   - Spawn rate
-   - Power-up frequency
+
+    - Alien speed
+    - Spawn rate
+    - Power-up frequency
 
 2. **Game Rules**
-   - Lives count
-   - Time limit
-   - Special conditions
+
+    - Lives count
+    - Time limit
+    - Special conditions
 
 3. **Scoring System**
-   - Custom point values
-   - Bonus conditions
-   - Multiplier settings
+    - Custom point values
+    - Bonus conditions
+    - Multiplier settings
 
 ## Mode Selection
 

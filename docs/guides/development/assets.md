@@ -2,7 +2,8 @@
 
 ## Overview
 
-This guide covers the asset management system for Alien Invasion, including loading, caching, and optimization of game assets.
+This guide covers the asset management system for Alien Invasion, including
+loading, caching, and optimization of game assets.
 
 ## Asset Types
 
@@ -87,10 +88,10 @@ class AssetCache:
         if key in self.cache:
             self.usage[key] = time.time()
             return self.cache[key]
-        
+
         if len(self.cache) >= self.max_size:
             self._evict_oldest()
-        
+
         value = loader()
         self.cache[key] = value
         self.usage[key] = time.time()

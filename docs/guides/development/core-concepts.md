@@ -2,27 +2,30 @@
 
 ## Game Architecture
 
-Alien Invasion follows a component-based architecture with the following key concepts:
+Alien Invasion follows a component-based architecture with the following key
+concepts:
 
 ### Entity Component System (ECS)
 
 1. **Entities**
-   - Game objects (ship, aliens, bullets)
-   - Unique identifiers
-   - Component containers
+
+    - Game objects (ship, aliens, bullets)
+    - Unique identifiers
+    - Component containers
 
 2. **Components**
-   - Position
-   - Velocity
-   - Sprite
-   - Collision
-   - Health
+
+    - Position
+    - Velocity
+    - Sprite
+    - Collision
+    - Health
 
 3. **Systems**
-   - Movement
-   - Rendering
-   - Collision detection
-   - Input handling
+    - Movement
+    - Rendering
+    - Collision detection
+    - Input handling
 
 ### State Management
 
@@ -141,7 +144,7 @@ src/
 
 - Use snake_case for file names
 - Prefix system files with system name
-- Suffix component files with _component
+- Suffix component files with \_component
 
 ## Best Practices
 

@@ -9,7 +9,8 @@ The project maintains its version information in the following files:
 
 ## Version Format
 
-We follow the [Semantic Versioning](https://semver.org/) standard (MAJOR.MINOR.PATCH):
+We follow the [Semantic Versioning](https://semver.org/) standard
+(MAJOR.MINOR.PATCH):
 
 - **MAJOR**: Breaking changes
 - **MINOR**: New features (backwards compatible)
@@ -19,10 +20,10 @@ We follow the [Semantic Versioning](https://semver.org/) standard (MAJOR.MINOR.P
 
 1. Update the version number in both version files simultaneously:
 
-   ```bash
-   echo "X.Y.Z" > version.txt
-   echo "X.Y.Z" > version_macOS.txt
-   ```
+    ```bash
+    echo "X.Y.Z" > version.txt
+    echo "X.Y.Z" > version_macOS.txt
+    ```
 
 2. Create a new git tag: `git tag vX.Y.Z`
 3. Push the tag: `git push origin vX.Y.Z`

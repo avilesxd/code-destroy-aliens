@@ -37,7 +37,10 @@
 
 ## 🎮 About the Game
 
-**Alien Invasion** is a modern take on the classic arcade shooter, where you pilot a spaceship to defend Earth from waves of alien invaders. With stunning visuals, immersive sound effects, and addictive gameplay, it's a perfect blend of nostalgia and modern gaming.
+**Alien Invasion** is a modern take on the classic arcade shooter, where you
+pilot a spaceship to defend Earth from waves of alien invaders. With stunning
+visuals, immersive sound effects, and addictive gameplay, it's a perfect blend
+of nostalgia and modern gaming.
 
 ### 🌟 Key Features
 
@@ -48,24 +51,25 @@
 - 💯 **High Score System**: Track your best performances
 - 🎨 **Retro-Modern Style**: Classic arcade feel with modern polish
 - 🌍 **Multilingual Support**:
-  - Automatic language detection
-  - English and Spanish support
-  - More languages coming soon
+    - Automatic language detection
+    - English and Spanish support
+    - More languages coming soon
 - 🎯 **Visual Enhancements**:
-  - High-contrast UI with semi-transparent overlays
-  - Smooth animations and transitions
-  - Clear game information display
+    - High-contrast UI with semi-transparent overlays
+    - Smooth animations and transitions
+    - Clear game information display
 
 ## 🕹️ How to Play
 
-| Control | Action |
-|---------|--------|
-| ← → | Move Ship |
-| Space | Fire |
-| P | Pause |
-| Q | Quit |
+| Control | Action    |
+| ------- | --------- |
+| ← →     | Move Ship |
+| Space   | Fire      |
+| P       | Pause     |
+| Q       | Quit      |
 
-**Objective**: Destroy all aliens before they reach Earth! Each wave gets faster and more challenging.
+**Objective**: Destroy all aliens before they reach Earth! Each wave gets faster
+and more challenging.
 
 ## 📸 Game Screenshots
 
@@ -77,12 +81,14 @@
 
 ## 🚀 Quick Start
 
-1. **Download** the latest release from our [official website][official_website_url]
+1. **Download** the latest release from our [official
+   website][official_website_url]
 2. **Launch** and start defending Earth!
 
 ## 🛠️ For Developers
 
-Interested in collaborating? Visit our website with all the necessary documentation at the following link.
+Interested in collaborating? Visit our website with all the necessary
+documentation at the following link.
 
 [Documentation on the alien invasion][official_website_docs_url]
 
@@ -108,7 +114,8 @@ Interested in collaborating? Visit our website with all the necessary documentat
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md)
+file for details.
 
 ---
 
@@ -120,10 +127,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) f
 </div>
 
 <!-- GAME -->
+
 [official_website_url]: https://avilesxd.github.io/code-destroy-aliens/
-[official_website_docs_url]: https://avilesxd.github.io/code-destroy-aliens/docs/
+[official_website_docs_url]:
+    https://avilesxd.github.io/code-destroy-aliens/docs/
 
 <!-- SOCIAL MEDIA -->
+
 [github_account]: http://github.com/avilesxd/
 [instagram_account]: https://www.instagram.com/avilesxd/
 [facebook_account]: https://www.facebook.com/ignacio.avilescardenasso

@@ -4,33 +4,35 @@
 
 Points are awarded for various actions in the game:
 
-| Action | Points |
-|--------|--------|
-| Destroy Basic Alien | 50 |
-| Destroy Special Alien | 100 |
-| Destroy Boss Alien | 500 |
-| Complete Wave | 1000 |
-| Collect Power-up | 50 |
-| Survive 1 Minute | 100 |
+| Action                | Points |
+| --------------------- | ------ |
+| Destroy Basic Alien   | 50     |
+| Destroy Special Alien | 100    |
+| Destroy Boss Alien    | 500    |
+| Complete Wave         | 1000   |
+| Collect Power-up      | 50     |
+| Survive 1 Minute      | 100    |
 
 ## Multipliers
 
 Your score can be multiplied through various means:
 
 1. **Combo System**
-   - Hit multiple aliens without missing
-   - Maximum 5x multiplier
-   - Resets on miss
+
+    - Hit multiple aliens without missing
+    - Maximum 5x multiplier
+    - Resets on miss
 
 2. **Wave Completion**
-   - Complete waves quickly
-   - Time-based bonus
-   - Up to 2x multiplier
+
+    - Complete waves quickly
+    - Time-based bonus
+    - Up to 2x multiplier
 
 3. **Power-up Combos**
-   - Combine power-ups effectively
-   - Special multiplier effects
-   - Stack with other multipliers
+    - Combine power-ups effectively
+    - Special multiplier effects
+    - Stack with other multipliers
 
 ## Special Bonuses
 
@@ -59,57 +61,64 @@ Additional points can be earned through special achievements:
 Your best scores are tracked in several categories:
 
 1. **Overall High Score**
-   - Best score across all modes
-   - Global leaderboard
+
+    - Best score across all modes
+    - Global leaderboard
 
 2. **Mode-specific High Scores**
-   - Best score for each game mode
-   - Separate leaderboards
+
+    - Best score for each game mode
+    - Separate leaderboards
 
 3. **Daily Challenges**
-   - Special daily objectives
-   - Time-limited leaderboards
+    - Special daily objectives
+    - Time-limited leaderboards
 
 ## Score Display
 
 Your current score is displayed in several ways:
 
 1. **Main Display**
-   - Current score
-   - Multiplier
-   - Combo counter
+
+    - Current score
+    - Multiplier
+    - Combo counter
 
 2. **Wave Information**
-   - Wave number
-   - Time remaining
-   - Bonus opportunities
+
+    - Wave number
+    - Time remaining
+    - Bonus opportunities
 
 3. **End Game Summary**
-   - Final score
-   - Breakdown of points
-   - Achievements earned
+    - Final score
+    - Breakdown of points
+    - Achievements earned
 
 ## Tips for High Scores
 
 1. **Master the Basics**
-   - Focus on accuracy
-   - Learn alien patterns
-   - Time your shots
+
+    - Focus on accuracy
+    - Learn alien patterns
+    - Time your shots
 
 2. **Use Power-ups Wisely**
-   - Save for difficult waves
-   - Combine for maximum effect
-   - Don't waste on easy targets
+
+    - Save for difficult waves
+    - Combine for maximum effect
+    - Don't waste on easy targets
 
 3. **Maintain Combos**
-   - Don't take unnecessary risks
-   - Keep the multiplier active
-   - Plan your shots
+
+    - Don't take unnecessary risks
+    - Keep the multiplier active
+    - Plan your shots
 
 4. **Complete Challenges**
-   - Check daily objectives
-   - Focus on bonus opportunities
-   - Take calculated risks
+    - Check daily objectives
+    - Focus on bonus opportunities
+    - Take calculated risks
 
 ## Next Steps
 

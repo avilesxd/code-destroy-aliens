@@ -1,228 +1,483 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Play Alien Invasion, a modern take on the classic Space Invaders game. Defend Earth from alien attacks with fast-paced action and challenging levels."
+        />
+        <meta
+            name="keywords"
+            content="space invaders, alien invasion, arcade game, retro game, space shooter, classic game"
+        />
+        <meta name="author" content="Ignacio Avilés" />
+        <meta name="robots" content="index, follow" />
+        <meta name="theme-color" content="#0f172a" />
+        <meta name="color-scheme" content="dark" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"
+        />
+        <meta
+            property="og:title"
+            content="Alien Invasion - Space Invader Game"
+        />
+        <meta
+            property="og:description"
+            content="Defend Earth from alien attacks in this modern take on the classic Space Invaders game. Download now and start playing!"
+        />
+        <meta
+            property="og:image"
+            content="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.png"
+        />
+        <meta
+            property="og:url"
+            content="https://avilesxd.github.io/code-destroy-aliens/"
+        />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:title"
+            content="Alien Invasion - Space Invader Game"
+        />
+        <meta
+            name="twitter:description"
+            content="Defend Earth from alien attacks in this modern take on the classic Space Invaders game. Download now and start playing!"
+        />
+        <meta
+            name="twitter:image"
+            content="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.png"
+        />
+        <title>Alien Invasion - Space Invader Game</title>
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/src/assets/icons/icon.png"
+        />
+        <link rel="stylesheet" href="./assets/css/styles.css" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://unpkg.com/flowbite@latest/dist/flowbite.min.js"></script>
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-        content="Play Alien Invasion, a modern take on the classic Space Invaders game. Defend Earth from alien attacks with fast-paced action and challenging levels." />
-    <meta name="keywords"
-        content="space invaders, alien invasion, arcade game, retro game, space shooter, classic game" />
-    <meta name="author" content="Ignacio Avilés" />
-    <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#0f172a" />
-    <meta name="color-scheme" content="dark" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta property="og:title" content="Alien Invasion - Space Invader Game" />
-    <meta property="og:description"
-        content="Defend Earth from alien attacks in this modern take on the classic Space Invaders game. Download now and start playing!" />
-    <meta property="og:image"
-        content="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.png" />
-    <meta property="og:url" content="https://avilesxd.github.io/code-destroy-aliens/" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Alien Invasion - Space Invader Game" />
-    <meta name="twitter:description"
-        content="Defend Earth from alien attacks in this modern take on the classic Space Invaders game. Download now and start playing!" />
-    <meta name="twitter:image"
-        content="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.png" />
-    <title>Alien Invasion - Space Invader Game</title>
-    <link rel="icon" type="image/x-icon"
-        href="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/src/assets/icons/icon.png">
-    <link rel="stylesheet" href="./assets/css/styles.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/flowbite@latest/dist/flowbite.min.js"></script>
-</head>
+    <body class="text-white min-h-screen flex flex-col">
+        <div class="space-bg" role="presentation" aria-hidden="true"></div>
 
-<body class="text-white min-h-screen flex flex-col">
-    <div class="space-bg" role="presentation" aria-hidden="true"></div>
-
-    <header class="container mx-auto px-4 py-6 flex justify-between items-center" role="banner">
-        <div class="flex items-center">
-            <a href="index.html" class="flex items-center">
-                <img src="assets/svg/icon-white.svg" alt="Destroy Aliens Logo - A spaceship icon"
-                    class="h-12 w-12 mr-3">
-                <h1 class="text-2xl font-bold text-green-400 glow">Alien Invasion</h1>
-            </a>
-        </div>
-        <nav class="hidden md:flex space-x-6" role="navigation" aria-label="Main navigation">
-            <a href="index.html" class="hover:text-green-400 transition">Home</a>
-            <a href="index.html#features" class="hover:text-green-400 transition">Features</a>
-            <a href="index.html#screenshots" class="hover:text-green-400 transition">Screenshots</a>
-            <a href="index.html#download" class="hover:text-green-400 transition">Download</a>
-            <a href="docs/" class="hover:text-green-400 transition">Documentation</a>
-        </nav>
-        <button id="mobile-menu-button" class="md:hidden text-white" aria-label="Toggle mobile menu"
-            aria-expanded="false" aria-controls="mobile-menu" aria-haspopup="true">
-            <img src="assets/svg/menu.svg" alt="" class="h-6 w-6" aria-hidden="true">
-        </button>
-    </header>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu"
-        class="md:hidden fixed inset-0 bg-gray-900 bg-opacity-95 z-50 transform translate-x-full transition-transform duration-300 ease-in-out"
-        role="dialog" aria-label="Mobile menu" aria-modal="true">
-        <div class="flex justify-end p-4">
-            <button id="close-menu" class="text-white" aria-label="Close mobile menu">
-                <img src="assets/svg/close.svg" alt="" class="h-6 w-6" aria-hidden="true">
+        <header
+            class="container mx-auto px-4 py-6 flex justify-between items-center"
+            role="banner"
+        >
+            <div class="flex items-center">
+                <a href="index.html" class="flex items-center">
+                    <img
+                        src="assets/svg/icon-white.svg"
+                        alt="Destroy Aliens Logo - A spaceship icon"
+                        class="h-12 w-12 mr-3"
+                    />
+                    <h1 class="text-2xl font-bold text-green-400 glow">
+                        Alien Invasion
+                    </h1>
+                </a>
+            </div>
+            <nav
+                class="hidden md:flex space-x-6"
+                role="navigation"
+                aria-label="Main navigation"
+            >
+                <a href="index.html" class="hover:text-green-400 transition"
+                    >Home</a
+                >
+                <a
+                    href="index.html#features"
+                    class="hover:text-green-400 transition"
+                    >Features</a
+                >
+                <a
+                    href="index.html#screenshots"
+                    class="hover:text-green-400 transition"
+                    >Screenshots</a
+                >
+                <a
+                    href="index.html#download"
+                    class="hover:text-green-400 transition"
+                    >Download</a
+                >
+                <a href="docs/" class="hover:text-green-400 transition"
+                    >Documentation</a
+                >
+            </nav>
+            <button
+                id="mobile-menu-button"
+                class="md:hidden text-white"
+                aria-label="Toggle mobile menu"
+                aria-expanded="false"
+                aria-controls="mobile-menu"
+                aria-haspopup="true"
+            >
+                <img
+                    src="assets/svg/menu.svg"
+                    alt=""
+                    class="h-6 w-6"
+                    aria-hidden="true"
+                />
             </button>
-        </div>
-        <nav class="flex flex-col items-center space-y-8 p-8" role="navigation" aria-label="Mobile navigation">
-            <a href="index.html" class="text-2xl text-white hover:text-green-400 transition">Home</a>
-            <a href="index.html#features" class="text-2xl text-white hover:text-green-400 transition">Features</a>
-            <a href="index.html#screenshots" class="text-2xl text-white hover:text-green-400 transition">Screenshots</a>
-            <a href="index.html#download" class="text-2xl text-white hover:text-green-400 transition">Download</a>
-            <a href="docs/" class="text-2xl text-white hover:text-green-400 transition">Documentation</a>
-        </nav>
-    </div>
+        </header>
 
-    <main class="flex-grow container mx-auto px-4 py-12" role="main">
-        <section class="mb-20">
-            <h2 class="text-4xl font-bold text-center mb-12 glow">Changelog</h2>
-            <div class="card rounded-xl p-8 max-w-4xl mx-auto">
-                <div class="space-y-8">
-                    <div class="bg-gray-800 rounded-lg p-6">
-                        <h3 class="text-2xl font-bold mb-4 text-green-400">Version 1.1.0 - 2024-05-01</h3>
-                        <div class="space-y-4">
-                            <div>
-                                <h4 class="text-xl font-semibold mb-2 text-green-300">Added</h4>
-                                <ul class="list-disc list-inside space-y-2 text-gray-300">
-                                    <li>Enhanced macOS compatibility and build process</li>
-                                    <li>Improved documentation and build guides</li>
-                                    <li>Added comprehensive type checking configuration</li>
-                                </ul>
+        <!-- Mobile Menu -->
+        <div
+            id="mobile-menu"
+            class="md:hidden fixed inset-0 bg-gray-900 bg-opacity-95 z-50 transform translate-x-full transition-transform duration-300 ease-in-out"
+            role="dialog"
+            aria-label="Mobile menu"
+            aria-modal="true"
+        >
+            <div class="flex justify-end p-4">
+                <button
+                    id="close-menu"
+                    class="text-white"
+                    aria-label="Close mobile menu"
+                >
+                    <img
+                        src="assets/svg/close.svg"
+                        alt=""
+                        class="h-6 w-6"
+                        aria-hidden="true"
+                    />
+                </button>
+            </div>
+            <nav
+                class="flex flex-col items-center space-y-8 p-8"
+                role="navigation"
+                aria-label="Mobile navigation"
+            >
+                <a
+                    href="index.html"
+                    class="text-2xl text-white hover:text-green-400 transition"
+                    >Home</a
+                >
+                <a
+                    href="index.html#features"
+                    class="text-2xl text-white hover:text-green-400 transition"
+                    >Features</a
+                >
+                <a
+                    href="index.html#screenshots"
+                    class="text-2xl text-white hover:text-green-400 transition"
+                    >Screenshots</a
+                >
+                <a
+                    href="index.html#download"
+                    class="text-2xl text-white hover:text-green-400 transition"
+                    >Download</a
+                >
+                <a
+                    href="docs/"
+                    class="text-2xl text-white hover:text-green-400 transition"
+                    >Documentation</a
+                >
+            </nav>
+        </div>
+
+        <main class="flex-grow container mx-auto px-4 py-12" role="main">
+            <section class="mb-20">
+                <h2 class="text-4xl font-bold text-center mb-12 glow">
+                    Changelog
+                </h2>
+                <div class="card rounded-xl p-8 max-w-4xl mx-auto">
+                    <div class="space-y-8">
+                        <div class="bg-gray-800 rounded-lg p-6">
+                            <h3 class="text-2xl font-bold mb-4 text-green-400">
+                                Version 1.1.0 - 2024-05-01
+                            </h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <h4
+                                        class="text-xl font-semibold mb-2 text-green-300"
+                                    >
+                                        Added
+                                    </h4>
+                                    <ul
+                                        class="list-disc list-inside space-y-2 text-gray-300"
+                                    >
+                                        <li>
+                                            Enhanced macOS compatibility and
+                                            build process
+                                        </li>
+                                        <li>
+                                            Improved documentation and build
+                                            guides
+                                        </li>
+                                        <li>
+                                            Added comprehensive type checking
+                                            configuration
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4
+                                        class="text-xl font-semibold mb-2 text-green-300"
+                                    >
+                                        Changed
+                                    </h4>
+                                    <ul
+                                        class="list-disc list-inside space-y-2 text-gray-300"
+                                    >
+                                        <li>
+                                            Refactored code structure for
+                                            improved readability
+                                        </li>
+                                        <li>
+                                            Updated project configuration for
+                                            better maintainability
+                                        </li>
+                                        <li>Enhanced resource path handling</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4
+                                        class="text-xl font-semibold mb-2 text-green-300"
+                                    >
+                                        Fixed
+                                    </h4>
+                                    <ul
+                                        class="list-disc list-inside space-y-2 text-gray-300"
+                                    >
+                                        <li>
+                                            Various bug fixes and improvements
+                                        </li>
+                                        <li>
+                                            Type checking issues in setup.py
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div>
-                                <h4 class="text-xl font-semibold mb-2 text-green-300">Changed</h4>
-                                <ul class="list-disc list-inside space-y-2 text-gray-300">
-                                    <li>Refactored code structure for improved readability</li>
-                                    <li>Updated project configuration for better maintainability</li>
-                                    <li>Enhanced resource path handling</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-semibold mb-2 text-green-300">Fixed</h4>
-                                <ul class="list-disc list-inside space-y-2 text-gray-300">
-                                    <li>Various bug fixes and improvements</li>
-                                    <li>Type checking issues in setup.py</li>
-                                </ul>
+                        </div>
+                        <div class="border-b border-gray-700 pb-6">
+                            <h3 class="text-2xl font-bold mb-4 text-green-400">
+                                Version 1.0.0 - 2024-04-17
+                            </h3>
+
+                            <div class="space-y-6">
+                                <div>
+                                    <h4
+                                        class="text-xl font-semibold mb-2 text-green-300"
+                                    >
+                                        Added
+                                    </h4>
+                                    <ul
+                                        class="text-gray-300 list-disc list-inside space-y-2"
+                                    >
+                                        <li>
+                                            Multilingual support for game
+                                            interface
+                                        </li>
+                                        <li>Encrypted high score system</li>
+                                        <li>
+                                            Enhanced sound effects and music
+                                            control
+                                        </li>
+                                        <li>
+                                            Controls screen with detailed
+                                            instructions
+                                        </li>
+                                        <li>Game pause and lives display</li>
+                                        <li>Comprehensive unit tests</li>
+                                        <li>
+                                            Technical documentation with MkDocs
+                                        </li>
+                                        <li>
+                                            Build guides for macOS and Windows
+                                        </li>
+                                        <li>
+                                            CI/CD configuration with GitHub
+                                            Actions
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <h4
+                                        class="text-xl font-semibold mb-2 text-green-300"
+                                    >
+                                        Changed
+                                    </h4>
+                                    <ul
+                                        class="text-gray-300 list-disc list-inside space-y-2"
+                                    >
+                                        <li>
+                                            Complete game structure refactoring
+                                        </li>
+                                        <li>Improved resource management</li>
+                                        <li>Performance optimization</li>
+                                        <li>Updated alien descent speed</li>
+                                        <li>
+                                            Enhanced README and documentation
+                                        </li>
+                                        <li>Optimized game assets</li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <h4
+                                        class="text-xl font-semibold mb-2 text-green-300"
+                                    >
+                                        Fixed
+                                    </h4>
+                                    <ul
+                                        class="text-gray-300 list-disc list-inside space-y-2"
+                                    >
+                                        <li>
+                                            Cross-platform resource path
+                                            handling
+                                        </li>
+                                        <li>Error handling improvements</li>
+                                        <li>Pygame compatibility issues</li>
+                                        <li>Project dependencies update</li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <h4
+                                        class="text-xl font-semibold mb-2 text-green-300"
+                                    >
+                                        Security
+                                    </h4>
+                                    <ul
+                                        class="text-gray-300 list-disc list-inside space-y-2"
+                                    >
+                                        <li>
+                                            High score encryption implementation
+                                        </li>
+                                        <li>
+                                            Enhanced file and resource
+                                            management
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <h4
+                                        class="text-xl font-semibold mb-2 text-green-300"
+                                    >
+                                        Documentation
+                                    </h4>
+                                    <ul
+                                        class="text-gray-300 list-disc list-inside space-y-2"
+                                    >
+                                        <li>
+                                            Complete project architecture
+                                            documentation
+                                        </li>
+                                        <li>Updated contribution guidelines</li>
+                                        <li>
+                                            Build guides for different platforms
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <h4
+                                        class="text-xl font-semibold mb-2 text-green-300"
+                                    >
+                                        Infrastructure
+                                    </h4>
+                                    <ul
+                                        class="text-gray-300 list-disc list-inside space-y-2"
+                                    >
+                                        <li>GitHub Actions CI/CD setup</li>
+                                        <li>MkDocs documentation system</li>
+                                        <li>
+                                            Development environment
+                                            configuration
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="border-b border-gray-700 pb-6">
-                        <h3 class="text-2xl font-bold mb-4 text-green-400">Version 1.0.0 - 2024-04-17</h3>
+                </div>
+            </section>
+        </main>
 
-                        <div class="space-y-6">
-                            <div>
-                                <h4 class="text-xl font-semibold mb-2 text-green-300">Added</h4>
-                                <ul class="text-gray-300 list-disc list-inside space-y-2">
-                                    <li>Multilingual support for game interface</li>
-                                    <li>Encrypted high score system</li>
-                                    <li>Enhanced sound effects and music control</li>
-                                    <li>Controls screen with detailed instructions</li>
-                                    <li>Game pause and lives display</li>
-                                    <li>Comprehensive unit tests</li>
-                                    <li>Technical documentation with MkDocs</li>
-                                    <li>Build guides for macOS and Windows</li>
-                                    <li>CI/CD configuration with GitHub Actions</li>
-                                </ul>
-                            </div>
-
-                            <div>
-                                <h4 class="text-xl font-semibold mb-2 text-green-300">Changed</h4>
-                                <ul class="text-gray-300 list-disc list-inside space-y-2">
-                                    <li>Complete game structure refactoring</li>
-                                    <li>Improved resource management</li>
-                                    <li>Performance optimization</li>
-                                    <li>Updated alien descent speed</li>
-                                    <li>Enhanced README and documentation</li>
-                                    <li>Optimized game assets</li>
-                                </ul>
-                            </div>
-
-                            <div>
-                                <h4 class="text-xl font-semibold mb-2 text-green-300">Fixed</h4>
-                                <ul class="text-gray-300 list-disc list-inside space-y-2">
-                                    <li>Cross-platform resource path handling</li>
-                                    <li>Error handling improvements</li>
-                                    <li>Pygame compatibility issues</li>
-                                    <li>Project dependencies update</li>
-                                </ul>
-                            </div>
-
-                            <div>
-                                <h4 class="text-xl font-semibold mb-2 text-green-300">Security</h4>
-                                <ul class="text-gray-300 list-disc list-inside space-y-2">
-                                    <li>High score encryption implementation</li>
-                                    <li>Enhanced file and resource management</li>
-                                </ul>
-                            </div>
-
-                            <div>
-                                <h4 class="text-xl font-semibold mb-2 text-green-300">Documentation</h4>
-                                <ul class="text-gray-300 list-disc list-inside space-y-2">
-                                    <li>Complete project architecture documentation</li>
-                                    <li>Updated contribution guidelines</li>
-                                    <li>Build guides for different platforms</li>
-                                </ul>
-                            </div>
-
-                            <div>
-                                <h4 class="text-xl font-semibold mb-2 text-green-300">Infrastructure</h4>
-                                <ul class="text-gray-300 list-disc list-inside space-y-2">
-                                    <li>GitHub Actions CI/CD setup</li>
-                                    <li>MkDocs documentation system</li>
-                                    <li>Development environment configuration</li>
-                                </ul>
-                            </div>
+        <footer class="bg-gray-900 py-8" role="contentinfo">
+            <div class="container mx-auto px-4">
+                <div
+                    class="flex flex-col md:flex-row justify-between items-center"
+                >
+                    <div class="mb-4 md:mb-0">
+                        <div class="flex items-center">
+                            <img
+                                src="assets/svg/icon-white.svg"
+                                alt="Alien Invasion Logo"
+                                class="h-8 w-8 mr-2"
+                            />
+                            <span class="text-green-400 font-bold"
+                                >Alien Invasion</span
+                            >
                         </div>
+                        <p class="text-gray-500 text-sm mt-2">
+                            © 2022 - 2025
+                            <a
+                                href="https://www.linkedin.com/in/ignacio-nicol%C3%A1s-avil%C3%A9s-cardenasso/"
+                                class="text-green-400 hover:text-green-300 transition"
+                                aria-label="Visit my LinkedIn profile"
+                                target="_blank"
+                            >
+                                <span>Ignacio Avilés</span>
+                                <span class="sr-only">on LinkedIn</span> </a
+                            >. All rights reserved.
+                        </p>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a
+                            href="https://github.com/avilesxd"
+                            class="text-gray-400 hover:text-white transition"
+                            aria-label="Visit my GitHub profile"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/svg/github.svg"
+                                alt=""
+                                class="h-6 w-6"
+                                aria-hidden="true"
+                            />
+                            <span class="sr-only">GitHub</span>
+                        </a>
+                        <a
+                            href="https://www.instagram.com/avilesxd/"
+                            class="text-gray-400 hover:text-white transition"
+                            aria-label="Follow me on Instagram"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/svg/instagram.svg"
+                                alt=""
+                                class="h-6 w-6"
+                                aria-hidden="true"
+                            />
+                            <span class="sr-only">Instagram</span>
+                        </a>
+                        <a
+                            href="https://www.youtube.com/channel/UCYPsgamO7XeWOrXriOpJBqw"
+                            class="text-gray-400 hover:text-white transition"
+                            aria-label="Subscribe to my YouTube channel"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/svg/youtube.svg"
+                                alt=""
+                                class="h-6 w-6"
+                                aria-hidden="true"
+                            />
+                            <span class="sr-only">YouTube</span>
+                        </a>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </footer>
 
-    <footer class="bg-gray-900 py-8" role="contentinfo">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <div class="flex items-center">
-                        <img src="assets/svg/icon-white.svg" alt="Alien Invasion Logo" class="h-8 w-8 mr-2">
-                        <span class="text-green-400 font-bold">Alien Invasion</span>
-                    </div>
-                    <p class="text-gray-500 text-sm mt-2">© 2022 - 2025 <a
-                            href="https://www.linkedin.com/in/ignacio-nicol%C3%A1s-avil%C3%A9s-cardenasso/"
-                            class="text-green-400 hover:text-green-300 transition"
-                            aria-label="Visit my LinkedIn profile" target="_blank">
-                            <span>Ignacio Avilés</span>
-                            <span class="sr-only">on LinkedIn</span>
-                        </a>. All rights reserved.</p>
-                </div>
-                <div class="flex space-x-4">
-                    <a href="https://github.com/avilesxd" class="text-gray-400 hover:text-white transition"
-                        aria-label="Visit my GitHub profile" target="_blank">
-                        <img src="assets/svg/github.svg" alt="" class="h-6 w-6" aria-hidden="true">
-                        <span class="sr-only">GitHub</span>
-                    </a>
-                    <a href="https://www.instagram.com/avilesxd/" class="text-gray-400 hover:text-white transition"
-                        aria-label="Follow me on Instagram" target="_blank">
-                        <img src="assets/svg/instagram.svg" alt="" class="h-6 w-6" aria-hidden="true">
-                        <span class="sr-only">Instagram</span>
-                    </a>
-                    <a href="https://www.youtube.com/channel/UCYPsgamO7XeWOrXriOpJBqw"
-                        class="text-gray-400 hover:text-white transition" aria-label="Subscribe to my YouTube channel"
-                        target="_blank">
-                        <img src="assets/svg/youtube.svg" alt="" class="h-6 w-6" aria-hidden="true">
-                        <span class="sr-only">YouTube</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="./assets/js/script.js"></script>
-</body>
-
+        <script src="./assets/js/script.js"></script>
+    </body>
 </html>

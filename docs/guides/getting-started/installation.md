@@ -63,17 +63,20 @@ python main.py
 ### Common Issues
 
 1. **Python not found**
-   - Make sure Python is installed and added to your PATH
-   - Verify installation with `python --version`
+
+    - Make sure Python is installed and added to your PATH
+    - Verify installation with `python --version`
 
 2. **Pygame installation fails**
-   - Make sure you have the required build tools
-   - On Windows, you might need Visual C++ Build Tools
-   - On Linux, install development libraries: `sudo apt-get install python3-dev`
+
+    - Make sure you have the required build tools
+    - On Windows, you might need Visual C++ Build Tools
+    - On Linux, install development libraries:
+      `sudo apt-get install python3-dev`
 
 3. **Virtual environment issues**
-   - If activation fails, try using the full path to the activation script
-   - Make sure you're using the correct activation command for your OS
+    - If activation fails, try using the full path to the activation script
+    - Make sure you're using the correct activation command for your OS
 
 ### Getting Help
 
@@ -86,4 +89,5 @@ If you encounter any issues not covered here:
 
 - Read the [Quick Start Guide](quick-start.md) to start playing
 - Check out the [Configuration Guide](configuration.md) to customize the game
-- Explore the [Development Guide](../development/core-concepts.md) to start contributing
+- Explore the [Development Guide](../development/core-concepts.md) to start
+  contributing

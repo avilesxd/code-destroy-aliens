@@ -2,7 +2,8 @@
 
 ## Overview
 
-This guide covers the testing strategy and practices for Alien Invasion. We use a comprehensive testing approach to ensure game quality and reliability.
+This guide covers the testing strategy and practices for Alien Invasion. We use
+a comprehensive testing approach to ensure game quality and reliability.
 
 ## Testing Types
 
@@ -171,14 +172,14 @@ def test_memory_usage():
 name: Tests
 on: [push, pull_request]
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Run tests
-        run: |
-          pip install -r requirements.txt
-          pytest
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: Run tests
+              run: |
+                  pip install -r requirements.txt
+                  pytest
 ```
 
 ## Best Practices

@@ -2,7 +2,8 @@
 
 ## Game Settings
 
-Alien Invasion can be customized through various configuration options. These settings can be modified in the `src/config/configuration.py` file.
+Alien Invasion can be customized through various configuration options. These
+settings can be modified in the `src/config/configuration.py` file.
 
 ### Display Settings
 
@@ -58,11 +59,11 @@ You can modify some settings through the game's options menu:
 1. Access the **Options** menu from the main menu
 2. Select **Settings**
 3. Adjust the following:
-   - Display resolution
-   - Fullscreen mode
-   - Music volume
-   - Sound effects volume
-   - Language
+    - Display resolution
+    - Fullscreen mode
+    - Music volume
+    - Sound effects volume
+    - Language
 
 ### 2. Configuration File
 
@@ -91,16 +92,18 @@ python main.py --no-audio
 ## Best Practices
 
 1. **Backup Configuration**
-   - Always backup your configuration file before making changes
-   - Use version control to track configuration changes
+
+    - Always backup your configuration file before making changes
+    - Use version control to track configuration changes
 
 2. **Performance Considerations**
-   - Higher resolutions may impact performance
-   - Consider your system's capabilities when adjusting settings
+
+    - Higher resolutions may impact performance
+    - Consider your system's capabilities when adjusting settings
 
 3. **Testing Changes**
-   - Test configuration changes in a controlled environment
-   - Verify that changes don't introduce new issues
+    - Test configuration changes in a controlled environment
+    - Verify that changes don't introduce new issues
 
 ## Troubleshooting
 
@@ -114,4 +117,5 @@ If you encounter issues after changing settings:
 
 - Read the [Quick Start Guide](quick-start.md) to start playing
 - Check out the [Game Guide](../gameplay/basics.md) to learn more about gameplay
-- Explore the [Development Guide](../development/core-concepts.md) for advanced configuration
+- Explore the [Development Guide](../development/core-concepts.md) for advanced
+  configuration

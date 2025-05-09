@@ -34,14 +34,14 @@ class GameState(Enum):
 ```python
 def fire_bullet(position: Position, direction: Vector2) -> Bullet:
     """Fire a bullet from the specified position.
-    
+
     Args:
         position: Starting position of the bullet
         direction: Direction vector for bullet movement
-        
+
     Returns:
         Bullet: The created bullet entity
-        
+
     Raises:
         ValueError: If position is invalid
     """
@@ -78,7 +78,7 @@ SCREEN_HEIGHT = 600
 # Classes
 class Game:
     """Game class docstring."""
-    
+
     def __init__(self):
         """Initialize game."""
         pass

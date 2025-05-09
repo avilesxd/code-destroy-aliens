@@ -2,7 +2,8 @@
 
 ## Overview
 
-This guide covers the Entity Component System (ECS) implementation for Alien Invasion, including entities, components, and systems.
+This guide covers the Entity Component System (ECS) implementation for Alien
+Invasion, including entities, components, and systems.
 
 ## Core Concepts
 
@@ -150,7 +151,7 @@ class MovementSystem(System):
     def process_entity(self, entity: Entity, delta_time: float) -> None:
         position = entity.get_component(Position)
         velocity = entity.get_component(Velocity)
-        
+
         position.x += velocity.x * delta_time
         position.y += velocity.y * delta_time
 ```
@@ -167,7 +168,7 @@ class RenderingSystem(System):
     def process_entity(self, entity: Entity, delta_time: float) -> None:
         position = entity.get_component(Position)
         sprite = entity.get_component(Sprite)
-        
+
         sprite.rect.x = position.x
         sprite.rect.y = position.y
         self.screen.blit(sprite.image, sprite.rect)

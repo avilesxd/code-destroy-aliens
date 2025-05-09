@@ -1,7 +1,7 @@
 # 🤝 Contributor Guide
 
-Thank you for your interest in contributing to **Alien Invasion**!
-Your help is welcome, whether it's fixing bugs, improving the code, or adding new features.
+Thank you for your interest in contributing to **Alien Invasion**! Your help is
+welcome, whether it's fixing bugs, improving the code, or adding new features.
 
 ---
 
@@ -48,7 +48,8 @@ git add .
 # Example: git commit -m "docs: update README with new features"
 ```
 
-The commit message must follow the [Conventional Commits](https://www.conventionalcommits.org/) format:
+The commit message must follow the
+[Conventional Commits](https://www.conventionalcommits.org/) format:
 
 - `feat:` for new features
 - `fix:` for bug fixes
@@ -63,7 +64,8 @@ The commit message must follow the [Conventional Commits](https://www.convention
 - `revert:` for reverting previous changes
 - `wip:` for work in progress
 
-If your commit doesn't follow this format, husky will prevent the commit from being created.
+If your commit doesn't follow this format, husky will prevent the commit from
+being created.
 
 ### 7. Push your changes
 
@@ -90,42 +92,46 @@ Go to your fork on GitHub and click "Compare & pull request".
 ### Testing Guidelines
 
 1. **Test Coverage**
-   - Write tests for all new features and bug fixes
-   - Aim for at least 80% test coverage for new code
-   - Include both unit tests and integration tests where appropriate
+
+    - Write tests for all new features and bug fixes
+    - Aim for at least 80% test coverage for new code
+    - Include both unit tests and integration tests where appropriate
 
 2. **Test Structure**
-   - Place test files in the `tests` directory
-   - Name test files with the pattern `test_*.py`
-   - Use clear and descriptive test function names
+
+    - Place test files in the `tests` directory
+    - Name test files with the pattern `test_*.py`
+    - Use clear and descriptive test function names
 
 3. **Running Tests**
 
-   ```bash
-   # Run all tests
-   python -m pytest
+    ```bash
+    # Run all tests
+    python -m pytest
 
-   # Run specific test file
-   python -m pytest tests/test_specific.py
-   ```
+    # Run specific test file
+    python -m pytest tests/test_specific.py
+    ```
 
 4. **Test Best Practices**
-   - Follow the AAA pattern (Arrange, Act, Assert)
-   - Keep tests independent and isolated
-   - Use meaningful test data
-   - Document complex test scenarios
-   - Mock external dependencies when necessary
+
+    - Follow the AAA pattern (Arrange, Act, Assert)
+    - Keep tests independent and isolated
+    - Use meaningful test data
+    - Document complex test scenarios
+    - Mock external dependencies when necessary
 
 5. **Continuous Integration**
-   - All tests must pass before merging
-   - Pull requests will be automatically tested
-   - Fix any failing tests before requesting review
+    - All tests must pass before merging
+    - Pull requests will be automatically tested
+    - Fix any failing tests before requesting review
 
 ---
 
 ## 💬 Contact
 
-If you have any questions, please open an issue or contact us directly through [Discussions](https://github.com/avilesxd/code-destroy-aliens/discussions).
+If you have any questions, please open an issue or contact us directly through
+[Discussions](https://github.com/avilesxd/code-destroy-aliens/discussions).
 
 ---
 

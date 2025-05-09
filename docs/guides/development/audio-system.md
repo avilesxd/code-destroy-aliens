@@ -2,7 +2,8 @@
 
 ## Overview
 
-This guide covers the audio system implementation for Alien Invasion, including sound effects, music, and audio management.
+This guide covers the audio system implementation for Alien Invasion, including
+sound effects, music, and audio management.
 
 ## Audio Components
 

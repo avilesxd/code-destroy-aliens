@@ -2,7 +2,10 @@
 
 ## Overview
 
-This guide helps you resolve common issues you might encounter while working with Alien Invasion. If you don't find your issue here, please check our [GitHub Issues](https://github.com/avilesxd/code-destroy-aliens/issues) or create a new one.
+This guide helps you resolve common issues you might encounter while working
+with Alien Invasion. If you don't find your issue here, please check our
+[GitHub Issues](https://github.com/avilesxd/code-destroy-aliens/issues) or
+create a new one.
 
 ## Installation Issues
 

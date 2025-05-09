@@ -2,7 +2,8 @@
 
 ## Overview
 
-This guide covers performance optimization techniques and best practices for Alien Invasion.
+This guide covers performance optimization techniques and best practices for
+Alien Invasion.
 
 ## Performance Metrics
 

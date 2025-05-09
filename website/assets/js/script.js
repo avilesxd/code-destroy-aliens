@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const mobileMenuLinks = mobileMenu.querySelectorAll('a');
 
     function toggleMenu() {
-        const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+        const isExpanded =
+            mobileMenuButton.getAttribute('aria-expanded') === 'true';
         mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
         mobileMenu.classList.toggle('translate-x-full');
 
@@ -18,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     closeMenuButton.addEventListener('click', toggleMenu);
 
     // Close menu when clicking on a link
-    mobileMenuLinks.forEach(link => {
+    mobileMenuLinks.forEach((link) => {
         link.addEventListener('click', () => {
             mobileMenu.classList.add('translate-x-full');
             mobileMenuButton.setAttribute('aria-expanded', 'false');
@@ -90,7 +91,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 5000);
 
     // Pause autoplay on hover and focus
-    carousel.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
+    carousel.addEventListener('mouseenter', () =>
+        clearInterval(autoplayInterval)
+    );
     carousel.addEventListener('mouseleave', () => {
         autoplayInterval = setInterval(function () {
             currentIndex = (currentIndex + 1) % totalItems;

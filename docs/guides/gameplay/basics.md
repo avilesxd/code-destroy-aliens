@@ -2,27 +2,31 @@
 
 ## Game Overview
 
-Alien Invasion is a modern take on the classic Space Invaders game, featuring unique mechanics and modern graphics. The game is built using Pygame and offers a smooth, engaging experience.
+Alien Invasion is a modern take on the classic Space Invaders game, featuring
+unique mechanics and modern graphics. The game is built using Pygame and offers
+a smooth, engaging experience.
 
 ## Game Flow
 
 1. **Main Menu**
-   - Start Game
-   - Options
-   - Controls
-   - Exit
+
+    - Start Game
+    - Options
+    - Controls
+    - Exit
 
 2. **Main Game**
-   - Control your spaceship
-   - Shoot down aliens
-   - Avoid enemy fire
-   - Collect power-ups
-   - Score points
+
+    - Control your spaceship
+    - Shoot down aliens
+    - Avoid enemy fire
+    - Collect power-ups
+    - Score points
 
 3. **Game Over**
-   - View your score
-   - Save statistics
-   - Return to main menu
+    - View your score
+    - Save statistics
+    - Return to main menu
 
 ## Core Mechanics
 

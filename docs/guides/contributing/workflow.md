@@ -2,7 +2,8 @@
 
 ## Overview
 
-This guide details the development workflow for Alien Invasion, from setting up your environment to submitting changes.
+This guide details the development workflow for Alien Invasion, from setting up
+your environment to submitting changes.
 
 ## Development Environment
 
@@ -155,7 +156,8 @@ Follow semantic versioning:
 - Use design patterns appropriately
 - Document complex logic
 
-For more information about code quality standards, see the [Code Quality Guide](../development/code-quality.md).
+For more information about code quality standards, see the
+[Code Quality Guide](../development/code-quality.md).
 
 ### 2. Testing
 
@@ -176,19 +178,21 @@ For more information about code quality standards, see the [Code Quality Guide](
 ### Common Issues
 
 1. **Test Failures**
-   - Check environment setup
-   - Verify dependencies
-   - Run tests locally
+
+    - Check environment setup
+    - Verify dependencies
+    - Run tests locally
 
 2. **Build Issues**
-   - Check Python version
-   - Verify Pygame installation
-   - Check system dependencies
+
+    - Check Python version
+    - Verify Pygame installation
+    - Check system dependencies
 
 3. **Documentation Issues**
-   - Verify MkDocs installation
-   - Check markdown syntax
-   - Test locally
+    - Verify MkDocs installation
+    - Check markdown syntax
+    - Test locally
 
 ## Next Steps
 

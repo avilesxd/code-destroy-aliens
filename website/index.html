@@ -1,392 +1,814 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Play Alien Invasion, a modern take on the classic Space Invaders game. Defend Earth from alien attacks with fast-paced action and challenging levels."
+        />
+        <meta
+            name="keywords"
+            content="space invaders, alien invasion, arcade game, retro game, space shooter, classic game"
+        />
+        <meta name="author" content="Ignacio Avilés" />
+        <meta name="robots" content="index, follow" />
+        <meta name="theme-color" content="#0f172a" />
+        <meta name="color-scheme" content="dark" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"
+        />
+        <meta
+            property="og:title"
+            content="Alien Invasion - Space Invader Game"
+        />
+        <meta
+            property="og:description"
+            content="Defend Earth from alien attacks in this modern take on the classic Space Invaders game. Download now and start playing!"
+        />
+        <meta
+            property="og:image"
+            content="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.png"
+        />
+        <meta
+            property="og:url"
+            content="https://avilesxd.github.io/code-destroy-aliens/"
+        />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:title"
+            content="Alien Invasion - Space Invader Game"
+        />
+        <meta
+            name="twitter:description"
+            content="Defend Earth from alien attacks in this modern take on the classic Space Invaders game. Download now and start playing!"
+        />
+        <meta
+            name="twitter:image"
+            content="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.png"
+        />
+        <title>Alien Invasion - Space Invader Game</title>
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/src/assets/icons/icon.png"
+        />
+        <link rel="stylesheet" href="./assets/css/styles.css" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://unpkg.com/flowbite@latest/dist/flowbite.min.js"></script>
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-        content="Play Alien Invasion, a modern take on the classic Space Invaders game. Defend Earth from alien attacks with fast-paced action and challenging levels." />
-    <meta name="keywords"
-        content="space invaders, alien invasion, arcade game, retro game, space shooter, classic game" />
-    <meta name="author" content="Ignacio Avilés" />
-    <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#0f172a" />
-    <meta name="color-scheme" content="dark" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta property="og:title" content="Alien Invasion - Space Invader Game" />
-    <meta property="og:description"
-        content="Defend Earth from alien attacks in this modern take on the classic Space Invaders game. Download now and start playing!" />
-    <meta property="og:image"
-        content="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.png" />
-    <meta property="og:url" content="https://avilesxd.github.io/code-destroy-aliens/" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Alien Invasion - Space Invader Game" />
-    <meta name="twitter:description"
-        content="Defend Earth from alien attacks in this modern take on the classic Space Invaders game. Download now and start playing!" />
-    <meta name="twitter:image"
-        content="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.png" />
-    <title>Alien Invasion - Space Invader Game</title>
-    <link rel="icon" type="image/x-icon"
-        href="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/src/assets/icons/icon.png">
-    <link rel="stylesheet" href="./assets/css/styles.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/flowbite@latest/dist/flowbite.min.js"></script>
-</head>
+    <body class="text-white min-h-screen flex flex-col">
+        <!-- Skip to main content link -->
+        <a href="#main-content" class="skip-to-main">Skip to main content</a>
 
-<body class="text-white min-h-screen flex flex-col">
-    <!-- Skip to main content link -->
-    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+        <div class="space-bg" role="presentation" aria-hidden="true"></div>
 
-    <div class="space-bg" role="presentation" aria-hidden="true"></div>
-
-    <header class="container mx-auto px-4 py-6 flex justify-between items-center" role="banner">
-        <div class="flex items-center">
-            <img src="assets/svg/icon-white.svg" alt="Destroy Aliens Logo - A spaceship icon" class="h-12 w-12 mr-3">
-            <h1 class="text-2xl font-bold text-green-400 glow">Alien Invasion</h1>
-        </div>
-        <nav class="hidden md:flex space-x-6" role="navigation" aria-label="Main navigation">
-            <a href="#features" class="hover:text-green-400 transition">Features</a>
-            <a href="#screenshots" class="hover:text-green-400 transition">Screenshots</a>
-            <a href="#download" class="hover:text-green-400 transition">Download</a>
-            <a href="changelog.html" class="hover:text-green-400 transition">Changelog</a>
-            <a href="docs/" class="hover:text-green-400 transition">Documentation</a>
-        </nav>
-        <button id="mobile-menu-button" class="md:hidden text-white" aria-label="Toggle mobile menu"
-            aria-expanded="false" aria-controls="mobile-menu" aria-haspopup="true">
-            <img src="assets/svg/menu.svg" alt="" class="h-6 w-6" aria-hidden="true">
-        </button>
-    </header>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu"
-        class="md:hidden fixed inset-0 bg-gray-900 bg-opacity-95 z-50 transform translate-x-full transition-transform duration-300 ease-in-out"
-        role="dialog" aria-label="Mobile menu" aria-modal="true">
-        <div class="flex justify-end p-4">
-            <button id="close-menu" class="text-white" aria-label="Close mobile menu">
-                <img src="assets/svg/close.svg" alt="" class="h-6 w-6" aria-hidden="true">
+        <header
+            class="container mx-auto px-4 py-6 flex justify-between items-center"
+            role="banner"
+        >
+            <div class="flex items-center">
+                <img
+                    src="assets/svg/icon-white.svg"
+                    alt="Destroy Aliens Logo - A spaceship icon"
+                    class="h-12 w-12 mr-3"
+                />
+                <h1 class="text-2xl font-bold text-green-400 glow">
+                    Alien Invasion
+                </h1>
+            </div>
+            <nav
+                class="hidden md:flex space-x-6"
+                role="navigation"
+                aria-label="Main navigation"
+            >
+                <a href="#features" class="hover:text-green-400 transition"
+                    >Features</a
+                >
+                <a href="#screenshots" class="hover:text-green-400 transition"
+                    >Screenshots</a
+                >
+                <a href="#download" class="hover:text-green-400 transition"
+                    >Download</a
+                >
+                <a href="changelog.html" class="hover:text-green-400 transition"
+                    >Changelog</a
+                >
+                <a href="docs/" class="hover:text-green-400 transition"
+                    >Documentation</a
+                >
+            </nav>
+            <button
+                id="mobile-menu-button"
+                class="md:hidden text-white"
+                aria-label="Toggle mobile menu"
+                aria-expanded="false"
+                aria-controls="mobile-menu"
+                aria-haspopup="true"
+            >
+                <img
+                    src="assets/svg/menu.svg"
+                    alt=""
+                    class="h-6 w-6"
+                    aria-hidden="true"
+                />
             </button>
+        </header>
+
+        <!-- Mobile Menu -->
+        <div
+            id="mobile-menu"
+            class="md:hidden fixed inset-0 bg-gray-900 bg-opacity-95 z-50 transform translate-x-full transition-transform duration-300 ease-in-out"
+            role="dialog"
+            aria-label="Mobile menu"
+            aria-modal="true"
+        >
+            <div class="flex justify-end p-4">
+                <button
+                    id="close-menu"
+                    class="text-white"
+                    aria-label="Close mobile menu"
+                >
+                    <img
+                        src="assets/svg/close.svg"
+                        alt=""
+                        class="h-6 w-6"
+                        aria-hidden="true"
+                    />
+                </button>
+            </div>
+            <nav
+                class="flex flex-col items-center space-y-8 p-8"
+                role="navigation"
+                aria-label="Mobile navigation"
+            >
+                <a
+                    href="#features"
+                    class="text-2xl text-white hover:text-green-400 transition"
+                    >Features</a
+                >
+                <a
+                    href="#screenshots"
+                    class="text-2xl text-white hover:text-green-400 transition"
+                    >Screenshots</a
+                >
+                <a
+                    href="#download"
+                    class="text-2xl text-white hover:text-green-400 transition"
+                    >Download</a
+                >
+                <a
+                    href="changelog.html"
+                    class="text-2xl text-white hover:text-green-400 transition"
+                    >Changelog</a
+                >
+                <a
+                    href="docs/"
+                    class="text-2xl text-white hover:text-green-400 transition"
+                    >Documentation</a
+                >
+            </nav>
         </div>
-        <nav class="flex flex-col items-center space-y-8 p-8" role="navigation" aria-label="Mobile navigation">
-            <a href="#features" class="text-2xl text-white hover:text-green-400 transition">Features</a>
-            <a href="#screenshots" class="text-2xl text-white hover:text-green-400 transition">Screenshots</a>
-            <a href="#download" class="text-2xl text-white hover:text-green-400 transition">Download</a>
-            <a href="changelog.html" class="text-2xl text-white hover:text-green-400 transition">Changelog</a>
-            <a href="docs/" class="text-2xl text-white hover:text-green-400 transition">Documentation</a>
-        </nav>
-    </div>
 
-    <main id="main-content" class="flex-grow container mx-auto px-4 py-12" role="main">
-        <!-- Hero Section -->
-        <section class="text-center mb-20" aria-labelledby="hero-title">
-            <h2 id="hero-title" class="text-5xl md:text-6xl font-bold mb-6 glow">Defend Earth from Alien Invasion</h2>
-            <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-                Experience the classic Space Invaders gameplay with modern graphics and challenging levels.
-                Can you beat the high score and save humanity?
-            </p>
-            <div class="flex justify-center space-x-4">
-                <a href="#download"
-                    class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-xl text-lg transition btn-glow"
-                    aria-label="Download the game now">
-                    Download Now
-                </a>
-                <a href="#screenshots"
-                    class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-8 rounded-xl text-lg transition"
-                    aria-label="View game screenshots">
-                    View Screenshots
-                </a>
-            </div>
-        </section>
-
-        <!-- Features Section -->
-        <section id="features" class="mb-20" aria-labelledby="features-title">
-            <h3 id="features-title" class="text-3xl font-bold text-center mb-12 glow">Game Features</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="card rounded-xl p-6 text-center">
-                    <div class="feature-icon mx-auto" aria-hidden="true">
-                        <img src="assets/svg/fast-paced-action.svg" alt="" class="h-8 w-8 text-green-400"
-                            aria-hidden="true">
-                    </div>
-                    <h4 class="text-xl font-bold mb-2 text-green-400">Fast-Paced Action</h4>
-                    <p class="text-gray-300">Engage in intense battles with increasing difficulty as you progress
-                        through levels.
-                    </p>
-                </div>
-                <div class="card rounded-xl p-6 text-center">
-                    <div class="feature-icon mx-auto">
-                        <img src="assets/svg/high-score-system.svg" alt="" class="h-8 w-8 text-green-400"
-                            aria-hidden="true">
-                    </div>
-                    <h4 class="text-xl font-bold mb-2 text-green-400">High Score System</h4>
-                    <p class="text-gray-300">Compete with yourself and track your progress with the persistent high
-                        score system.
-                    </p>
-                </div>
-                <div class="card rounded-xl p-6 text-center">
-                    <div class="feature-icon mx-auto">
-                        <img src="assets/svg/customizable-controls.svg" alt="" class="h-8 w-8 text-green-400"
-                            aria-hidden="true">
-                    </div>
-                    <h4 class="text-xl font-bold mb-2 text-green-400">Customizable Controls</h4>
-                    <p class="text-gray-300">Simple and intuitive controls that are easy to learn but challenging to
-                        master.</p>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- System Requirements Section -->
-        <section id="requirements" class="py-16 bg-slate-900/70">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-12 glow">System Requirements</h2>
-                <div
-                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto bg-slate-800 rounded-lg shadow-lg p-8">
-                    <!-- Minimum -->
-                    <div>
-                        <h3 class="text-green-400 text-lg font-bold uppercase tracking-wide mb-4">Minimum</h3>
-                        <ul class="space-y-2 text-gray-200 text-sm">
-                            <li><span class="font-semibold text-white">OS:</span> Windows 10 64-bit</li>
-                            <li><span class="font-semibold text-white">Processor:</span> Dual-core CPU @ 2.0 GHz</li>
-                            <li><span class="font-semibold text-white">Memory:</span> 1 GB RAM</li>
-                            <li><span class="font-semibold text-white">Graphics:</span> Integrated graphics with OpenGL
-                                support
-                            </li>
-                            <li><span class="font-semibold text-white">Storage:</span> 1 GB available space</li>
-                            <li><span class="font-semibold text-white">Network:</span> Not required for single player
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- Recommended -->
-                    <div>
-                        <h3 class="text-green-400 text-lg font-bold uppercase tracking-wide mb-4">Recommended</h3>
-                        <ul class="space-y-2 text-gray-200 text-sm">
-                            <li><span class="font-semibold text-white">OS:</span> Windows 10/11 64-bit</li>
-                            <li><span class="font-semibold text-white">Processor:</span> Any modern dual-core CPU</li>
-                            <li><span class="font-semibold text-white">Memory:</span> 2 GB RAM</li>
-                            <li><span class="font-semibold text-white">Graphics:</span> Any graphics card with OpenGL
-                                support
-                            </li>
-                            <li><span class="font-semibold text-white">Storage:</span> 2 GB available space</li>
-                            <li><span class="font-semibold text-white">Network:</span> Not required for single player
-                            </li>
-                            <li><span class="font-semibold text-white">Monitor:</span> 1280x720 minimum resolution</li>
-                        </ul>
-                    </div>
-                    <!-- macOS -->
-                    <div>
-                        <h3 class="text-green-400 text-lg font-bold uppercase tracking-wide mb-4">macOS</h3>
-                        <ul class="space-y-2 text-gray-200 text-sm">
-                            <li><span class="font-semibold text-white">OS:</span> macOS 10.13 High Sierra or later</li>
-                            <li><span class="font-semibold text-white">Processor:</span> Intel or Apple Silicon (Rosetta
-                                supported)</li>
-                            <li><span class="font-semibold text-white">Memory:</span> 2 GB RAM</li>
-                            <li><span class="font-semibold text-white">Graphics:</span> Metal or OpenGL-compatible GPU
-                            </li>
-                            <li><span class="font-semibold text-white">Storage:</span> 2 GB available space</li>
-                            <li><span class="font-semibold text-white">Network:</span> Not required for single player
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <p class="text-xs text-gray-400 mt-8 max-w-4xl mx-auto text-center">
-                    * The game runs well on most modern systems. Compatible with Windows and macOS.
+        <main
+            id="main-content"
+            class="flex-grow container mx-auto px-4 py-12"
+            role="main"
+        >
+            <!-- Hero Section -->
+            <section class="text-center mb-20" aria-labelledby="hero-title">
+                <h2
+                    id="hero-title"
+                    class="text-5xl md:text-6xl font-bold mb-6 glow"
+                >
+                    Defend Earth from Alien Invasion
+                </h2>
+                <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                    Experience the classic Space Invaders gameplay with modern
+                    graphics and challenging levels. Can you beat the high score
+                    and save humanity?
                 </p>
-            </div>
-        </section>
+                <div class="flex justify-center space-x-4">
+                    <a
+                        href="#download"
+                        class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-xl text-lg transition btn-glow"
+                        aria-label="Download the game now"
+                    >
+                        Download Now
+                    </a>
+                    <a
+                        href="#screenshots"
+                        class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-8 rounded-xl text-lg transition"
+                        aria-label="View game screenshots"
+                    >
+                        View Screenshots
+                    </a>
+                </div>
+            </section>
 
-        <!-- Screenshots Section -->
-        <section id="screenshots" class="mb-20 mt-20" aria-labelledby="screenshots-title">
-            <h3 id="screenshots-title" class="text-3xl font-bold text-center mb-12 glow">Game Screenshots</h3>
+            <!-- Features Section -->
+            <section
+                id="features"
+                class="mb-20"
+                aria-labelledby="features-title"
+            >
+                <h3
+                    id="features-title"
+                    class="text-3xl font-bold text-center mb-12 glow"
+                >
+                    Game Features
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="card rounded-xl p-6 text-center">
+                        <div class="feature-icon mx-auto" aria-hidden="true">
+                            <img
+                                src="assets/svg/fast-paced-action.svg"
+                                alt=""
+                                class="h-8 w-8 text-green-400"
+                                aria-hidden="true"
+                            />
+                        </div>
+                        <h4 class="text-xl font-bold mb-2 text-green-400">
+                            Fast-Paced Action
+                        </h4>
+                        <p class="text-gray-300">
+                            Engage in intense battles with increasing difficulty
+                            as you progress through levels.
+                        </p>
+                    </div>
+                    <div class="card rounded-xl p-6 text-center">
+                        <div class="feature-icon mx-auto">
+                            <img
+                                src="assets/svg/high-score-system.svg"
+                                alt=""
+                                class="h-8 w-8 text-green-400"
+                                aria-hidden="true"
+                            />
+                        </div>
+                        <h4 class="text-xl font-bold mb-2 text-green-400">
+                            High Score System
+                        </h4>
+                        <p class="text-gray-300">
+                            Compete with yourself and track your progress with
+                            the persistent high score system.
+                        </p>
+                    </div>
+                    <div class="card rounded-xl p-6 text-center">
+                        <div class="feature-icon mx-auto">
+                            <img
+                                src="assets/svg/customizable-controls.svg"
+                                alt=""
+                                class="h-8 w-8 text-green-400"
+                                aria-hidden="true"
+                            />
+                        </div>
+                        <h4 class="text-xl font-bold mb-2 text-green-400">
+                            Customizable Controls
+                        </h4>
+                        <p class="text-gray-300">
+                            Simple and intuitive controls that are easy to learn
+                            but challenging to master.
+                        </p>
+                    </div>
+                </div>
+            </section>
 
-            <!-- Custom carousel -->
-            <div class="carousel-container" role="region" aria-roledescription="carousel" aria-label="Game screenshots">
-                <div class="relative">
-                    <!-- Carousel container -->
-                    <div class="overflow-hidden">
-                        <div class="flex transition-transform duration-500 ease-in-out" id="carousel-items" role="list">
-                            <!-- Item 1 -->
-                            <div class="carousel-item w-full flex-shrink-0" role="listitem">
-                                <img src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.png"
-                                    alt="Game Start Screen - Shows the main menu with start game option"
-                                    class="mx-auto">
-                            </div>
-                            <!-- Item 2 -->
-                            <div class="carousel-item w-full flex-shrink-0" role="listitem">
-                                <img src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_score.png"
-                                    alt="Gameplay Screen - Shows the player's spaceship and alien enemies"
-                                    class="mx-auto">
-                            </div>
-                            <!-- Item 3 -->
-                            <div class="carousel-item w-full flex-shrink-0" role="listitem">
-                                <img src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_over.png"
-                                    alt="Game Over Screen - Shows the final score and restart option" class="mx-auto">
-                            </div>
+            <!-- System Requirements Section -->
+            <section id="requirements" class="py-16 bg-slate-900/70">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-3xl font-bold text-center mb-12 glow">
+                        System Requirements
+                    </h2>
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto bg-slate-800 rounded-lg shadow-lg p-8"
+                    >
+                        <!-- Minimum -->
+                        <div>
+                            <h3
+                                class="text-green-400 text-lg font-bold uppercase tracking-wide mb-4"
+                            >
+                                Minimum
+                            </h3>
+                            <ul class="space-y-2 text-gray-200 text-sm">
+                                <li>
+                                    <span class="font-semibold text-white"
+                                        >OS:</span
+                                    >
+                                    Windows 10 64-bit
+                                </li>
+                                <li>
+                                    <span class="font-semibold text-white"
+                                        >Processor:</span
+                                    >
+                                    Dual-core CPU @ 2.0 GHz
+                                </li>
+                                <li>
+                                    <span class="font-semibold text-white"
+                                        >Memory:</span
+                                    >
+                                    1 GB RAM
+                                </li>
+                                <li>
+                                    <span class="font-semibold text-white"
+                                        >Graphics:</span
+                                    >
+                                    Integrated graphics with OpenGL support
+                                </li>
+                                <li>
+                                    <span class="font-semibold text-white"
+                                        >Storage:</span
+                                    >
+                                    1 GB available space
+                                </li>
+                                <li>
+                                    <span class="font-semibold text-white"
+                                        >Network:</span
+                                    >
+                                    Not required for single player
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Recommended -->
+                        <div>
+                            <h3
+                                class="text-green-400 text-lg font-bold uppercase tracking-wide mb-4"
+                            >
+                                Recommended
+                            </h3>
+                            <ul class="space-y-2 text-gray-200 text-sm">
+                                <li>
+                                    <span class="font-semibold text-white"
+                                        >OS:</span
+                                    >
+                                    Windows 10/11 64-bit
+                                </li>
+                                <li>
+                                    <span class="font-semibold text-white"
+                                        >Processor:</span
+                                    >
+                                    Any modern dual-core CPU
+                                </li>
+                                <li>
+                                    <span class="font-semibold text-white"
+                                        >Memory:</span
+                                    >
+                                    2 GB RAM
+                                </li>
+                                <li>
+                                    <span class="font-semibold text-white"
+                                        >Graphics:</span
+                                    >
+                                    Any graphics card with OpenGL support
+                                </li>
+                                <li>
+                                    <span class="font-semibold text-white"
+                                        >Storage:</span
+                                    >
+                                    2 GB available space
+                                </li>
+                                <li>
+                                    <span class="font-semibold text-white"
+                                        >Network:</span
+                                    >
+                                    Not required for single player
+                                </li>
+                                <li>
+                                    <span class="font-semibold text-white"
+                                        >Monitor:</span
+                                    >
+                                    1280x720 minimum resolution
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- macOS -->
+                        <div>
+                            <h3
+                                class="text-green-400 text-lg font-bold uppercase tracking-wide mb-4"
+                            >
+                                macOS
+                            </h3>
+                            <ul class="space-y-2 text-gray-200 text-sm">
+                                <li>
+                                    <span class="font-semibold text-white"
+                                        >OS:</span
+                                    >
+                                    macOS 10.13 High Sierra or later
+                                </li>
+                                <li>
+                                    <span class="font-semibold text-white"
+                                        >Processor:</span
+                                    >
+                                    Intel or Apple Silicon (Rosetta supported)
+                                </li>
+                                <li>
+                                    <span class="font-semibold text-white"
+                                        >Memory:</span
+                                    >
+                                    2 GB RAM
+                                </li>
+                                <li>
+                                    <span class="font-semibold text-white"
+                                        >Graphics:</span
+                                    >
+                                    Metal or OpenGL-compatible GPU
+                                </li>
+                                <li>
+                                    <span class="font-semibold text-white"
+                                        >Storage:</span
+                                    >
+                                    2 GB available space
+                                </li>
+                                <li>
+                                    <span class="font-semibold text-white"
+                                        >Network:</span
+                                    >
+                                    Not required for single player
+                                </li>
+                            </ul>
                         </div>
                     </div>
-
-                    <!-- Carousel controls -->
-                    <button class="carousel-control absolute left-4 top-1/2 transform -translate-y-1/2" id="prev-button"
-                        aria-label="Previous screenshot">
-                        <img src="assets/svg/prev.svg" alt="" class="h-6 w-6 text-white" aria-hidden="true">
-                    </button>
-                    <button class="carousel-control absolute right-4 top-1/2 transform -translate-y-1/2"
-                        id="next-button" aria-label="Next screenshot">
-                        <img src="assets/svg/next.svg" alt="" class="h-6 w-6 text-white" aria-hidden="true">
-                    </button>
-
-                    <!-- Carousel indicators -->
-                    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2" role="tablist"
-                        aria-label="Screenshot navigation">
-                        <button class="carousel-indicator active" data-index="0" role="tab" aria-selected="true"
-                            aria-controls="carousel-items" tabindex="0">
-                            <span class="sr-only">Screenshot 1</span>
-                        </button>
-                        <button class="carousel-indicator" data-index="1" role="tab" aria-selected="false"
-                            aria-controls="carousel-items" tabindex="-1">
-                            <span class="sr-only">Screenshot 2</span>
-                        </button>
-                        <button class="carousel-indicator" data-index="2" role="tab" aria-selected="false"
-                            aria-controls="carousel-items" tabindex="-1">
-                            <span class="sr-only">Screenshot 3</span>
-                        </button>
-                    </div>
+                    <p
+                        class="text-xs text-gray-400 mt-8 max-w-4xl mx-auto text-center"
+                    >
+                        * The game runs well on most modern systems. Compatible
+                        with Windows and macOS.
+                    </p>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Controls Section -->
-        <section class="mb-20">
-            <h3 class="text-3xl font-bold text-center mb-12 glow">How to Play</h3>
-            <div class="card rounded-xl p-8 max-w-2xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <h4 class="text-xl font-bold mb-4 text-green-400">Game Controls</h4>
-                        <ul class="space-y-3 text-gray-300">
-                            <li class="flex items-center">
-                                <span class="bg-gray-700 px-3 py-1 rounded mr-3 font-mono">←</span>
-                                <span>Move left</span>
-                            </li>
-                            <li class="flex items-center">
-                                <span class="bg-gray-700 px-3 py-1 rounded mr-3 font-mono">→</span>
-                                <span>Move right</span>
-                            </li>
-                            <li class="flex items-center">
-                                <span class="bg-gray-700 px-3 py-1 rounded mr-3 font-mono">Space</span>
-                                <span>Shoot</span>
-                            </li>
-                            <li class="flex items-center">
-                                <span class="bg-gray-700 px-3 py-1 rounded mr-3 font-mono">P</span>
-                                <span>Pause game</span>
-                            </li>
-                            <li class="flex items-center">
-                                <span class="bg-gray-700 px-3 py-1 rounded mr-3 font-mono">Q</span>
-                                <span>Quit game</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-bold mb-4 text-green-400">Gameplay Tips</h4>
-                        <ul class="space-y-3 text-gray-300 list-disc list-inside">
-                            <li>Destroy all aliens to advance to the next level</li>
-                            <li>Aliens move faster as you progress</li>
-                            <li>Don't let aliens reach the bottom of the screen</li>
-                            <li>You have limited lives - use them wisely</li>
-                            <li>Try to beat your high score!</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+            <!-- Screenshots Section -->
+            <section
+                id="screenshots"
+                class="mb-20 mt-20"
+                aria-labelledby="screenshots-title"
+            >
+                <h3
+                    id="screenshots-title"
+                    class="text-3xl font-bold text-center mb-12 glow"
+                >
+                    Game Screenshots
+                </h3>
 
-        <!-- Download Section -->
-        <section id="download" class="mb-20">
-            <h3 class="text-3xl font-bold text-center mb-12 glow">Download the Game</h3>
-            <div class="card rounded-xl p-8 max-w-2xl mx-auto text-center">
-                <p class="text-xl mb-6">Ready to defend Earth?</p>
-                <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
-                    <a href="https://github.com/avilesxd/code-destroy-aliens/releases/download/v1.1.0/Alien.Invasion.exe"
-                        class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-xl text-lg transition btn-glow">
-                        Download for Windows
-                    </a>
-                    <a href="https://github.com/avilesxd/code-destroy-aliens/releases/download/v1.1.0/Alien.Invasion.app.zip"
-                        class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-xl text-lg transition btn-glow">
-                        Download for macOS
-                    </a>
-                </div>
-                <p class="text-sm text-gray-400 mt-4">Version 1.1.0 - <a href="changelog.html"
-                        class="text-green-400 hover:text-green-300 transition">View changelog</a></p>
-            </div>
-        </section>
-
-        <!-- Donations Section -->
-        <section class="mb-20">
-            <h3 class="text-3xl font-bold text-center mb-12 glow">Support the Project</h3>
-            <div class="card rounded-xl p-8 max-w-2xl mx-auto text-center">
-                <p class="text-xl mb-6">Enjoying the game? Consider supporting its development!</p>
-                <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
-                    <a href="https://paypal.me/avilesxd" target="_blank"
-                        class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-xl text-lg transition btn-glow"
-                        aria-label="Donate with PayPal to support the game development">
-                        <div class="flex items-center justify-center">
-                            <img src="assets/svg/paypal.svg" alt="" class="h-6 w-6 mr-2" aria-hidden="true">
-                            <span>Donate with PayPal</span>
+                <!-- Custom carousel -->
+                <div
+                    class="carousel-container"
+                    role="region"
+                    aria-roledescription="carousel"
+                    aria-label="Game screenshots"
+                >
+                    <div class="relative">
+                        <!-- Carousel container -->
+                        <div class="overflow-hidden">
+                            <div
+                                class="flex transition-transform duration-500 ease-in-out"
+                                id="carousel-items"
+                                role="list"
+                            >
+                                <!-- Item 1 -->
+                                <div
+                                    class="carousel-item w-full flex-shrink-0"
+                                    role="listitem"
+                                >
+                                    <img
+                                        src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.png"
+                                        alt="Game Start Screen - Shows the main menu with start game option"
+                                        class="mx-auto"
+                                    />
+                                </div>
+                                <!-- Item 2 -->
+                                <div
+                                    class="carousel-item w-full flex-shrink-0"
+                                    role="listitem"
+                                >
+                                    <img
+                                        src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_score.png"
+                                        alt="Gameplay Screen - Shows the player's spaceship and alien enemies"
+                                        class="mx-auto"
+                                    />
+                                </div>
+                                <!-- Item 3 -->
+                                <div
+                                    class="carousel-item w-full flex-shrink-0"
+                                    role="listitem"
+                                >
+                                    <img
+                                        src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_over.png"
+                                        alt="Game Over Screen - Shows the final score and restart option"
+                                        class="mx-auto"
+                                    />
+                                </div>
+                            </div>
                         </div>
-                    </a>
-                    <a href="https://ko-fi.com/avilesxd" target="_blank"
-                        class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-xl text-lg transition btn-glow"
-                        aria-label="Buy me a coffee on Ko-fi to support the game development">
-                        <div class="flex items-center justify-center">
-                            <img src="assets/svg/kofi.svg" alt="" class="h-6 w-6 mr-2" aria-hidden="true">
-                            <span>Buy me a Coffee</span>
+
+                        <!-- Carousel controls -->
+                        <button
+                            class="carousel-control absolute left-4 top-1/2 transform -translate-y-1/2"
+                            id="prev-button"
+                            aria-label="Previous screenshot"
+                        >
+                            <img
+                                src="assets/svg/prev.svg"
+                                alt=""
+                                class="h-6 w-6 text-white"
+                                aria-hidden="true"
+                            />
+                        </button>
+                        <button
+                            class="carousel-control absolute right-4 top-1/2 transform -translate-y-1/2"
+                            id="next-button"
+                            aria-label="Next screenshot"
+                        >
+                            <img
+                                src="assets/svg/next.svg"
+                                alt=""
+                                class="h-6 w-6 text-white"
+                                aria-hidden="true"
+                            />
+                        </button>
+
+                        <!-- Carousel indicators -->
+                        <div
+                            class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2"
+                            role="tablist"
+                            aria-label="Screenshot navigation"
+                        >
+                            <button
+                                class="carousel-indicator active"
+                                data-index="0"
+                                role="tab"
+                                aria-selected="true"
+                                aria-controls="carousel-items"
+                                tabindex="0"
+                            >
+                                <span class="sr-only">Screenshot 1</span>
+                            </button>
+                            <button
+                                class="carousel-indicator"
+                                data-index="1"
+                                role="tab"
+                                aria-selected="false"
+                                aria-controls="carousel-items"
+                                tabindex="-1"
+                            >
+                                <span class="sr-only">Screenshot 2</span>
+                            </button>
+                            <button
+                                class="carousel-indicator"
+                                data-index="2"
+                                role="tab"
+                                aria-selected="false"
+                                aria-controls="carousel-items"
+                                tabindex="-1"
+                            >
+                                <span class="sr-only">Screenshot 3</span>
+                            </button>
                         </div>
-                    </a>
-                </div>
-                <p class="text-sm text-gray-400 mt-4">Your support helps keep the game free and maintained!</p>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="bg-gray-900 py-8" role="contentinfo">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <div class="flex items-center">
-                        <img src="assets/svg/icon-white.svg" alt="Alien Invasion Logo" class="h-8 w-8 mr-2">
-                        <span class="text-green-400 font-bold">Alien Invasion</span>
                     </div>
-                    <p class="text-gray-500 text-sm mt-2">© 2022 - 2025 <a
-                            href="https://www.linkedin.com/in/ignacio-nicol%C3%A1s-avil%C3%A9s-cardenasso/"
+                </div>
+            </section>
+
+            <!-- Controls Section -->
+            <section class="mb-20">
+                <h3 class="text-3xl font-bold text-center mb-12 glow">
+                    How to Play
+                </h3>
+                <div class="card rounded-xl p-8 max-w-2xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="text-xl font-bold mb-4 text-green-400">
+                                Game Controls
+                            </h4>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="flex items-center">
+                                    <span
+                                        class="bg-gray-700 px-3 py-1 rounded mr-3 font-mono"
+                                        >←</span
+                                    >
+                                    <span>Move left</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span
+                                        class="bg-gray-700 px-3 py-1 rounded mr-3 font-mono"
+                                        >→</span
+                                    >
+                                    <span>Move right</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span
+                                        class="bg-gray-700 px-3 py-1 rounded mr-3 font-mono"
+                                        >Space</span
+                                    >
+                                    <span>Shoot</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span
+                                        class="bg-gray-700 px-3 py-1 rounded mr-3 font-mono"
+                                        >P</span
+                                    >
+                                    <span>Pause game</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span
+                                        class="bg-gray-700 px-3 py-1 rounded mr-3 font-mono"
+                                        >Q</span
+                                    >
+                                    <span>Quit game</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-4 text-green-400">
+                                Gameplay Tips
+                            </h4>
+                            <ul
+                                class="space-y-3 text-gray-300 list-disc list-inside"
+                            >
+                                <li>
+                                    Destroy all aliens to advance to the next
+                                    level
+                                </li>
+                                <li>Aliens move faster as you progress</li>
+                                <li>
+                                    Don't let aliens reach the bottom of the
+                                    screen
+                                </li>
+                                <li>
+                                    You have limited lives - use them wisely
+                                </li>
+                                <li>Try to beat your high score!</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Download Section -->
+            <section id="download" class="mb-20">
+                <h3 class="text-3xl font-bold text-center mb-12 glow">
+                    Download the Game
+                </h3>
+                <div class="card rounded-xl p-8 max-w-2xl mx-auto text-center">
+                    <p class="text-xl mb-6">Ready to defend Earth?</p>
+                    <div
+                        class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4"
+                    >
+                        <a
+                            href="https://github.com/avilesxd/code-destroy-aliens/releases/download/v1.1.0/Alien.Invasion.exe"
+                            class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-xl text-lg transition btn-glow"
+                        >
+                            Download for Windows
+                        </a>
+                        <a
+                            href="https://github.com/avilesxd/code-destroy-aliens/releases/download/v1.1.0/Alien.Invasion.app.zip"
+                            class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-xl text-lg transition btn-glow"
+                        >
+                            Download for macOS
+                        </a>
+                    </div>
+                    <p class="text-sm text-gray-400 mt-4">
+                        Version 1.1.0 -
+                        <a
+                            href="changelog.html"
                             class="text-green-400 hover:text-green-300 transition"
-                            aria-label="Visit my LinkedIn profile" target="_blank">
-                            <span>Ignacio Avilés</span>
-                            <span class="sr-only">on LinkedIn</span>
-                        </a>. All rights reserved.</p>
+                            >View changelog</a
+                        >
+                    </p>
                 </div>
-                <div class="flex space-x-4">
-                    <a href="https://github.com/avilesxd" class="text-gray-400 hover:text-white transition"
-                        aria-label="Visit my GitHub profile" target="_blank">
-                        <img src="assets/svg/github.svg" alt="" class="h-6 w-6" aria-hidden="true">
-                        <span class="sr-only">GitHub</span>
-                    </a>
-                    <a href="https://www.instagram.com/avilesxd/" class="text-gray-400 hover:text-white transition"
-                        aria-label="Follow me on Instagram" target="_blank">
-                        <img src="assets/svg/instagram.svg" alt="" class="h-6 w-6" aria-hidden="true">
-                        <span class="sr-only">Instagram</span>
-                    </a>
-                    <a href="https://www.youtube.com/channel/UCYPsgamO7XeWOrXriOpJBqw"
-                        class="text-gray-400 hover:text-white transition" aria-label="Subscribe to my YouTube channel"
-                        target="_blank">
-                        <img src="assets/svg/youtube.svg" alt="" class="h-6 w-6" aria-hidden="true">
-                        <span class="sr-only">YouTube</span>
-                    </a>
+            </section>
+
+            <!-- Donations Section -->
+            <section class="mb-20">
+                <h3 class="text-3xl font-bold text-center mb-12 glow">
+                    Support the Project
+                </h3>
+                <div class="card rounded-xl p-8 max-w-2xl mx-auto text-center">
+                    <p class="text-xl mb-6">
+                        Enjoying the game? Consider supporting its development!
+                    </p>
+                    <div
+                        class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4"
+                    >
+                        <a
+                            href="https://paypal.me/avilesxd"
+                            target="_blank"
+                            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-xl text-lg transition btn-glow"
+                            aria-label="Donate with PayPal to support the game development"
+                        >
+                            <div class="flex items-center justify-center">
+                                <img
+                                    src="assets/svg/paypal.svg"
+                                    alt=""
+                                    class="h-6 w-6 mr-2"
+                                    aria-hidden="true"
+                                />
+                                <span>Donate with PayPal</span>
+                            </div>
+                        </a>
+                        <a
+                            href="https://ko-fi.com/avilesxd"
+                            target="_blank"
+                            class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-xl text-lg transition btn-glow"
+                            aria-label="Buy me a coffee on Ko-fi to support the game development"
+                        >
+                            <div class="flex items-center justify-center">
+                                <img
+                                    src="assets/svg/kofi.svg"
+                                    alt=""
+                                    class="h-6 w-6 mr-2"
+                                    aria-hidden="true"
+                                />
+                                <span>Buy me a Coffee</span>
+                            </div>
+                        </a>
+                    </div>
+                    <p class="text-sm text-gray-400 mt-4">
+                        Your support helps keep the game free and maintained!
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="bg-gray-900 py-8" role="contentinfo">
+            <div class="container mx-auto px-4">
+                <div
+                    class="flex flex-col md:flex-row justify-between items-center"
+                >
+                    <div class="mb-4 md:mb-0">
+                        <div class="flex items-center">
+                            <img
+                                src="assets/svg/icon-white.svg"
+                                alt="Alien Invasion Logo"
+                                class="h-8 w-8 mr-2"
+                            />
+                            <span class="text-green-400 font-bold"
+                                >Alien Invasion</span
+                            >
+                        </div>
+                        <p class="text-gray-500 text-sm mt-2">
+                            © 2022 - 2025
+                            <a
+                                href="https://www.linkedin.com/in/ignacio-nicol%C3%A1s-avil%C3%A9s-cardenasso/"
+                                class="text-green-400 hover:text-green-300 transition"
+                                aria-label="Visit my LinkedIn profile"
+                                target="_blank"
+                            >
+                                <span>Ignacio Avilés</span>
+                                <span class="sr-only">on LinkedIn</span> </a
+                            >. All rights reserved.
+                        </p>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a
+                            href="https://github.com/avilesxd"
+                            class="text-gray-400 hover:text-white transition"
+                            aria-label="Visit my GitHub profile"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/svg/github.svg"
+                                alt=""
+                                class="h-6 w-6"
+                                aria-hidden="true"
+                            />
+                            <span class="sr-only">GitHub</span>
+                        </a>
+                        <a
+                            href="https://www.instagram.com/avilesxd/"
+                            class="text-gray-400 hover:text-white transition"
+                            aria-label="Follow me on Instagram"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/svg/instagram.svg"
+                                alt=""
+                                class="h-6 w-6"
+                                aria-hidden="true"
+                            />
+                            <span class="sr-only">Instagram</span>
+                        </a>
+                        <a
+                            href="https://www.youtube.com/channel/UCYPsgamO7XeWOrXriOpJBqw"
+                            class="text-gray-400 hover:text-white transition"
+                            aria-label="Subscribe to my YouTube channel"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/svg/youtube.svg"
+                                alt=""
+                                class="h-6 w-6"
+                                aria-hidden="true"
+                            />
+                            <span class="sr-only">YouTube</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
-</body>
-<script src="./assets/js/script.js"></script>
-
+        </footer>
+    </body>
+    <script src="./assets/js/script.js"></script>
 </html>

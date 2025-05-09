@@ -1,15 +1,18 @@
 # Language System Guide
 
-This guide explains how to use and extend the game's internationalization system.
+This guide explains how to use and extend the game's internationalization
+system.
 
 ## Overview
 
-The language system provides a robust way to handle multiple languages in the game, with automatic language detection and fallback mechanisms.
+The language system provides a robust way to handle multiple languages in the
+game, with automatic language detection and fallback mechanisms.
 
 ## Features
 
 - Automatic system language detection
-- Support for multiple languages (English, Spanish, French, German, Italian, Portuguese)
+- Support for multiple languages (English, Spanish, French, German, Italian,
+  Portuguese)
 - Dynamic translation file loading
 - Fallback to English when a translation is not available
 - Simple API for retrieving translated texts
@@ -50,7 +53,8 @@ available_languages = language.get_available_languages()
 
 ### File Structure
 
-Translation files are stored in `src/assets/translations/` with the following structure:
+Translation files are stored in `src/assets/translations/` with the following
+structure:
 
 ```
 src/assets/translations/
@@ -70,7 +74,7 @@ Each translation file should be a JSON file with the following format:
 {
     "game_controls": "Game Controls",
     "move_left_right": "Move left/right",
-    "shoot": "Shoot",
+    "shoot": "Shoot"
     // ... more translations
 }
 ```
@@ -79,13 +83,15 @@ Each translation file should be a JSON file with the following format:
 
 ### Adding a New Language
 
-1. Create a new JSON file in `src/assets/translations/` with the language code (e.g., `ja.json` for Japanese)
+1. Create a new JSON file in `src/assets/translations/` with the language code
+   (e.g., `ja.json` for Japanese)
 2. Add the language code to `SUPPORTED_LANGUAGES` in the `Language` class
 3. Ensure all translation keys are present in the new file
 
 ### Error Handling
 
-- If a translation is not found in the current language, the English translation is used
+- If a translation is not found in the current language, the English translation
+  is used
 - If the translation is not found in English, the original key is returned
 - If no translation files can be loaded, default English translations are used
 
@@ -119,17 +125,21 @@ Each translation file should be a JSON file with the following format:
 
 ### Language Detection
 
-The system automatically detects the user's system language using the `locale` module. If the detected language is not supported, it defaults to English.
+The system automatically detects the user's system language using the `locale`
+module. If the detected language is not supported, it defaults to English.
 
 ### Translation Loading
 
-Translation files are loaded during initialization. Each file is validated to ensure it contains all required keys. If a file is missing or invalid, the system falls back to default English translations.
+Translation files are loaded during initialization. Each file is validated to
+ensure it contains all required keys. If a file is missing or invalid, the
+system falls back to default English translations.
 
 ### Performance Considerations
 
 - Translation files are loaded once during initialization
 - Text lookups are performed using dictionary access for optimal performance
-- The system uses a simple key-value structure for efficient storage and retrieval
+- The system uses a simple key-value structure for efficient storage and
+  retrieval
 
 ## Contributing
 
@@ -142,4 +152,5 @@ When adding new translations or modifying existing ones:
 
 ## Related Documentation
 
-- [Testing Guide](../testing/README.md) - For information about testing the language system
+- [Testing Guide](../testing/README.md) - For information about testing the
+  language system
