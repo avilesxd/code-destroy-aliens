@@ -116,6 +116,7 @@ def verify_events_keydown(
             statistics.show_controls = False
             statistics.controls_seen = True  # Mark controls as seen
         else:
+            ship.shoot()
             fire_bullet(ai_configuration, screen, ship, bullets)
     elif event.key == pygame.K_q:
         sys.exit()
