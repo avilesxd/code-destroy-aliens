@@ -9,7 +9,7 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 
 from src.config.configuration import Configuration
-from src.config.music import Music
+from src.config.music.music import Music
 from src.core.path_utils import ensure_data_directory
 
 

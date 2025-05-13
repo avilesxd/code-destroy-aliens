@@ -3,7 +3,7 @@ from typing import List, Tuple
 import pygame.font
 
 from src.config.configuration import Configuration
-from src.config.language import Language
+from src.config.language.language import Language
 
 
 class ControlsScreen:

@@ -4,8 +4,8 @@ import pygame.font
 from pygame.sprite import Group
 
 from src.config.configuration import Configuration
-from src.config.language import Language
-from src.config.statistics import Statistics
+from src.config.language.language import Language
+from src.config.statistics.statistics import Statistics
 from src.entities.heart import Heart
 
 

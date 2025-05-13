@@ -1,11 +1,14 @@
 import pygame
 from pygame.sprite import Group
 
-import src.config.game_functions as fj
+from src.config.actors.game_actors import create_fleet
 from src.config.configuration import Configuration
-from src.config.language import Language
-from src.config.music import Music
-from src.config.statistics import Statistics
+from src.config.controls.game_controls import verify_events
+from src.config.language.language import Language
+from src.config.logic.game_logic import update_aliens, update_bullets
+from src.config.music.music import Music
+from src.config.rendering.game_rendering import update_screen
+from src.config.statistics.statistics import Statistics
 from src.core.path_utils import resource_path
 from src.entities.button import Button
 from src.entities.controls_screen import ControlsScreen
@@ -46,12 +49,11 @@ def runGame() -> None:
     aliens: Group = Group()
 
     # Create the alien fleet
-    fj.create_fleet(ai_configuration, screen, ship, aliens)
-
+    create_fleet(ai_configuration, screen, ship, aliens)
     # Start the main game loop
     while True:
         # Listen for keyboard or mouse events
-        fj.verify_events(
+        verify_events(
             ai_configuration,
             screen,
             statistics,
@@ -65,10 +67,10 @@ def runGame() -> None:
 
         if statistics.game_active and not statistics.game_paused:
             ship.update()
-            fj.update_bullets(ai_configuration, screen, statistics, scoreboard, ship, aliens, bullet)
-            fj.update_aliens(ai_configuration, statistics, screen, scoreboard, ship, aliens, bullet)
+            update_bullets(ai_configuration, screen, statistics, scoreboard, ship, aliens, bullet)
+            update_aliens(ai_configuration, statistics, screen, scoreboard, ship, aliens, bullet)
 
-        fj.update_screen(
+        update_screen(
             ai_configuration,
             screen,
             statistics,

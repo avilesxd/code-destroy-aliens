@@ -2,7 +2,7 @@ import pygame
 from pygame.sprite import Sprite
 
 from src.config.configuration import Configuration
-from src.config.music import Music
+from src.config.music.music import Music
 from src.core.path_utils import resource_path
 
 
