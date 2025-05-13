@@ -74,6 +74,7 @@ nav:
     - Development Workflow: guides/contributing/workflow.md
   - Legal:
     - License: LICENSE.md
+    - Security Policy: SECURITY.md
 
 plugins:
   - search
