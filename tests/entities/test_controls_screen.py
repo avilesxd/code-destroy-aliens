@@ -2,7 +2,7 @@ import pygame
 import pytest
 
 from src.config.configuration import Configuration
-from src.config.language import Language
+from src.config.language.language import Language
 from src.entities.controls_screen import ControlsScreen
 
 

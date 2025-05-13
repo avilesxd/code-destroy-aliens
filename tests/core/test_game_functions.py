@@ -11,11 +11,14 @@ os.environ["PYGAME_HIDE_SUPPORT_PROMPT"] = "hide"
 # Import game modules after setting up the environment
 from pygame.sprite import Group
 
-import src.config.game_functions as fj
+import src.config.rendering.game_rendering as rendering
+from src.config.actors.game_actors import create_fleet
 from src.config.configuration import Configuration
-from src.config.language import Language
-from src.config.music import Music
-from src.config.statistics import Statistics
+from src.config.language.language import Language
+from src.config.logic.game_logic import get_grid_cells, spatial_grid, update_spatial_grid
+from src.config.music.music import Music
+from src.config.rendering.game_rendering import create_gradient_surface, fire_bullet, stars, update_stars
+from src.config.statistics.statistics import Statistics
 from src.entities.bullet import Bullet
 from src.entities.button import Button
 from src.entities.ship import Ship
@@ -40,7 +43,7 @@ def game_components() -> Tuple[Configuration, pygame.Surface, Statistics, Ship, 
 def test_create_fleet(game_components: Tuple[Configuration, pygame.Surface, Statistics, Ship, Group, Group, Button]) -> None:
     """Test if the alien fleet is created correctly."""
     config, screen, stats, ship, bullets, aliens, play_button = game_components
-    fj.create_fleet(config, screen, ship, aliens)
+    create_fleet(config, screen, ship, aliens)
 
     assert len(aliens) > 0
     # Check if aliens are properly positioned
@@ -52,7 +55,7 @@ def test_create_fleet(game_components: Tuple[Configuration, pygame.Surface, Stat
 
 
 def test_ship_movement(
-    game_components: Tuple[Configuration, pygame.Surface, Statistics, Ship, Group, Group, Button]
+    game_components: Tuple[Configuration, pygame.Surface, Statistics, Ship, Group, Group, Button],
 ) -> None:
     """Test if the ship moves correctly."""
     config, screen, stats, ship, bullets, aliens, play_button = game_components
@@ -75,14 +78,14 @@ def test_ship_movement(
 
 
 def test_bullet_creation(
-    game_components: Tuple[Configuration, pygame.Surface, Statistics, Ship, Group, Group, Button]
+    game_components: Tuple[Configuration, pygame.Surface, Statistics, Ship, Group, Group, Button],
 ) -> None:
     """Test if bullets are created correctly."""
     config, screen, stats, ship, bullets, aliens, play_button = game_components
     initial_bullet_count = len(bullets)
 
     # Create a bullet
-    fj.fire_bullet(config, screen, ship, bullets)
+    fire_bullet(config, screen, ship, bullets)
 
     assert len(bullets) == initial_bullet_count + 1
     for bullet in bullets:
@@ -91,14 +94,14 @@ def test_bullet_creation(
 
 
 def test_collision_bullet_alien(
-    game_components: Tuple[Configuration, pygame.Surface, Statistics, Ship, Group, Group, Button]
+    game_components: Tuple[Configuration, pygame.Surface, Statistics, Ship, Group, Group, Button],
 ) -> None:
     """Test collision between bullets and aliens."""
     config, screen, stats, ship, bullets, aliens, play_button = game_components
 
     # Create a bullet and an alien
-    fj.fire_bullet(config, screen, ship, bullets)
-    fj.create_fleet(config, screen, ship, aliens)
+    fire_bullet(config, screen, ship, bullets)
+    create_fleet(config, screen, ship, aliens)
 
     # Get the first bullet and alien
     bullet = next(iter(bullets))
@@ -115,13 +118,13 @@ def test_collision_bullet_alien(
 
 
 def test_ship_alien_collision(
-    game_components: Tuple[Configuration, pygame.Surface, Statistics, Ship, Group, Group, Button]
+    game_components: Tuple[Configuration, pygame.Surface, Statistics, Ship, Group, Group, Button],
 ) -> None:
     """Test collision between ship and aliens."""
     config, screen, stats, ship, bullets, aliens, play_button = game_components
 
     # Create aliens
-    fj.create_fleet(config, screen, ship, aliens)
+    create_fleet(config, screen, ship, aliens)
 
     # Get the first alien and position it to collide with ship
     alien = next(iter(aliens))
@@ -132,7 +135,7 @@ def test_ship_alien_collision(
 
 
 def test_score_increment(
-    game_components: Tuple[Configuration, pygame.Surface, Statistics, Ship, Group, Group, Button]
+    game_components: Tuple[Configuration, pygame.Surface, Statistics, Ship, Group, Group, Button],
 ) -> None:
     """Test score increment when destroying aliens."""
     config, screen, stats, ship, bullets, aliens, play_button = game_components
@@ -141,7 +144,7 @@ def test_score_increment(
     points_per_alien = config.alien_points
 
     # Create and destroy an alien
-    fj.create_fleet(config, screen, ship, aliens)
+    create_fleet(config, screen, ship, aliens)
     if len(aliens) > 0:
         alien = aliens.sprites()[0]
         alien.kill()
@@ -181,14 +184,14 @@ def test_game_over(game_components: Tuple[Configuration, pygame.Surface, Statist
 
 
 def test_bullet_pooling(
-    game_components: Tuple[Configuration, pygame.Surface, Statistics, Ship, Group, Group, Button]
+    game_components: Tuple[Configuration, pygame.Surface, Statistics, Ship, Group, Group, Button],
 ) -> None:
     """Test the bullet pooling system."""
     config, screen, stats, ship, bullets, aliens, play_button = game_components
 
     # Create initial bullets
     for _ in range(5):
-        fj.fire_bullet(config, screen, ship, bullets)
+        fire_bullet(config, screen, ship, bullets)
 
     initial_bullet_count = len(bullets)
 
@@ -199,7 +202,7 @@ def test_bullet_pooling(
 
     # Create new bullets (should reuse from pool)
     for _ in range(5):
-        fj.fire_bullet(config, screen, ship, bullets)
+        fire_bullet(config, screen, ship, bullets)
 
     # Verify that bullets are being reused
     assert len(Bullet._bullet_pool) <= Bullet._max_pool_size
@@ -211,8 +214,8 @@ def test_spatial_grid(game_components: Tuple[Configuration, pygame.Surface, Stat
     config, screen, stats, ship, bullets, aliens, play_button = game_components
 
     # Create a bullet and an alien
-    fj.fire_bullet(config, screen, ship, bullets)
-    fj.create_fleet(config, screen, ship, aliens)
+    fire_bullet(config, screen, ship, bullets)
+    create_fleet(config, screen, ship, aliens)
 
     # Get the first bullet and alien
     bullet = next(iter(bullets))
@@ -222,11 +225,11 @@ def test_spatial_grid(game_components: Tuple[Configuration, pygame.Surface, Stat
     bullet.rect.center = alien.rect.center
 
     # Update spatial grid
-    fj.update_spatial_grid(aliens, bullets)
+    update_spatial_grid(aliens, bullets)
 
     # Get the grid cells for the bullet and alien
-    bullet_cells = fj.get_grid_cells(bullet.rect)
-    alien_cells = fj.get_grid_cells(alien.rect)
+    bullet_cells = get_grid_cells(bullet.rect)
+    alien_cells = get_grid_cells(alien.rect)
 
     # Verify that they share at least one grid cell
     shared_cells = set(bullet_cells) & set(alien_cells)
@@ -234,29 +237,29 @@ def test_spatial_grid(game_components: Tuple[Configuration, pygame.Surface, Stat
 
     # Verify that the collision is detected in the shared cell
     for cell in shared_cells:
-        if cell in fj.spatial_grid:
-            cell_data = fj.spatial_grid[cell]
+        if cell in spatial_grid:
+            cell_data = spatial_grid[cell]
             assert bullet in cell_data["bullets"]
             assert alien in cell_data["aliens"]
 
 
 def test_gradient_caching(
-    game_components: Tuple[Configuration, pygame.Surface, Statistics, Ship, Group, Group, Button]
+    game_components: Tuple[Configuration, pygame.Surface, Statistics, Ship, Group, Group, Button],
 ) -> None:
     """Test the gradient caching system."""
     config, screen, stats, ship, bullets, aliens, play_button = game_components
 
     # Create gradient twice with same screen size
-    gradient1 = fj.create_gradient_surface(screen, config.gradient_top_color, config.gradient_bottom_color)
-    gradient2 = fj.create_gradient_surface(screen, config.gradient_top_color, config.gradient_bottom_color)
+    gradient1 = create_gradient_surface(screen, config.gradient_top_color, config.gradient_bottom_color)
+    gradient2 = create_gradient_surface(screen, config.gradient_top_color, config.gradient_bottom_color)
 
     # Verify that the same cached gradient is returned
     assert gradient1 is gradient2
-    assert fj.cached_gradient is not None
+    assert rendering.cached_gradient is not None
 
     # Change screen size and create new gradient
     new_screen = pygame.display.set_mode((config.screen_width + 100, config.screen_height + 100))
-    gradient3 = fj.create_gradient_surface(new_screen, config.gradient_top_color, config.gradient_bottom_color)
+    gradient3 = create_gradient_surface(new_screen, config.gradient_top_color, config.gradient_bottom_color)
 
     # Verify that a new gradient is created
     assert gradient3 is not gradient1
@@ -268,13 +271,13 @@ def test_star_system(game_components: Tuple[Configuration, pygame.Surface, Stati
     config, screen, stats, ship, bullets, aliens, play_button = game_components
 
     # Initialize stars
-    fj.update_stars(screen, config)
+    update_stars(screen, config)
 
     # Verify that stars are created
-    assert len(fj.stars) == config.star_count
+    assert len(stars) == config.star_count
 
     # Verify star properties
-    for star in fj.stars:
+    for star in stars:
         x, y, size, speed = star
         assert 0 <= x <= config.screen_width
         assert 0 <= y <= config.screen_height
@@ -282,10 +285,10 @@ def test_star_system(game_components: Tuple[Configuration, pygame.Surface, Stati
         assert 0.1 <= speed <= 0.5
 
     # Test star movement
-    initial_positions = [(star[0], star[1]) for star in fj.stars]
-    fj.last_star_time = pygame.time.get_ticks() - 17  # Force update
-    fj.update_stars(screen, config)
+    initial_positions = [(star[0], star[1]) for star in stars]
+    last_star_time = pygame.time.get_ticks() - 17  # Force update
+    update_stars(screen, config)
 
     # Verify that stars have moved
-    for i, star in enumerate(fj.stars):
+    for i, star in enumerate(stars):
         assert (star[0], star[1]) != initial_positions[i]

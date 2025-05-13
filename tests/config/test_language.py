@@ -2,7 +2,7 @@ from typing import List
 
 import pytest
 
-from src.config.language import Language
+from src.config.language.language import Language
 
 
 @pytest.fixture

@@ -2,8 +2,8 @@ import pygame
 import pytest
 
 from src.config.configuration import Configuration
-from src.config.music import Music
-from src.config.statistics import Statistics
+from src.config.music.music import Music
+from src.config.statistics.statistics import Statistics
 from src.entities.ship import Ship
 
 

@@ -4,15 +4,16 @@ from typing import Tuple
 import pygame
 import pytest
 
+from src.config.music.music import Music
+from src.config.statistics.statistics import Statistics
+
 # Setting up headless mode for Pygame
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 os.environ["PYGAME_HIDE_SUPPORT_PROMPT"] = "hide"
 
 # Import game modules after setting up the environment
 from src.config.configuration import Configuration
-from src.config.language import Language
-from src.config.music import Music
-from src.config.statistics import Statistics
+from src.config.language.language import Language
 from src.entities.button import Button
 from src.entities.controls_screen import ControlsScreen
 from src.entities.scoreboard import Scoreboard

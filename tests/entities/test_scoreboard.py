@@ -2,8 +2,8 @@ import pygame
 import pytest
 
 from src.config.configuration import Configuration
-from src.config.language import Language
-from src.config.statistics import Statistics
+from src.config.language.language import Language
+from src.config.statistics.statistics import Statistics
 from src.entities.scoreboard import Scoreboard
 
 

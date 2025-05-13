@@ -9,7 +9,7 @@ from unittest.mock import patch
 import pytest
 
 from src.config.configuration import Configuration
-from src.config.statistics import Statistics
+from src.config.statistics.statistics import Statistics
 
 
 @pytest.fixture
@@ -27,7 +27,7 @@ def stats_with_temp_dir(temp_data_dir: str) -> Tuple[Statistics, str]:
     config = Configuration()
 
     # Patch the ensure_data_directory function to return our temp directory
-    with patch("src.config.statistics.ensure_data_directory", return_value=temp_data_dir):
+    with patch("src.config.statistics.statistics.ensure_data_directory", return_value=temp_data_dir):
         stats = Statistics(config)
         return stats, temp_data_dir
 
@@ -59,7 +59,7 @@ def test_encryption_and_decryption(stats_with_temp_dir: Tuple[Statistics, str]) 
         pass
 
     # Create a new Statistics instance to test loading
-    with patch("src.config.statistics.ensure_data_directory", return_value=temp_dir):
+    with patch("src.config.statistics.statistics.ensure_data_directory", return_value=temp_dir):
         new_stats = Statistics(Configuration())
 
         # Verify that the high score was loaded correctly
@@ -89,7 +89,7 @@ def test_data_tampering_detection(stats_with_temp_dir: Tuple[Statistics, str]) -
         f.write(tampered_content)
 
     # Create a new Statistics instance to test loading
-    with patch("src.config.statistics.ensure_data_directory", return_value=temp_dir):
+    with patch("src.config.statistics.statistics.ensure_data_directory", return_value=temp_dir):
         new_stats = Statistics(Configuration())
 
         # Verify that the high score was reset to 0 due to tampering
@@ -112,7 +112,7 @@ def test_error_handling(stats_with_temp_dir: Tuple[Statistics, str]) -> None:
         f.write(b"This is not valid encrypted data")
 
     # Create a new Statistics instance to test loading
-    with patch("src.config.statistics.ensure_data_directory", return_value=temp_dir):
+    with patch("src.config.statistics.statistics.ensure_data_directory", return_value=temp_dir):
         new_stats = Statistics(Configuration())
 
         # Verify that the high score was reset to 0 due to corruption
@@ -160,7 +160,7 @@ def test_statistics_initialization_with_missing_directory() -> None:
         shutil.rmtree(temp_dir)
 
     # Create a Statistics instance with the non-existent directory
-    with patch("src.config.statistics.ensure_data_directory", return_value=temp_dir):
+    with patch("src.config.statistics.statistics.ensure_data_directory", return_value=temp_dir):
         # Create the directory manually before initializing Statistics
         os.makedirs(temp_dir, exist_ok=True)
 
