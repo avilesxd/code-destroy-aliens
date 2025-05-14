@@ -61,12 +61,14 @@ of nostalgia and modern gaming.
 
 ## 🕹️ How to Play
 
-| Control | Action    |
-| ------- | --------- |
-| ← →     | Move Ship |
-| Space   | Fire      |
-| P       | Pause     |
-| Q       | Quit      |
+| Control | Action       |
+| ------- | ------------ |
+| ← →     | Move Ship    |
+| Space   | Fire         |
+| P       | Pause        |
+| M       | Music on/off |
+| X       | Sound on/off |
+| Q       | Quit         |
 
 **Objective**: Destroy all aliens before they reach Earth! Each wave gets faster
 and more challenging.
