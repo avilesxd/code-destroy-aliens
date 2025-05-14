@@ -45,7 +45,7 @@ def verify_events_keydown(
             music.resume()
     elif event.key == pygame.K_m:
         music.toggle_music()
-    elif event.key == pygame.K_x:
+    elif event.key == pygame.K_s:
         music.toggle_sound_effects()
 
 

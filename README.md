@@ -67,7 +67,7 @@ of nostalgia and modern gaming.
 | Space   | Fire         |
 | P       | Pause        |
 | M       | Music on/off |
-| X       | Sound on/off |
+| S       | Sound on/off |
 | Q       | Quit         |
 
 **Objective**: Destroy all aliens before they reach Earth! Each wave gets faster
