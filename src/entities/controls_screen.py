@@ -37,6 +37,8 @@ class ControlsScreen:
             ("Left/Right Arrow", self.language.get_text("move_left_right")),
             ("Space", self.language.get_text("shoot")),
             ("P", self.language.get_text("pause_game")),
+            ("M", self.language.get_text("toggle_music")),
+            ("S", self.language.get_text("toggle_sound")),
             ("Q", self.language.get_text("quit_game")),
         ]
 

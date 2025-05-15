@@ -126,6 +126,8 @@ class Language:
             "game_over": "Game Over",
             "press_p": "Press 'P' to resume",
             "press_q": "Press 'Q' to quit",
+            "toggle_music": "Music on/off",
+            "toggle_sound": "Sound on/off",
         }
 
     def get_text(self, key: str) -> str:

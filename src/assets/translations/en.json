@@ -12,5 +12,7 @@
     "ships": "Ships",
     "game_over": "Game Over",
     "press_p": "Press 'P' to resume",
-    "press_q": "Press 'Q' to quit"
+    "press_q": "Press 'Q' to quit",
+    "toggle_music": "Music on/off",
+    "toggle_sound": "Sound on/off"
 }

@@ -12,5 +12,7 @@
     "ships": "Navicelle",
     "game_over": "Game Over",
     "press_p": "Premi 'P' per riprendere",
-    "press_q": "Premi 'Q' per uscire"
+    "press_q": "Premi 'Q' per uscire",
+    "toggle_music": "Musica on/off",
+    "toggle_sound": "Suono on/off"
 }

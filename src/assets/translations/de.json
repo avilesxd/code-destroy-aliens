@@ -12,5 +12,7 @@
     "ships": "Raumschiffe",
     "game_over": "Spiel Vorbei",
     "press_p": "Drücke 'P' zum Fortsetzen",
-    "press_q": "Drücke 'Q' zum Beenden"
+    "press_q": "Drücke 'Q' zum Beenden",
+    "toggle_music": "Musik ein/aus",
+    "toggle_sound": "Sound ein/aus"
 }

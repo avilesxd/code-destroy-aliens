@@ -12,5 +12,7 @@
     "ships": "Naves",
     "game_over": "Fim de Jogo",
     "press_p": "Pressione 'P' para continuar",
-    "press_q": "Pressione 'Q' para sair"
+    "press_q": "Pressione 'Q' para sair",
+    "toggle_music": "Música on/off",
+    "toggle_sound": "Som on/off"
 }
