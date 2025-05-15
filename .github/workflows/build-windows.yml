@@ -49,7 +49,7 @@ jobs:
         python -m pytest tests/
 
     - name: Generate spec file
-      run: pyi-makespec main.py --name="Alien Invasion" --icon="src/assets/icons/icon.ico" --onefile --noconsole --add-data="src;src" --version-file="version.txt"
+      run: pyi-makespec main.py --name="Alien Invasion" --icon="src/assets/icons/icon.ico" --onefile --noconsole --add-data="src;src" --version-file="versions/windows.txt"
 
     - name: Build the executable
       run: pyinstaller '.\Alien Invasion.spec'
