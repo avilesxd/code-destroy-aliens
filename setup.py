@@ -14,7 +14,7 @@ from typing import List, Tuple
 from setuptools import setup
 
 APP = ["main.py"]
-VERSION_FILE = "version_macOS.txt"
+VERSION_FILE = "versions/macos.txt"
 
 
 def collect_data_files(directory: str) -> List[Tuple[str, List[str]]]:
