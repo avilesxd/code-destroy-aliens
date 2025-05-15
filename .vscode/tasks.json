@@ -8,7 +8,7 @@
             "group": "none",
             "problemMatcher": [],
             "runOptions": {
-                "runOn": "folderOpen",
+                "runOn": "folderOpen"
             }
         },
         {
@@ -21,7 +21,7 @@
                 "runOn": "folderOpen"
             },
             "windows": {
-                "command": "python -m venv env; env\\Scripts\\activate; pip install -r requirements.txt",
+                "command": "python -m venv env; env\\Scripts\\activate; pip install -r requirements.txt"
             },
             "linux": {
                 "command": "python3 -m venv env && source env/bin/activate && pip install -r requirements.txt"
