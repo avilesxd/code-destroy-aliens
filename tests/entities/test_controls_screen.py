@@ -23,7 +23,7 @@ def test_controls_screen_initialization(controls_screen: ControlsScreen) -> None
     assert controls_screen.title_rect is not None
     assert controls_screen.title_rect.centerx == 400  # Screen width / 2
     assert controls_screen.title_rect.top == 50
-    assert len(controls_screen.controls) == 4  # 4 control instructions
+    assert len(controls_screen.controls) == 6  # 6 control instructions
     assert controls_screen.continue_text is not None
     assert controls_screen.continue_rect is not None
     assert controls_screen.background is not None
