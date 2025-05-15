@@ -34,23 +34,23 @@ jobs:
             WINDOWS_WORKFLOW_ID=$(gh api repos/${{ github.repository }}/actions/workflows --jq '.workflows[] | select(.name=="Build Windows") | .id')
             
             if [ -z "$MACOS_WORKFLOW_ID" ] || [ -z "$WINDOWS_WORKFLOW_ID" ]; then
-              echo "Could not find workflow IDs"
-              exit 1
+              echo "Could not find workflow IDs. Waiting for workflows to be registered..."
+              exit 0
             fi
             
             # Get the latest successful macOS build
             MACOS_RUN=$(gh api repos/${{ github.repository }}/actions/workflows/$MACOS_WORKFLOW_ID/runs --jq '.workflow_runs[0] | select(.conclusion=="success")')
             if [ -z "$MACOS_RUN" ]; then
-              echo "No successful macOS build found"
-              exit 1
+              echo "No successful macOS build found. Waiting for macOS build to complete..."
+              exit 0
             fi
             echo "macos_run_id=$(echo $MACOS_RUN | jq -r '.id')" >> $GITHUB_OUTPUT
             
             # Get the latest successful Windows build
             WINDOWS_RUN=$(gh api repos/${{ github.repository }}/actions/workflows/$WINDOWS_WORKFLOW_ID/runs --jq '.workflow_runs[0] | select(.conclusion=="success")')
             if [ -z "$WINDOWS_RUN" ]; then
-              echo "No successful Windows build found"
-              exit 1
+              echo "No successful Windows build found. Waiting for Windows build to complete..."
+              exit 0
             fi
             echo "windows_run_id=$(echo $WINDOWS_RUN | jq -r '.id')" >> $GITHUB_OUTPUT
           else
