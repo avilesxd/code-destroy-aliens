@@ -6,7 +6,6 @@
             "type": "shell",
             "command": "npm install",
             "group": "none",
-            "problemMatcher": [],
             "runOptions": {
                 "runOn": "folderOpen"
             }
@@ -16,7 +15,6 @@
             "type": "shell",
             "command": "python3 -m venv env && source env/bin/activate && pip install -r requirements.txt",
             "group": "none",
-            "problemMatcher": [],
             "runOptions": {
                 "runOn": "folderOpen"
             },
