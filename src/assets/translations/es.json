@@ -14,5 +14,6 @@
     "press_p": "Presiona 'P' para reanudar",
     "press_q": "Presiona 'Q' para salir",
     "toggle_music": "Música encendida/apagada",
-    "toggle_sound": "Sonido encendido/apagado"
+    "toggle_sound": "Sonido encendido/apagado",
+    "paused_game": "Juego en Pausa"
 }

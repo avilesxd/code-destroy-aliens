@@ -14,5 +14,6 @@
     "press_p": "Appuyez sur 'P' pour reprendre",
     "press_q": "Appuyez sur 'Q' pour quitter",
     "toggle_music": "Musique on/off",
-    "toggle_sound": "Son on/off"
+    "toggle_sound": "Son on/off",
+    "paused_game": "Jeu en Pause"
 }

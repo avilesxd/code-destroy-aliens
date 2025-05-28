@@ -7,12 +7,13 @@
     "press_space": "Pressione ESPAÇO para continuar",
     "play": "Jogar",
     "score": "Pontuação",
-    "high_score": "Recorde",
+    "high_score": "Pontuação Máxima",
     "level": "Nível",
     "ships": "Naves",
-    "game_over": "Fim de Jogo",
-    "press_p": "Pressione 'P' para continuar",
+    "game_over": "Jogo Terminado",
+    "press_p": "Pressione 'P' para retomar",
     "press_q": "Pressione 'Q' para sair",
     "toggle_music": "Música on/off",
-    "toggle_sound": "Som on/off"
+    "toggle_sound": "Som on/off",
+    "paused_game": "Jogo em Pausa"
 }

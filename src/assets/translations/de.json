@@ -6,13 +6,14 @@
     "quit_game": "Spiel beenden",
     "press_space": "Drücke LEERTASTE zum Fortfahren",
     "play": "Spielen",
-    "score": "Punkte",
-    "high_score": "Highscore",
+    "score": "Punktestand",
+    "high_score": "Höchstpunktestand",
     "level": "Level",
     "ships": "Raumschiffe",
     "game_over": "Spiel Vorbei",
     "press_p": "Drücke 'P' zum Fortsetzen",
     "press_q": "Drücke 'Q' zum Beenden",
     "toggle_music": "Musik ein/aus",
-    "toggle_sound": "Sound ein/aus"
+    "toggle_sound": "Sound ein/aus",
+    "paused_game": "Spiel Pausiert"
 }

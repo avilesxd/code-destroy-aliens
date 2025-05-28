@@ -2,17 +2,18 @@
     "game_controls": "Controlli di Gioco",
     "move_left_right": "Muovi sinistra/destra",
     "shoot": "Spara",
-    "pause_game": "Pausa",
-    "quit_game": "Esci",
+    "pause_game": "Pausa gioco",
+    "quit_game": "Esci dal gioco",
     "press_space": "Premi SPAZIO per continuare",
     "play": "Gioca",
     "score": "Punteggio",
-    "high_score": "Record",
+    "high_score": "Punteggio Massimo",
     "level": "Livello",
     "ships": "Navicelle",
-    "game_over": "Game Over",
+    "game_over": "Gioco Finito",
     "press_p": "Premi 'P' per riprendere",
     "press_q": "Premi 'Q' per uscire",
     "toggle_music": "Musica on/off",
-    "toggle_sound": "Suono on/off"
+    "toggle_sound": "Suono on/off",
+    "paused_game": "Gioco in Pausa"
 }
