@@ -137,7 +137,7 @@ class Scoreboard:
 
             # Pause text
             pause_font = pygame.font.SysFont(None, 72)
-            pause_image = pause_font.render("PAUSED", True, (255, 0, 0))
+            pause_image = pause_font.render(self.language.get_text("paused_game"), True, (255, 0, 0))
             pause_rect = pause_image.get_rect()
             pause_rect.centerx = self.screen_rect.centerx
             pause_rect.centery = self.screen_rect.centery - 40
