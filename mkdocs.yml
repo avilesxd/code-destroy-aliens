@@ -8,7 +8,7 @@ theme:
   name: material
   locale: en
   logo: images/icon.png
-  favicon: images/icon-black.svg
+  favicon: images/icon.png
   features:
     - navigation.tabs
     - navigation.expand

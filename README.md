@@ -1,7 +1,7 @@
 # 👾 Alien Invasion
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game_start.png" alt="Alien Invasion Game" width="600"/>
+  <img src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/code-destroy-aliens.png" alt="Alien Invasion Game" width="600"/>
 
   <table>
     <tbody>

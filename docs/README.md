@@ -1,7 +1,7 @@
 # 📚 Alien Invasion Documentation
 
 <div align="center">
-    <img src="images/game_start.png" alt="Alien Invasion Game" width="600"/>
+    <img src="images/code-destroy-aliens.png" alt="Alien Invasion Game" width="600"/>
     <table>
   <tbody>
     <tr>
