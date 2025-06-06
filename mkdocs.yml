@@ -7,8 +7,8 @@ site_dir: website/docs
 theme:
   name: material
   locale: en
-  logo: images/icon.png
-  favicon: images/icon.png
+  logo: images/icon/icon.png
+  favicon: images/icon/icon.png
   features:
     - navigation.tabs
     - navigation.expand
