@@ -52,7 +52,7 @@ class Configuration:
         # How fast the game accelerates
         self.acceleration_scale: float = 1.1
         # How fast the point values for aliens increase
-        self.score_scale: float = 1.5
+        self.score_scale: float = 1.2
 
         self.initialize_dynamic_configurations()
 
