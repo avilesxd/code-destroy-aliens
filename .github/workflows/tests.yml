@@ -14,7 +14,8 @@ jobs:
         python-version: ['3.13']
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
@@ -26,33 +27,32 @@ jobs:
       with:
         node-version: '18'
 
-    - name: Create virtual environment and install Python deps
+    - name: Create virtual environment and install Python dependencies
       run: |
         python -m venv env
         source env/bin/activate
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Install Node dependencies
+    - name: Install Node.js dependencies
       run: npm install
 
-    - name: Check formatting
+    - name: Check Python formatting
       run: npm run format:check
 
-    - name: Check formatting with prettier
+    - name: Check Prettier formatting
       run: npm run format:prettier-check
 
-    - name: Run linting
+    - name: Run Python linting
       run: npm run lint
 
-    - name: Run type checking
+    - name: Run Python type checking
       run: npm run typecheck
 
-    - name: Run tests
+    - name: Run Python tests
       run: |
         source env/bin/activate
         python -m pytest tests/
 
     - name: Check commit message format
-      run: |
-        echo "${{ github.event.head_commit.message }}" | npx commitlint
+      run: echo "${{ github.event.head_commit.message }}" | npx commitlint
