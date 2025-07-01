@@ -53,7 +53,7 @@ class Language:
         """
         try:
             system_locale: Optional[str] = locale.getdefaultlocale()[0]
-            if system_locale is not None:
+            if system_locale is not None and system_locale != "C":
                 return system_locale.split("_")[0]
         except Exception as e:
             print(f"Error detecting system language: {e}")
