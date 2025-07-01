@@ -81,7 +81,6 @@ dist/
 
 # Node.js (for husky)
 node_modules/
-package-lock.json
 
 # Husky
 .husky/_/
