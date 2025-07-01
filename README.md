@@ -1,45 +1,11 @@
 # 👾 Alien Invasion
 
+![Logo](https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/code-destroy-aliens.png)
+
 <div align="center">
-  <img src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/code-destroy-aliens.png" alt="Alien Invasion Game" width="600"/>
 
-  <table>
-    <tbody>
-      <tr>
-        <td align="center" valign="top" width="14.28%">
-          <a href="https://github.com/avilesxd/code-destroy-aliens/actions/workflows/build-macos.yml">
-            <img src="https://github.com/avilesxd/code-destroy-aliens/actions/workflows/build-macos.yml/badge.svg" width="100px;" alt="Build macOS"/><br />
-            <sub><b>Build macOS</b></sub>
-          </a>
-        </td>
-        <td align="center" valign="top" width="14.28%">
-          <a href="https://github.com/avilesxd/code-destroy-aliens/actions/workflows/build-windows.yml">
-            <img src="https://github.com/avilesxd/code-destroy-aliens/actions/workflows/build-windows.yml/badge.svg" width="100px;" alt="Build Windows"/><br />
-            <sub><b>Build Windows</b></sub>
-          </a>
-        </td>
-        <td align="center" valign="top" width="14.28%">
-          <a href="https://github.com/avilesxd/code-destroy-aliens/actions/workflows/tests.yml">
-            <img src="https://github.com/avilesxd/code-destroy-aliens/actions/workflows/tests.yml/badge.svg" width="100px;" alt="Code Quality & Tests"/><br />
-            <sub><b>Code Quality & Tests</b></sub>
-          </a>
-        </td>
-        <td align="center" valign="top" width="14.28%">
-          <a href="https://github.com/avilesxd/code-destroy-aliens/actions/workflows/dependabot/dependabot-updates">
-            <img src="https://github.com/avilesxd/code-destroy-aliens/actions/workflows/dependabot/dependabot-updates/badge.svg" width="100px;" alt="Dependabot Updates"/><br />
-            <sub><b>Dependabot Updates</b></sub>
-          </a>
-        </td>
-        <td align="center" valign="top" width="14.28%">
-          <a href="https://github.com/avilesxd/code-destroy-aliens/actions/workflows/deploy.yml">
-            <img src="https://github.com/avilesxd/code-destroy-aliens/actions/workflows/deploy.yml/badge.svg" width="100px;" alt="Deploy to GitHub Pages"/><br />
-            <sub><b>Deploy to GitHub Pages</b></sub>
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
+  [![Build macOS](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/build-macos.yml/badge.svg)](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/build-macos.yml)  [![Build Windows](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/build-windows.yml/badge.svg)](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/build-windows.yml)[![Code Quality & Tests](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/tests.yml/badge.svg)](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/tests.yml)[![Dependabot Updates](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/dependabot/dependabot-updates)[![Deploy to GitHub Pages](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/deploy.yml/badge.svg)](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/deploy.yml)
+  
   <table>
     <tbody>
       <tr>
