@@ -80,9 +80,20 @@ and more challenging.
 ## 📸 Game Screenshots
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game/game_start.png" alt="Start Screen" width="300"/>
-  <img src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game/game_score.png" alt="Gameplay" width="300"/>
-  <img src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game/game_over.png" alt="Game Over" width="300"/>
+
+<table>
+    <tr>
+        <th>Start Screen</th>
+        <th>Gameplay</th>
+        <th>Game Over</th>
+    </tr>
+    <tr>
+        <td><img src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game/game_start.png" alt="Start Screen" width="300"/></td>
+        <td><img src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game/game_score.png" alt="Gameplay" width="300"/></td>
+        <td><img src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game/game_over.png" alt="Game Over" width="300"/></td>
+    </tr>
+</table>
+
 </div>
 
 ## 🚀 Quick Start
