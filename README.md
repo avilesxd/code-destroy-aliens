@@ -4,8 +4,9 @@
 
 <div align="center">
 
-  [![Build macOS](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/build-macos.yml/badge.svg)](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/build-macos.yml)  [![Build Windows](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/build-windows.yml/badge.svg)](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/build-windows.yml)[![Code Quality & Tests](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/tests.yml/badge.svg)](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/tests.yml)[![Dependabot Updates](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/dependabot/dependabot-updates)[![Deploy to GitHub Pages](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/deploy.yml/badge.svg)](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/deploy.yml)
-  
+[![Build macOS](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/build-macos.yml/badge.svg)](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/build-macos.yml)
+[![Build Windows](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/build-windows.yml/badge.svg)](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/build-windows.yml)[![Code Quality & Tests](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/tests.yml/badge.svg)](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/tests.yml)[![Dependabot Updates](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/dependabot/dependabot-updates)[![Deploy to GitHub Pages](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/deploy.yml/badge.svg)](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/deploy.yml)
+
   <table>
     <tbody>
       <tr>
