@@ -79,22 +79,9 @@ and more challenging.
 
 ## 📸 Game Screenshots
 
-<div align="center">
-
-<table>
-    <tr>
-        <th>Start Screen</th>
-        <th>Gameplay</th>
-        <th>Game Over</th>
-    </tr>
-    <tr>
-        <td><img src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game/game_start.png" alt="Start Screen" width="300"/></td>
-        <td><img src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game/game_score.png" alt="Gameplay" width="300"/></td>
-        <td><img src="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game/game_over.png" alt="Game Over" width="300"/></td>
-    </tr>
-</table>
-
-</div>
+|                                                                  Start Screen                                                                  |                                                                Gameplay                                                                |                                                                Game Over                                                                |
+| :--------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------: |
+| ![Start Screen](https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game/game_start.png 'Start Screen') | ![Gameplay](https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game/game_score.png 'Gameplay') | ![Game Over](https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/docs/images/game/game_over.png 'Game Over') |
 
 ## 🚀 Quick Start
 
@@ -111,15 +98,9 @@ documentation at the following link.
 
 ## 👥 Meet the Team
 
-<table>
-  <tbody>
-    <tr>
-    <td align="center" valign="top" width="14.28%"><a href="http://github.com/ESCOBAR741/"><img src="https://avatars.githubusercontent.com/ESCOBAR741" width="100px;" alt="Denilson Escobar"/><br /><sub><b>Denilson Escobar</b></sub></a></td>
-    <td align="center" valign="top" width="14.28%"><a href="https://avilesxd.vercel.app/"><img src="https://avatars.githubusercontent.com/avilesxd" width="100px;" alt="Ignacio Avilés"/><br /><sub><b>Ignacio Avilés</b></sub></a></td>
-    <td align="center" valign="top" width="14.28%"><a href="http://github.com/JGalaz7/"><img src="https://avatars.githubusercontent.com/JGalaz7" width="100px;" alt="Juan Galaz"/><br /><sub><b>Juan Galaz</b></sub></a></td>
-    </tr>
-  </tbody>
-</table>
+|                                               Denilson Escobar                                                |                                             Ignacio Avilés                                             |                                            Juan Galaz                                             |
+| :-----------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------: |
+| [![ESCOBAR741](https://avatars.githubusercontent.com/ESCOBAR741 'ESCOBAR741')](http://github.com/ESCOBAR741/) | [![avilesxd](https://avatars.githubusercontent.com/avilesxd 'avilesxd')](https://avilesxd.vercel.app/) | [![JGalaz7](https://avatars.githubusercontent.com/JGalaz7 'JGalaz7')](http://github.com/JGalaz7/) |
 
 ## 🌐 Connect With Us
 
