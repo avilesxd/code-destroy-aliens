@@ -45,3 +45,27 @@ def test_high_precision() -> None:
     formatter = NumberFormatter(decimals=3)
     assert formatter.format(1234) == "1.234k"
     assert formatter.format(5_678_900) == "5.679m"
+
+
+def test_negative_number() -> None:
+    formatter = NumberFormatter()
+    with pytest.raises(ValueError, match="non-negative"):
+        formatter.format(-1000)
+
+
+def test_invalid_type_string() -> None:
+    formatter = NumberFormatter()
+    with pytest.raises(TypeError, match="int or float"):
+        formatter.format("1000")  # type: ignore[arg-type]
+
+
+def test_invalid_type_none() -> None:
+    formatter = NumberFormatter()
+    with pytest.raises(TypeError, match="int or float"):
+        formatter.format(None)  # type: ignore[arg-type]
+
+
+def test_invalid_type_list() -> None:
+    formatter = NumberFormatter()
+    with pytest.raises(TypeError, match="int or float"):
+        formatter.format([1000])  # type: ignore[arg-type]
