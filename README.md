@@ -54,7 +54,7 @@ challenging levels_
 ### 🎮 Ready to Save Humanity?
 
 <a href="https://avilesxd.github.io/code-destroy-aliens/">
-  <img src="https://img.shields.io/badge/🎮_Play_Online-SUCCESS-brightgreen?style=for-the-badge&logo=play&logoColor=white" alt="Play Online"/>
+  <img src="https://img.shields.io/badge/🎮_Play_Now-SUCCESS-brightgreen?style=for-the-badge&logo=play&logoColor=white" alt="Play Now"/>
 </a>
 <a href="https://github.com/avilesxd/code-destroy-aliens/releases/latest">
   <img src="https://img.shields.io/badge/📥_Download-GAME-blue?style=for-the-badge&logo=download&logoColor=white" alt="Download Game"/>
