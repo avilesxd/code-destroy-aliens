@@ -11,6 +11,7 @@
         "ritwickdey.liveserver",
         "ms-vscode.live-server",
         "jmkrivocapich.drawfolderstructure",
-        "esbenp.prettier-vscode"
+        "esbenp.prettier-vscode",
+        "ms-python.vscode-python-envs"
     ]
 }
