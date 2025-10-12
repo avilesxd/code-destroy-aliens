@@ -12,10 +12,11 @@ class NumberFormatter:
     """
 
     SUFFIXES = [
-        (1_000_000_000_000, "t"),  # Trillion
-        (1_000_000_000, "b"),  # Billion
-        (1_000_000, "m"),  # Million
-        (1_000, "k"),  # Thousand
+        (1_000_000_000_000_000, "Qa"),  # Quadrillion
+        (1_000_000_000_000, "T"),  # Trillion
+        (1_000_000_000, "B"),  # Billion
+        (1_000_000, "M"),  # Million
+        (1_000, "K"),  # Thousand
     ]
 
     def __init__(self, decimals: int = 1):

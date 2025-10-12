@@ -35,6 +35,11 @@ def test_trillions(formatter: NumberFormatter) -> None:
     assert formatter.format(5_600_000_000_000) == "5.6T"
 
 
+def test_quadrillions(formatter: NumberFormatter) -> None:
+    assert formatter.format(1_000_000_000_000_000) == "1Qa"
+    assert formatter.format(7_800_000_000_000_000) == "7.8Qa"
+
+
 def test_no_decimals() -> None:
     formatter = NumberFormatter(decimals=1)
     assert formatter.format(1250) == "1.2K"
