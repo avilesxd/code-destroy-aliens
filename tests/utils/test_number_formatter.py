@@ -40,6 +40,11 @@ def test_quadrillions(formatter: NumberFormatter) -> None:
     assert formatter.format(7_800_000_000_000_000) == "7.8Qa"
 
 
+def test_quintillions(formatter: NumberFormatter) -> None:
+    assert formatter.format(1_000_000_000_000_000_000) == "1Qi"
+    assert formatter.format(9_500_000_000_000_000_000) == "9.5Qi"
+
+
 def test_no_decimals() -> None:
     formatter = NumberFormatter(decimals=1)
     assert formatter.format(1250) == "1.2K"

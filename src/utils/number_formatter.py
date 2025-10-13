@@ -12,6 +12,7 @@ class NumberFormatter:
     """
 
     SUFFIXES = [
+        (1_000_000_000_000_000_000, "Qi"),  # Quintillion
         (1_000_000_000_000_000, "Qa"),  # Quadrillion
         (1_000_000_000_000, "T"),  # Trillion
         (1_000_000_000, "B"),  # Billion
