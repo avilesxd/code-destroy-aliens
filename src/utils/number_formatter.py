@@ -1,17 +1,23 @@
 class NumberFormatter:
     """
     A class that converts large positive numbers into a compact, human-readable
-    string using suffixes like 'k', 'm', 'b', and 't'.
+    string using suffixes like 'K', 'M', 'B', 'T', 'Qa', 'Qi', 'Sx' and 'Oc'.
 
     Example:
-        1500       -> '1.5k'
-        2000000    -> '2m'
-        3500000000 -> '3.5b'
+        1500       -> '1.5K'
+        2000000    -> '2M'
+        3500000000 -> '3.5B'
+        1250000000000 -> '1.25T'
+        7800000000000000 -> '7.8Qa'
+        9600000000000000000 -> '9.6Qi'
+        1500000000000000000000 -> '1.5Oc'
 
     Useful for displaying scores, currency, or statistics in games or applications.
     """
 
     SUFFIXES = [
+        (1_000_000_000_000_000_000_000_000, "Oc"),  # Octillion
+        (1_000_000_000_000_000_000_000, "Sx"),  # Sextillion
         (1_000_000_000_000_000_000, "Qi"),  # Quintillion
         (1_000_000_000_000_000, "Qa"),  # Quadrillion
         (1_000_000_000_000, "T"),  # Trillion

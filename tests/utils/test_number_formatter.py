@@ -45,6 +45,16 @@ def test_quintillions(formatter: NumberFormatter) -> None:
     assert formatter.format(9_500_000_000_000_000_000) == "9.5Qi"
 
 
+def test_sextillions(formatter: NumberFormatter) -> None:
+    assert formatter.format(1_000_000_000_000_000_000_000) == "1Sx"
+    assert formatter.format(2_400_000_000_000_000_000_000) == "2.4Sx"
+
+
+def test_octillion(formatter: NumberFormatter) -> None:
+    assert formatter.format(1_000_000_000_000_000_000_000_000) == "1Oc"
+    assert formatter.format(9_400_000_000_000_000_000_000_000) == "9.4Oc"
+
+
 def test_no_decimals() -> None:
     formatter = NumberFormatter(decimals=1)
     assert formatter.format(1250) == "1.2K"
