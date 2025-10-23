@@ -1,4 +1,4 @@
-echo "🔍 Checking code format, linter, types and tests..."
-npm run verify || exit 1
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
 
-echo "✅ All checks passed successfully!"
+npx lint-staged

@@ -46,6 +46,7 @@
         "@commitlint/cli": "^19.8.0",
         "@commitlint/config-conventional": "^19.8.0",
         "husky": "^9.1.7",
+        "lint-staged": "^16.2.6",
         "prettier": "^3.5.3"
     },
     "engines": {
@@ -68,5 +69,13 @@
         "url": "https://github.com/avilesxd/code-destroy-aliens/issues",
         "email": "nacho72001@gmail.com"
     },
-    "homepage": "https://github.com/avilesxd/code-destroy-aliens#readme"
+    "homepage": "https://github.com/avilesxd/code-destroy-aliens#readme",
+    "lint-staged": {
+        "*.py": [
+            "node scripts/run-with-env.js black",
+            "node scripts/run-with-env.js isort",
+            "node scripts/run-with-env.js flake8"
+        ],
+        "*.{js,json,md,yml}": "prettier --write"
+    }
 }
