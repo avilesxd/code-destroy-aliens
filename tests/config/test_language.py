@@ -152,6 +152,28 @@ def test_get_text_portuguese(language: Language) -> None:
     assert language.get_text("paused_game") == "Jogo em Pausa"
 
 
+def test_get_text_arabic(language: Language) -> None:
+    """Test getting Portuguese translations."""
+    language.current_language = "ar"
+    assert language.get_text("game_controls") == "عناصر التحكم في اللعبة"
+    assert language.get_text("move_left_right") == "تحرك يسارًا/يمينًا"
+    assert language.get_text("shoot") == "أطلق النار"
+    assert language.get_text("pause_game") == "إيقاف اللعبة مؤقتًا"
+    assert language.get_text("quit_game") == "إنهاء اللعبة"
+    assert language.get_text("press_space") == "اضغط على SPACE للمتابعة"
+    assert language.get_text("play") == "لعب"
+    assert language.get_text("score") == "النتيجة"
+    assert language.get_text("high_score") == "أعلى نتيجة"
+    assert language.get_text("level") == "المستوى"
+    assert language.get_text("ships") == "السفن"
+    assert language.get_text("game_over") == "انتهت اللعبة"
+    assert language.get_text("press_p") == "اضغط على 'P' للاستئناف"
+    assert language.get_text("press_q") == "اضغط على 'Q' للخروج"
+    assert language.get_text("toggle_music") == "تبديل الموسيقى"
+    assert language.get_text("toggle_sound") == "تبديل الصوت"
+    assert language.get_text("paused_game") == "اللعبة متوقفة مؤقتا"
+
+
 def test_missing_translation_fallback(language: Language) -> None:
     """Test fallback to English for missing translations."""
     language.current_language = "es"

@@ -26,7 +26,7 @@ class Language:
     """
 
     # Constants for supported languages
-    SUPPORTED_LANGUAGES: Final[List[str]] = ["en", "es", "fr", "de", "it", "pt"]
+    SUPPORTED_LANGUAGES: Final[List[str]] = ["en", "es", "fr", "de", "it", "pt", "ar"]
     DEFAULT_LANGUAGE: Final[str] = "en"
     TRANSLATIONS_DIR: Final[str] = "src/assets/translations"
 
