@@ -174,6 +174,28 @@ def test_get_text_arabic(language: Language) -> None:
     assert language.get_text("paused_game") == "اللعبة متوقفة مؤقتا"
 
 
+def test_get_text_bulgarian(language: Language) -> None:
+    """Test getting Bulgarian translations."""
+    language.current_language = "bg"
+    assert language.get_text("game_controls") == "Контроли на играта"
+    assert language.get_text("move_left_right") == "Движение наляво/надясно"
+    assert language.get_text("shoot") == "Стреляй"
+    assert language.get_text("pause_game") == "Пауза на играта"
+    assert language.get_text("quit_game") == "Изход от играта"
+    assert language.get_text("press_space") == "Натиснете ПРОБЕЛ за продължаване"
+    assert language.get_text("play") == "Играй"
+    assert language.get_text("score") == "Точки"
+    assert language.get_text("high_score") == "Рекордни точки"
+    assert language.get_text("level") == "Ниво"
+    assert language.get_text("ships") == "Кораби"
+    assert language.get_text("game_over") == "Край на играта"
+    assert language.get_text("press_p") == "Натиснете 'P' за възобновяване"
+    assert language.get_text("press_q") == "Натиснете 'Q' за изход"
+    assert language.get_text("toggle_music") == "Музика вкл./изкл."
+    assert language.get_text("toggle_sound") == "Звук вкл./изкл."
+    assert language.get_text("paused_game") == "Играта е паузирана"
+
+
 def test_missing_translation_fallback(language: Language) -> None:
     """Test fallback to English for missing translations."""
     language.current_language = "es"

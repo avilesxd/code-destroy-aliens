@@ -7,8 +7,8 @@ languages marked with an X would already be integrated.
 
 | Status          | Count |
 | --------------- | ----- |
-| Completed       | 7     |
-| Remaining       | 39    |
+| Completed       | 8     |
+| Remaining       | 38    |
 | Total Languages | 46    |
 
 ## Languages
@@ -20,7 +20,7 @@ languages marked with an X would already be integrated.
 - [x] it — Italiano
 - [x] pt — Português
 - [x] ar — العربية
-- [ ] bg — Български
+- [x] bg — Български
 - [ ] bn — বাংলা
 - [ ] ca — Català
 - [ ] cs — Čeština
