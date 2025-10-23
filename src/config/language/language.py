@@ -52,10 +52,14 @@ class Language:
             str: Two-letter language code (e.g., 'en', 'es', 'fr').
         """
         try:
-            # Standard locale detection, works well on Windows
+            # Standard locale detection
             system_locale, _ = locale.getdefaultlocale()
-            if system_locale and not system_locale.lower().startswith("c"):
-                return system_locale.split("_")[0]
+            if system_locale:
+                # Handles formats like 'en_US' or 'en'
+                lang_code = system_locale.split("_")[0]
+                # Also handle 'C.UTF-8' or 'C'
+                if len(lang_code) == 2:
+                    return lang_code
         except Exception:
             # This can fail, so we pass and try the next method
             pass
@@ -64,7 +68,10 @@ class Language:
             # Fallback to LANG environment variable, common on macOS/Linux
             lang_env = os.getenv("LANG")
             if lang_env:
-                return lang_env.split("_")[0]
+                # Handles formats like 'en_US.UTF-8'
+                lang_code = lang_env.split(".")[0].split("_")[0]
+                if len(lang_code) == 2:
+                    return lang_code
         except Exception:
             # If LANG is malformed, we'll fall through
             pass
