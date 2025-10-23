@@ -1,7 +1,7 @@
 import json
 import locale
 import os
-from typing import Dict, Final, List, Optional
+from typing import Dict, Final, List
 
 from src.core.path_utils import resource_path
 
@@ -45,18 +45,30 @@ class Language:
     def _get_system_language(self) -> str:
         """Get the system language code.
 
-        Attempts to detect the system's language using the locale module.
-        If detection fails, returns the default language code.
+        Attempts to detect the system's language using the locale module and
+        environment variables.
 
         Returns:
             str: Two-letter language code (e.g., 'en', 'es', 'fr').
         """
         try:
-            system_locale: Optional[str] = locale.getdefaultlocale()[0]
-            if system_locale is not None and system_locale != "C":
+            # Standard locale detection, works well on Windows
+            system_locale, _ = locale.getdefaultlocale()
+            if system_locale and not system_locale.lower().startswith("c"):
                 return system_locale.split("_")[0]
-        except Exception as e:
-            print(f"Error detecting system language: {e}")
+        except Exception:
+            # This can fail, so we pass and try the next method
+            pass
+
+        try:
+            # Fallback to LANG environment variable, common on macOS/Linux
+            lang_env = os.getenv("LANG")
+            if lang_env:
+                return lang_env.split("_")[0]
+        except Exception:
+            # If LANG is malformed, we'll fall through
+            pass
+
         return self.DEFAULT_LANGUAGE
 
     def _load_translations(self) -> Dict[str, Dict[str, str]]:
