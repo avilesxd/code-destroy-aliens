@@ -1,3 +1,5 @@
+from typing import Optional
+
 import pygame
 from pygame.sprite import Group
 
@@ -29,7 +31,7 @@ class Game:
         )
         self.clock = pygame.time.Clock()
         self.font = pygame.font.SysFont(None, 48)
-        self.fps_counter = None
+        self.fps_counter: Optional[pygame.Surface] = None
         pygame.display.set_caption("Alien Invasion")
 
         # Set window icon
