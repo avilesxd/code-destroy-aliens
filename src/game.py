@@ -27,6 +27,9 @@ class Game:
         self.screen = pygame.display.set_mode(
             (self.ai_configuration.screen_width, self.ai_configuration.screen_height), pygame.RESIZABLE
         )
+        self.clock = pygame.time.Clock()
+        self.font = pygame.font.SysFont(None, 48)
+        self.fps_counter = None
         pygame.display.set_caption("Alien Invasion")
 
         # Set window icon
@@ -48,6 +51,10 @@ class Game:
     def run(self) -> None:
         """Start the main loop for the game."""
         while True:
+            self.clock.tick(60)
+            fps = int(self.clock.get_fps())
+            self.fps_counter = self.font.render(f"FPS: {fps}", True, (255, 255, 255))
+
             verify_events(self)
 
             if self.statistics.game_active and not self.statistics.game_paused:

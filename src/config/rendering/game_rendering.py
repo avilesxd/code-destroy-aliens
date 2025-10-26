@@ -89,6 +89,18 @@ def check_play_button(
         game.ship.center_ship()
 
 
+def draw_fps_counter(game: Game) -> None:
+    """Draws the FPS counter on the screen."""
+    if game.fps_counter:
+        game.screen.blit(
+            game.fps_counter,
+            (
+                game.screen.get_width() - game.fps_counter.get_width() - 10,
+                game.screen.get_height() - game.fps_counter.get_height() - 10,
+            ),
+        )
+
+
 def update_screen(game: Game) -> None:
     """Updates the images on the screen and switches to the new screen"""
     if game.ai_configuration.use_gradient_background:
@@ -114,6 +126,8 @@ def update_screen(game: Game) -> None:
         game.controls_screen.draw_controls()
     elif not game.statistics.game_active:
         game.play_button.draw_button()
+
+    draw_fps_counter(game)
 
     pygame.display.flip()
 
