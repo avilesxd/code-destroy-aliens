@@ -1,6 +1,8 @@
 import json
 import locale
 import os
+import subprocess
+import sys
 from typing import Dict, Final, List
 
 from src.core.path_utils import resource_path
@@ -34,49 +36,68 @@ class Language:
         """Initialize language settings.
 
         The initialization process:
-        1. Detects the system language
-        2. Loads all available translations
-        3. Sets the current language based on system language or defaults to English
+        1. Sets the program's locale to the user's default system settings.
+        2. Detects the system language based on the new locale.
+        3. Loads all available translations.
+        4. Sets the current language.
         """
+        try:
+            # Set the locale to the user's default setting. This is a best-effort
+            # attempt, but can be unreliable on macOS for GUI apps.
+            locale.setlocale(locale.LC_ALL, "")
+        except locale.Error:
+            # This can fail if the user's locale is not supported by the OS.
+            print("Warning: Failed to set the system's default locale.")
+
         self.system_language = self._get_system_language()
         self.translations = self._load_translations()
         self.current_language = self._get_supported_language()
 
     def _get_system_language(self) -> str:
-        """Get the system language code.
+        """Get the system language code by trying platform-specific methods."""
+        if sys.platform == "darwin":
+            lang = self._get_macos_language()
+            if lang:
+                return lang
 
-        Attempts to detect the system's language using the locale module and
-        environment variables.
-
-        Returns:
-            str: Two-letter language code (e.g., 'en', 'es', 'fr').
-        """
-        try:
-            # Standard locale detection
-            system_locale, _ = locale.getdefaultlocale()
-            if system_locale:
-                # Handles formats like 'en_US' or 'en'
-                lang_code = system_locale.split("_")[0]
-                # Also handle 'C.UTF-8' or 'C'
-                if len(lang_code) == 2:
-                    return lang_code
-        except Exception:
-            # This can fail, so we pass and try the next method
-            pass
-
-        try:
-            # Fallback to LANG environment variable, common on macOS/Linux
-            lang_env = os.getenv("LANG")
-            if lang_env:
-                # Handles formats like 'en_US.UTF-8'
-                lang_code = lang_env.split(".")[0].split("_")[0]
-                if len(lang_code) == 2:
-                    return lang_code
-        except Exception:
-            # If LANG is malformed, we'll fall through
-            pass
+        # Fallback for non-macOS systems or if the macOS method fails.
+        lang = self._get_fallback_language()
+        if lang:
+            return lang
 
         return self.DEFAULT_LANGUAGE
+
+    def _get_macos_language(self) -> str | None:
+        """Directly queries macOS for its preferred language."""
+        try:
+            command = ["defaults", "read", "-g", "AppleLanguages"]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, encoding="utf-8")
+            output = result.stdout.strip()
+
+            if output.startswith("(") and ")" in output:
+                first_quote = output.find('"')
+                if first_quote != -1:
+                    second_quote = output.find('"', first_quote + 1)
+                    if second_quote != -1:
+                        lang_region = output[first_quote + 1 : second_quote]
+                        lang_code = lang_region.split("-")[0]
+                        if len(lang_code) == 2:
+                            return lang_code.lower()
+        except (subprocess.CalledProcessError, FileNotFoundError, IndexError):
+            return None
+        return None
+
+    def _get_fallback_language(self) -> str | None:
+        """Gets language using the standard locale module."""
+        try:
+            system_locale, _ = locale.getdefaultlocale()
+            if system_locale:
+                lang_code = system_locale.split("_")[0]
+                if len(lang_code) == 2:
+                    return lang_code.lower()
+        except Exception:
+            return None
+        return None
 
     def _load_translations(self) -> Dict[str, Dict[str, str]]:
         """Load all available translations from JSON files.
