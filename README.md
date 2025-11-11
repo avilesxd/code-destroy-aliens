@@ -169,8 +169,8 @@ nostalgic arcade action with contemporary polish.
 
 1. Download the latest `.exe` from
    [Releases](https://github.com/avilesxd/code-destroy-aliens/releases/latest)
-2. Run the installer and follow the setup wizard
-3. Launch from Start Menu or Desktop shortcut
+2. **Run**: Double-click the `.exe` file to start playing. No installation
+   required!
 
 **System Requirements:**
 
@@ -183,10 +183,12 @@ nostalgic arcade action with contemporary polish.
 <details>
 <summary><b>🍎 macOS Installation</b></summary>
 
-1. Download the `.dmg` file from
+1. **Download**: Get the latest `.zip` file for macOS from
    [Releases](https://github.com/avilesxd/code-destroy-aliens/releases/latest)
-2. Mount the disk image and drag to Applications
-3. Launch from Applications folder
+2. **Extract**: Unzip the downloaded file. This will create an application file
+   (e.g., `Alien Invasion.app`).
+3. **Run**: Drag the application to your `Applications` folder and open it from
+   there.
 
 **System Requirements:**
 
