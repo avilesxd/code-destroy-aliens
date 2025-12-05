@@ -59,11 +59,11 @@ class Configuration:
     def initialize_dynamic_configurations(self) -> None:
         """Initializes the configuration that changes throughout the game"""
         # Ship speed
-        self.ship_speed_factor: float = 2.0
+        self.ship_speed_factor: float = 10
         # Bullet speed
         self.bullets_speed_factor: float = 1.5
         # Alien speed
-        self.alien_speed_factor: float = 1.0
+        self.alien_speed_factor: float = 5.5
         # Fleet_direction, if 1 represents right; if -1, it represents left
         self.fleet_direction: int = 1
         # Score
