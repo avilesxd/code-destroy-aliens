@@ -1,11 +1,15 @@
+import math
+
+
 class NumberFormatter:
     """
+
     A class that converts large positive numbers into a compact, human-readable
     string using suffixes like 'K', 'M', 'B', 'T', 'Qa', 'Qi', 'Sx' and 'Oc'.
 
     Example:
-        1500       -> '1.5K'
-        2000000    -> '2M'
+        1500 -> '1.5K'
+        2000000 -> '2M'
         3500000000 -> '3.5B'
         1250000000000 -> '1.25T'
         7800000000000000 -> '7.8Qa'
@@ -15,51 +19,44 @@ class NumberFormatter:
     Useful for displaying scores, currency, or statistics in games or applications.
     """
 
-    SUFFIXES = [
-        (1_000_000_000_000_000_000_000_000, "Oc"),  # Octillion
-        (1_000_000_000_000_000_000_000, "Sx"),  # Sextillion
-        (1_000_000_000_000_000_000, "Qi"),  # Quintillion
-        (1_000_000_000_000_000, "Qa"),  # Quadrillion
-        (1_000_000_000_000, "T"),  # Trillion
-        (1_000_000_000, "B"),  # Billion
-        (1_000_000, "M"),  # Million
-        (1_000, "K"),  # Thousand
-    ]
+    # Suffixes mapped by index.
+    # Index 0 = <1000, 1 = K (10^3), 2 = M (10^6), etc.
+    SUFFIXES = ["", "K", "M", "B", "T", "Qa", "Qi", "Sx", "Oc"]
 
     def __init__(self, decimals: int = 1):
-        """
-        Initialize the formatter.
-
-        Args:
-            decimals (int): Number of decimal places to include in the result (default is 1).
-        """
         self.decimals = decimals
 
     def format(self, number: int | float) -> str:
         """
-        Convert a positive number into a compact string with a suffix.
-
-        Args:
-            number (int | float): A positive number to format.
-
-        Returns:
-            str: A shortened string representation of the number.
+        Convert a number into a compact string using logarithmic magnitude calculation.
         """
+        # 1. Validation
         if not isinstance(number, (int, float)):
             raise TypeError("Number must be an int or float")
-
         if number < 0:
             raise ValueError("Number must be non-negative")
 
+        # 2. Base case for small numbers (0 to 999.99...)
         if number < 1000:
-            return str(number)
+            # Optional: apply decimal formatting to small numbers too if needed
+            # currently behaves like the original: raw string
+            return str(int(number)) if isinstance(number, int) else str(number)
 
-        for value, suffix in self.SUFFIXES:
-            if number >= value:
-                formatted = number / value
-                # Format with the desired number of decimals and strip trailing zeros and dots.
-                formatted_str = f"{formatted:.{self.decimals}f}".rstrip("0").rstrip(".")
-                return f"{formatted_str}{suffix}"
+        # 3. Calculate magnitude (O(1) operation)
+        # log10(number) gives the power of 10. Dividing by 3 gives the groups of thousands.
+        # Example: log10(2,000,000) ~ 6.3.  6.3 // 3 = 2.0. Index 2 is 'M'.
+        magnitude = int(math.log10(number) // 3)
 
-        # Fallback, though this line should not be reached for numbers >= 1000
-        return str(number)
+        # 4. Handle numbers larger than our largest suffix
+        if magnitude >= len(self.SUFFIXES):
+            magnitude = len(self.SUFFIXES) - 1
+
+        # 5. Calculate the value relative to the suffix
+        # 10 ** (magnitude * 3) creates the divisor (1000, 1000000, etc.)
+        formatted_number = number / (10 ** (magnitude * 3))
+
+        # 6. Format string
+        # We format normally, and simple rstrips to clean output
+        formatted_str = f"{formatted_number:.{self.decimals}f}".rstrip("0").rstrip(".")
+
+        return f"{formatted_str}{self.SUFFIXES[magnitude]}"
