@@ -27,11 +27,12 @@ def test_alien_initialization(alien: Alien) -> None:
 
 def test_alien_movement(alien: Alien) -> None:
     """Test alien movement."""
-    initial_x = alien.rect.x
+    initial_x = alien.x
     alien.update()
     speed_factor = alien.ai_configuration.alien_speed_factor
     fleet_direction = alien.ai_configuration.fleet_direction
-    assert alien.rect.x == initial_x + (speed_factor * fleet_direction)
+    assert alien.x == initial_x + (speed_factor * fleet_direction)
+    assert alien.rect.x == int(alien.x)
 
 
 def test_alien_direction_change(alien: Alien) -> None:
