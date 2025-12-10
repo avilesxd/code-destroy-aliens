@@ -21,6 +21,7 @@ module.exports = {
     ],
     'type-case': [2, 'always', 'lower-case'],
     'type-empty': [0, 'never'],
+    'scope-empty': [2, 'always'],
     'scope-case': [2, 'always', 'lower-case'],
     'subject-case': [0],
     'subject-empty': [0, 'never'],
@@ -31,4 +32,4 @@ module.exports = {
     'footer-leading-blank': [2, 'always'],
     'footer-max-line-length': [2, 'always', 250]
   }
-}; 
+};
