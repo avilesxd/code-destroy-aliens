@@ -2,6 +2,58 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.3.0] - 2025-12-11
+
+### Added
+
+- Support for 38 additional languages (Arabic, Bulgarian, and more)
+- Automated version bump system with PowerShell and Bash scripts
+- FPS counter display with real-time frame tracking
+- Game class for centralized game asset and behavior management
+- MockGame class and pytest fixture for improved testing encapsulation
+- NumberFormatter support for quintillion, sextillion, and octillion values
+- Input validation for NumberFormatter to handle negative numbers and invalid
+  types
+- Comprehensive tests for path_utils functions
+- Translations section to development navigation
+- Language checklist for game translations
+- AI Copilot instructions for project overview and workflows
+
+### Changed
+
+- Improved system language detection with environment variable fallback and
+  macOS support
+- Enhanced alien creation functions to use Game object for better encapsulation
+- Refactored event handling to use Game object
+- Refactored game logic to use Game object for better maintainability
+- Refactored game rendering functions with improved gradient surface caching
+- Updated ship and alien speed factors for improved gameplay dynamics
+- Improved number formatting logic with uppercase suffixes (K, M, B, T)
+- Enhanced system requirements documentation for Windows and macOS
+- Improved README.md structure and content
+- Refactored tests to use MockGame for better clarity
+- Updated workflow configurations
+
+### Fixed
+
+- Virtual environment check before command execution
+- Alien movement test to use correct x position
+- Scope enforcement in commit messages (must be empty)
+- Button label from "Play Online" to "Play Now" in README
+- Version number synchronization across package files
+
+### Refactored
+
+- Test structure to use MockGame fixture throughout
+- Game object usage across all major systems
+
+### Chore
+
+- Updated dependencies (js-yaml from 4.1.0 to 4.1.1)
+- Added lint-staged configuration for pre-commit hooks
+
+---
+
 ## [v1.2.0] - 2025-05-15
 
 ### Added

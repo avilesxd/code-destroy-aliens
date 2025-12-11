@@ -1,4 +1,4 @@
-VERSION = "1.2.0"
+VERSION = "1.3.0"
 
 macos_path = "versions/macos.txt"
 windows_path = "versions/windows.txt"
