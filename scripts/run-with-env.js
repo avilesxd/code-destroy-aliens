@@ -1,6 +1,7 @@
 const { execSync } = require('child_process');
 const os = require('os');
 const path = require('path');
+const fs = require('fs');
 
 const isWindows = os.platform() === 'win32';
 const venvPath = path.join(__dirname, '..', 'env');
@@ -18,17 +19,25 @@ const skipVenvCommands = [
     'commitlint',
 ];
 
+// Check if virtual environment exists
+const venvActivateScript = isWindows
+    ? path.join(venvPath, 'Scripts', 'activate')
+    : path.join(venvPath, 'bin', 'activate');
+const venvExists = fs.existsSync(venvActivateScript);
+
 // Determine if the command starts with a Node/JS-based tool
 const shouldSkipVenv = skipVenvCommands.some((tool) =>
     command.startsWith(tool)
 );
 
 // Build the final shell command
-const finalCommand = shouldSkipVenv
-    ? command
-    : isWindows
-      ? `"${path.join(venvPath, 'Scripts', 'activate')}" && ${command}`
-      : `. "${path.join(venvPath, 'bin', 'activate')}" && ${command}`;
+// Use venv only if it exists and command requires it
+const finalCommand =
+    shouldSkipVenv || !venvExists
+        ? command
+        : isWindows
+          ? `"${venvActivateScript}" && ${command}`
+          : `. "${venvActivateScript}" && ${command}`;
 
 try {
     execSync(finalCommand, {
@@ -37,7 +46,7 @@ try {
     });
 } catch (err) {
     console.error(
-        `❌ Failed to run the command${shouldSkipVenv ? '' : ' inside the Python virtual environment'}.`
+        `❌ Failed to run the command${shouldSkipVenv || !venvExists ? '' : ' inside the Python virtual environment'}.`
     );
     console.error(`Command: ${finalCommand}`);
     process.exit(1);
