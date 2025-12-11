@@ -1,0 +1,19 @@
+{
+    "game_controls": "Joko Kontrolak",
+    "move_left_right": "Mugitu ezkerrera/eskuinera",
+    "shoot": "Tiro egin",
+    "pause_game": "Pausatu jokoa",
+    "quit_game": "Jokotik irten",
+    "press_space": "Sakatu ZURIUNEA jarraitzeko",
+    "play": "Jokatu",
+    "score": "Puntuazioa",
+    "high_score": "Puntuazio Maximoa",
+    "level": "Maila",
+    "ships": "Ontziak",
+    "game_over": "Joko Bukatua",
+    "press_p": "Sakatu 'P' berriz hasteko",
+    "press_q": "Sakatu 'Q' irteteko",
+    "toggle_music": "Musika on/off",
+    "toggle_sound": "Soinua on/off",
+    "paused_game": "Jokoa Pausatuta"
+}

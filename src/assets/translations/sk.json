@@ -1,0 +1,19 @@
+{
+    "game_controls": "Ovládanie Hry",
+    "move_left_right": "Pohyb doľava/doprava",
+    "shoot": "Strieľať",
+    "pause_game": "Pozastaviť hru",
+    "quit_game": "Ukončiť hru",
+    "press_space": "Stlačte MEDZERNÍK pre pokračovanie",
+    "play": "Hrať",
+    "score": "Skóre",
+    "high_score": "Najvyššie Skóre",
+    "level": "Úroveň",
+    "ships": "Lode",
+    "game_over": "Koniec Hry",
+    "press_p": "Stlačte 'P' pre pokračovanie",
+    "press_q": "Stlačte 'Q' pre ukončenie",
+    "toggle_music": "Hudba zap/vyp",
+    "toggle_sound": "Zvuk zap/vyp",
+    "paused_game": "Hra Pozastavená"
+}

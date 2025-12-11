@@ -1,0 +1,19 @@
+{
+    "game_controls": "Điều Khiển Trò Chơi",
+    "move_left_right": "Di chuyển trái/phải",
+    "shoot": "Bắn",
+    "pause_game": "Tạm dừng trò chơi",
+    "quit_game": "Thoát khỏi trò chơi",
+    "press_space": "Nhấn SPACE để tiếp tục",
+    "play": "Chơi",
+    "score": "Điểm",
+    "high_score": "Điểm Cao Nhất",
+    "level": "Cấp độ",
+    "ships": "Tàu",
+    "game_over": "Trò Chơi Kết Thúc",
+    "press_p": "Nhấn 'P' để tiếp tục",
+    "press_q": "Nhấn 'Q' để thoát",
+    "toggle_music": "Nhạc bật/tắt",
+    "toggle_sound": "Âm thanh bật/tắt",
+    "paused_game": "Trò Chơi Tạm Dừng"
+}

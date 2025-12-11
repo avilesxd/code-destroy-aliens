@@ -1,0 +1,19 @@
+{
+    "game_controls": "ゲームコントロール",
+    "move_left_right": "左右に移動",
+    "shoot": "射撃",
+    "pause_game": "ゲームを一時停止",
+    "quit_game": "ゲームを終了",
+    "press_space": "続けるにはスペースキーを押してください",
+    "play": "プレイ",
+    "score": "スコア",
+    "high_score": "ハイスコア",
+    "level": "レベル",
+    "ships": "船",
+    "game_over": "ゲームオーバー",
+    "press_p": "再開するには'P'を押してください",
+    "press_q": "終了するには'Q'を押してください",
+    "toggle_music": "音楽オン/オフ",
+    "toggle_sound": "サウンドオン/オフ",
+    "paused_game": "ゲーム一時停止中"
+}

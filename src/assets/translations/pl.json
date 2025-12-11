@@ -1,0 +1,19 @@
+{
+    "game_controls": "Sterowanie Grą",
+    "move_left_right": "Ruch w lewo/prawo",
+    "shoot": "Strzelaj",
+    "pause_game": "Wstrzymaj grę",
+    "quit_game": "Wyjdź z gry",
+    "press_space": "Naciśnij SPACJĘ, aby kontynuować",
+    "play": "Graj",
+    "score": "Wynik",
+    "high_score": "Najlepszy Wynik",
+    "level": "Poziom",
+    "ships": "Statki",
+    "game_over": "Koniec Gry",
+    "press_p": "Naciśnij 'P', aby wznowić",
+    "press_q": "Naciśnij 'Q', aby wyjść",
+    "toggle_music": "Muzyka wł/wył",
+    "toggle_sound": "Dźwięk wł/wył",
+    "paused_game": "Gra Wstrzymana"
+}

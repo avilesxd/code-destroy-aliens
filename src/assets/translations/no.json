@@ -1,0 +1,19 @@
+{
+    "game_controls": "Spillkontroller",
+    "move_left_right": "Beveg venstre/høyre",
+    "shoot": "Skyt",
+    "pause_game": "Pause spill",
+    "quit_game": "Avslutt spill",
+    "press_space": "Trykk MELLOMROM for å fortsette",
+    "play": "Spill",
+    "score": "Poengsum",
+    "high_score": "Høyeste Poengsum",
+    "level": "Nivå",
+    "ships": "Skip",
+    "game_over": "Spill Slutt",
+    "press_p": "Trykk 'P' for å fortsette",
+    "press_q": "Trykk 'Q' for å avslutte",
+    "toggle_music": "Musikk på/av",
+    "toggle_sound": "Lyd på/av",
+    "paused_game": "Spill Pauset"
+}

@@ -1,0 +1,19 @@
+{
+    "game_controls": "בקרות משחק",
+    "move_left_right": "זוז שמאלה/ימינה",
+    "shoot": "ירי",
+    "pause_game": "השהה משחק",
+    "quit_game": "צא מהמשחק",
+    "press_space": "לחץ על רווח להמשך",
+    "play": "שחק",
+    "score": "ניקוד",
+    "high_score": "שיא",
+    "level": "שלב",
+    "ships": "ספינות",
+    "game_over": "המשחק נגמר",
+    "press_p": "לחץ על 'P' להמשיך",
+    "press_q": "לחץ על 'Q' לצאת",
+    "toggle_music": "מוזיקה דלוק/כבוי",
+    "toggle_sound": "צליל דלוק/כבוי",
+    "paused_game": "משחק מושהה"
+}

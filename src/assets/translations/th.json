@@ -1,0 +1,19 @@
+{
+    "game_controls": "การควบคุมเกม",
+    "move_left_right": "เคลื่อนที่ซ้าย/ขวา",
+    "shoot": "ยิง",
+    "pause_game": "หยุดเกมชั่วคราว",
+    "quit_game": "ออกจากเกม",
+    "press_space": "กด SPACE เพื่อดำเนินการต่อ",
+    "play": "เล่น",
+    "score": "คะแนน",
+    "high_score": "คะแนนสูงสุด",
+    "level": "ระดับ",
+    "ships": "ยานอวกาศ",
+    "game_over": "เกมจบ",
+    "press_p": "กด 'P' เพื่อเล่นต่อ",
+    "press_q": "กด 'Q' เพื่อออก",
+    "toggle_music": "เปิด/ปิดเพลง",
+    "toggle_sound": "เปิด/ปิดเสียง",
+    "paused_game": "เกมหยุดชั่วคราว"
+}

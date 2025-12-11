@@ -1,0 +1,19 @@
+{
+    "game_controls": "游戏控制",
+    "move_left_right": "向左/向右移动",
+    "shoot": "射击",
+    "pause_game": "暂停游戏",
+    "quit_game": "退出游戏",
+    "press_space": "按空格键继续",
+    "play": "开始游戏",
+    "score": "得分",
+    "high_score": "最高分",
+    "level": "关卡",
+    "ships": "飞船",
+    "game_over": "游戏结束",
+    "press_p": "按'P'继续",
+    "press_q": "按'Q'退出",
+    "toggle_music": "音乐开/关",
+    "toggle_sound": "音效开/关",
+    "paused_game": "游戏已暂停"
+}

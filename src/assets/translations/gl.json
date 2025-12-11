@@ -1,0 +1,19 @@
+{
+    "game_controls": "Controis do Xogo",
+    "move_left_right": "Mover esquerda/dereita",
+    "shoot": "Disparar",
+    "pause_game": "Pausar xogo",
+    "quit_game": "Saír do xogo",
+    "press_space": "Prema ESPAZO para continuar",
+    "play": "Xogar",
+    "score": "Puntuación",
+    "high_score": "Puntuación Máxima",
+    "level": "Nivel",
+    "ships": "Naves",
+    "game_over": "Xogo Rematado",
+    "press_p": "Prema 'P' para retomar",
+    "press_q": "Prema 'Q' para saír",
+    "toggle_music": "Música on/off",
+    "toggle_sound": "Son on/off",
+    "paused_game": "Xogo en Pausa"
+}

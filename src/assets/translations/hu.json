@@ -1,0 +1,19 @@
+{
+    "game_controls": "Játék Vezérlők",
+    "move_left_right": "Mozgás balra/jobbra",
+    "shoot": "Lövés",
+    "pause_game": "Játék szüneteltetése",
+    "quit_game": "Kilépés a játékból",
+    "press_space": "Nyomja meg a SZÓKÖZ billentyűt a folytatáshoz",
+    "play": "Játék",
+    "score": "Pontszám",
+    "high_score": "Legjobb Pontszám",
+    "level": "Szint",
+    "ships": "Hajók",
+    "game_over": "Játék Vége",
+    "press_p": "Nyomja meg a 'P' billentyűt a folytatáshoz",
+    "press_q": "Nyomja meg a 'Q' billentyűt a kilépéshez",
+    "toggle_music": "Zene be/ki",
+    "toggle_sound": "Hang be/ki",
+    "paused_game": "Játék Szüneteltetve"
+}

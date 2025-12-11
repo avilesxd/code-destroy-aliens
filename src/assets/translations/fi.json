@@ -1,0 +1,19 @@
+{
+    "game_controls": "Pelin Ohjaus",
+    "move_left_right": "Liiku vasemmalle/oikealle",
+    "shoot": "Ammu",
+    "pause_game": "Keskeytä peli",
+    "quit_game": "Poistu pelistä",
+    "press_space": "Paina VÄLILYÖNTIÄ jatkaaksesi",
+    "play": "Pelaa",
+    "score": "Pisteet",
+    "high_score": "Paras Tulos",
+    "level": "Taso",
+    "ships": "Alukset",
+    "game_over": "Peli Päättyi",
+    "press_p": "Paina 'P' jatkaaksesi",
+    "press_q": "Paina 'Q' poistuaksesi",
+    "toggle_music": "Musiikki päälle/pois",
+    "toggle_sound": "Ääni päälle/pois",
+    "paused_game": "Peli Keskeytetty"
+}

@@ -1,0 +1,19 @@
+{
+    "game_controls": "Spelbesturing",
+    "move_left_right": "Beweeg links/rechts",
+    "shoot": "Schieten",
+    "pause_game": "Spel pauzeren",
+    "quit_game": "Spel afsluiten",
+    "press_space": "Druk op SPATIE om door te gaan",
+    "play": "Spelen",
+    "score": "Score",
+    "high_score": "Hoogste Score",
+    "level": "Level",
+    "ships": "Schepen",
+    "game_over": "Spel Afgelopen",
+    "press_p": "Druk op 'P' om te hervatten",
+    "press_q": "Druk op 'Q' om af te sluiten",
+    "toggle_music": "Muziek aan/uit",
+    "toggle_sound": "Geluid aan/uit",
+    "paused_game": "Spel Gepauzeerd"
+}

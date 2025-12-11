@@ -1,0 +1,19 @@
+{
+    "game_controls": "Kontrole Igre",
+    "move_left_right": "Pomakni lijevo/desno",
+    "shoot": "Pucaj",
+    "pause_game": "Pauziraj igru",
+    "quit_game": "Izađi iz igre",
+    "press_space": "Pritisni RAZMAK za nastavak",
+    "play": "Igraj",
+    "score": "Rezultat",
+    "high_score": "Najbolji Rezultat",
+    "level": "Razina",
+    "ships": "Brodovi",
+    "game_over": "Igra Završena",
+    "press_p": "Pritisni 'P' za nastavak",
+    "press_q": "Pritisni 'Q' za izlaz",
+    "toggle_music": "Glazba uključeno/isključeno",
+    "toggle_sound": "Zvuk uključeno/isključeno",
+    "paused_game": "Igra Pauzirana"
+}

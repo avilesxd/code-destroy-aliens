@@ -1,0 +1,19 @@
+{
+    "game_controls": "Spilkontroller",
+    "move_left_right": "Bevæg venstre/højre",
+    "shoot": "Skyd",
+    "pause_game": "Pause spil",
+    "quit_game": "Afslut spil",
+    "press_space": "Tryk MELLEMRUM for at fortsætte",
+    "play": "Spil",
+    "score": "Score",
+    "high_score": "Højeste Score",
+    "level": "Niveau",
+    "ships": "Skibe",
+    "game_over": "Spil Slut",
+    "press_p": "Tryk 'P' for at genoptage",
+    "press_q": "Tryk 'Q' for at afslutte",
+    "toggle_music": "Musik til/fra",
+    "toggle_sound": "Lyd til/fra",
+    "paused_game": "Spil Sat på Pause"
+}

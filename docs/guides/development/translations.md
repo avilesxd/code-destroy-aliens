@@ -7,8 +7,8 @@ languages marked with an X would already be integrated.
 
 | Status          | Count |
 | --------------- | ----- |
-| Completed       | 8     |
-| Remaining       | 38    |
+| Completed       | 46    |
+| Remaining       | 0     |
 | Total Languages | 46    |
 
 ## Languages
@@ -21,41 +21,41 @@ languages marked with an X would already be integrated.
 - [x] pt — Português
 - [x] ar — العربية
 - [x] bg — Български
-- [ ] bn — বাংলা
-- [ ] ca — Català
-- [ ] cs — Čeština
-- [ ] da — Dansk
-- [ ] el — Ελληνικά
-- [ ] eu — Euskera
-- [ ] fa — فارسی
-- [ ] fi — Suomi
-- [ ] gl — Galego
-- [ ] he — עברית
-- [ ] hi — हिन्दी
-- [ ] hr — Hrvatski
-- [ ] hu — Magyar
-- [ ] id — Bahasa Indonesia
-- [ ] ja — 日本語
-- [ ] kn — ಕನ್ನಡ
-- [ ] ko — 한국어
-- [ ] ml — മലയാളം
-- [ ] ms — Bahasa Melayu
-- [ ] nl — Nederlands
-- [ ] no — Norsk
-- [ ] pl — Polski
-- [ ] ro — Română
-- [ ] ru — Русский
-- [ ] sk — Slovenčina
-- [ ] sr — Српски
-- [ ] sv — Svenska
-- [ ] sw — Kiswahili
-- [ ] ta — தமிழ்
-- [ ] te — తెలుగు
-- [ ] th — ไทย
-- [ ] tl — Tagalog
-- [ ] tr — Türkçe
-- [ ] uk — Українська
-- [ ] ur — اردو
-- [ ] vi — Tiếng Việt
-- [ ] zh — 中文
-- [ ] zh-TW — 繁體中文
+- [x] bn — বাংলা
+- [x] ca — Català
+- [x] cs — Čeština
+- [x] da — Dansk
+- [x] el — Ελληνικά
+- [x] eu — Euskera
+- [x] fa — فارسی
+- [x] fi — Suomi
+- [x] gl — Galego
+- [x] he — עברית
+- [x] hi — हिन्दी
+- [x] hr — Hrvatski
+- [x] hu — Magyar
+- [x] id — Bahasa Indonesia
+- [x] ja — 日本語
+- [x] kn — ಕನ್ನಡ
+- [x] ko — 한국어
+- [x] ml — മലയാളം
+- [x] ms — Bahasa Melayu
+- [x] nl — Nederlands
+- [x] no — Norsk
+- [x] pl — Polski
+- [x] ro — Română
+- [x] ru — Русский
+- [x] sk — Slovenčina
+- [x] sr — Српски
+- [x] sv — Svenska
+- [x] sw — Kiswahili
+- [x] ta — தமிழ்
+- [x] te — తెలుగు
+- [x] th — ไทย
+- [x] tl — Tagalog
+- [x] tr — Türkçe
+- [x] uk — Українська
+- [x] ur — اردو
+- [x] vi — Tiếng Việt
+- [x] zh — 中文
+- [x] zh-TW — 繁體中文

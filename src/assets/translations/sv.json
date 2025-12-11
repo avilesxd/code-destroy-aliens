@@ -1,0 +1,19 @@
+{
+    "game_controls": "Spelkontroller",
+    "move_left_right": "Flytta vänster/höger",
+    "shoot": "Skjut",
+    "pause_game": "Pausa spel",
+    "quit_game": "Avsluta spel",
+    "press_space": "Tryck MELLANSLAG för att fortsätta",
+    "play": "Spela",
+    "score": "Poäng",
+    "high_score": "Högsta Poäng",
+    "level": "Nivå",
+    "ships": "Skepp",
+    "game_over": "Spel Slut",
+    "press_p": "Tryck 'P' för att återuppta",
+    "press_q": "Tryck 'Q' för att avsluta",
+    "toggle_music": "Musik på/av",
+    "toggle_sound": "Ljud på/av",
+    "paused_game": "Spel Pausat"
+}

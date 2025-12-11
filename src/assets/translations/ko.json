@@ -1,0 +1,19 @@
+{
+    "game_controls": "게임 조작",
+    "move_left_right": "좌우 이동",
+    "shoot": "발사",
+    "pause_game": "게임 일시정지",
+    "quit_game": "게임 종료",
+    "press_space": "계속하려면 스페이스를 누르세요",
+    "play": "플레이",
+    "score": "점수",
+    "high_score": "최고 점수",
+    "level": "레벨",
+    "ships": "우주선",
+    "game_over": "게임 오버",
+    "press_p": "재개하려면 'P'를 누르세요",
+    "press_q": "종료하려면 'Q'를 누르세요",
+    "toggle_music": "음악 켜기/끄기",
+    "toggle_sound": "사운드 켜기/끄기",
+    "paused_game": "게임 일시정지됨"
+}

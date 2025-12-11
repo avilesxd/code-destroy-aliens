@@ -1,0 +1,19 @@
+{
+    "game_controls": "Kontrol Permainan",
+    "move_left_right": "Gerak kiri/kanan",
+    "shoot": "Tembak",
+    "pause_game": "Jeda permainan",
+    "quit_game": "Keluar dari permainan",
+    "press_space": "Tekan SPASI untuk melanjutkan",
+    "play": "Main",
+    "score": "Skor",
+    "high_score": "Skor Tertinggi",
+    "level": "Level",
+    "ships": "Kapal",
+    "game_over": "Permainan Selesai",
+    "press_p": "Tekan 'P' untuk melanjutkan",
+    "press_q": "Tekan 'Q' untuk keluar",
+    "toggle_music": "Musik nyala/mati",
+    "toggle_sound": "Suara nyala/mati",
+    "paused_game": "Permainan Dijeda"
+}

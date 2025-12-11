@@ -1,0 +1,19 @@
+{
+    "game_controls": "Oyun Kontrolleri",
+    "move_left_right": "Sola/sağa hareket",
+    "shoot": "Ateş et",
+    "pause_game": "Oyunu duraklat",
+    "quit_game": "Oyundan çık",
+    "press_space": "Devam etmek için BOŞLUK tuşuna basın",
+    "play": "Oyna",
+    "score": "Skor",
+    "high_score": "En Yüksek Skor",
+    "level": "Seviye",
+    "ships": "Gemiler",
+    "game_over": "Oyun Bitti",
+    "press_p": "Devam etmek için 'P' tuşuna basın",
+    "press_q": "Çıkmak için 'Q' tuşuna basın",
+    "toggle_music": "Müzik açık/kapalı",
+    "toggle_sound": "Ses açık/kapalı",
+    "paused_game": "Oyun Duraklatıldı"
+}

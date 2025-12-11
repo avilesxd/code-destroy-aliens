@@ -1,0 +1,19 @@
+{
+    "game_controls": "Udhibiti wa Mchezo",
+    "move_left_right": "Sogea kushoto/kulia",
+    "shoot": "Piga risasi",
+    "pause_game": "Simamisha mchezo",
+    "quit_game": "Toka kwenye mchezo",
+    "press_space": "Bonyeza NAFASI kuendelea",
+    "play": "Cheza",
+    "score": "Alama",
+    "high_score": "Alama ya Juu",
+    "level": "Kiwango",
+    "ships": "Meli",
+    "game_over": "Mchezo Umekwisha",
+    "press_p": "Bonyeza 'P' kuendelea",
+    "press_q": "Bonyeza 'Q' kutoka",
+    "toggle_music": "Muziki washa/zima",
+    "toggle_sound": "Sauti washa/zima",
+    "paused_game": "Mchezo Umesimamishwa"
+}

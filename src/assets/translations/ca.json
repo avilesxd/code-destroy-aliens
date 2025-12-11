@@ -1,0 +1,19 @@
+{
+    "game_controls": "Controls del Joc",
+    "move_left_right": "Moure esquerra/dreta",
+    "shoot": "Disparar",
+    "pause_game": "Pausar joc",
+    "quit_game": "Sortir del joc",
+    "press_space": "Premeu ESPAI per continuar",
+    "play": "Jugar",
+    "score": "Puntuació",
+    "high_score": "Puntuació Màxima",
+    "level": "Nivell",
+    "ships": "Naus",
+    "game_over": "Joc Acabat",
+    "press_p": "Premeu 'P' per reprendre",
+    "press_q": "Premeu 'Q' per sortir",
+    "toggle_music": "Música on/off",
+    "toggle_sound": "So on/off",
+    "paused_game": "Joc en Pausa"
+}

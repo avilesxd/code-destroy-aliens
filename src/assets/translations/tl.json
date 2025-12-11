@@ -1,0 +1,19 @@
+{
+    "game_controls": "Mga Kontrol ng Laro",
+    "move_left_right": "Gumalaw pakaliwa/pakanan",
+    "shoot": "Bumaril",
+    "pause_game": "I-pause ang laro",
+    "quit_game": "Lumabas sa laro",
+    "press_space": "Pindutin ang SPACE upang magpatuloy",
+    "play": "Maglaro",
+    "score": "Puntos",
+    "high_score": "Pinakamataas na Puntos",
+    "level": "Antas",
+    "ships": "Mga Barko",
+    "game_over": "Tapos na ang Laro",
+    "press_p": "Pindutin ang 'P' upang magpatuloy",
+    "press_q": "Pindutin ang 'Q' upang lumabas",
+    "toggle_music": "Musika bukas/sara",
+    "toggle_sound": "Tunog bukas/sara",
+    "paused_game": "Naka-pause ang Laro"
+}

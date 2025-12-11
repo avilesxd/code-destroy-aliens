@@ -1,0 +1,19 @@
+{
+    "game_controls": "Controale Joc",
+    "move_left_right": "Mișcare stânga/dreapta",
+    "shoot": "Trage",
+    "pause_game": "Pauză joc",
+    "quit_game": "Ieși din joc",
+    "press_space": "Apăsați SPAȚIU pentru a continua",
+    "play": "Joacă",
+    "score": "Scor",
+    "high_score": "Cel Mai Mare Scor",
+    "level": "Nivel",
+    "ships": "Nave",
+    "game_over": "Joc Terminat",
+    "press_p": "Apăsați 'P' pentru a relua",
+    "press_q": "Apăsați 'Q' pentru a ieși",
+    "toggle_music": "Muzică pornit/oprit",
+    "toggle_sound": "Sunet pornit/oprit",
+    "paused_game": "Joc În Pauză"
+}
