@@ -73,6 +73,7 @@ nav:
     - Contributing Guide: guides/contributing/README.md
     - Code of Conduct: guides/contributing/CODE_OF_CONDUCT.md
     - Development Workflow: guides/contributing/workflow.md
+    - Release Process: guides/contributing/release-process.md
   - Legal:
     - License: LICENSE.md
     - Security Policy: SECURITY.md

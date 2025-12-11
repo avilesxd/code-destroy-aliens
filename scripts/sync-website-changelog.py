@@ -101,7 +101,7 @@ def generate_version_html(version_data: dict) -> str:
     return "\n".join(html_parts)
 
 
-def update_website_changelog():
+def update_website_changelog() -> bool:
     """Update website/changelog.html from CHANGELOG.md"""
     print("📝 Syncing CHANGELOG.md to website...")
 

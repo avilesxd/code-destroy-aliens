@@ -76,6 +76,55 @@ npm run build:windows  # Creates .exe with pyinstaller
 npm run build:macos    # Creates .app with py2app
 ```
 
+### Releasing a New Version
+
+**Automated version bump process:**
+
+```bash
+# 1. Bump version (patch/minor/major)
+.\scripts\bump-version.ps1 -Type minor
+
+# This automatically:
+# - Updates package.json, package-lock.json
+# - Updates tools/generate-version.py
+# - Generates version files for Windows/macOS
+# - Updates website/index.html version and download links
+# - Creates new CHANGELOG.md entry with template
+
+# 2. Edit CHANGELOG.md with actual release notes
+# Add details under Added, Changed, Fixed, etc.
+
+# 3. Sync changelog to website
+python scripts\sync-website-changelog.py
+
+# 4. Commit and tag
+git add .
+git commit -m "chore: bump version to X.X.X"
+git tag -a vX.X.X -m "Release vX.X.X"
+git push --tags
+
+# 5. Builds trigger automatically on tag push
+# - Windows build (~3-5 min)
+# - macOS build (~1-2 min)
+# - Release creation (automatic after builds complete)
+```
+
+**Version files:**
+
+- `package.json`: npm version (source of truth)
+- `tools/generate-version.py`: Python VERSION constant
+- `versions/windows.txt`: PyInstaller version metadata
+- `versions/macos.txt`: py2app version string
+- `website/index.html`: Displayed version and download links
+- `website/changelog.html`: HTML changelog (synced from CHANGELOG.md)
+
+**CI/CD Pipeline:**
+
+1. Push tag → triggers `build-windows.yml` and `build-macos.yml`
+2. Both builds complete → triggers `release.yml`
+3. Release created with .exe and .dmg artifacts
+4. Website auto-deploys on main branch push
+
 ### Testing & Quality
 
 ```bash
