@@ -1,0 +1,176 @@
+name: Version Bump and Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_type:
+        description: 'Version bump type'
+        required: true
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+      custom_version:
+        description: 'Custom version (optional, overrides version_type. e.g., 1.3.0)'
+        required: false
+        type: string
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      new_version: ${{ steps.bump.outputs.new_version }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: |
+          npm install
+          pip install semver
+
+      - name: Configure git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Bump version
+        id: bump
+        run: |
+          # Get current version from package.json
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          echo "Current version: $CURRENT_VERSION"
+
+          # Calculate new version
+          if [ -n "${{ github.event.inputs.custom_version }}" ]; then
+            NEW_VERSION="${{ github.event.inputs.custom_version }}"
+            echo "Using custom version: $NEW_VERSION"
+          else
+            # Use Python to calculate semantic version bump
+            NEW_VERSION=$(python3 << EOF
+          import semver
+          current = "$CURRENT_VERSION"
+          bump_type = "${{ github.event.inputs.version_type }}"
+          version = semver.VersionInfo.parse(current)
+
+          if bump_type == "major":
+              new = version.bump_major()
+          elif bump_type == "minor":
+              new = version.bump_minor()
+          else:
+              new = version.bump_patch()
+
+          print(str(new))
+          EOF
+            )
+            echo "Calculated ${{ github.event.inputs.version_type }} bump: $NEW_VERSION"
+          fi
+
+          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+
+      - name: Update package.json
+        run: |
+          npm version $NEW_VERSION --no-git-tag-version
+
+      - name: Update version files
+        run: |
+          # Update generate-version.py
+          sed -i 's/VERSION = ".*"/VERSION = "'$NEW_VERSION'"/' tools/generate-version.py
+
+          # Generate version files
+          python tools/generate-version.py
+
+      - name: Update CHANGELOG.md
+        run: |
+          DATE=$(date +%Y-%m-%d)
+          TEMP_FILE=$(mktemp)
+
+          # Create new changelog entry
+          cat > $TEMP_FILE << EOF
+          # Changelog
+
+          All notable changes to this project will be documented in this file.
+
+          ## [v$NEW_VERSION] - $DATE
+
+          ### Added
+
+          - Version bump to $NEW_VERSION
+
+          ### Changed
+
+          ### Fixed
+
+          ### Refactored
+
+          ### Chore
+
+          ---
+
+          EOF
+
+          # Append old changelog (skip first 6 lines which is header)
+          tail -n +7 CHANGELOG.md >> $TEMP_FILE
+          mv $TEMP_FILE CHANGELOG.md
+
+      - name: Commit changes
+        run: |
+          git add package.json package-lock.json tools/generate-version.py versions/ CHANGELOG.md
+          git commit -m "chore: bump version to $NEW_VERSION"
+          git push origin main
+
+      - name: Create and push tag
+        run: |
+          git tag -a "v$NEW_VERSION" -m "Release v$NEW_VERSION"
+          git push origin "v$NEW_VERSION"
+
+      - name: Notify success
+        run: |
+          echo "✅ Version bumped to $NEW_VERSION"
+          echo "✅ Tag v$NEW_VERSION created"
+          echo "✅ Changes pushed to main"
+          echo ""
+          echo "Next steps:"
+          echo "1. Edit CHANGELOG.md to add release notes"
+          echo "2. Builds for Windows and macOS will start automatically"
+          echo "3. Release will be created when both builds complete"
+
+  trigger-builds:
+    needs: bump-version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Windows Build
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: trigger-build
+          client-payload: '{"version": "v${{ needs.bump-version.outputs.new_version }}"}'
+
+      - name: Trigger macOS Build
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: trigger-build
+          client-payload: '{"version": "v${{ needs.bump-version.outputs.new_version }}"}'
+
+      - name: Wait and notify
+        run: |
+          echo "🚀 Build workflows triggered for v${{ needs.bump-version.outputs.new_version }}"
+          echo "Monitor builds at: ${{ github.server_url }}/${{ github.repository }}/actions"
