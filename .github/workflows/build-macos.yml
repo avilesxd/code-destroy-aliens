@@ -5,6 +5,8 @@ on:
     tags:
       - 'v*'
   workflow_dispatch:
+  repository_dispatch:
+    types: [trigger-build]
 
 jobs:
   build:
@@ -19,70 +21,84 @@ jobs:
           python-version: '3.13'
           cache: 'pip'
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install py2app
+          npm install
 
       - name: Run tests
-        run: |
-          python3 -m pytest tests/
+        run: npm run test
 
       - name: Build application
         run: |
           # Clean previous builds
           rm -rf build dist
-          
+
           # Build the application
-          python3 setup.py py2app
-          
+          npm run build:macos
+
           # Verify the build
           if [ ! -d "dist/Alien Invasion.app" ]; then
             echo "Build failed: Application bundle not found"
             exit 1
           fi
 
+          # Create DMG for easier distribution
+          hdiutil create -volname "Alien Invasion" -srcfolder "dist/Alien Invasion.app" -ov -format UDZO "dist/Alien Invasion.dmg"
+
       - name: Verify App Bundle
         run: |
           # Check app bundle structure
           echo "Verifying app bundle structure..."
-          
+
           # Check Contents directory
           if [ ! -d "dist/Alien Invasion.app/Contents" ]; then
             echo "App verification failed: Contents directory not found"
             exit 1
           fi
-          
+
           # Check MacOS directory and executable
           if [ ! -d "dist/Alien Invasion.app/Contents/MacOS" ]; then
             echo "App verification failed: MacOS directory not found"
             exit 1
           fi
-          
+
           if [ ! -f "dist/Alien Invasion.app/Contents/MacOS/Alien Invasion" ]; then
             echo "App verification failed: Executable not found"
             exit 1
           fi
-          
+
           # Check Resources directory
           if [ ! -d "dist/Alien Invasion.app/Contents/Resources" ]; then
             echo "App verification failed: Resources directory not found"
             exit 1
           fi
-          
+
           # Check Info.plist
           if [ ! -f "dist/Alien Invasion.app/Contents/Info.plist" ]; then
             echo "App verification failed: Info.plist not found"
             exit 1
           fi
-          
+
           echo "App bundle verification completed successfully!"
 
-      - name: Upload build artifacts
+      - name: Upload DMG artifact
         uses: actions/upload-artifact@v4
         with:
-          name: macos-build
+          name: macos-dmg
+          path: dist/Alien Invasion.dmg
+          if-no-files-found: error
+
+      - name: Upload app bundle artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-app
           path: dist/Alien Invasion.app
           if-no-files-found: error
 
@@ -96,4 +112,4 @@ jobs:
         if: failure()
         run: |
           echo "Build failed!"
-          echo "Check the logs for more information." 
+          echo "Check the logs for more information."

@@ -27,10 +27,8 @@ jobs:
       with:
         node-version: '18'
 
-    - name: Create virtual environment and install Python dependencies
+    - name: Install Python dependencies
       run: |
-        python -m venv env
-        source env/bin/activate
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
@@ -49,15 +47,9 @@ jobs:
     - name: Run Python type checking
       run: npm run typecheck
 
-    - name: Set locale environment variables
-      run: |
-        export LANG=en_US.UTF-8
-        export LC_ALL=en_US.UTF-8
-
-    - name: Run Python tests
-      run: |
-        source env/bin/activate
-        python -m pytest tests/
+    - name: Run Python tests with coverage
+      run: npm run test:coverage
 
     - name: Check commit message format
+      if: github.event_name == 'push' && github.event.head_commit
       run: echo "${{ github.event.head_commit.message }}" | npx commitlint

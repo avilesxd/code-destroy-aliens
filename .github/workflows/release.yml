@@ -32,12 +32,12 @@ jobs:
             # Get workflow IDs
             MACOS_WORKFLOW_ID=$(gh api repos/${{ github.repository }}/actions/workflows --jq '.workflows[] | select(.name=="Build macOS") | .id')
             WINDOWS_WORKFLOW_ID=$(gh api repos/${{ github.repository }}/actions/workflows --jq '.workflows[] | select(.name=="Build Windows") | .id')
-            
+
             if [ -z "$MACOS_WORKFLOW_ID" ] || [ -z "$WINDOWS_WORKFLOW_ID" ]; then
               echo "Could not find workflow IDs. Waiting for workflows to be registered..."
               exit 0
             fi
-            
+
             # Get the latest successful macOS build
             MACOS_RUN=$(gh api repos/${{ github.repository }}/actions/workflows/$MACOS_WORKFLOW_ID/runs --jq '.workflow_runs[0] | select(.conclusion=="success")')
             if [ -z "$MACOS_RUN" ]; then
@@ -45,7 +45,7 @@ jobs:
               exit 0
             fi
             echo "macos_run_id=$(echo $MACOS_RUN | jq -r '.id')" >> $GITHUB_OUTPUT
-            
+
             # Get the latest successful Windows build
             WINDOWS_RUN=$(gh api repos/${{ github.repository }}/actions/workflows/$WINDOWS_WORKFLOW_ID/runs --jq '.workflow_runs[0] | select(.conclusion=="success")')
             if [ -z "$WINDOWS_RUN" ]; then
@@ -57,7 +57,7 @@ jobs:
             # When triggered by a workflow run, get the workflow name and run ID
             WORKFLOW_NAME="${{ github.event.workflow_run.name }}"
             RUN_ID="${{ github.event.workflow_run.id }}"
-            
+
             if [ "$WORKFLOW_NAME" == "Build macOS" ]; then
               echo "macos_run_id=$RUN_ID" >> $GITHUB_OUTPUT
               # Get the latest successful Windows build
@@ -84,11 +84,11 @@ jobs:
             fi
           fi
 
-      - name: Download macOS artifact
+      - name: Download macOS DMG artifact
         uses: dawidd6/action-download-artifact@v6
         with:
           workflow: build-macos.yml
-          name: macos-build
+          name: macos-dmg
           path: macos-build
           run_id: ${{ steps.workflow_runs.outputs.macos_run_id }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -104,14 +104,20 @@ jobs:
 
       - name: Verify artifacts
         run: |
-          if [ ! -d "macos-build" ]; then
-            echo "macOS build artifact not found"
+          echo "Checking artifacts..."
+          ls -la macos-build/ || true
+          ls -la windows-build/ || true
+
+          if [ ! -f "macos-build/Alien Invasion.dmg" ]; then
+            echo "macOS DMG artifact not found"
             exit 1
           fi
-          if [ ! -d "windows-build" ]; then
-            echo "Windows build artifact not found"
+          if [ ! -f "windows-build/Alien Invasion.exe" ]; then
+            echo "Windows executable artifact not found"
             exit 1
           fi
+
+          echo "All artifacts verified successfully!"
 
       - name: Get tag info
         id: tag_info
@@ -121,10 +127,10 @@ jobs:
           else
             TAG="${{ github.ref_name }}"
           fi
-          
+
           # Fetch all tags from remote
           git fetch --tags
-          
+
           # Verify tag exists
           if ! git rev-parse "$TAG" >/dev/null 2>&1; then
             echo "Tag $TAG does not exist in the repository"
@@ -132,7 +138,7 @@ jobs:
             git tag -l
             exit 1
           fi
-          
+
           # Get tag message
           TAG_MESSAGE=$(git tag -l --format='%(contents)' "$TAG")
           echo "tag=$TAG" >> $GITHUB_OUTPUT
@@ -147,7 +153,7 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            macos-build/Alien Invasion.app
+            macos-build/Alien Invasion.dmg
             windows-build/Alien Invasion.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -157,11 +163,11 @@ jobs:
         run: |
           echo "Release created successfully!"
           echo "Included artifacts:"
-          echo "- macOS: Alien Invasion.app"
+          echo "- macOS: Alien Invasion.dmg"
           echo "- Windows: Alien Invasion.exe"
 
       - name: Notify on failure
         if: failure()
         run: |
           echo "Release creation failed!"
-          echo "Check the logs for more information." 
+          echo "Check the logs for more information."
