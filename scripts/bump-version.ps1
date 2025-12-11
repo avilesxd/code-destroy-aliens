@@ -49,6 +49,14 @@ Set-Content $generateVersionPath $content -NoNewline
 Write-Host "`n📝 Generating version files..." -ForegroundColor Cyan
 python tools\generate-version.py
 
+# Update website version in index.html
+Write-Host "`n🌐 Updating website version..." -ForegroundColor Cyan
+$indexPath = "website\index.html"
+$indexContent = Get-Content $indexPath -Raw
+$indexContent = $indexContent -replace 'Version \d+\.\d+\.\d+', "Version $newVersion"
+$indexContent = $indexContent -replace 'releases/download/v\d+\.\d+\.\d+/', "releases/download/v$newVersion/"
+Set-Content $indexPath $indexContent -NoNewline
+
 # Update CHANGELOG.md
 $date = Get-Date -Format "yyyy-MM-dd"
 $changelogPath = "CHANGELOG.md"
@@ -82,6 +90,10 @@ $oldLines = (Get-Content $changelogPath)
 $oldContent = $oldLines | Select-Object -Skip 6 | Out-String
 $newChangelog = $newEntry + $oldContent.TrimStart()
 Set-Content $changelogPath $newChangelog.TrimEnd()
+
+# Sync changelog to website
+Write-Host "`n🔄 Syncing changelog to website..." -ForegroundColor Cyan
+python scripts\sync-website-changelog.py
 
 Write-Host "`n✅ Version bumped successfully!" -ForegroundColor Green
 Write-Host "`nNext steps:" -ForegroundColor Cyan

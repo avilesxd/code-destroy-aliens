@@ -219,12 +219,29 @@
                                         </li>
                                         <li>
                                             MockGame class and pytest fixture
-                                            for improved testing
+                                            for improved testing encapsulation
                                         </li>
                                         <li>
                                             NumberFormatter support for
                                             quintillion, sextillion, and
-                                            octillion
+                                            octillion values
+                                        </li>
+                                        <li>
+                                            Input validation for NumberFormatter
+                                            to handle negative numbers and
+                                            invalid
+                                        </li>
+                                        <li>
+                                            Comprehensive tests for path_utils
+                                            functions
+                                        </li>
+                                        <li>
+                                            Translations section to development
+                                            navigation
+                                        </li>
+                                        <li>
+                                            Language checklist for game
+                                            translations
                                         </li>
                                         <li>
                                             AI Copilot instructions for project
@@ -244,23 +261,47 @@
                                         <li>
                                             Improved system language detection
                                             with environment variable fallback
+                                            and
                                         </li>
                                         <li>
-                                            Enhanced game logic and rendering
-                                            with Game object encapsulation
+                                            Enhanced alien creation functions to
+                                            use Game object for better
+                                            encapsulation
+                                        </li>
+                                        <li>
+                                            Refactored event handling to use
+                                            Game object
+                                        </li>
+                                        <li>
+                                            Refactored game logic to use Game
+                                            object for better maintainability
+                                        </li>
+                                        <li>
+                                            Refactored game rendering functions
+                                            with improved gradient surface
+                                            caching
                                         </li>
                                         <li>
                                             Updated ship and alien speed factors
-                                            for better gameplay dynamics
+                                            for improved gameplay dynamics
                                         </li>
                                         <li>
-                                            Improved number formatting with
-                                            uppercase suffixes (K, M, B, T)
+                                            Improved number formatting logic
+                                            with uppercase suffixes (K, M, B, T)
                                         </li>
                                         <li>
-                                            Enhanced README structure and
-                                            documentation
+                                            Enhanced system requirements
+                                            documentation for Windows and macOS
                                         </li>
+                                        <li>
+                                            Improved README.md structure and
+                                            content
+                                        </li>
+                                        <li>
+                                            Refactored tests to use MockGame for
+                                            better clarity
+                                        </li>
+                                        <li>Updated workflow configurations</li>
                                     </ul>
                                 </div>
                                 <div>
@@ -282,6 +323,53 @@
                                         </li>
                                         <li>
                                             Scope enforcement in commit messages
+                                            (must be empty)
+                                        </li>
+                                        <li>
+                                            Button label from "Play Online" to
+                                            "Play Now" in README
+                                        </li>
+                                        <li>
+                                            Version number synchronization
+                                            across package files
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4
+                                        class="text-xl font-semibold mb-2 text-purple-300"
+                                    >
+                                        Refactored
+                                    </h4>
+                                    <ul
+                                        class="list-disc list-inside space-y-2 text-gray-300"
+                                    >
+                                        <li>
+                                            Test structure to use MockGame
+                                            fixture throughout
+                                        </li>
+                                        <li>
+                                            Game object usage across all major
+                                            systems
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4
+                                        class="text-xl font-semibold mb-2 text-gray-400"
+                                    >
+                                        Chore
+                                    </h4>
+                                    <ul
+                                        class="list-disc list-inside space-y-2 text-gray-300"
+                                    >
+                                        <li>
+                                            Updated dependencies (js-yaml from
+                                            4.1.0 to 4.1.1)
+                                        </li>
+                                        <li>
+                                            Added lint-staged configuration for
+                                            pre-commit hooks
                                         </li>
                                     </ul>
                                 </div>
@@ -453,8 +541,7 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="rounded-lg p-6">
+                        <div class="bg-gray-800 rounded-lg p-6">
                             <h3 class="text-2xl font-bold mb-4 text-green-400">
                                 Version 1.1.0 - 2024-05-01
                             </h3>
@@ -467,74 +554,6 @@
                                     </h4>
                                     <ul
                                         class="list-disc list-inside space-y-2 text-gray-300"
-                                    >
-                                        <li>
-                                            Enhanced macOS compatibility and
-                                            build process
-                                        </li>
-                                        <li>
-                                            Improved documentation and build
-                                            guides
-                                        </li>
-                                        <li>
-                                            Added comprehensive type checking
-                                            configuration
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4
-                                        class="text-xl font-semibold mb-2 text-blue-300"
-                                    >
-                                        Changed
-                                    </h4>
-                                    <ul
-                                        class="list-disc list-inside space-y-2 text-gray-300"
-                                    >
-                                        <li>
-                                            Refactored code structure for
-                                            improved readability
-                                        </li>
-                                        <li>
-                                            Updated project configuration for
-                                            better maintainability
-                                        </li>
-                                        <li>Enhanced resource path handling</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4
-                                        class="text-xl font-semibold mb-2 text-yellow-300"
-                                    >
-                                        Fixed
-                                    </h4>
-                                    <ul
-                                        class="list-disc list-inside space-y-2 text-gray-300"
-                                    >
-                                        <li>
-                                            Various bug fixes and improvements
-                                        </li>
-                                        <li>
-                                            Type checking issues in setup.py
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border-b border-gray-700 pb-6">
-                            <h3 class="text-2xl font-bold mb-4 text-green-400">
-                                Version 1.0.0 - 2024-04-17
-                            </h3>
-
-                            <div class="space-y-6">
-                                <div>
-                                    <h4
-                                        class="text-xl font-semibold mb-2 text-green-300"
-                                    >
-                                        Added
-                                    </h4>
-                                    <ul
-                                        class="text-gray-300 list-disc list-inside space-y-2"
                                     >
                                         <li>
                                             Multilingual support for game
@@ -563,7 +582,6 @@
                                         </li>
                                     </ul>
                                 </div>
-
                                 <div>
                                     <h4
                                         class="text-xl font-semibold mb-2 text-blue-300"
@@ -571,7 +589,7 @@
                                         Changed
                                     </h4>
                                     <ul
-                                        class="text-gray-300 list-disc list-inside space-y-2"
+                                        class="list-disc list-inside space-y-2 text-gray-300"
                                     >
                                         <li>
                                             Complete game structure refactoring
@@ -585,7 +603,6 @@
                                         <li>Optimized game assets</li>
                                     </ul>
                                 </div>
-
                                 <div>
                                     <h4
                                         class="text-xl font-semibold mb-2 text-yellow-300"
@@ -593,7 +610,7 @@
                                         Fixed
                                     </h4>
                                     <ul
-                                        class="text-gray-300 list-disc list-inside space-y-2"
+                                        class="list-disc list-inside space-y-2 text-gray-300"
                                     >
                                         <li>
                                             Cross-platform resource path
@@ -604,7 +621,6 @@
                                         <li>Project dependencies update</li>
                                     </ul>
                                 </div>
-
                                 <div>
                                     <h4
                                         class="text-xl font-semibold mb-2 text-red-300"
@@ -612,7 +628,7 @@
                                         Security
                                     </h4>
                                     <ul
-                                        class="text-gray-300 list-disc list-inside space-y-2"
+                                        class="list-disc list-inside space-y-2 text-gray-300"
                                     >
                                         <li>
                                             High score encryption implementation
@@ -623,7 +639,6 @@
                                         </li>
                                     </ul>
                                 </div>
-
                                 <div>
                                     <h4
                                         class="text-xl font-semibold mb-2 text-cyan-300"
@@ -631,7 +646,7 @@
                                         Documentation
                                     </h4>
                                     <ul
-                                        class="text-gray-300 list-disc list-inside space-y-2"
+                                        class="list-disc list-inside space-y-2 text-gray-300"
                                     >
                                         <li>
                                             Complete project architecture
@@ -643,7 +658,6 @@
                                         </li>
                                     </ul>
                                 </div>
-
                                 <div>
                                     <h4
                                         class="text-xl font-semibold mb-2 text-indigo-300"
@@ -651,7 +665,7 @@
                                         Infrastructure
                                     </h4>
                                     <ul
-                                        class="text-gray-300 list-disc list-inside space-y-2"
+                                        class="list-disc list-inside space-y-2 text-gray-300"
                                     >
                                         <li>GitHub Actions CI/CD setup</li>
                                         <li>MkDocs documentation system</li>
