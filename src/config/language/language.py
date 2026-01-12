@@ -137,7 +137,20 @@ class Language:
     def _get_fallback_language(self) -> str | None:
         """Gets language using the standard locale module."""
         try:
-            system_locale, _ = locale.getdefaultlocale()
+            # Use getlocale() instead of deprecated getdefaultlocale()
+            # Try LC_MESSAGES first (preferred for language), fall back to LC_CTYPE
+            system_locale = None
+            try:
+                # LC_MESSAGES is not available on Windows
+                lc_messages = getattr(locale, "LC_MESSAGES", None)
+                if lc_messages is not None:
+                    system_locale, _ = locale.getlocale(lc_messages)
+            except (AttributeError, locale.Error):
+                pass
+
+            if not system_locale:
+                system_locale, _ = locale.getlocale()
+
             if system_locale:
                 lang_code = system_locale.split("_")[0]
                 if len(lang_code) == 2:
