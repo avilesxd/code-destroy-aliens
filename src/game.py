@@ -32,6 +32,7 @@ class Game:
         self.clock = pygame.time.Clock()
         self.font = pygame.font.SysFont(None, 48)
         self.fps_counter: Optional[pygame.Surface] = None
+        self.last_fps: int = 0  # Cache last FPS value to avoid unnecessary renders
         pygame.display.set_caption("Alien Invasion")
 
         # Set window icon
@@ -54,8 +55,13 @@ class Game:
         """Start the main loop for the game."""
         while True:
             self.clock.tick(60)
-            fps = int(self.clock.get_fps())
-            self.fps_counter = self.font.render(f"FPS: {fps}", True, (255, 255, 255))
+
+            # Only render FPS counter if enabled and value changed
+            if self.ai_configuration.show_fps:
+                fps = int(self.clock.get_fps())
+                if fps != self.last_fps:
+                    self.fps_counter = self.font.render(f"FPS: {fps}", True, (255, 255, 255))
+                    self.last_fps = fps
 
             verify_events(self)
 

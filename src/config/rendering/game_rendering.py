@@ -90,8 +90,8 @@ def check_play_button(
 
 
 def draw_fps_counter(game: Game) -> None:
-    """Draws the FPS counter on the screen."""
-    if game.fps_counter:
+    """Draws the FPS counter on the screen if enabled."""
+    if game.ai_configuration.show_fps and game.fps_counter:
         game.screen.blit(
             game.fps_counter,
             (

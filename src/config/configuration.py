@@ -29,6 +29,9 @@ class Configuration:
             40,
         )  # Fallback color if gradient is not used
 
+        # Debug settings
+        self.show_fps: bool = False  # Set to True to show FPS counter (impacts performance)
+
         # Ship settings
 
         # Number of player lives
