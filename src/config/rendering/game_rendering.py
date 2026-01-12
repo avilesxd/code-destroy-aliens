@@ -1,3 +1,17 @@
+"""Game rendering module for Alien Invasion.
+
+This module handles all visual rendering including:
+- Screen updates and background rendering
+- Gradient backgrounds with star field effects
+- FPS counter display
+- Game entity rendering coordination
+
+Performance optimizations:
+- Gradient surface caching to avoid regenerating each frame
+- Star field animation with minimal overhead
+- Conditional FPS counter rendering
+"""
+
 from __future__ import annotations
 
 import random
@@ -12,11 +26,11 @@ if TYPE_CHECKING:
     from src.game import Game
 
 
-# Global variables for stars and gradient
-stars: List[List[Union[int, float]]] = []  # List to store star positions and properties
-last_star_time: int = 0  # Timestamp of the last star creation
-cached_gradient: Optional[pygame.Surface] = None  # Cached gradient surface to avoid recreation
-last_screen_size: Optional[Tuple[int, int]] = None  # Last screen dimensions used for gradient
+# Rendering state and caching
+stars: List[List[Union[int, float]]] = []  # Star positions: [[x, y, brightness], ...]
+last_star_time: int = 0  # Timestamp for star creation rate limiting
+cached_gradient: Optional[pygame.Surface] = None  # Cached gradient to avoid recreation
+last_screen_size: Optional[Tuple[int, int]] = None  # Last screen size for cache invalidation
 
 
 def create_gradient_surface(screen: pygame.Surface, top_color: tuple, bottom_color: tuple) -> pygame.Surface:

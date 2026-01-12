@@ -1,3 +1,20 @@
+"""Game controls module for Alien Invasion.
+
+This module handles all user input including:
+- Keyboard controls for ship movement and shooting
+- Pause/resume game functionality
+- Mouse input for button interactions
+- Sound and music toggle controls
+
+Key bindings:
+- Arrow keys: Move ship left/right
+- Space: Fire bullet / Close controls screen
+- P: Pause/Resume game
+- Q: Quit game
+- S: Toggle sound effects
+- M: Toggle background music
+"""
+
 from __future__ import annotations
 
 import sys

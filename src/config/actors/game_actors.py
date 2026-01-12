@@ -1,3 +1,15 @@
+"""Game actors module for Alien Invasion.
+
+This module manages the creation and lifecycle of game entities:
+- Alien fleet creation and positioning
+- Ship collision handling and respawn logic
+- Fleet edge detection and descent behavior
+- Game state transitions (game over, level completion)
+
+The factory pattern is used to create game entities, ensuring
+consistent initialization and proper integration with the game state.
+"""
+
 from __future__ import annotations
 
 from time import sleep
