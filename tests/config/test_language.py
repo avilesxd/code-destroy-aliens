@@ -138,6 +138,66 @@ LANGUAGE_TEST_DATA: List[Tuple[str, str, Dict[str, str]]] = [
             "high_score": "Pontuação Máxima",
         },
     ),
+    (
+        "ar",
+        "Arabic",
+        {
+            "game_controls": "عناصر التحكم في اللعبة",
+            "move_left_right": "تحرك يسارًا/يمينًا",
+            "shoot": "أطلق النار",
+            "pause_game": "إيقاف اللعبة مؤقتًا",
+            "quit_game": "إنهاء اللعبة",
+            "press_space": "اضغط على SPACE للمتابعة",
+            "play": "لعب",
+            "score": "النتيجة",
+            "high_score": "أعلى نتيجة",
+        },
+    ),
+    (
+        "zh",
+        "Chinese",
+        {
+            "game_controls": "游戏控制",
+            "move_left_right": "向左/向右移动",
+            "shoot": "射击",
+            "pause_game": "暂停游戏",
+            "quit_game": "退出游戏",
+            "press_space": "按空格键继续",
+            "play": "开始游戏",
+            "score": "得分",
+            "high_score": "最高分",
+        },
+    ),
+    (
+        "ja",
+        "Japanese",
+        {
+            "game_controls": "ゲームコントロール",
+            "move_left_right": "左右に移動",
+            "shoot": "射撃",
+            "pause_game": "ゲームを一時停止",
+            "quit_game": "ゲームを終了",
+            "press_space": "続けるにはスペースキーを押してください",
+            "play": "プレイ",
+            "score": "スコア",
+            "high_score": "ハイスコア",
+        },
+    ),
+    (
+        "ru",
+        "Russian",
+        {
+            "game_controls": "Управление Игрой",
+            "move_left_right": "Движение влево/вправо",
+            "shoot": "Стрелять",
+            "pause_game": "Пауза",
+            "quit_game": "Выйти из игры",
+            "press_space": "Нажмите ПРОБЕЛ для продолжения",
+            "play": "Играть",
+            "score": "Счёт",
+            "high_score": "Рекордный Счёт",
+        },
+    ),
 ]
 
 
@@ -148,12 +208,18 @@ def test_get_text_translations(
     """Test getting translations for sample languages using parametrize.
 
     This parametrized test replaces 48 individual test functions with one reusable test,
-    reducing code duplication from ~1000 lines to ~150 lines while maintaining full coverage.
+    reducing code duplication from ~1000 lines to ~250 lines while maintaining full coverage.
+
+    Tests 10 diverse languages covering different writing systems:
+    - Latin scripts: English, Spanish, French, German, Italian, Portuguese
+    - Arabic script: Arabic (RTL - right-to-left)
+    - CJK scripts: Chinese (simplified hanzi), Japanese (kanji/hiragana)
+    - Cyrillic script: Russian
 
     The test verifies that:
     - Language can be set correctly
     - All expected translation keys return correct values
-    - Translation system works consistently across different languages
+    - Translation system works consistently across different languages and scripts
 
     Args:
         language: Language fixture
