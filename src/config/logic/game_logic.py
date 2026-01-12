@@ -12,14 +12,23 @@ objects in nearby cells.
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Dict, List
+from typing import TYPE_CHECKING, Dict, List, Tuple, TypedDict
 
 import pygame
 
 from src.config.actors.game_actors import check_aliens_bottom, create_fleet, ship_hit
 
 if TYPE_CHECKING:
+    from src.entities.alien import Alien
+    from src.entities.bullet import Bullet
     from src.game import Game
+
+
+class GridCell(TypedDict):
+    """Type definition for spatial grid cell contents."""
+
+    aliens: List[Alien]
+    bullets: List[Bullet]
 
 
 # Spatial Grid Configuration
@@ -27,7 +36,7 @@ if TYPE_CHECKING:
 # into a grid of fixed-size cells. Each cell contains references to game objects
 # (aliens and bullets) that occupy that space. This allows collision detection to only
 # check objects in nearby cells instead of checking every object against every other object.
-spatial_grid: Dict[tuple, Dict[str, List]] = {}  # Maps (cell_x, cell_y) -> {"aliens": [...], "bullets": [...]}
+spatial_grid: Dict[Tuple[int, int], GridCell] = {}  # Maps (cell_x, cell_y) -> {"aliens": [...], "bullets": [...]}
 grid_cell_size = 64  # Cell size in pixels - tuned for typical alien/bullet sizes
 
 
@@ -57,7 +66,7 @@ def update_bullets(game: Game) -> None:
     check_bullet_alien_collisions(game)
 
 
-def get_grid_cells(rect: pygame.Rect) -> List[tuple[int, int]]:
+def get_grid_cells(rect: pygame.Rect) -> List[Tuple[int, int]]:
     """Calculates which grid cells a rectangle occupies in the spatial grid.
 
     The spatial grid divides the game world into a grid of fixed-size cells.
@@ -116,7 +125,7 @@ def update_spatial_grid(game: Game) -> None:
 
     # Pre-allocate grid cells for better performance
     # Using a dictionary allows sparse grid (only populated cells exist)
-    grid_cells: Dict[tuple, Dict[str, List]] = {}
+    grid_cells: Dict[Tuple[int, int], GridCell] = {}
 
     # Phase 1: Add aliens to grid
     # Each alien is added to all cells it occupies (usually 1-4 cells)

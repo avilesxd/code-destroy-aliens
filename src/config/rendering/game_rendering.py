@@ -15,7 +15,7 @@ Performance optimizations:
 from __future__ import annotations
 
 import random
-from typing import TYPE_CHECKING, List, Optional, Tuple, Union
+from typing import TYPE_CHECKING, List, Optional, Tuple
 
 import pygame
 
@@ -27,7 +27,7 @@ if TYPE_CHECKING:
 
 
 # Rendering state and caching
-stars: List[List[Union[int, float]]] = []  # Star positions: [[x, y, brightness], ...]
+stars: List[List[float]] = []  # Star positions: [[x, y, size, speed], ...] - mutable for position updates
 last_star_time: int = 0  # Timestamp for star creation rate limiting
 cached_gradient: Optional[pygame.Surface] = None  # Cached gradient to avoid recreation
 last_screen_size: Optional[Tuple[int, int]] = None  # Last screen size for cache invalidation
