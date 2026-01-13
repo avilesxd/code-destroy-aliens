@@ -181,98 +181,272 @@
             role="main"
         >
             <!-- Hero Section -->
-            <section class="text-center mb-20" aria-labelledby="hero-title">
-                <h2
-                    id="hero-title"
-                    class="text-5xl md:text-6xl font-bold mb-6 glow"
-                >
-                    Defend Earth from Alien Invasion
-                </h2>
-                <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-                    Experience the classic Space Invaders gameplay with modern
-                    graphics and challenging levels. Can you beat the high score
-                    and save humanity?
-                </p>
-                <div class="flex justify-center space-x-4">
-                    <a
-                        href="#download"
-                        class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-xl text-lg transition btn-glow"
-                        aria-label="Download the game now"
+            <section
+                class="text-center mb-20 py-16 fade-in"
+                aria-labelledby="hero-title"
+            >
+                <div class="max-w-5xl mx-auto">
+                    <h2
+                        id="hero-title"
+                        class="text-6xl md:text-7xl font-bold mb-6 glow leading-tight"
                     >
-                        Download Now
-                    </a>
-                    <a
-                        href="#screenshots"
-                        class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-8 rounded-xl text-lg transition"
-                        aria-label="View game screenshots"
+                        Defend Earth from<br />
+                        <span class="text-green-400">Alien Invasion</span>
+                    </h2>
+                    <p
+                        class="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed"
                     >
-                        View Screenshots
-                    </a>
+                        Experience the classic Space Invaders gameplay with
+                        stunning modern graphics, immersive sound effects, and
+                        increasingly challenging levels. Can you beat the high
+                        score and save humanity?
+                    </p>
+                    <div
+                        class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6"
+                    >
+                        <a
+                            href="#download"
+                            class="download-btn bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-10 rounded-xl text-lg transition btn-glow inline-flex items-center justify-center"
+                            aria-label="Download the game now"
+                        >
+                            <svg
+                                class="w-6 h-6 mr-2"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                                ></path>
+                            </svg>
+                            Download Now
+                        </a>
+                        <a
+                            href="#screenshots"
+                            class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-10 rounded-xl text-lg transition inline-flex items-center justify-center"
+                            aria-label="View game screenshots"
+                        >
+                            <svg
+                                class="w-6 h-6 mr-2"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                                ></path>
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                                ></path>
+                            </svg>
+                            View Screenshots
+                        </a>
+                    </div>
+                    <div
+                        class="mt-12 flex items-center justify-center gap-8 text-gray-400"
+                    >
+                        <div class="flex items-center gap-2">
+                            <svg
+                                class="w-5 h-5 text-green-400"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"
+                                ></path>
+                            </svg>
+                            <span>Free to Play</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg
+                                class="w-5 h-5 text-green-400"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"
+                                ></path>
+                            </svg>
+                            <span>No Ads</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg
+                                class="w-5 h-5 text-green-400"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"
+                                ></path>
+                            </svg>
+                            <span>Open Source</span>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             <!-- Features Section -->
             <section
                 id="features"
-                class="mb-20"
+                class="mb-24 fade-in"
                 aria-labelledby="features-title"
             >
-                <h3
-                    id="features-title"
-                    class="text-3xl font-bold text-center mb-12 glow"
+                <div class="text-center mb-16">
+                    <h3
+                        id="features-title"
+                        class="text-4xl md:text-5xl font-bold mb-4 glow"
+                    >
+                        Game Features
+                    </h3>
+                    <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                        Packed with exciting features to keep you engaged for
+                        hours
+                    </p>
+                </div>
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                 >
-                    Game Features
-                </h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="card rounded-xl p-6 text-center">
+                    <div class="card rounded-xl p-8 text-center">
                         <div class="feature-icon mx-auto" aria-hidden="true">
                             <img
                                 src="assets/svg/fast-paced-action.svg"
                                 alt=""
-                                class="h-8 w-8 text-green-400"
+                                class="h-10 w-10 text-green-400"
                                 aria-hidden="true"
                             />
                         </div>
-                        <h4 class="text-xl font-bold mb-2 text-green-400">
+                        <h4 class="text-2xl font-bold mb-3 text-green-400">
                             Fast-Paced Action
                         </h4>
-                        <p class="text-gray-300">
+                        <p class="text-gray-300 leading-relaxed">
                             Engage in intense battles with increasing difficulty
-                            as you progress through levels.
+                            as you progress through levels. Every wave brings
+                            new challenges!
                         </p>
                     </div>
-                    <div class="card rounded-xl p-6 text-center">
+                    <div class="card rounded-xl p-8 text-center">
                         <div class="feature-icon mx-auto">
                             <img
                                 src="assets/svg/high-score-system.svg"
                                 alt=""
-                                class="h-8 w-8 text-green-400"
+                                class="h-10 w-10 text-green-400"
                                 aria-hidden="true"
                             />
                         </div>
-                        <h4 class="text-xl font-bold mb-2 text-green-400">
+                        <h4 class="text-2xl font-bold mb-3 text-green-400">
                             High Score System
                         </h4>
-                        <p class="text-gray-300">
+                        <p class="text-gray-300 leading-relaxed">
                             Compete with yourself and track your progress with
-                            the persistent high score system.
+                            the encrypted high score system. Can you reach the
+                            top?
                         </p>
                     </div>
-                    <div class="card rounded-xl p-6 text-center">
+                    <div class="card rounded-xl p-8 text-center">
                         <div class="feature-icon mx-auto">
                             <img
                                 src="assets/svg/customizable-controls.svg"
                                 alt=""
-                                class="h-8 w-8 text-green-400"
+                                class="h-10 w-10 text-green-400"
                                 aria-hidden="true"
                             />
                         </div>
-                        <h4 class="text-xl font-bold mb-2 text-green-400">
-                            Customizable Controls
+                        <h4 class="text-2xl font-bold mb-3 text-green-400">
+                            Intuitive Controls
                         </h4>
-                        <p class="text-gray-300">
-                            Simple and intuitive controls that are easy to learn
-                            but challenging to master.
+                        <p class="text-gray-300 leading-relaxed">
+                            Simple and responsive controls that are easy to
+                            learn but challenging to master. Perfect for all
+                            skill levels!
+                        </p>
+                    </div>
+                    <div class="card rounded-xl p-8 text-center">
+                        <div class="feature-icon mx-auto">
+                            <svg
+                                class="h-10 w-10 text-green-400"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-3 text-green-400">
+                            Epic Soundtrack
+                        </h4>
+                        <p class="text-gray-300 leading-relaxed">
+                            Immersive background music and sound effects create
+                            an engaging atmosphere. Toggle music and sounds on
+                            the fly!
+                        </p>
+                    </div>
+                    <div class="card rounded-xl p-8 text-center">
+                        <div class="feature-icon mx-auto">
+                            <svg
+                                class="h-10 w-10 text-green-400"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-3 text-green-400">
+                            Progressive Difficulty
+                        </h4>
+                        <p class="text-gray-300 leading-relaxed">
+                            Each level introduces faster aliens and more complex
+                            patterns. Test your reflexes as the challenge
+                            intensifies!
+                        </p>
+                    </div>
+                    <div class="card rounded-xl p-8 text-center">
+                        <div class="feature-icon mx-auto">
+                            <svg
+                                class="h-10 w-10 text-green-400"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-3 text-green-400">
+                            Customizable Experience
+                        </h4>
+                        <p class="text-gray-300 leading-relaxed">
+                            Adjust game settings, control volume, and pause
+                            whenever you need. Play at your own pace!
                         </p>
                     </div>
                 </div>
@@ -281,15 +455,20 @@
             <!-- Screenshots Section -->
             <section
                 id="screenshots"
-                class="mb-20 mt-20"
+                class="mb-24 mt-20 fade-in"
                 aria-labelledby="screenshots-title"
             >
-                <h3
-                    id="screenshots-title"
-                    class="text-3xl font-bold text-center mb-12 glow"
-                >
-                    Game Screenshots
-                </h3>
+                <div class="text-center mb-16">
+                    <h3
+                        id="screenshots-title"
+                        class="text-4xl md:text-5xl font-bold mb-4 glow"
+                    >
+                        Game Screenshots
+                    </h3>
+                    <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                        Take a peek at the action-packed gameplay
+                    </p>
+                </div>
 
                 <!-- Custom carousel -->
                 <div
@@ -410,88 +589,212 @@
             </section>
 
             <!-- Controls Section -->
-            <section class="mb-20">
-                <h3 class="text-3xl font-bold text-center mb-12 glow">
-                    How to Play
-                </h3>
-                <div class="card rounded-xl p-8 max-w-2xl mx-auto">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <section class="mb-24 fade-in">
+                <div class="text-center mb-16">
+                    <h3 class="text-4xl md:text-5xl font-bold mb-4 glow">
+                        How to Play
+                    </h3>
+                    <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                        Master the controls and dominate the battlefield
+                    </p>
+                </div>
+                <div class="card rounded-xl p-8 md:p-12 max-w-5xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                         <div>
-                            <h4 class="text-xl font-bold mb-4 text-green-400">
+                            <h4
+                                class="text-2xl font-bold mb-6 text-green-400 flex items-center"
+                            >
+                                <svg
+                                    class="w-6 h-6 mr-2"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                                    ></path>
+                                </svg>
                                 Game Controls
                             </h4>
-                            <ul class="space-y-3 text-gray-300">
-                                <li class="flex items-center">
+                            <ul class="space-y-4 text-gray-300">
+                                <li
+                                    class="flex items-center hover:text-green-400 transition"
+                                >
                                     <span
-                                        class="bg-gray-700 px-3 py-1 rounded mr-3 font-mono"
+                                        class="bg-gradient-to-r from-gray-700 to-gray-600 px-4 py-2 rounded-lg mr-4 font-mono font-bold min-w-[80px] text-center shadow-lg"
                                         >←</span
                                     >
-                                    <span>Move left</span>
+                                    <span class="font-medium">Move left</span>
                                 </li>
-                                <li class="flex items-center">
+                                <li
+                                    class="flex items-center hover:text-green-400 transition"
+                                >
                                     <span
-                                        class="bg-gray-700 px-3 py-1 rounded mr-3 font-mono"
+                                        class="bg-gradient-to-r from-gray-700 to-gray-600 px-4 py-2 rounded-lg mr-4 font-mono font-bold min-w-[80px] text-center shadow-lg"
                                         >→</span
                                     >
-                                    <span>Move right</span>
+                                    <span class="font-medium">Move right</span>
                                 </li>
-                                <li class="flex items-center">
+                                <li
+                                    class="flex items-center hover:text-green-400 transition"
+                                >
                                     <span
-                                        class="bg-gray-700 px-3 py-1 rounded mr-3 font-mono"
+                                        class="bg-gradient-to-r from-gray-700 to-gray-600 px-4 py-2 rounded-lg mr-4 font-mono font-bold min-w-[80px] text-center shadow-lg"
                                         >Space</span
                                     >
-                                    <span>Shoot</span>
+                                    <span class="font-medium">Shoot</span>
                                 </li>
-                                <li class="flex items-center">
+                                <li
+                                    class="flex items-center hover:text-green-400 transition"
+                                >
                                     <span
-                                        class="bg-gray-700 px-3 py-1 rounded mr-3 font-mono"
+                                        class="bg-gradient-to-r from-gray-700 to-gray-600 px-4 py-2 rounded-lg mr-4 font-mono font-bold min-w-[80px] text-center shadow-lg"
                                         >P</span
                                     >
-                                    <span>Pause game</span>
+                                    <span class="font-medium">Pause game</span>
                                 </li>
-                                <li class="flex items-center">
+                                <li
+                                    class="flex items-center hover:text-green-400 transition"
+                                >
                                     <span
-                                        class="bg-gray-700 px-3 py-1 rounded mr-3 font-mono"
+                                        class="bg-gradient-to-r from-gray-700 to-gray-600 px-4 py-2 rounded-lg mr-4 font-mono font-bold min-w-[80px] text-center shadow-lg"
                                         >M</span
                                     >
-                                    <span>Music on/off</span>
+                                    <span class="font-medium"
+                                        >Music on/off</span
+                                    >
                                 </li>
-                                <li class="flex items-center">
+                                <li
+                                    class="flex items-center hover:text-green-400 transition"
+                                >
                                     <span
-                                        class="bg-gray-700 px-3 py-1 rounded mr-3 font-mono"
+                                        class="bg-gradient-to-r from-gray-700 to-gray-600 px-4 py-2 rounded-lg mr-4 font-mono font-bold min-w-[80px] text-center shadow-lg"
                                         >S</span
                                     >
-                                    <span>Sounds on/off</span>
+                                    <span class="font-medium"
+                                        >Sounds on/off</span
+                                    >
                                 </li>
-                                <li class="flex items-center">
+                                <li
+                                    class="flex items-center hover:text-green-400 transition"
+                                >
                                     <span
-                                        class="bg-gray-700 px-3 py-1 rounded mr-3 font-mono"
+                                        class="bg-gradient-to-r from-gray-700 to-gray-600 px-4 py-2 rounded-lg mr-4 font-mono font-bold min-w-[80px] text-center shadow-lg"
                                         >Q</span
                                     >
-                                    <span>Quit game</span>
+                                    <span class="font-medium">Quit game</span>
                                 </li>
                             </ul>
                         </div>
                         <div>
-                            <h4 class="text-xl font-bold mb-4 text-green-400">
+                            <h4
+                                class="text-2xl font-bold mb-6 text-green-400 flex items-center"
+                            >
+                                <svg
+                                    class="w-6 h-6 mr-2"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                                    ></path>
+                                </svg>
                                 Gameplay Tips
                             </h4>
-                            <ul
-                                class="space-y-3 text-gray-300 list-disc list-inside"
-                            >
-                                <li>
-                                    Destroy all aliens to advance to the next
-                                    level
+                            <ul class="space-y-4 text-gray-300">
+                                <li class="flex items-start">
+                                    <svg
+                                        class="w-5 h-5 text-green-400 mr-3 mt-1 flex-shrink-0"
+                                        fill="currentColor"
+                                        viewBox="0 0 20 20"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd"
+                                        ></path>
+                                    </svg>
+                                    <span
+                                        >Destroy all aliens to advance to the
+                                        next level and earn bonus points</span
+                                    >
                                 </li>
-                                <li>Aliens move faster as you progress</li>
-                                <li>
-                                    Don't let aliens reach the bottom of the
-                                    screen
+                                <li class="flex items-start">
+                                    <svg
+                                        class="w-5 h-5 text-green-400 mr-3 mt-1 flex-shrink-0"
+                                        fill="currentColor"
+                                        viewBox="0 0 20 20"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd"
+                                        ></path>
+                                    </svg>
+                                    <span
+                                        >Aliens move faster and shoot more
+                                        frequently as you progress through
+                                        levels</span
+                                    >
                                 </li>
-                                <li>
-                                    You have limited lives - use them wisely
+                                <li class="flex items-start">
+                                    <svg
+                                        class="w-5 h-5 text-green-400 mr-3 mt-1 flex-shrink-0"
+                                        fill="currentColor"
+                                        viewBox="0 0 20 20"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd"
+                                        ></path>
+                                    </svg>
+                                    <span
+                                        >Don't let aliens reach the bottom -
+                                        game over if they do!</span
+                                    >
                                 </li>
-                                <li>Try to beat your high score!</li>
+                                <li class="flex items-start">
+                                    <svg
+                                        class="w-5 h-5 text-green-400 mr-3 mt-1 flex-shrink-0"
+                                        fill="currentColor"
+                                        viewBox="0 0 20 20"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd"
+                                        ></path>
+                                    </svg>
+                                    <span
+                                        >You have limited lives - use them
+                                        wisely and avoid enemy fire</span
+                                    >
+                                </li>
+                                <li class="flex items-start">
+                                    <svg
+                                        class="w-5 h-5 text-green-400 mr-3 mt-1 flex-shrink-0"
+                                        fill="currentColor"
+                                        viewBox="0 0 20 20"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd"
+                                        ></path>
+                                    </svg>
+                                    <span
+                                        >Try to beat your high score and
+                                        challenge yourself!</span
+                                    >
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -499,36 +802,151 @@
             </section>
 
             <!-- Download Section -->
-            <section id="download" class="mb-20">
-                <h3 class="text-3xl font-bold text-center mb-12 glow">
-                    Download the Game
-                </h3>
-                <div class="card rounded-xl p-8 max-w-2xl mx-auto text-center">
-                    <p class="text-xl mb-6">Ready to defend Earth?</p>
-                    <div
-                        class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4"
-                    >
+            <section id="download" class="mb-24 fade-in">
+                <div class="text-center mb-16">
+                    <h3 class="text-4xl md:text-5xl font-bold mb-4 glow">
+                        Download the Game
+                    </h3>
+                    <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                        Ready to defend Earth? Download now and start your
+                        mission!
+                    </p>
+                </div>
+                <div
+                    class="card rounded-xl p-10 md:p-14 max-w-4xl mx-auto text-center"
+                >
+                    <div class="mb-8">
+                        <div
+                            class="inline-flex items-center justify-center w-20 h-20 bg-green-500/20 rounded-full mb-4"
+                        >
+                            <svg
+                                class="w-10 h-10 text-green-400"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                                ></path>
+                            </svg>
+                        </div>
+                        <p class="text-2xl font-semibold mb-2">
+                            Choose Your Platform
+                        </p>
+                        <p class="text-gray-400">
+                            Free to download • No ads • No in-app purchases
+                        </p>
+                    </div>
+                    <div class="flex flex-col md:flex-row justify-center gap-5">
                         <a
                             href="https://github.com/avilesxd/code-destroy-aliens/releases/download/v1.3.0/Alien.Invasion.exe"
-                            class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-xl text-lg transition btn-glow"
+                            class="download-btn bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-10 rounded-xl text-lg transition btn-glow inline-flex items-center justify-center group"
                         >
-                            Download for Windows
+                            <svg
+                                class="w-6 h-6 mr-3"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z"
+                                ></path>
+                                <path
+                                    d="M3 7v3c0 1.657 3.134 3 7 3s7-1.343 7-3V7c0 1.657-3.134 3-7 3S3 8.657 3 7z"
+                                ></path>
+                                <path
+                                    d="M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z"
+                                ></path>
+                            </svg>
+                            <div class="text-left">
+                                <div class="text-sm opacity-80">
+                                    Download for
+                                </div>
+                                <div class="font-bold text-xl">Windows</div>
+                            </div>
+                            <svg
+                                class="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                                ></path>
+                            </svg>
                         </a>
                         <a
                             href="https://github.com/avilesxd/code-destroy-aliens/releases/download/v1.3.0/Alien.Invasion.dmg"
-                            class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-xl text-lg transition btn-glow"
+                            class="download-btn bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-10 rounded-xl text-lg transition btn-glow inline-flex items-center justify-center group"
                         >
-                            Download for macOS
+                            <svg
+                                class="w-6 h-6 mr-3"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"
+                                ></path>
+                            </svg>
+                            <div class="text-left">
+                                <div class="text-sm opacity-80">
+                                    Download for
+                                </div>
+                                <div class="font-bold text-xl">macOS</div>
+                            </div>
+                            <svg
+                                class="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                                ></path>
+                            </svg>
                         </a>
                     </div>
-                    <p class="text-sm text-gray-400 mt-4">
-                        Version 1.3.0 -
-                        <a
-                            href="changelog.html"
-                            class="text-green-400 hover:text-green-300 transition"
-                            >View changelog</a
+                    <div class="mt-8 pt-8 border-t border-gray-700">
+                        <p
+                            class="text-sm text-gray-400 flex items-center justify-center gap-2"
                         >
-                    </p>
+                            <svg
+                                class="w-4 h-4"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                    clip-rule="evenodd"
+                                ></path>
+                            </svg>
+                            Version 1.3.0
+                            <span class="mx-2">•</span>
+                            <a
+                                href="changelog.html"
+                                class="text-green-400 hover:text-green-300 transition underline"
+                                >View changelog</a
+                            >
+                            <span class="mx-2">•</span>
+                            <a
+                                href="https://github.com/avilesxd/code-destroy-aliens"
+                                target="_blank"
+                                class="text-green-400 hover:text-green-300 transition underline"
+                                >View on GitHub</a
+                            >
+                        </p>
+                    </div>
                 </div>
             </section>
 
@@ -673,130 +1091,242 @@
             </section>
 
             <!-- Donations Section -->
-            <section class="mb-20 py-16">
-                <h3 class="text-3xl font-bold text-center mb-12 glow">
-                    Support the Project
-                </h3>
-                <div class="card rounded-xl p-8 max-w-2xl mx-auto text-center">
-                    <p class="text-xl mb-6">
-                        Enjoying the game? Consider supporting its development!
+            <section class="mb-24 py-16 fade-in">
+                <div class="text-center mb-16">
+                    <h3 class="text-4xl md:text-5xl font-bold mb-4 glow">
+                        Support the Project
+                    </h3>
+                    <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                        Help keep this game free and continuously updated
                     </p>
-                    <div
-                        class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4"
-                    >
+                </div>
+                <div
+                    class="card rounded-xl p-10 md:p-14 max-w-4xl mx-auto text-center"
+                >
+                    <div class="mb-8">
+                        <svg
+                            class="w-16 h-16 text-green-400 mx-auto mb-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                            ></path>
+                        </svg>
+                        <p class="text-xl md:text-2xl font-semibold mb-3">
+                            Enjoying the game?
+                        </p>
+                        <p
+                            class="text-gray-400 leading-relaxed max-w-2xl mx-auto"
+                        >
+                            Your support helps with development, server costs,
+                            and keeping the game free for everyone. Every
+                            contribution makes a difference!
+                        </p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row justify-center gap-5">
                         <a
                             href="https://paypal.me/avilesxd"
                             target="_blank"
-                            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-xl text-lg transition btn-glow"
+                            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-10 rounded-xl text-lg transition btn-glow group"
                             aria-label="Donate with PayPal to support the game development"
                         >
                             <div class="flex items-center justify-center">
                                 <img
                                     src="assets/svg/paypal.svg"
                                     alt=""
-                                    class="h-6 w-6 mr-2"
+                                    class="h-7 w-7 mr-3"
                                     aria-hidden="true"
                                 />
-                                <span>Donate with PayPal</span>
+                                <span class="font-bold"
+                                    >Donate with PayPal</span
+                                >
+                                <svg
+                                    class="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M13 7l5 5m0 0l-5 5m5-5H6"
+                                    ></path>
+                                </svg>
                             </div>
                         </a>
                         <a
                             href="https://ko-fi.com/avilesxd"
                             target="_blank"
-                            class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-xl text-lg transition btn-glow"
+                            class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-4 px-10 rounded-xl text-lg transition btn-glow group"
                             aria-label="Buy me a coffee on Ko-fi to support the game development"
                         >
                             <div class="flex items-center justify-center">
                                 <img
                                     src="assets/svg/kofi.svg"
                                     alt=""
-                                    class="h-6 w-6 mr-2"
+                                    class="h-7 w-7 mr-3"
                                     aria-hidden="true"
                                 />
-                                <span>Buy me a Coffee</span>
+                                <span class="font-bold">Buy me a Coffee</span>
+                                <svg
+                                    class="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M13 7l5 5m0 0l-5 5m5-5H6"
+                                    ></path>
+                                </svg>
                             </div>
                         </a>
                     </div>
-                    <p class="text-sm text-gray-400 mt-4">
-                        Your support helps keep the game free and maintained!
+                    <p class="text-sm text-gray-400 mt-8">
+                        Thank you for your support! 🚀 Your contribution helps
+                        maintain the game and add new features.
                     </p>
                 </div>
             </section>
         </main>
 
-        <footer class="bg-gray-900 py-8" role="contentinfo">
+        <footer class="bg-gray-900 py-12" role="contentinfo">
             <div class="container mx-auto px-4">
-                <div
-                    class="flex flex-col md:flex-row justify-between items-center"
-                >
-                    <div class="mb-4 md:mb-0">
-                        <div class="flex items-center">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
+                    <!-- Brand -->
+                    <div>
+                        <div class="flex items-center mb-4">
                             <img
                                 src="assets/icons/icon.png"
                                 alt="Alien Invasion Logo"
-                                class="h-8 w-8 mr-2"
+                                class="h-10 w-10 mr-3"
                             />
-                            <span class="text-green-400 font-bold"
+                            <span class="text-green-400 font-bold text-xl"
                                 >Alien Invasion</span
                             >
                         </div>
-                        <p class="text-gray-500 text-sm mt-2">
-                            © 2022 - 2025
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            A modern take on the classic Space Invaders game.
+                            Free, open-source, and packed with features.
+                        </p>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div>
+                        <h4 class="text-white font-bold text-lg mb-4">
+                            Quick Links
+                        </h4>
+                        <ul class="space-y-2">
+                            <li>
+                                <a
+                                    href="#features"
+                                    class="text-gray-400 hover:text-green-400 transition"
+                                    >Features</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="#download"
+                                    class="text-gray-400 hover:text-green-400 transition"
+                                    >Download</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="changelog.html"
+                                    class="text-gray-400 hover:text-green-400 transition"
+                                    >Changelog</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="docs/"
+                                    class="text-gray-400 hover:text-green-400 transition"
+                                    >Documentation</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="https://github.com/avilesxd/code-destroy-aliens"
+                                    target="_blank"
+                                    class="text-gray-400 hover:text-green-400 transition"
+                                    >GitHub Repository</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Social -->
+                    <div>
+                        <h4 class="text-white font-bold text-lg mb-4">
+                            Connect
+                        </h4>
+                        <div class="flex gap-4 mb-6">
+                            <a
+                                href="https://github.com/avilesxd"
+                                class="text-gray-400 hover:text-white transition transform hover:scale-110"
+                                aria-label="Visit my GitHub profile"
+                                target="_blank"
+                            >
+                                <img
+                                    src="assets/svg/github.svg"
+                                    alt=""
+                                    class="h-7 w-7"
+                                    aria-hidden="true"
+                                />
+                            </a>
+                            <a
+                                href="https://www.instagram.com/avilesxd/"
+                                class="text-gray-400 hover:text-white transition transform hover:scale-110"
+                                aria-label="Follow me on Instagram"
+                                target="_blank"
+                            >
+                                <img
+                                    src="assets/svg/instagram.svg"
+                                    alt=""
+                                    class="h-7 w-7"
+                                    aria-hidden="true"
+                                />
+                            </a>
+                            <a
+                                href="https://www.youtube.com/channel/UCYPsgamO7XeWOrXriOpJBqw"
+                                class="text-gray-400 hover:text-white transition transform hover:scale-110"
+                                aria-label="Subscribe to my YouTube channel"
+                                target="_blank"
+                            >
+                                <img
+                                    src="assets/svg/youtube.svg"
+                                    alt=""
+                                    class="h-7 w-7"
+                                    aria-hidden="true"
+                                />
+                            </a>
+                        </div>
+                        <p class="text-gray-400 text-sm">
+                            Made with ❤️ by
                             <a
                                 href="https://www.linkedin.com/in/ignacio-nicol%C3%A1s-avil%C3%A9s-cardenasso/"
                                 class="text-green-400 hover:text-green-300 transition"
-                                aria-label="Visit my LinkedIn profile"
                                 target="_blank"
                             >
-                                <span>Ignacio Avilés</span>
-                                <span class="sr-only">on LinkedIn</span> </a
-                            >. All rights reserved.
+                                Ignacio Avilés
+                            </a>
                         </p>
                     </div>
-                    <div class="flex space-x-4">
-                        <a
-                            href="https://github.com/avilesxd"
-                            class="text-gray-400 hover:text-white transition"
-                            aria-label="Visit my GitHub profile"
-                            target="_blank"
-                        >
-                            <img
-                                src="assets/svg/github.svg"
-                                alt=""
-                                class="h-6 w-6"
-                                aria-hidden="true"
-                            />
-                            <span class="sr-only">GitHub</span>
-                        </a>
-                        <a
-                            href="https://www.instagram.com/avilesxd/"
-                            class="text-gray-400 hover:text-white transition"
-                            aria-label="Follow me on Instagram"
-                            target="_blank"
-                        >
-                            <img
-                                src="assets/svg/instagram.svg"
-                                alt=""
-                                class="h-6 w-6"
-                                aria-hidden="true"
-                            />
-                            <span class="sr-only">Instagram</span>
-                        </a>
-                        <a
-                            href="https://www.youtube.com/channel/UCYPsgamO7XeWOrXriOpJBqw"
-                            class="text-gray-400 hover:text-white transition"
-                            aria-label="Subscribe to my YouTube channel"
-                            target="_blank"
-                        >
-                            <img
-                                src="assets/svg/youtube.svg"
-                                alt=""
-                                class="h-6 w-6"
-                                aria-hidden="true"
-                            />
-                            <span class="sr-only">YouTube</span>
-                        </a>
-                    </div>
+                </div>
+
+                <div class="border-t border-gray-800 pt-8 text-center">
+                    <p class="text-gray-500 text-sm">
+                        © 2022 - 2025 Alien Invasion. All rights reserved.
+                    </p>
                 </div>
             </div>
         </footer>
