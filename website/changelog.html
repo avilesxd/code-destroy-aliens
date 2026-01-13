@@ -5,53 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
             name="description"
-            content="Play Alien Invasion, a modern take on the classic Space Invaders game. Defend Earth from alien attacks with fast-paced action and challenging levels."
+            content="Alien Invasion changelog - Track all updates, improvements, and bug fixes."
         />
-        <meta
-            name="keywords"
-            content="space invaders, alien invasion, arcade game, retro game, space shooter, classic game"
-        />
-        <meta name="author" content="Ignacio Avilés" />
-        <meta name="robots" content="index, follow" />
-        <meta name="theme-color" content="#0f172a" />
-        <meta name="color-scheme" content="dark" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta
-            name="apple-mobile-web-app-status-bar-style"
-            content="black-translucent"
-        />
-        <meta
-            property="og:title"
-            content="Alien Invasion - Space Invader Game"
-        />
-        <meta
-            property="og:description"
-            content="Defend Earth from alien attacks in this modern take on the classic Space Invaders game. Download now and start playing!"
-        />
-        <meta
-            property="og:image"
-            content="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/src/assets/icons/icon.png"
-        />
-        <meta
-            property="og:url"
-            content="https://avilesxd.github.io/code-destroy-aliens/"
-        />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-            name="twitter:title"
-            content="Alien Invasion - Space Invader Game"
-        />
-        <meta
-            name="twitter:description"
-            content="Defend Earth from alien attacks in this modern take on the classic Space Invaders game. Download now and start playing!"
-        />
-        <meta
-            name="twitter:image"
-            content="https://raw.githubusercontent.com/avilesxd/code-destroy-aliens/refs/heads/main/src/assets/icons/icon.png"
-        />
-        <title>Alien Invasion - Space Invader Game</title>
+        <title>Changelog - Alien Invasion</title>
         <link
             rel="icon"
             type="image/x-icon"
@@ -59,10 +15,10 @@
         />
         <link rel="stylesheet" href="./assets/css/styles.css" />
         <script src="https://cdn.tailwindcss.com"></script>
-        <script src="https://unpkg.com/flowbite@latest/dist/flowbite.min.js"></script>
     </head>
 
-    <body class="text-white min-h-screen flex flex-col">
+    <body class="text-white min-h-screen">
+        <a href="#main-content" class="skip-to-main">Skip to main content</a>
         <div class="space-bg" role="presentation" aria-hidden="true"></div>
 
         <header
@@ -73,7 +29,7 @@
                 <a href="index.html" class="flex items-center">
                     <img
                         src="assets/icons/icon.png"
-                        alt="Destroy Aliens Logo - A spaceship icon"
+                        alt="Alien Invasion Logo"
                         class="h-12 w-12 mr-3"
                     />
                     <h1 class="text-2xl font-bold text-green-400 glow">
@@ -81,11 +37,7 @@
                     </h1>
                 </a>
             </div>
-            <nav
-                class="hidden md:flex space-x-6"
-                role="navigation"
-                aria-label="Main navigation"
-            >
+            <nav class="hidden md:flex space-x-6">
                 <a href="index.html" class="hover:text-green-400 transition"
                     >Home</a
                 >
@@ -93,11 +45,6 @@
                     href="index.html#features"
                     class="hover:text-green-400 transition"
                     >Features</a
-                >
-                <a
-                    href="index.html#screenshots"
-                    class="hover:text-green-400 transition"
-                    >Screenshots</a
                 >
                 <a
                     href="index.html#download"
@@ -108,654 +55,202 @@
                     >Documentation</a
                 >
             </nav>
-            <button
-                id="mobile-menu-button"
-                class="md:hidden text-white"
-                aria-label="Toggle mobile menu"
-                aria-expanded="false"
-                aria-controls="mobile-menu"
-                aria-haspopup="true"
-            >
-                <img
-                    src="assets/svg/menu.svg"
-                    alt=""
-                    class="h-6 w-6"
-                    aria-hidden="true"
-                />
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <img src="assets/svg/menu.svg" alt="" class="h-6 w-6" />
             </button>
         </header>
 
-        <!-- Mobile Menu -->
         <div
             id="mobile-menu"
-            class="md:hidden fixed inset-0 bg-gray-900 bg-opacity-95 z-50 transform translate-x-full transition-transform duration-300 ease-in-out"
-            role="dialog"
-            aria-label="Mobile menu"
-            aria-modal="true"
+            class="md:hidden fixed inset-0 bg-gray-900 bg-opacity-95 z-50 transform translate-x-full transition-transform"
         >
             <div class="flex justify-end p-4">
-                <button
-                    id="close-menu"
-                    class="text-white"
-                    aria-label="Close mobile menu"
-                >
-                    <img
-                        src="assets/svg/close.svg"
-                        alt=""
-                        class="h-6 w-6"
-                        aria-hidden="true"
-                    />
+                <button id="close-menu" class="text-white">
+                    <img src="assets/svg/close.svg" alt="" class="h-6 w-6" />
                 </button>
             </div>
-            <nav
-                class="flex flex-col items-center space-y-8 p-8"
-                role="navigation"
-                aria-label="Mobile navigation"
-            >
+            <nav class="flex flex-col items-center space-y-8 p-8">
                 <a
                     href="index.html"
-                    class="text-2xl text-white hover:text-green-400 transition"
+                    class="text-2xl hover:text-green-400 transition"
                     >Home</a
                 >
                 <a
                     href="index.html#features"
-                    class="text-2xl text-white hover:text-green-400 transition"
+                    class="text-2xl hover:text-green-400 transition"
                     >Features</a
                 >
                 <a
-                    href="index.html#screenshots"
-                    class="text-2xl text-white hover:text-green-400 transition"
-                    >Screenshots</a
-                >
-                <a
                     href="index.html#download"
-                    class="text-2xl text-white hover:text-green-400 transition"
+                    class="text-2xl hover:text-green-400 transition"
                     >Download</a
                 >
-                <a
-                    href="docs/"
-                    class="text-2xl text-white hover:text-green-400 transition"
+                <a href="docs/" class="text-2xl hover:text-green-400 transition"
                     >Documentation</a
                 >
             </nav>
         </div>
 
-        <main class="flex-grow container mx-auto px-4 py-12" role="main">
-            <section class="mb-20">
-                <h2 class="text-4xl font-bold text-center mb-12 glow">
-                    Changelog
+        <main id="main-content" class="container mx-auto px-4 py-12">
+            <section class="text-center mb-16 py-12 fade-in">
+                <div
+                    class="inline-flex items-center justify-center w-20 h-20 bg-green-500/20 rounded-full mb-6"
+                >
+                    <svg
+                        class="w-10 h-10 text-green-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        ></path>
+                    </svg>
+                </div>
+                <h2 class="text-5xl md:text-6xl font-bold mb-6 glow">
+                    Release History
                 </h2>
-                <div class="card rounded-xl p-8 max-w-4xl mx-auto">
-                    <div class="space-y-8">
-                        <div class="bg-gray-800 rounded-lg p-6">
-                            <h3 class="text-2xl font-bold mb-4 text-green-400">
-                                Version 1.3.0 - 2025-12-11
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Track all updates, improvements, and bug fixes
+                </p>
+                <div
+                    class="mt-8 flex flex-col sm:flex-row gap-4 justify-center"
+                >
+                    <a
+                        href="index.html#download"
+                        class="download-btn bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-xl btn-glow inline-flex items-center justify-center"
+                    >
+                        <svg
+                            class="w-5 h-5 mr-2"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                            ></path>
+                        </svg>
+                        Download Latest
+                    </a>
+                    <a
+                        href="index.html"
+                        class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded-xl inline-flex items-center justify-center"
+                    >
+                        <svg
+                            class="w-5 h-5 mr-2"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                            ></path>
+                        </svg>
+                        Back
+                    </a>
+                </div>
+            </section>
+
+            <section class="max-w-5xl mx-auto space-y-12">
+                <!-- Latest Version -->
+                <div class="card rounded-2xl p-10 fade-in">
+                    <div class="flex items-center justify-between mb-8">
+                        <div>
+                            <span
+                                class="bg-green-500/20 text-green-400 px-4 py-1 rounded-full text-sm font-bold"
+                                >Latest</span
+                            >
+                            <h3
+                                class="text-4xl font-bold text-green-400 glow mt-3"
+                            >
+                                v1.3.0
                             </h3>
-                            <div class="space-y-4">
-                                <div>
-                                    <h4
-                                        class="text-xl font-semibold mb-2 text-green-300"
-                                    >
-                                        Added
-                                    </h4>
-                                    <ul
-                                        class="list-disc list-inside space-y-2 text-gray-300"
-                                    >
-                                        <li>
-                                            Support for 38 additional languages
-                                            (Arabic, Bulgarian, and more)
-                                        </li>
-                                        <li>
-                                            Automated version bump system with
-                                            PowerShell and Bash scripts
-                                        </li>
-                                        <li>
-                                            FPS counter display with real-time
-                                            frame tracking
-                                        </li>
-                                        <li>
-                                            Game class for centralized game
-                                            asset and behavior management
-                                        </li>
-                                        <li>
-                                            MockGame class and pytest fixture
-                                            for improved testing encapsulation
-                                        </li>
-                                        <li>
-                                            NumberFormatter support for
-                                            quintillion, sextillion, and
-                                            octillion values
-                                        </li>
-                                        <li>
-                                            Input validation for NumberFormatter
-                                            to handle negative numbers and
-                                            invalid
-                                        </li>
-                                        <li>
-                                            Comprehensive tests for path_utils
-                                            functions
-                                        </li>
-                                        <li>
-                                            Translations section to development
-                                            navigation
-                                        </li>
-                                        <li>
-                                            Language checklist for game
-                                            translations
-                                        </li>
-                                        <li>
-                                            AI Copilot instructions for project
-                                            overview and workflows
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4
-                                        class="text-xl font-semibold mb-2 text-blue-300"
-                                    >
-                                        Changed
-                                    </h4>
-                                    <ul
-                                        class="list-disc list-inside space-y-2 text-gray-300"
-                                    >
-                                        <li>
-                                            Improved system language detection
-                                            with environment variable fallback
-                                            and
-                                        </li>
-                                        <li>
-                                            Enhanced alien creation functions to
-                                            use Game object for better
-                                            encapsulation
-                                        </li>
-                                        <li>
-                                            Refactored event handling to use
-                                            Game object
-                                        </li>
-                                        <li>
-                                            Refactored game logic to use Game
-                                            object for better maintainability
-                                        </li>
-                                        <li>
-                                            Refactored game rendering functions
-                                            with improved gradient surface
-                                            caching
-                                        </li>
-                                        <li>
-                                            Updated ship and alien speed factors
-                                            for improved gameplay dynamics
-                                        </li>
-                                        <li>
-                                            Improved number formatting logic
-                                            with uppercase suffixes (K, M, B, T)
-                                        </li>
-                                        <li>
-                                            Enhanced system requirements
-                                            documentation for Windows and macOS
-                                        </li>
-                                        <li>
-                                            Improved README.md structure and
-                                            content
-                                        </li>
-                                        <li>
-                                            Refactored tests to use MockGame for
-                                            better clarity
-                                        </li>
-                                        <li>Updated workflow configurations</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4
-                                        class="text-xl font-semibold mb-2 text-yellow-300"
-                                    >
-                                        Fixed
-                                    </h4>
-                                    <ul
-                                        class="list-disc list-inside space-y-2 text-gray-300"
-                                    >
-                                        <li>
-                                            Virtual environment check before
-                                            command execution
-                                        </li>
-                                        <li>
-                                            Alien movement test to use correct x
-                                            position
-                                        </li>
-                                        <li>
-                                            Scope enforcement in commit messages
-                                            (must be empty)
-                                        </li>
-                                        <li>
-                                            Button label from "Play Online" to
-                                            "Play Now" in README
-                                        </li>
-                                        <li>
-                                            Version number synchronization
-                                            across package files
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4
-                                        class="text-xl font-semibold mb-2 text-purple-300"
-                                    >
-                                        Refactored
-                                    </h4>
-                                    <ul
-                                        class="list-disc list-inside space-y-2 text-gray-300"
-                                    >
-                                        <li>
-                                            Test structure to use MockGame
-                                            fixture throughout
-                                        </li>
-                                        <li>
-                                            Game object usage across all major
-                                            systems
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4
-                                        class="text-xl font-semibold mb-2 text-gray-400"
-                                    >
-                                        Chore
-                                    </h4>
-                                    <ul
-                                        class="list-disc list-inside space-y-2 text-gray-300"
-                                    >
-                                        <li>
-                                            Updated dependencies (js-yaml from
-                                            4.1.0 to 4.1.1)
-                                        </li>
-                                        <li>
-                                            Added lint-staged configuration for
-                                            pre-commit hooks
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
                         </div>
-                        <div class="bg-gray-800 rounded-lg p-6">
-                            <h3 class="text-2xl font-bold mb-4 text-green-400">
-                                Version 1.2.0 - 2025-05-15
-                            </h3>
-                            <div class="space-y-4">
-                                <div>
-                                    <h4
-                                        class="text-xl font-semibold mb-2 text-green-300"
-                                    >
-                                        Added
-                                    </h4>
-                                    <ul
-                                        class="list-disc list-inside space-y-2 text-gray-300"
-                                    >
-                                        <li>
-                                            Music and sound toggle options (with
-                                            translations)
-                                        </li>
-                                        <li>
-                                            Multilanguage support expansion
-                                            (German, French, Italian,
-                                            Portuguese)
-                                        </li>
-                                        <li>
-                                            Dynamic screen resolution scaling
-                                        </li>
-                                        <li>
-                                            Number formatting for scores
-                                            (abbreviated form)
-                                        </li>
-                                        <li>
-                                            Enhanced versioning system with
-                                            Windows/macOS version files
-                                        </li>
-                                        <li>SECURITY.md policy document</li>
-                                        <li>
-                                            Code of Conduct and contribution
-                                            guidelines
-                                        </li>
-                                        <li>
-                                            System requirements documentation
-                                            for all platforms
-                                        </li>
-                                        <li>
-                                            Recommended VSCode extensions for
-                                            development
-                                        </li>
-                                        <li>Live server integration</li>
-                                        <li>Enhanced accessibility features</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4
-                                        class="text-xl font-semibold mb-2 text-blue-300"
-                                    >
-                                        Changed
-                                    </h4>
-                                    <ul
-                                        class="list-disc list-inside space-y-2 text-gray-300"
-                                    >
-                                        <li>
-                                            Modularized game logic and actor
-                                            management
-                                        </li>
-                                        <li>
-                                            Improved translation system
-                                            architecture
-                                        </li>
-                                        <li>Enhanced Windows build scripts</li>
-                                        <li>
-                                            Updated release workflow with
-                                            enhanced verification
-                                        </li>
-                                        <li>Refactored path utilities</li>
-                                        <li>
-                                            Improved documentation navigation
-                                        </li>
-                                        <li>
-                                            Enhanced mkdocs.yml configuration
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4
-                                        class="text-xl font-semibold mb-2 text-yellow-300"
-                                    >
-                                        Fixed
-                                    </h4>
-                                    <ul
-                                        class="list-disc list-inside space-y-2 text-gray-300"
-                                    >
-                                        <li>
-                                            Missing newline in translation files
-                                        </li>
-                                        <li>
-                                            Sound toggle key correction (X→S)
-                                        </li>
-                                        <li>
-                                            Documentation URL inconsistencies
-                                        </li>
-                                        <li>Copyright year updates</li>
-                                        <li>Redundant configuration files</li>
-                                        <li>Typography and UI consistency</li>
-                                        <li>Module docstring improvements</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4
-                                        class="text-xl font-semibold mb-2 text-purple-300"
-                                    >
-                                        Refactored
-                                    </h4>
-                                    <ul
-                                        class="list-disc list-inside space-y-2 text-gray-300"
-                                    >
-                                        <li>Resource path handling system</li>
-                                        <li>Game logic structure</li>
-                                        <li>
-                                            Configuration in mypy.ini →
-                                            pyproject.toml
-                                        </li>
-                                        <li>VSCode IDE configuration</li>
-                                        <li>Pytest structure and execution</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4
-                                        class="text-xl font-semibold mb-2 text-gray-400"
-                                    >
-                                        Chore
-                                    </h4>
-                                    <ul
-                                        class="list-disc list-inside space-y-2 text-gray-300"
-                                    >
-                                        <li>Enhanced CI/CD workflow steps</li>
-                                        <li>Added Prettier configuration</li>
-                                        <li>
-                                            Improved release workflow automation
-                                        </li>
-                                        <li>
-                                            Enhanced GitHub Actions workflows
-                                        </li>
-                                        <li>Optimized dependency management</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4
-                                        class="text-xl font-semibold mb-2 text-red-300"
-                                    >
-                                        Security
-                                    </h4>
-                                    <ul
-                                        class="list-disc list-inside space-y-2 text-gray-300"
-                                    >
-                                        <li>
-                                            Additional security policy
-                                            documentation
-                                        </li>
-                                        <li>
-                                            Enhanced vulnerability reporting
-                                            process
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <p class="text-gray-400">Dec 11, 2025</p>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div
+                            class="bg-gray-900/50 rounded-xl p-6 border border-green-500/10"
+                        >
+                            <h4
+                                class="text-xl font-bold text-green-400 mb-4 flex items-center"
+                            >
+                                <svg
+                                    class="w-6 h-6 mr-2"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                                    ></path>
+                                </svg>
+                                Added
+                            </h4>
+                            <ul class="space-y-2 text-gray-300 text-sm">
+                                <li>✓ Support for 38 languages</li>
+                                <li>✓ FPS counter display</li>
+                                <li>✓ Enhanced number formatting</li>
+                            </ul>
                         </div>
-                        <div class="bg-gray-800 rounded-lg p-6">
-                            <h3 class="text-2xl font-bold mb-4 text-green-400">
-                                Version 1.1.0 - 2024-05-01
-                            </h3>
-                            <div class="space-y-4">
-                                <div>
-                                    <h4
-                                        class="text-xl font-semibold mb-2 text-green-300"
-                                    >
-                                        Added
-                                    </h4>
-                                    <ul
-                                        class="list-disc list-inside space-y-2 text-gray-300"
-                                    >
-                                        <li>
-                                            Multilingual support for game
-                                            interface
-                                        </li>
-                                        <li>Encrypted high score system</li>
-                                        <li>
-                                            Enhanced sound effects and music
-                                            control
-                                        </li>
-                                        <li>
-                                            Controls screen with detailed
-                                            instructions
-                                        </li>
-                                        <li>Game pause and lives display</li>
-                                        <li>Comprehensive unit tests</li>
-                                        <li>
-                                            Technical documentation with MkDocs
-                                        </li>
-                                        <li>
-                                            Build guides for macOS and Windows
-                                        </li>
-                                        <li>
-                                            CI/CD configuration with GitHub
-                                            Actions
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4
-                                        class="text-xl font-semibold mb-2 text-blue-300"
-                                    >
-                                        Changed
-                                    </h4>
-                                    <ul
-                                        class="list-disc list-inside space-y-2 text-gray-300"
-                                    >
-                                        <li>
-                                            Complete game structure refactoring
-                                        </li>
-                                        <li>Improved resource management</li>
-                                        <li>Performance optimization</li>
-                                        <li>Updated alien descent speed</li>
-                                        <li>
-                                            Enhanced README and documentation
-                                        </li>
-                                        <li>Optimized game assets</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4
-                                        class="text-xl font-semibold mb-2 text-yellow-300"
-                                    >
-                                        Fixed
-                                    </h4>
-                                    <ul
-                                        class="list-disc list-inside space-y-2 text-gray-300"
-                                    >
-                                        <li>
-                                            Cross-platform resource path
-                                            handling
-                                        </li>
-                                        <li>Error handling improvements</li>
-                                        <li>Pygame compatibility issues</li>
-                                        <li>Project dependencies update</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4
-                                        class="text-xl font-semibold mb-2 text-red-300"
-                                    >
-                                        Security
-                                    </h4>
-                                    <ul
-                                        class="list-disc list-inside space-y-2 text-gray-300"
-                                    >
-                                        <li>
-                                            High score encryption implementation
-                                        </li>
-                                        <li>
-                                            Enhanced file and resource
-                                            management
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4
-                                        class="text-xl font-semibold mb-2 text-cyan-300"
-                                    >
-                                        Documentation
-                                    </h4>
-                                    <ul
-                                        class="list-disc list-inside space-y-2 text-gray-300"
-                                    >
-                                        <li>
-                                            Complete project architecture
-                                            documentation
-                                        </li>
-                                        <li>Updated contribution guidelines</li>
-                                        <li>
-                                            Build guides for different platforms
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4
-                                        class="text-xl font-semibold mb-2 text-indigo-300"
-                                    >
-                                        Infrastructure
-                                    </h4>
-                                    <ul
-                                        class="list-disc list-inside space-y-2 text-gray-300"
-                                    >
-                                        <li>GitHub Actions CI/CD setup</li>
-                                        <li>MkDocs documentation system</li>
-                                        <li>
-                                            Development environment
-                                            configuration
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <div
+                            class="bg-gray-900/50 rounded-xl p-6 border border-blue-500/10"
+                        >
+                            <h4 class="text-xl font-bold text-blue-400 mb-4">
+                                Changed
+                            </h4>
+                            <ul class="space-y-2 text-gray-300 text-sm">
+                                <li>• Improved language detection</li>
+                                <li>• Refactored game logic</li>
+                            </ul>
                         </div>
                     </div>
+                </div>
+
+                <!-- Previous Versions -->
+                <div class="card rounded-2xl p-10 fade-in">
+                    <h3 class="text-3xl font-bold text-blue-400 mb-4">
+                        v1.2.0
+                    </h3>
+                    <p class="text-gray-400 mb-6">May 15, 2025</p>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>• Music and sound toggle options</li>
+                        <li>• Multilanguage support expansion</li>
+                        <li>• Dynamic screen resolution scaling</li>
+                    </ul>
+                </div>
+
+                <div class="card rounded-2xl p-10 fade-in">
+                    <h3 class="text-3xl font-bold text-purple-400 mb-4">
+                        v1.1.0
+                    </h3>
+                    <p class="text-gray-400 mb-6">May 1, 2024</p>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>• Multilingual support</li>
+                        <li>• Encrypted high score system</li>
+                        <li>• CI/CD with GitHub Actions</li>
+                    </ul>
                 </div>
             </section>
         </main>
 
-        <footer class="bg-gray-900 py-8" role="contentinfo">
-            <div class="container mx-auto px-4">
-                <div
-                    class="flex flex-col md:flex-row justify-between items-center"
-                >
-                    <div class="mb-4 md:mb-0">
-                        <div class="flex items-center">
-                            <img
-                                src="assets/icons/icon.png"
-                                alt="Alien Invasion Logo"
-                                class="h-8 w-8 mr-2"
-                            />
-                            <span class="text-green-400 font-bold"
-                                >Alien Invasion</span
-                            >
-                        </div>
-                        <p class="text-gray-500 text-sm mt-2">
-                            © 2022 - 2025
-                            <a
-                                href="https://www.linkedin.com/in/ignacio-nicol%C3%A1s-avil%C3%A9s-cardenasso/"
-                                class="text-green-400 hover:text-green-300 transition"
-                                aria-label="Visit my LinkedIn profile"
-                                target="_blank"
-                            >
-                                <span>Ignacio Avilés</span>
-                                <span class="sr-only">on LinkedIn</span> </a
-                            >. All rights reserved.
-                        </p>
-                    </div>
-                    <div class="flex space-x-4">
-                        <a
-                            href="https://github.com/avilesxd"
-                            class="text-gray-400 hover:text-white transition"
-                            aria-label="Visit my GitHub profile"
-                            target="_blank"
-                        >
-                            <img
-                                src="assets/svg/github.svg"
-                                alt=""
-                                class="h-6 w-6"
-                                aria-hidden="true"
-                            />
-                            <span class="sr-only">GitHub</span>
-                        </a>
-                        <a
-                            href="https://www.instagram.com/avilesxd/"
-                            class="text-gray-400 hover:text-white transition"
-                            aria-label="Follow me on Instagram"
-                            target="_blank"
-                        >
-                            <img
-                                src="assets/svg/instagram.svg"
-                                alt=""
-                                class="h-6 w-6"
-                                aria-hidden="true"
-                            />
-                            <span class="sr-only">Instagram</span>
-                        </a>
-                        <a
-                            href="https://www.youtube.com/channel/UCYPsgamO7XeWOrXriOpJBqw"
-                            class="text-gray-400 hover:text-white transition"
-                            aria-label="Subscribe to my YouTube channel"
-                            target="_blank"
-                        >
-                            <img
-                                src="assets/svg/youtube.svg"
-                                alt=""
-                                class="h-6 w-6"
-                                aria-hidden="true"
-                            />
-                            <span class="sr-only">YouTube</span>
-                        </a>
-                    </div>
-                </div>
+        <footer class="bg-gray-900 py-12 mt-20">
+            <div class="container mx-auto px-4 text-center">
+                <p class="text-gray-500">
+                    © 2022 - 2025 Alien Invasion. All rights reserved.
+                </p>
             </div>
         </footer>
 
