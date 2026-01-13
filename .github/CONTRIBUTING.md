@@ -5,6 +5,16 @@ welcome, whether it's fixing bugs, improving the code, or adding new features.
 
 ---
 
+## ⚠️ Important: Branch Policy
+
+**CRITICAL**: All development work must be done in feature branches. **Direct
+commits to `main` are prohibited.**
+
+All changes must be submitted via Pull Request and pass all automated checks
+before merging.
+
+---
+
 ## 🧑‍💻 How to contribute?
 
 ### 1. Fork the Repository
@@ -19,10 +29,25 @@ git clone https://github.com/your-username/code-destroy-aliens.git
 cd code-destroy-aliens
 ```
 
-### 3. Create a Branch
+### 3. Create a Feature Branch
+
+**Branch Naming Conventions:**
+
+- `feature/descriptive-name` - New features
+- `fix/bug-description` - Bug fixes
+- `docs/what-changed` - Documentation updates
+- `refactor/what-refactored` - Code refactoring
+- `test/what-tested` - Test additions/improvements
+- `chore/task-description` - Maintenance tasks
 
 ```bash
-git checkout -b improve-or-fix-descriptive
+# Ensure you're on main and up to date
+git checkout main
+git pull origin main
+
+# Create and switch to your feature branch
+git checkout -b feature/your-feature-name
+# Or: fix/your-bug-fix, docs/your-doc-update, etc.
 ```
 
 ### 4. Make Your Changes
@@ -31,9 +56,11 @@ Make sure you follow good coding practices and maintain a clear structure.
 
 ### 5. Test Your Code
 
-- Run the game to verify that everything works correctly.
-- Make sure you don't break anything existing.
-- Run tests.
+- **Run all quality checks**: `npm run verify`
+    - This runs: format → prettier → lint → typecheck → test
+- Make sure all tests pass
+- Ensure code follows style guidelines
+- Verify type annotations are correct
 
 ### 6. Commit
 
@@ -67,15 +94,29 @@ The commit message must follow the
 If your commit doesn't follow this format, husky will prevent the commit from
 being created.
 
-### 7. Push your changes
+### 7. Push Your Branch
 
 ```bash
-git push origin descriptive-fix-or-improve
+git push origin feature/your-feature-name
 ```
 
 ### 8. Create a Pull Request
 
 Go to your fork on GitHub and click "Compare & pull request".
+
+**Pull Request Requirements:**
+
+- ✅ Descriptive title following commit conventions (`feat:`, `fix:`, etc.)
+- ✅ Clear description of what changed and why
+- ✅ All CI checks must pass (tests, linting, type checking)
+- ✅ No merge conflicts with `main`
+- ✅ Tests added/updated for your changes
+- ✅ Documentation updated if needed
+
+**PR will be merged using:**
+
+- **Squash and merge** for feature branches
+- Branch will be deleted after merging
 
 ---
 
@@ -106,11 +147,20 @@ Go to your fork on GitHub and click "Compare & pull request".
 3. **Running Tests**
 
     ```bash
-    # Run all tests
-    python -m pytest
+    # Run all quality checks (includes tests)
+    npm run verify
+
+    # Run only tests
+    npm run test
+
+    # Run tests with coverage
+    npm run test:coverage
 
     # Run specific test file
-    python -m pytest tests/test_specific.py
+    npm run test tests/test_specific.py
+
+    # Run with verbose output
+    npm run test -v
     ```
 
 4. **Test Best Practices**

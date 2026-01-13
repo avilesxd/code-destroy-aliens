@@ -33,6 +33,18 @@ Unclear requirements or missing information:
 
 ## Before Making Changes
 
+### 0. Create Feature Branch
+
+**CRITICAL**: Never make changes directly on `main` branch.
+
+```bash
+# Create a feature branch first
+git checkout -b feature/descriptive-name
+# Or fix/, docs/, refactor/, test/, chore/
+```
+
+All changes must be made in feature branches and submitted via Pull Request.
+
 ### 1. Verify Context
 
 Read relevant files to understand current implementation:
@@ -287,6 +299,7 @@ Before submitting changes:
 
 Before claiming a task is complete:
 
+- [ ] Working in feature branch (NOT `main`)
 - [ ] Code compiles and runs without errors
 - [ ] All type hints are present and correct
 - [ ] Code passes `npm run lint`
@@ -299,4 +312,5 @@ Before claiming a task is complete:
 - [ ] Asset loading uses `resource_path()`
 - [ ] Commit message follows conventions
 - [ ] Changes are documented if introducing new patterns
+- [ ] Ready to create Pull Request to `main`
 ```

@@ -223,6 +223,23 @@ from src.entities.ship import Ship
 
 ## Critical Rules
 
+### Git Workflow
+
+**Never commit directly to `main` branch**:
+
+```bash
+# ✅ Good
+git checkout -b feature/add-laser-weapon
+# Make changes, commit, push, create PR
+
+# ❌ Bad
+git checkout main
+# Making changes directly on main - PROHIBITED
+```
+
+All changes must be made in feature branches (`feature/`, `fix/`, `docs/`, etc.)
+and merged via Pull Request.
+
 ### Screen Dimensions
 
 Don't hardcode screen sizes:

@@ -11,6 +11,9 @@ All workflows are in `.github/workflows/`.
 
 **Triggers**: Push to `main`, Pull Requests to `main`
 
+**Important**: This workflow runs on all Pull Requests to ensure code quality
+before merging. All checks must pass before a PR can be merged to `main`.
+
 **What it does**:
 
 1. Checks Python formatting (black, isort)

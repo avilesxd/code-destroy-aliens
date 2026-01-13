@@ -252,11 +252,15 @@ We welcome contributions! Please check out our
 [Contributing Guide](https://github.com/avilesxd/code-destroy-aliens/blob/main/.github/CONTRIBUTING.md)
 and:
 
+**Important**: All changes must be made in feature branches and submitted via
+Pull Request. Never commit directly to `main`.
+
 1. **Fork** the repository
 2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
-4. **Push** to the branch (`git push origin feature/amazing-feature`)
-5. **Open** a Pull Request
+3. **Make** your changes and ensure all tests pass (`npm run verify`)
+4. **Commit** your changes (`git commit -m 'feat: add amazing feature'`)
+5. **Push** to the branch (`git push origin feature/amazing-feature`)
+6. **Open** a Pull Request to `main` branch
 
 ---
 

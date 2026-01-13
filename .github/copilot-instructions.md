@@ -62,6 +62,26 @@ npm run format       # Auto-format code
 
 See [architecture.md](copilot-agents/architecture.md) for detailed patterns.
 
+### Git Workflow
+
+**Branch Policy**: All changes must be made in feature branches and submitted
+via Pull Request.
+
+- ✅ **Never commit directly to `main`**
+- ✅ Create feature branches: `feature/add-powerup`, `fix/collision-bug`,
+  `docs/update-readme`
+- ✅ Work in your branch, then create Pull Request to `main`
+- ✅ Ensure all checks pass before requesting review
+
+```bash
+git checkout -b feature/my-feature
+# Make changes...
+git add .
+git commit -m "feat: add new feature"
+git push origin feature/my-feature
+# Create Pull Request on GitHub
+```
+
 ### Quality Checklist (Before Every Commit)
 
 1. `npm run lint` - fix all linting issues

@@ -207,6 +207,86 @@ git push --tags
 
 ## Git Workflow
 
+### Branch Strategy
+
+**CRITICAL**: All development work must be done in feature branches. Direct
+commits to `main` are prohibited.
+
+**Branch Naming Conventions**:
+
+- `feature/descriptive-name` - New features
+- `fix/bug-description` - Bug fixes
+- `docs/what-changed` - Documentation updates
+- `refactor/what-refactored` - Code refactoring
+- `test/what-tested` - Test additions/improvements
+- `chore/task-description` - Maintenance tasks
+
+### Creating a Feature Branch
+
+```bash
+# 1. Ensure you're on main and up to date
+git checkout main
+git pull origin main
+
+# 2. Create and switch to new feature branch
+git checkout -b feature/add-powerup-system
+
+# 3. Make your changes and commit
+npm run verify  # Ensure all checks pass
+git add .
+git commit -m "feat: add powerup system for temporary shields"
+
+# 4. Push branch to remote
+git push origin feature/add-powerup-system
+
+# 5. Create Pull Request on GitHub
+# - Go to repository on GitHub
+# - Click "Compare & pull request"
+# - Fill in PR description with:
+#   - What changed
+#   - Why it changed
+#   - How it was tested
+# - Request review if needed
+```
+
+### Pull Request Workflow
+
+**Before Creating PR**:
+
+1. ✅ Run `npm run verify` - all checks must pass
+2. ✅ Update/add tests for your changes
+3. ✅ Update documentation if needed
+4. ✅ Ensure branch is up to date with `main`
+
+**PR Requirements**:
+
+- Descriptive title following commit conventions (`feat:`, `fix:`, etc.)
+- Clear description of what changed and why
+- All CI checks must pass
+- No merge conflicts with `main`
+
+**Merging**:
+
+- Use **"Squash and merge"** for feature branches
+- Use **"Merge commit"** for release branches
+- Delete branch after merging
+
+### Keeping Branch Updated
+
+```bash
+# Sync your branch with latest main
+git checkout main
+git pull origin main
+git checkout feature/your-branch
+git merge main
+# Or use rebase for cleaner history:
+# git rebase main
+
+# Resolve any conflicts
+npm run verify  # Ensure everything still works
+git push origin feature/your-branch
+```
+
 ### Pre-commit Hooks (Automated via Husky)
 
 `.husky/pre-commit` runs `npx lint-staged` which:
