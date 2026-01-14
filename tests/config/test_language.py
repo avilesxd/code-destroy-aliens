@@ -321,3 +321,32 @@ def test_get_available_languages(language: Language) -> None:
     assert len(available_languages) == len(Language.SUPPORTED_LANGUAGES)
     # Verify we have at least 40 languages (currently 46)
     assert len(available_languages) >= 40
+
+
+def test_windows_locale_mapping() -> None:
+    """Test that Windows locale names are correctly mapped to ISO codes."""
+    import sys
+    from unittest.mock import patch
+
+    # Only test on Windows or mock it
+    with patch("sys.platform", "win32"):
+        lang = Language()
+
+        # Test common Windows locale formats
+        test_cases = [
+            ("Spanish_Chile", "es"),
+            ("Spanish_Spain", "es"),
+            ("English_United States", "en"),
+            ("French_France", "fr"),
+            ("German_Germany", "de"),
+            ("Portuguese_Brazil", "pt"),
+            ("Italian_Italy", "it"),
+        ]
+
+        for windows_locale, expected_code in test_cases:
+            # Mock the locale.getlocale() to return Windows-style locale
+            with patch("locale.getlocale", return_value=(windows_locale, "1252")):
+                detected_lang = lang._get_fallback_language()
+                assert (
+                    detected_lang == expected_code
+                ), f"Failed to map '{windows_locale}' to '{expected_code}', got '{detected_lang}'"
