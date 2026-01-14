@@ -79,6 +79,56 @@ class Language:
     DEFAULT_LANGUAGE: Final[str] = "en"
     TRANSLATIONS_DIR: Final[str] = "src/assets/translations"
 
+    # Windows locale names to ISO 639-1 language codes mapping
+    # Windows uses full language names (e.g., "Spanish_Chile") instead of ISO codes
+    WINDOWS_LOCALE_MAP: Final[Dict[str, str]] = {
+        "arabic": "ar",
+        "bulgarian": "bg",
+        "bengali": "bn",
+        "catalan": "ca",
+        "czech": "cs",
+        "danish": "da",
+        "german": "de",
+        "greek": "el",
+        "english": "en",
+        "spanish": "es",
+        "basque": "eu",
+        "persian": "fa",
+        "finnish": "fi",
+        "french": "fr",
+        "galician": "gl",
+        "hebrew": "he",
+        "hindi": "hi",
+        "croatian": "hr",
+        "hungarian": "hu",
+        "indonesian": "id",
+        "italian": "it",
+        "japanese": "ja",
+        "kannada": "kn",
+        "korean": "ko",
+        "malayalam": "ml",
+        "malay": "ms",
+        "dutch": "nl",
+        "norwegian": "no",
+        "polish": "pl",
+        "portuguese": "pt",
+        "romanian": "ro",
+        "russian": "ru",
+        "slovak": "sk",
+        "serbian": "sr",
+        "swedish": "sv",
+        "swahili": "sw",
+        "tamil": "ta",
+        "telugu": "te",
+        "thai": "th",
+        "tagalog": "tl",
+        "turkish": "tr",
+        "ukrainian": "uk",
+        "urdu": "ur",
+        "vietnamese": "vi",
+        "chinese": "zh",
+    }
+
     def __init__(self) -> None:
         """Initialize language settings.
 
@@ -137,27 +187,61 @@ class Language:
     def _get_fallback_language(self) -> str | None:
         """Gets language using the standard locale module."""
         try:
-            # Use getlocale() instead of deprecated getdefaultlocale()
-            # Try LC_MESSAGES first (preferred for language), fall back to LC_CTYPE
-            system_locale = None
-            try:
-                # LC_MESSAGES is not available on Windows
-                lc_messages = getattr(locale, "LC_MESSAGES", None)
-                if lc_messages is not None:
-                    system_locale, _ = locale.getlocale(lc_messages)
-            except (AttributeError, locale.Error):
-                pass
-
+            system_locale = self._get_system_locale()
             if not system_locale:
-                system_locale, _ = locale.getlocale()
+                return None
 
-            if system_locale:
-                lang_code = system_locale.split("_")[0]
-                if len(lang_code) == 2:
-                    return lang_code.lower()
+            # Extract language part (before underscore)
+            lang_part = system_locale.split("_")[0]
+
+            # On Windows, locale names are full language names (e.g., "Spanish")
+            # instead of ISO codes (e.g., "es"). Check if we need to map it.
+            if sys.platform == "win32" and len(lang_part) > 2:
+                return self._map_windows_locale(lang_part)
+
+            # Standard ISO 639-1 code (2 letters) - Unix/Linux/macOS format
+            if len(lang_part) == 2:
+                return lang_part.lower()
         except Exception:
             return None
         return None
+
+    def _get_system_locale(self) -> str | None:
+        """Gets the system locale string from the locale module.
+
+        Returns:
+            str | None: The system locale string (e.g., "es_CL", "Spanish_Chile"),
+                        or None if unable to determine.
+        """
+        try:
+            # Try LC_MESSAGES first (preferred for language), fall back to LC_CTYPE
+            # LC_MESSAGES is not available on Windows
+            lc_messages = getattr(locale, "LC_MESSAGES", None)
+            if lc_messages is not None:
+                system_locale, _ = locale.getlocale(lc_messages)
+                if system_locale:
+                    return system_locale
+        except (AttributeError, locale.Error):
+            pass
+
+        # Fallback to default locale
+        try:
+            system_locale, _ = locale.getlocale()
+            return system_locale
+        except Exception:
+            return None
+
+    def _map_windows_locale(self, lang_name: str) -> str | None:
+        """Maps a Windows locale name to an ISO 639-1 language code.
+
+        Args:
+            lang_name (str): Windows locale name (e.g., "Spanish", "English").
+
+        Returns:
+            str | None: ISO 639-1 language code (e.g., "es", "en"), or None if not found.
+        """
+        lang_lower = lang_name.lower()
+        return self.WINDOWS_LOCALE_MAP.get(lang_lower)
 
     def _load_translations(self) -> Dict[str, Dict[str, str]]:
         """Load all available translations from JSON files.
