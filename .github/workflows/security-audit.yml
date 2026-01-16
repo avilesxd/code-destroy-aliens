@@ -1,0 +1,76 @@
+name: Security Audit
+
+on:
+  schedule:
+    # Run every Monday at 9:00 AM UTC
+    - cron: '0 9 * * 1'
+  push:
+    branches: [ main ]
+    paths:
+      - 'requirements.txt'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'requirements.txt'
+  workflow_dispatch:
+
+jobs:
+  security-audit:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.13'
+
+    - name: Cache pip packages
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pip-audit
+        pip install -r requirements.txt
+
+    - name: Run pip-audit on all dependencies
+      run: |
+        echo "::group::Security Audit"
+        pip-audit -r requirements.txt --desc
+        echo "::endgroup::"
+      continue-on-error: false
+
+    - name: Generate vulnerability report
+      if: always()
+      run: |
+        echo "## Security Audit Report" > audit-report.md
+        echo "" >> audit-report.md
+        echo "**Date**: $(date)" >> audit-report.md
+        echo "" >> audit-report.md
+        pip-audit -r requirements.txt --format markdown >> audit-report.md || echo "✅ No vulnerabilities found" >> audit-report.md
+        name: security-audit-report
+        path: audit-report.md
+        retention-days: 30
+
+    - name: Comment PR with vulnerabilities
+      if: github.event_name == 'pull_request' && failure()
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const fs = require('fs');
+          const report = fs.readFileSync('audit-report.md', 'utf8');
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: `## ⚠️ Security Vulnerabilities Detected\n\n${report}`
+          });
