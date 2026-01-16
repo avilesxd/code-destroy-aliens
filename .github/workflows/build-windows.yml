@@ -23,7 +23,7 @@ jobs:
         python-version: '3.13'
 
     - name: Cache pip packages
-      uses: actions/cache@v3
+      uses: actions/cache@v5
       with:
         path: ~\AppData\Local\pip\Cache
         key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
@@ -31,7 +31,7 @@ jobs:
           ${{ runner.os }}-pip-
 
     - name: Cache PyInstaller
-      uses: actions/cache@v3
+      uses: actions/cache@v5
       with:
         path: |
           ~\AppData\Local\pyinstaller
