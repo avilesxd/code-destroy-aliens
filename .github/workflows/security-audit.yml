@@ -56,6 +56,11 @@ jobs:
         echo "**Date**: $(date)" >> audit-report.md
         echo "" >> audit-report.md
         pip-audit -r requirements.txt --format markdown >> audit-report.md || echo "✅ No vulnerabilities found" >> audit-report.md
+
+    - name: Upload vulnerability report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
         name: security-audit-report
         path: audit-report.md
         retention-days: 30
