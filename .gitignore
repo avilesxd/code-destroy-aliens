@@ -146,3 +146,9 @@ Temporary Items
 site/
 website/docs/
 *.mkdocs-material/*
+
+# Security audit reports
+audit-report.md
+security-report.md
+*-audit-*.json
+*-audit-*.txt

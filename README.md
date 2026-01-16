@@ -13,6 +13,8 @@ challenging levels_
 [![Build Windows](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/build-windows.yml/badge.svg)](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/build-windows.yml)
 [![Code Quality & Tests](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/tests.yml/badge.svg)](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/tests.yml)
 [![Deploy to GitHub Pages](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/deploy.yml/badge.svg)](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/deploy.yml)
+[![Security Audit](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/security-audit.yml/badge.svg)](https://github.com/avilesxd/code-destroy-aliens/actions/workflows/security-audit.yml)
+[![Dependabot](https://img.shields.io/badge/Dependabot-enabled-success?logo=dependabot)](https://github.com/avilesxd/code-destroy-aliens/network/updates)
 
 <table>
   <tbody>
@@ -236,14 +238,44 @@ cd code-destroy-aliens
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 
-# 3. Install development dependencies
+# 3. Install all dependencies
 pip install -r requirements.txt
 
 # 4. Run tests
 python -m pytest tests/
 
-# 5. Start developing!
+# 5. Check for security vulnerabilities
+npm run security:audit
+
+# 6. Start developing!
 python main.py
+```
+
+### 📋 Available Commands
+
+```bash
+# Development
+npm run dev                    # Run the game
+npm run verify                 # Run all quality checks (format, lint, typecheck, test)
+
+# Testing
+npm run test                   # Run tests
+npm run test:coverage          # Run tests with coverage report
+
+# Code Quality
+npm run format                 # Format code (black + isort)
+npm run lint                   # Run linter (flake8)
+npm run typecheck              # Type checking (mypy)
+
+# Security & Dependencies
+npm run security:audit         # Check for security vulnerabilities
+npm run security:audit-fix     # Attempt to fix vulnerabilities automatically
+npm run deps:outdated          # List outdated dependencies
+npm run deps:install           # Install all dependencies
+
+# Building
+npm run build:windows          # Build .exe for Windows
+npm run build:macos            # Build .app for macOS
 ```
 
 ### 🤝 Contributing
