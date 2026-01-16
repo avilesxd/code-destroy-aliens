@@ -157,14 +157,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger Windows Build
-        uses: peter-evans/repository-dispatch@v3
+        uses: peter-evans/repository-dispatch@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           event-type: trigger-build
           client-payload: '{"version": "v${{ needs.bump-version.outputs.new_version }}"}'
 
       - name: Trigger macOS Build
-        uses: peter-evans/repository-dispatch@v3
+        uses: peter-evans/repository-dispatch@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           event-type: trigger-build
