@@ -197,9 +197,9 @@ Dependabot is configured to automatically:
 - Don't commit untested dependency updates
 - Don't disable security workflows
 - Don't manually update dependencies that Dependabot manages
-- Don't merge Dependabot PRs without CI passing
-
 See [Dependabot Guide](dependabot.md) for detailed configuration guide.
+See [DEPENDABOT_INFO.md](../../../.github/DEPENDABOT_INFO.md) for detailed
+configuration guide.
 
 ## Best Practices
 
