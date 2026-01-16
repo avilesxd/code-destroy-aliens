@@ -85,14 +85,14 @@ jobs:
           echo "App bundle verification completed successfully!"
 
       - name: Upload DMG artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: macos-dmg
           path: dist/Alien Invasion.dmg
           if-no-files-found: error
 
       - name: Upload app bundle artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: macos-app
           path: dist/Alien Invasion.app
