@@ -1,0 +1,86 @@
+version: 2
+updates:
+  # Python dependencies
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "python"
+    commit-message:
+      prefix: "chore"
+    groups:
+      # Group development tools together
+      development-dependencies:
+        patterns:
+          - "pytest*"
+          - "black"
+          - "isort"
+          - "flake8"
+          - "mypy*"
+          - "types-*"
+      # Group documentation tools
+      documentation:
+        patterns:
+          - "mkdocs*"
+          - "Markdown"
+          - "Jinja2"
+      # Group build tools
+      build-tools:
+        patterns:
+          - "pyinstaller*"
+          - "py2app"
+          - "setuptools"
+          - "wheel"
+      # Security updates (always separate for visibility)
+      security-updates:
+        patterns:
+          - "cryptography"
+          - "urllib3"
+          - "requests"
+          - "certifi"
+    # Allow both direct and indirect updates
+    allow:
+      - dependency-type: "all"
+    # Ignore major version updates for stable packages
+    ignore:
+      - dependency-name: "pygame"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "python"
+        update-types: ["version-update:semver-major"]
+
+  # npm dependencies
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "javascript"
+    commit-message:
+      prefix: "chore"
+    groups:
+      npm-dependencies:
+        patterns:
+          - "*"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "ci"
