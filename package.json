@@ -44,10 +44,10 @@
         "version:major": "bash scripts/bump-version.sh major",
         "build:windows": "pyinstaller main.py --name=\"Alien Invasion\" --icon=\"src/assets/icons/icon.ico\" --onefile --noconsole --add-data=\"src;src\" --version-file=\"versions/windows.txt\"",
         "build:macos": "python3 setup.py py2app",
-        "docs:serve": "mkdocs serve",
-        "docs:build": "mkdocs build",
-        "docs:deploy": "mkdocs gh-deploy",
-        "docs:check": "mkdocs build --strict"
+        "docs:serve": "node scripts/run-with-env.js python -m mkdocs serve",
+        "docs:build": "node scripts/run-with-env.js python -m mkdocs build",
+        "docs:deploy": "node scripts/run-with-env.js python -m mkdocs gh-deploy",
+        "docs:check": "node scripts/run-with-env.js python -m mkdocs build --strict"
     },
     "devDependencies": {
         "@commitlint/cli": "^19.8.0",

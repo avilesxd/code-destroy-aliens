@@ -287,7 +287,7 @@ Next audit shows "No vulnerabilities"
 
 - [Dependabot Documentation](https://docs.github.com/en/code-security/dependabot)
 - [Configuration Options](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file)
-- [Security Policy](../../../SECURITY.md)
+- [Security Policy](../../SECURITY.md)
 - [Security & Dependency Management](security.md)
 
 ---

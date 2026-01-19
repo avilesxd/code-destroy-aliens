@@ -196,11 +196,8 @@ Dependabot is configured to automatically:
 - Don't use `pip install --upgrade` blindly on all packages
 - Don't commit untested dependency updates
 - Don't disable security workflows
-- Don't manually update dependencies that Dependabot manages
-- Don't merge Dependabot PRs without CI passing requests) - **always separate**
-
-See [DEPENDABOT_INFO.md](../../../.github/DEPENDABOT_INFO.md) for detailed
-configuration guide.
+- Don't manually update dependencies that Dependabot manages See
+  [Dependabot Guide](dependabot.md) for detailed configuration guide.
 
 ## Best Practices
 
@@ -281,7 +278,7 @@ npm run verify  # Includes all quality checks
 - [Python Security Advisories](https://github.com/pypa/advisory-database)
 - [GitHub Security Advisories](https://github.com/advisories)
 - [NIST NVD](https://nvd.nist.gov/)
-- [SECURITY.md](../../../SECURITY.md) - Project security policy
+- [SECURITY.md](../../SECURITY.md) - Project security policy
 - [Dependabot Guide](dependabot.md) - Dependabot configuration
 
 ---
