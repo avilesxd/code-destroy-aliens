@@ -196,10 +196,8 @@ Dependabot is configured to automatically:
 - Don't use `pip install --upgrade` blindly on all packages
 - Don't commit untested dependency updates
 - Don't disable security workflows
-- Don't manually update dependencies that Dependabot manages
-See [Dependabot Guide](dependabot.md) for detailed configuration guide.
-See [DEPENDABOT_INFO.md](../../../.github/DEPENDABOT_INFO.md) for detailed
-configuration guide.
+- Don't manually update dependencies that Dependabot manages See
+  [Dependabot Guide](dependabot.md) for detailed configuration guide.
 
 ## Best Practices
 
