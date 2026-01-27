@@ -1,21 +1,19 @@
 <div align="center">
 
-# 🚀 Alien Invasion
-
-### _A Modern Space Invaders Clone Built with Python & Pygame_
+<h3>Alien Invasion <em>A Modern Space Invaders</em></h3>
 
 <img src="images/code-destroy-aliens.png" alt="Alien Invasion Game" width="700"/>
 
-[![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
-[![Pygame](https://img.shields.io/badge/pygame-2.5.0%2B-green.svg)](https://www.pygame.org/)
-[![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Type Checked](https://img.shields.io/badge/type%20checked-mypy-blue.svg)](http://mypy-lang.org/)
-[![Tests](https://img.shields.io/badge/tests-pytest-orange.svg)](https://pytest.org/)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
+<p align="center">
+  <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.8%2B-blue.svg" alt="Python"></a>
+  <a href="https://www.pygame.org/"><img src="https://img.shields.io/badge/pygame-2.5.0%2B-green.svg" alt="Pygame"></a>
+  <a href="https://github.com/psf/black"><img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code Style"></a>
+  <a href="http://mypy-lang.org/"><img src="https://img.shields.io/badge/type%20checked-mypy-blue.svg" alt="Type Checked"></a>
+  <a href="https://pytest.org/"><img src="https://img.shields.io/badge/tests-pytest-orange.svg" alt="Tests"></a>
+  <a href="LICENSE.md"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
+</p>
 
----
-
-**Welcome to the comprehensive documentation for Alien Invasion!** This classic
+Welcome to the comprehensive documentation for Alien Invasion! This classic
 arcade-style game combines nostalgic Space Invaders gameplay with modern
 software engineering practices, including strict type safety, comprehensive
 testing, and modular architecture.
