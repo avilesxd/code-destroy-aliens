@@ -92,12 +92,10 @@ python main.py --no-audio
 ## Best Practices
 
 1. **Backup Configuration**
-
     - Always backup your configuration file before making changes
     - Use version control to track configuration changes
 
 2. **Performance Considerations**
-
     - Higher resolutions may impact performance
     - Consider your system's capabilities when adjusting settings
 

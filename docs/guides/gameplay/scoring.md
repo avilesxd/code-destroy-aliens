@@ -18,13 +18,11 @@ Points are awarded for various actions in the game:
 Your score can be multiplied through various means:
 
 1. **Combo System**
-
     - Hit multiple aliens without missing
     - Maximum 5x multiplier
     - Resets on miss
 
 2. **Wave Completion**
-
     - Complete waves quickly
     - Time-based bonus
     - Up to 2x multiplier
@@ -61,12 +59,10 @@ Additional points can be earned through special achievements:
 Your best scores are tracked in several categories:
 
 1. **Overall High Score**
-
     - Best score across all modes
     - Global leaderboard
 
 2. **Mode-specific High Scores**
-
     - Best score for each game mode
     - Separate leaderboards
 
@@ -79,13 +75,11 @@ Your best scores are tracked in several categories:
 Your current score is displayed in several ways:
 
 1. **Main Display**
-
     - Current score
     - Multiplier
     - Combo counter
 
 2. **Wave Information**
-
     - Wave number
     - Time remaining
     - Bonus opportunities
@@ -98,19 +92,16 @@ Your current score is displayed in several ways:
 ## Tips for High Scores
 
 1. **Master the Basics**
-
     - Focus on accuracy
     - Learn alien patterns
     - Time your shots
 
 2. **Use Power-ups Wisely**
-
     - Save for difficult waves
     - Combine for maximum effect
     - Don't waste on easy targets
 
 3. **Maintain Combos**
-
     - Don't take unnecessary risks
     - Keep the multiplier active
     - Plan your shots

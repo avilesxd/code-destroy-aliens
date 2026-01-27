@@ -63,12 +63,10 @@ python main.py
 ### Common Issues
 
 1. **Python not found**
-
     - Make sure Python is installed and added to your PATH
     - Verify installation with `python --version`
 
 2. **Pygame installation fails**
-
     - Make sure you have the required build tools
     - On Windows, you might need Visual C++ Build Tools
     - On Linux, install development libraries:

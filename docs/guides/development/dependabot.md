@@ -257,7 +257,6 @@ Configure in GitHub Settings:
 Dependabot works alongside:
 
 1. **Security Audit Workflow** (`.github/workflows/security-audit.yml`)
-
     - Runs weekly
     - Scans with `pip-audit`
     - Creates vulnerability reports

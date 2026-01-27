@@ -9,14 +9,12 @@ a smooth, engaging experience.
 ## Game Flow
 
 1. **Main Menu**
-
     - Start Game
     - Options
     - Controls
     - Exit
 
 2. **Main Game**
-
     - Control your spaceship
     - Shoot down aliens
     - Avoid enemy fire

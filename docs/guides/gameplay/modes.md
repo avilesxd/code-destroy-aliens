@@ -45,13 +45,11 @@ Complete specific objectives:
 ### Available Challenges
 
 1. **Speed Run**
-
     - Clear waves as fast as possible
     - Time-based scoring
     - No power-ups
 
 2. **Precision Mode**
-
     - Limited ammo
     - Bonus points for accuracy
     - No misses allowed
@@ -88,13 +86,11 @@ Create your own game experience:
 ### Customization Options
 
 1. **Difficulty Settings**
-
     - Alien speed
     - Spawn rate
     - Power-up frequency
 
 2. **Game Rules**
-
     - Lives count
     - Time limit
     - Special conditions

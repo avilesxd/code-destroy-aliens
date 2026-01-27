@@ -164,21 +164,18 @@ build workflows.
 Once you push the tag, GitHub Actions workflows begin automatically:
 
 1. **Build Windows** (`build-windows.yml`)
-
     - Installs dependencies
     - Runs PyInstaller with `.spec` file
     - Creates `.exe` artifact
     - Duration: ~3-5 minutes
 
 2. **Build macOS** (`build-macos.yml`)
-
     - Installs dependencies
     - Runs py2app
     - Creates `.dmg` artifact
     - Duration: ~1-2 minutes
 
 3. **Create Release** (`release.yml`)
-
     - Triggers after both builds complete
     - Downloads build artifacts
     - Creates GitHub release
@@ -216,7 +213,6 @@ Once workflows complete, verify the release:
     - Ensure release notes are present
 
 2. **Test Downloads:**
-
     - Download Windows executable
     - Download macOS DMG
     - Test installation and launch on respective platforms
@@ -347,25 +343,21 @@ git push
 ## Best Practices
 
 1. **Test thoroughly before releasing**
-
     - Run full test suite: `npm run verify`
     - Test game functionality locally
     - Check builds work on target platforms
 
 2. **Keep changelog up-to-date**
-
     - Document changes as you make them
     - Don't wait until release time
     - Be specific but concise
 
 3. **Follow semantic versioning**
-
     - Patch: backwards compatible bug fixes
     - Minor: backwards compatible new features
     - Major: breaking changes
 
 4. **Communicate releases**
-
     - Announce on project channels
     - Highlight major features
     - Provide upgrade instructions if needed

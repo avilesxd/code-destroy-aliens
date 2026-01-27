@@ -8,13 +8,11 @@ concepts:
 ### Entity Component System (ECS)
 
 1. **Entities**
-
     - Game objects (ship, aliens, bullets)
     - Unique identifiers
     - Component containers
 
 2. **Components**
-
     - Position
     - Velocity
     - Sprite

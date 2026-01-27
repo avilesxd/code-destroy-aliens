@@ -8,13 +8,11 @@ temporary advantages.
 ### Weapon Upgrades
 
 1. **Rapid Fire**
-
     - Increases fire rate
     - Lasts 10 seconds
     - Visual indicator: Blue glow
 
 2. **Spread Shot**
-
     - Fires multiple bullets
     - Lasts 15 seconds
     - Visual indicator: Green glow
@@ -27,13 +25,11 @@ temporary advantages.
 ### Defensive Power-ups
 
 1. **Shield**
-
     - Temporary invincibility
     - Lasts 5 seconds
     - Visual indicator: Golden aura
 
 2. **Extra Life**
-
     - Adds one life
     - Permanent effect
     - Visual indicator: Heart icon
@@ -46,13 +42,11 @@ temporary advantages.
 ### Utility Power-ups
 
 1. **Score Multiplier**
-
     - Doubles points earned
     - Lasts 20 seconds
     - Visual indicator: Star icon
 
 2. **Magnet**
-
     - Attracts nearby power-ups
     - Lasts 15 seconds
     - Visual indicator: Magnetic field
@@ -87,13 +81,11 @@ temporary advantages.
 ### When to Use
 
 1. **Early Game**
-
     - Save for difficult waves
     - Build up inventory
     - Plan combinations
 
 2. **Mid Game**
-
     - Use strategically
     - Maintain momentum
     - Save for emergencies
@@ -106,13 +98,11 @@ temporary advantages.
 ### Best Combinations
 
 1. **Offensive Combo**
-
     - Rapid Fire + Spread Shot
     - Maximum damage output
     - Great for boss fights
 
 2. **Defensive Combo**
-
     - Shield + Slow Motion
     - Maximum survival time
     - Perfect for tight situations
@@ -125,13 +115,11 @@ temporary advantages.
 ## Power-up Tips
 
 1. **Timing**
-
     - Don't waste on easy waves
     - Save for difficult situations
     - Plan ahead
 
 2. **Combination**
-
     - Learn which power-ups work well together
     - Experiment with different combinations
     - Find your preferred playstyle

@@ -133,13 +133,11 @@ Go to your fork on GitHub and click "Compare & pull request".
 ### Testing Guidelines
 
 1. **Test Coverage**
-
     - Write tests for all new features and bug fixes
     - Aim for at least 80% test coverage for new code
     - Include both unit tests and integration tests where appropriate
 
 2. **Test Structure**
-
     - Place test files in the `tests` directory
     - Name test files with the pattern `test_*.py`
     - Use clear and descriptive test function names
@@ -164,7 +162,6 @@ Go to your fork on GitHub and click "Compare & pull request".
     ```
 
 4. **Test Best Practices**
-
     - Follow the AAA pattern (Arrange, Act, Assert)
     - Keep tests independent and isolated
     - Use meaningful test data

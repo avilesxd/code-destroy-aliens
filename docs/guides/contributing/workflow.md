@@ -178,13 +178,11 @@ For more information about code quality standards, see the
 ### Common Issues
 
 1. **Test Failures**
-
     - Check environment setup
     - Verify dependencies
     - Run tests locally
 
 2. **Build Issues**
-
     - Check Python version
     - Verify Pygame installation
     - Check system dependencies
