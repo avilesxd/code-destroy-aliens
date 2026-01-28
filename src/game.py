@@ -6,6 +6,7 @@ from pygame.sprite import Group
 from src.config.actors.game_actors import create_fleet
 from src.config.configuration import Configuration
 from src.config.controls.game_controls import verify_events
+from src.config.controls.gamepad_controls import GamepadManager
 from src.config.language.language import Language
 from src.config.logic.game_logic import update_aliens, update_bullets
 from src.config.music.music import Music
@@ -14,6 +15,7 @@ from src.config.statistics.statistics import Statistics
 from src.core.path_utils import resource_path
 from src.entities.button import Button
 from src.entities.controls_screen import ControlsScreen
+from src.entities.gamepad_config_screen import GamepadConfigScreen
 from src.entities.scoreboard import Scoreboard
 from src.entities.ship import Ship
 
@@ -26,6 +28,12 @@ class Game:
         pygame.init()
         self.music = Music()
         self.ai_configuration = Configuration()
+
+        # Initialize gamepad support
+        self.gamepad = GamepadManager(
+            enabled=self.ai_configuration.gamepad_enabled, deadzone=self.ai_configuration.gamepad_deadzone
+        )
+
         self.screen = pygame.display.set_mode(
             (self.ai_configuration.screen_width, self.ai_configuration.screen_height), pygame.RESIZABLE
         )
@@ -45,6 +53,9 @@ class Game:
         self.statistics = Statistics(self.ai_configuration)
         self.scoreboard = Scoreboard(self.ai_configuration, self.screen, self.statistics, self.language)
         self.controls_screen = ControlsScreen(self.ai_configuration, self.screen, self.language)
+        self.gamepad_config_screen = GamepadConfigScreen(
+            self.ai_configuration, self.screen, self.gamepad.config, self.language
+        )
         self.ship = Ship(self.ai_configuration, self.screen, self.statistics, self.music)
         self.bullets: Group = Group()
         self.aliens: Group = Group()
