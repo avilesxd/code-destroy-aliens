@@ -136,7 +136,9 @@ def update_screen(game: Game) -> None:
 
     game.scoreboard.show_score()
 
-    if game.statistics.show_controls:
+    if game.statistics.show_gamepad_config:
+        game.gamepad_config_screen.draw()
+    elif game.statistics.show_controls:
         game.controls_screen.draw_controls()
     elif not game.statistics.game_active:
         game.play_button.draw_button()

@@ -187,6 +187,8 @@ def check_bullet_alien_collisions(game: Game) -> None:
                         game.statistics.score += game.ai_configuration.alien_points
                         alien.explode()
                         game.scoreboard.prep_score()
+                        # Light rumble for alien hit
+                        game.gamepad.rumble(0.3, 0.5, 100)
                         break  # Bullet can only hit one alien
 
     check_high_score(game)

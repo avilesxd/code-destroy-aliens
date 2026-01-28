@@ -10,11 +10,13 @@ os.environ["PYGAME_HIDE_SUPPORT_PROMPT"] = "hide"
 from pygame.sprite import Group
 
 from src.config.configuration import Configuration
+from src.config.controls.gamepad_controls import GamepadManager
 from src.config.language.language import Language
 from src.config.music.music import Music
 from src.config.statistics.statistics import Statistics
 from src.entities.button import Button
 from src.entities.controls_screen import ControlsScreen
+from src.entities.gamepad_config_screen import GamepadConfigScreen
 from src.entities.scoreboard import Scoreboard
 from src.entities.ship import Ship
 from src.game import Game
@@ -29,12 +31,16 @@ class MockGame(Game):
         self.statistics = Statistics(self.ai_configuration)
         self.language = Language()
         self.music = Music()
+        self.gamepad = GamepadManager(enabled=False)  # Disabled for testing
         self.ship = Ship(self.ai_configuration, self.screen, self.statistics, self.music)
         self.bullets: Group = Group()
         self.aliens: Group = Group()
         self.play_button = Button(self.ai_configuration, self.screen, self.language.get_text("play"))
         self.scoreboard = Scoreboard(self.ai_configuration, self.screen, self.statistics, self.language)
         self.controls_screen = ControlsScreen(self.ai_configuration, self.screen, self.language)
+        self.gamepad_config_screen = GamepadConfigScreen(
+            self.ai_configuration, self.screen, self.gamepad.config, self.language
+        )
 
 
 @pytest.fixture

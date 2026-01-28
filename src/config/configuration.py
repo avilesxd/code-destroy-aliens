@@ -32,6 +32,11 @@ class Configuration:
         # Debug settings
         self.show_fps: bool = False  # Set to True to show FPS counter (impacts performance)
 
+        # Gamepad settings
+        self.gamepad_enabled: bool = True  # Enable gamepad/joystick support
+        self.gamepad_deadzone: float = 0.15  # Minimum axis value to register (prevents drift)
+        self.gamepad_sensitivity: float = 1.0  # Analog stick sensitivity multiplier
+
         # Ship settings
 
         # Number of player lives

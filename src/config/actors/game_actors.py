@@ -49,6 +49,9 @@ def create_fleet(game: Game) -> None:
 def ship_hit(game: Game) -> None:
     """Responds to the ship being hit by an alien"""
     if game.statistics.ships_remaining > 0:
+        # Trigger strong rumble for ship hit
+        game.gamepad.rumble(1.0, 1.0, 500)
+
         # Decrements ships_remaining
         game.statistics.ships_remaining -= 1
 
