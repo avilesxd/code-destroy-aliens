@@ -129,6 +129,7 @@ class Statistics:
         self.game_paused = False
         self.game_over = False
         self.show_controls = True
+        self.show_gamepad_config = False  # Flag for showing gamepad config screen
         self.controls_seen = False  # Initialize controls_seen first
 
         # Get the data directory and ensure it exists
