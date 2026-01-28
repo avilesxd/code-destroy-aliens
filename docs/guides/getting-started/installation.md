@@ -30,11 +30,11 @@ npm install
 python -m venv env
 env\Scripts\activate
 
-# Install Python dependencies
-pip install -r requirements.txt
+# Install Python dependencies (via npm script)
+npm run deps:install
 ```
 
-#### Linux/MacOS
+#### Linux/macOS
 
 ```bash
 # Install Node.js dependencies
@@ -44,8 +44,8 @@ npm install
 python3 -m venv env
 source env/bin/activate
 
-# Install Python dependencies
-pip install -r requirements.txt
+# Install Python dependencies (via npm script)
+npm run deps:install
 ```
 
 ### 3. Verify Installation
@@ -53,9 +53,6 @@ pip install -r requirements.txt
 ```bash
 # Run the game in development mode
 npm run dev
-
-# Or run directly
-python main.py
 ```
 
 ## Troubleshooting

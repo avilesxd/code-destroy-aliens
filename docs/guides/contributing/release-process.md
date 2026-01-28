@@ -165,13 +165,13 @@ Once you push the tag, GitHub Actions workflows begin automatically:
 
 1. **Build Windows** (`build-windows.yml`)
     - Installs dependencies
-    - Runs PyInstaller with `.spec` file
+    - Runs PyInstaller with `Alien Invasion.spec`
     - Creates `.exe` artifact
     - Duration: ~3-5 minutes
 
 2. **Build macOS** (`build-macos.yml`)
     - Installs dependencies
-    - Runs py2app
+    - Runs `npm run build:macos`
     - Creates `.dmg` artifact
     - Duration: ~1-2 minutes
 
@@ -264,8 +264,8 @@ If download links return 404:
 - Verify release was created successfully
 - Check asset names match links in `website/index.html`
 - Asset names should be:
-    - `Alien.Invasion.exe` (Windows)
-    - `Alien.Invasion.dmg` (macOS)
+    - `Alien Invasion.exe` (Windows)
+    - `Alien Invasion.dmg` (macOS)
 
 ## Version File Details
 

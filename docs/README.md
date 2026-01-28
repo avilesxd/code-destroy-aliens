@@ -13,10 +13,10 @@
   <a href="LICENSE.md"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
 </p>
 
-Welcome to the comprehensive documentation for Alien Invasion! This classic
-arcade-style game combines nostalgic Space Invaders gameplay with modern
-software engineering practices, including strict type safety, comprehensive
-testing, and modular architecture.
+Welcome to the official documentation for Alien Invasion. This classic
+arcade-style game blends Space Invaders gameplay with modern engineering
+practices: strict type safety, comprehensive testing, and a clean, modular
+architecture.
 
 </div>
 
@@ -27,7 +27,7 @@ testing, and modular architecture.
 - 🎯 **Classic Arcade Gameplay** - Fast-paced alien shooting action
 - 🎨 **Modern Graphics** - Crisp sprites and smooth animations
 - 🎵 **Dynamic Audio** - Immersive sound effects and background music
-- 🏆 **High Score System** - Encrypted score persistence with leaderboards
+- 🏆 **High Score System** - Encrypted score persistence
 - 🌍 **Multi-language Support** - Localized UI strings
 - ⚙️ **Configurable Settings** - Customizable game parameters
 - 🧪 **Type-Safe Codebase** - Full mypy strict mode compliance
@@ -128,8 +128,8 @@ npm run dev
   Report bugs or request features
 - 🔀 [Pull Requests](https://github.com/avilesxd/code-destroy-aliens/pulls) -
   Contribute to the project
-- 📖 [API Documentation](https://avilesxd.github.io/code-destroy-aliens/) -
-  Auto-generated API docs
+- 📖 [Documentation Site](https://avilesxd.github.io/code-destroy-aliens/) -
+  Project docs and guides
 - 💬
   [Discussions](https://github.com/avilesxd/code-destroy-aliens/discussions) -
   Ask questions and share ideas
@@ -157,7 +157,7 @@ This project is licensed under the **MIT License** - see the
 
 <div align="center">
 
-**Made with ❤️ by the Alien Invasion Team**
+Made with ❤️ by the Alien Invasion Team
 
 ⭐ Star us on GitHub if you find this project helpful!
 

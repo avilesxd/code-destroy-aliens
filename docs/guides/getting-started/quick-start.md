@@ -1,6 +1,6 @@
 # 🚀 Quick Start Guide
 
-This guide will help you get started with Alien Invasion quickly.
+Get Alien Invasion running in just a few minutes.
 
 ## Prerequisites
 
@@ -18,7 +18,7 @@ git clone https://github.com/avilesxd/code-destroy-aliens.git
 cd code-destroy-aliens
 ```
 
-2. **Install Dependencies**:
+1. **Install Dependencies**:
 
 ```bash
 # Install Node.js dependencies
@@ -27,20 +27,17 @@ npm install
 # Create and activate virtual environment
 python -m venv env
 env\Scripts\activate  # Windows
-source env/bin/activate  # Linux/MacOS
+source env/bin/activate  # Linux/macOS
 
-# Install Python dependencies
-pip install -r requirements.txt
+# Install Python dependencies (via npm script)
+npm run deps:install
 ```
 
-3. **Run the Game**:
+1. **Run the Game**:
 
 ```bash
 # Development mode
 npm run dev
-
-# Or directly
-python main.py
 ```
 
 ## Basic Controls
@@ -48,6 +45,7 @@ python main.py
 - **Arrow Keys**: Move the ship
 - **Spacebar**: Shoot
 - **P**: Pause game
+- **Q**: Quit game
 - **ESC**: Return to main menu
 - **M**: Toggle music
 - **S**: Toggle sound effects
@@ -56,15 +54,16 @@ python main.py
 
 The project includes several npm scripts for development:
 
-| Script                 | Description                       |
-| ---------------------- | --------------------------------- |
-| `npm run dev`          | Run the game in development mode  |
-| `npm run format`       | Format code using black and isort |
-| `npm run format:check` | Check code formatting             |
-| `npm run lint`         | Run flake8 linter                 |
-| `npm run typecheck`    | Run mypy type checker             |
-| `npm run test`         | Run all tests                     |
-| `npm run build`        | Build the game executable         |
+| Script                  | Description                       |
+| ----------------------- | --------------------------------- |
+| `npm run dev`           | Run the game in development mode  |
+| `npm run format`        | Format code using black and isort |
+| `npm run format:check`  | Check code formatting             |
+| `npm run lint`          | Run flake8 linter                 |
+| `npm run typecheck`     | Run mypy type checker             |
+| `npm run test`          | Run all tests                     |
+| `npm run build:windows` | Build the Windows executable      |
+| `npm run build:macos`   | Build the macOS application       |
 
 ## Next Steps
 

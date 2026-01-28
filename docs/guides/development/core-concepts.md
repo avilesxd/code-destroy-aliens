@@ -1,188 +1,93 @@
 # 🧠 Core Concepts
 
-## Game Architecture
+## Overview
 
-Alien Invasion follows a component-based architecture with the following key
-concepts:
+Alien Invasion uses a layered architecture centered around the `Game` object.
+Behavior is grouped into clear modules for configuration, logic, rendering, and
+entities. This keeps the game loop readable and the codebase easy to extend.
 
-### Entity Component System (ECS)
+## The `Game` Object
 
-1. **Entities**
-    - Game objects (ship, aliens, bullets)
-    - Unique identifiers
-    - Component containers
+`Game` is the hub that owns shared state:
 
-2. **Components**
-    - Position
-    - Velocity
-    - Sprite
-    - Collision
-    - Health
+- `ai_configuration`: runtime settings
+- `statistics`: score, lives, level, and game state
+- `music`: audio manager
+- sprite groups: `aliens`, `bullets`
+- UI helpers: `scoreboard`, `controls_screen`, `play_button`
 
-3. **Systems**
-    - Movement
-    - Rendering
-    - Collision detection
-    - Input handling
+Most logic functions take a `Game` instance instead of using globals.
 
-### State Management
-
-The game uses a state machine to manage different game screens:
-
-```python
-class GameState(Enum):
-    MENU = 1
-    PLAYING = 2
-    PAUSED = 3
-    GAME_OVER = 4
-```
-
-## Key Systems
-
-### 1. Input System
-
-Handles player input and controls:
-
-```python
-class InputSystem:
-    def handle_events(self):
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                return False
-            # Handle other events
-        return True
-```
-
-### 2. Physics System
-
-Manages movement and collisions:
-
-```python
-class PhysicsSystem:
-    def update(self, entities):
-        for entity in entities:
-            position = entity.get_component(Position)
-            velocity = entity.get_component(Velocity)
-            position.x += velocity.x
-            position.y += velocity.y
-```
-
-### 3. Rendering System
-
-Handles drawing game objects:
-
-```python
-class RenderSystem:
-    def render(self, screen, entities):
-        for entity in entities:
-            sprite = entity.get_component(Sprite)
-            position = entity.get_component(Position)
-            screen.blit(sprite.image, (position.x, position.y))
-```
-
-## Design Patterns
-
-### 1. Observer Pattern
-
-Used for event handling:
-
-```python
-class EventManager:
-    def __init__(self):
-        self.listeners = {}
-
-    def subscribe(self, event_type, listener):
-        if event_type not in self.listeners:
-            self.listeners[event_type] = []
-        self.listeners[event_type].append(listener)
-```
-
-### 2. Factory Pattern
-
-Used for entity creation:
-
-```python
-class EntityFactory:
-    def create_ship(self, x, y):
-        ship = Entity()
-        ship.add_component(Position(x, y))
-        ship.add_component(Sprite("ship.png"))
-        return ship
-```
-
-### 3. Strategy Pattern
-
-Used for different behaviors:
-
-```python
-class AlienBehavior:
-    def update(self, alien):
-        pass
-
-class BasicAlienBehavior(AlienBehavior):
-    def update(self, alien):
-        # Basic movement pattern
-        pass
-```
-
-## Code Organization
-
-### Directory Structure
+## Layered Modules
 
 ```
 src/
-├── config/        # Configuration files
-├── core/          # Core systems
-├── entities/      # Game entities
-├── systems/       # Game systems
-└── utils/         # Utility functions
+├── config/       # Behavior + configuration
+├── entities/     # Pygame Sprite subclasses
+├── core/         # Shared utilities
+└── utils/        # Small helpers
 ```
 
-### File Naming
+Key layers:
 
-- Use snake_case for file names
-- Prefix system files with system name
-- Suffix component files with \_component
+- **config/logic**: state updates and collisions
+- **config/rendering**: drawing and visual effects
+- **config/controls**: input handling
+- **config/actors**: factory functions for entity creation
 
-## Best Practices
+## Sprite-Based Entities
 
-### 1. Code Style
+Entities inherit from `pygame.sprite.Sprite` and store position as `float` for
+smooth movement while syncing to `rect` for rendering.
 
-- Follow PEP 8 guidelines
-- Use type hints
-- Document all public APIs
+```python
+class Alien(Sprite):
+    def __init__(self, ...):
+        self.x = float(self.rect.x)
 
-### 2. Performance
+    def update(self) -> None:
+        self.x += self.ai_configuration.alien_speed_factor
+        self.rect.x = int(self.x)
+```
 
-- Use sprite groups efficiently
-- Minimize surface creation
-- Optimize collision detection
+## Factory Functions
 
-### 3. Testing
+Entity creation is centralized in `src/config/actors/` to keep initialization
+consistent. Use these factories instead of direct instantiation in logic.
 
-- Write unit tests
-- Use test fixtures
-- Mock external dependencies
+## Game Loop Order
 
-## Development Tools
+The update order is deliberate:
 
-### 1. Code Quality
+1. Input handling
+2. Ship update
+3. Bullet update + collisions
+4. Alien update + collisions
+5. Rendering
 
-- Black for formatting
-- Flake8 for linting
-- MyPy for type checking
+This ensures player actions affect movement before collisions and drawing.
 
-### 2. Testing
+## Asset Loading
 
-- pytest for testing
-- Coverage for test coverage
-- Hypothesis for property testing
+All assets are loaded with `resource_path()` to support both source and bundled
+executables.
 
-### 3. Documentation
+```python
+from src.core.path_utils import resource_path
 
-- MkDocs for documentation
-- Docstrings for code documentation
-- Type hints for better IDE support
+image = pygame.image.load(resource_path("src/assets/images/ship.png"))
+```
+
+## Game State and Statistics
+
+The `Statistics` module owns game state, including `game_active`, `game_paused`,
+`game_over`, score, and encrypted high score persistence. This keeps state
+consistent and avoids duplicated logic.
+
+## Testing Strategy
+
+Logic functions are designed to be testable with a `MockGame` fixture. Tests run
+in headless mode and focus on deterministic state changes.
 
 ## Next Steps
 

@@ -1,83 +1,48 @@
 # 🎮 Gameplay Basics
 
-## Game Overview
+## Overview
 
-Alien Invasion is a modern take on the classic Space Invaders game, featuring
-unique mechanics and modern graphics. The game is built using Pygame and offers
-a smooth, engaging experience.
+Alien Invasion is a classic Space Invaders-style game built with Pygame. You
+pilot a ship at the bottom of the screen, destroy alien fleets, and advance
+through progressively faster waves.
 
 ## Game Flow
 
-1. **Main Menu**
-    - Start Game
-    - Options
-    - Controls
-    - Exit
-
-2. **Main Game**
-    - Control your spaceship
-    - Shoot down aliens
-    - Avoid enemy fire
-    - Collect power-ups
-    - Score points
-
-3. **Game Over**
-    - View your score
-    - Save statistics
-    - Return to main menu
+1. **Start** the game from the main menu.
+2. **Play** by moving the ship and firing bullets.
+3. **Advance** when all aliens are destroyed.
+4. **Game Over** occurs when you run out of ships.
 
 ## Core Mechanics
 
 ### Ship Control
 
-- Move your ship left and right
-- Fire at aliens
-- Collect power-ups
-- Avoid collisions
+- Move left and right
+- Fire bullets
+- Pause and resume the game
 
 ### Alien Behavior
 
 - Move in formation
-- Shoot at the player
-- Drop power-ups when destroyed
-- Increase in speed and aggression as levels progress
+- Reverse direction at screen edges
+- Drop down when changing direction
+- Speed up as the game progresses
 
-### Scoring System
+### Scoring
 
-- Points for each alien destroyed
-- Bonus points for completing levels
-- High score tracking
-- Statistics persistence
-
-### Power-ups
-
-- Extra lives
-- Weapon upgrades
-- Temporary shields
-- Score multipliers
+- Points are awarded per alien destroyed
+- Score value increases as levels advance
+- High scores are saved automatically
 
 ## Game States
 
-The game features several states to manage different aspects of gameplay:
+The game tracks several states via `Statistics`:
 
-- **Menu State**: Main menu and options
-- **Game State**: Active gameplay
-- **Pause State**: Game paused
-- **Game Over State**: End of game screen
+- **Active**: gameplay is running
+- **Paused**: gameplay is halted
+- **Game Over**: no ships remaining
 
-## Localization
+## Audio
 
-The game supports multiple languages through a JSON-based translation system:
-
-- Automatic language detection
-- Dynamic text rendering
-- Easy addition of new languages
-
-## Audio System
-
-The game features a comprehensive audio system:
-
-- Background music
-- Sound effects
-- Volume control
-- Mute options
+The game includes background music and sound effects. You can toggle both at
+runtime using keyboard shortcuts.

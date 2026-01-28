@@ -2,267 +2,97 @@
 
 ## Overview
 
-Alien Invasion uses a modern, component-based architecture that emphasizes:
+Alien Invasion follows a layered, configuration-first architecture. The `Game`
+object is the central hub, and gameplay behavior is organized by clear
+separation of concerns: input, logic, rendering, and configuration.
 
-- **Modularity**: Easy to add/remove features
-- **Scalability**: Can handle complex game logic
-- **Maintainability**: Clear separation of concerns
-- **Performance**: Optimized for real-time gameplay
+Key goals:
 
-## System Architecture
+- **Modularity**: Features are grouped by responsibility
+- **Maintainability**: Clear boundaries between logic and rendering
+- **Testability**: Logic functions accept a `Game` instance and are easy to
+  exercise in isolation
+- **Performance**: Uses sprite groups and efficient collision checks
 
-### 1. Core Systems
+## Layered Configuration Architecture
 
-```mermaid
-graph TD
-    A[Game Engine] --> B[Input System]
-    A --> C[Physics System]
-    A --> D[Render System]
-    A --> E[Audio System]
-    A --> F[State Manager]
+The project is organized under `src/` with focused layers:
+
+```
+src/
+├── config/       # Behavior + configuration (logic, rendering, controls)
+├── entities/     # Pygame Sprite subclasses (Ship, Alien, Bullet)
+├── core/         # Core utilities (path_utils)
+└── utils/        # Shared helpers (number_formatter)
 ```
 
-### 2. Entity Component System (ECS)
+### Configuration Layer (`src/config/`)
 
-```mermaid
-graph LR
-    A[Entity] --> B[Components]
-    B --> C[Position]
-    B --> D[Velocity]
-    B --> E[Sprite]
-    B --> F[Collision]
-```
+- **configuration.py**: Runtime settings (screen size, speeds, colors)
+- **logic/**: Game state updates (movement, collisions, scoring)
+- **rendering/**: Display-only logic (drawing to screen)
+- **controls/**: Input handling
+- **actors/**: Factory functions for entities and fleets
+- **statistics/**: Score, level, lives, and high-score persistence
+- **music/**: Audio orchestration
 
-## Component Details
+### Entity Layer (`src/entities/`)
 
-### 1. Core Components
+Entities are `pygame.sprite.Sprite` subclasses. Position is stored as `float`
+for smooth movement and synced to an integer rect for rendering.
 
 ```python
-@dataclass
-class Position:
-    x: float
-    y: float
+class Ship(pygame.sprite.Sprite):
+    def __init__(self, ...):
+        self.x = 100.0
+        self.rect.x = int(self.x)
 
-@dataclass
-class Velocity:
-    x: float
-    y: float
-
-@dataclass
-class Sprite:
-    image: pygame.Surface
-    rect: pygame.Rect
+    def update(self) -> None:
+        self.x += self.speed
+        self.rect.x = int(self.x)
 ```
 
-### 2. Game-Specific Components
+## Game Loop Order
+
+The runtime update order is intentional and consistent:
+
+1. `verify_events(game)` → input processing
+2. `ship.update()` → player movement
+3. `update_bullets(game)` → bullet physics + collisions
+4. `update_aliens(game)` → fleet movement + collisions
+5. `update_screen(game)` → rendering
+
+This order ensures inputs affect movement before collisions and rendering.
+
+## Asset Loading
+
+All assets are loaded through `resource_path()` so builds work in both source
+and bundled executables:
 
 ```python
-@dataclass
-class Health:
-    current: int
-    max: int
+from src.core.path_utils import resource_path
 
-@dataclass
-class Weapon:
-    damage: int
-    cooldown: float
-    last_shot: float
+icon_path = resource_path("src/assets/icons/icon.png")
+icon = pygame.image.load(icon_path)
 ```
 
-## System Implementation
+## State and Statistics
 
-### 1. System Base Class
+Gameplay state is stored in `game.statistics` and includes:
 
-```python
-class System:
-    def __init__(self):
-        self.entities = []
+- `game_active`, `game_paused`, `game_over`
+- `score`, `level`, `ships_remaining`
+- `high_score` with encrypted persistence
 
-    def add_entity(self, entity):
-        self.entities.append(entity)
+This avoids duplicated global state and keeps game flow consistent.
 
-    def remove_entity(self, entity):
-        self.entities.remove(entity)
+## Testing Strategy
 
-    def update(self, dt):
-        for entity in self.entities:
-            self.process_entity(entity, dt)
-```
-
-### 2. System Registration
-
-```python
-class SystemManager:
-    def __init__(self):
-        self.systems = {}
-
-    def register_system(self, system_type, system):
-        self.systems[system_type] = system
-
-    def update(self, dt):
-        for system in self.systems.values():
-            system.update(dt)
-```
-
-## State Management
-
-### 1. State Interface
-
-```python
-class GameState:
-    def enter(self):
-        pass
-
-    def exit(self):
-        pass
-
-    def update(self, dt):
-        pass
-
-    def render(self, screen):
-        pass
-```
-
-### 2. State Transitions
-
-```python
-class StateMachine:
-    def __init__(self):
-        self.states = {}
-        self.current = None
-
-    def add_state(self, name, state):
-        self.states[name] = state
-
-    def change_state(self, name):
-        if self.current:
-            self.current.exit()
-        self.current = self.states[name]
-        self.current.enter()
-```
-
-## Resource Management
-
-### 1. Asset Loading
-
-```python
-class AssetManager:
-    def __init__(self):
-        self.images = {}
-        self.sounds = {}
-        self.fonts = {}
-
-    def load_image(self, name, path):
-        self.images[name] = pygame.image.load(path)
-
-    def get_image(self, name):
-        return self.images[name]
-```
-
-### 2. Resource Caching
-
-```python
-class ResourceCache:
-    def __init__(self):
-        self.cache = {}
-
-    def get(self, key, loader):
-        if key not in self.cache:
-            self.cache[key] = loader()
-        return self.cache[key]
-```
-
-## Event System
-
-### 1. Event Types
-
-```python
-class EventType(Enum):
-    COLLISION = 1
-    DEATH = 2
-    POWERUP = 3
-    SCORE = 4
-```
-
-### 2. Event Handling
-
-```python
-class EventManager:
-    def __init__(self):
-        self.listeners = defaultdict(list)
-
-    def dispatch(self, event_type, data):
-        for listener in self.listeners[event_type]:
-            listener(data)
-```
-
-## Configuration System
-
-### 1. Config Loading
-
-```python
-class Config:
-    def __init__(self):
-        self.settings = {}
-
-    def load(self, path):
-        with open(path) as f:
-            self.settings = json.load(f)
-
-    def get(self, key, default=None):
-        return self.settings.get(key, default)
-```
-
-### 2. Game Settings
-
-```python
-class GameSettings:
-    def __init__(self):
-        self.window_size = (800, 600)
-        self.fps = 60
-        self.difficulty = "normal"
-```
-
-## Performance Considerations
-
-### 1. Optimization Techniques
-
-- Use sprite groups for efficient rendering
-- Implement spatial partitioning for collisions
-- Cache frequently used calculations
-- Use object pooling for frequently created/destroyed objects
-
-### 2. Memory Management
-
-- Implement proper cleanup in state transitions
-- Use weak references where appropriate
-- Monitor memory usage in development
-
-## Testing Architecture
-
-### 1. Unit Testing
-
-```python
-def test_physics_system():
-    system = PhysicsSystem()
-    entity = create_test_entity()
-    system.add_entity(entity)
-    system.update(1.0)
-    assert entity.position.x == 100
-```
-
-### 2. Integration Testing
-
-```python
-def test_game_loop():
-    game = Game()
-    game.initialize()
-    game.update(1.0)
-    assert game.state == GameState.PLAYING
-```
+Logic functions accept a `Game` object, making unit tests straightforward. The
+test suite uses a headless Pygame setup and a `MockGame` fixture.
 
 ## Next Steps
 
-- Learn about [Entity System](entity-system.md)
-- Explore [Audio System](audio-system.md)
+- Learn about the [Entity System](entity-system.md)
+- Explore the [Audio System](audio-system.md)
 - Read about [Testing](../testing/README.md)
