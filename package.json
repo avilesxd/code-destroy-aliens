@@ -2,7 +2,7 @@
     "name": "code-destroy-aliens",
     "version": "1.3.0",
     "private": true,
-    "description": "A Python game where you destroy aliens",
+    "description": "Fast paced arcade shooter inspired by Space Invaders, built with Python and Pygame",
     "author": "Ignacio Avilés <nacho72001@gmail.com>",
     "license": "MIT",
     "contributors": [
@@ -44,6 +44,7 @@
         "version:major": "bash scripts/bump-version.sh major",
         "build:windows": "pyinstaller main.py --name=\"Alien Invasion\" --icon=\"src/assets/icons/icon.ico\" --onefile --noconsole --add-data=\"src;src\" --version-file=\"versions/windows.txt\"",
         "build:macos": "python3 setup.py py2app",
+        "build:linux": "pyinstaller main.py --name='Alien Invasion' --icon='src/assets/icons/icon.png' --onefile --noconsole --add-data=src:src",
         "docs:serve": "node scripts/run-with-env.js python -m mkdocs serve",
         "docs:build": "node scripts/run-with-env.js python -m mkdocs build",
         "docs:deploy": "node scripts/run-with-env.js python -m mkdocs gh-deploy",
