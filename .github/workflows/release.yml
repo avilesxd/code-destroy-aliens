@@ -2,7 +2,7 @@ name: Create Release
 
 on:
   workflow_run:
-    workflows: ["Build macOS", "Build Windows"]
+    workflows: ["Build macOS", "Build Windows", "Build Linux"]
     types:
       - completed
   workflow_dispatch:
@@ -32,8 +32,9 @@ jobs:
             # Get workflow IDs
             MACOS_WORKFLOW_ID=$(gh api repos/${{ github.repository }}/actions/workflows --jq '.workflows[] | select(.name=="Build macOS") | .id')
             WINDOWS_WORKFLOW_ID=$(gh api repos/${{ github.repository }}/actions/workflows --jq '.workflows[] | select(.name=="Build Windows") | .id')
+            LINUX_WORKFLOW_ID=$(gh api repos/${{ github.repository }}/actions/workflows --jq '.workflows[] | select(.name=="Build Linux") | .id')
 
-            if [ -z "$MACOS_WORKFLOW_ID" ] || [ -z "$WINDOWS_WORKFLOW_ID" ]; then
+            if [ -z "$MACOS_WORKFLOW_ID" ] || [ -z "$WINDOWS_WORKFLOW_ID" ] || [ -z "$LINUX_WORKFLOW_ID" ]; then
               echo "Could not find workflow IDs. Waiting for workflows to be registered..."
               exit 0
             fi
@@ -53,6 +54,14 @@ jobs:
               exit 0
             fi
             echo "windows_run_id=$(echo $WINDOWS_RUN | jq -r '.id')" >> $GITHUB_OUTPUT
+
+            # Get the latest successful Linux build
+            LINUX_RUN=$(gh api repos/${{ github.repository }}/actions/workflows/$LINUX_WORKFLOW_ID/runs --jq '.workflow_runs[0] | select(.conclusion=="success")')
+            if [ -z "$LINUX_RUN" ]; then
+              echo "No successful Linux build found. Waiting for Linux build to complete..."
+              exit 0
+            fi
+            echo "linux_run_id=$(echo $LINUX_RUN | jq -r '.id')" >> $GITHUB_OUTPUT
           else
             # When triggered by a workflow run, get the workflow name and run ID
             WORKFLOW_NAME="${{ github.event.workflow_run.name }}"
@@ -68,6 +77,14 @@ jobs:
                 exit 1
               fi
               echo "windows_run_id=$(echo $WINDOWS_RUN | jq -r '.id')" >> $GITHUB_OUTPUT
+              # Get the latest successful Linux build
+              LINUX_WORKFLOW_ID=$(gh api repos/${{ github.repository }}/actions/workflows --jq '.workflows[] | select(.name=="Build Linux") | .id')
+              LINUX_RUN=$(gh api repos/${{ github.repository }}/actions/workflows/$LINUX_WORKFLOW_ID/runs --jq '.workflow_runs[0] | select(.conclusion=="success")')
+              if [ -z "$LINUX_RUN" ]; then
+                echo "No successful Linux build found"
+                exit 1
+              fi
+              echo "linux_run_id=$(echo $LINUX_RUN | jq -r '.id')" >> $GITHUB_OUTPUT
             elif [ "$WORKFLOW_NAME" == "Build Windows" ]; then
               echo "windows_run_id=$RUN_ID" >> $GITHUB_OUTPUT
               # Get the latest successful macOS build
@@ -78,6 +95,32 @@ jobs:
                 exit 1
               fi
               echo "macos_run_id=$(echo $MACOS_RUN | jq -r '.id')" >> $GITHUB_OUTPUT
+              # Get the latest successful Linux build
+              LINUX_WORKFLOW_ID=$(gh api repos/${{ github.repository }}/actions/workflows --jq '.workflows[] | select(.name=="Build Linux") | .id')
+              LINUX_RUN=$(gh api repos/${{ github.repository }}/actions/workflows/$LINUX_WORKFLOW_ID/runs --jq '.workflow_runs[0] | select(.conclusion=="success")')
+              if [ -z "$LINUX_RUN" ]; then
+                echo "No successful Linux build found"
+                exit 1
+              fi
+              echo "linux_run_id=$(echo $LINUX_RUN | jq -r '.id')" >> $GITHUB_OUTPUT
+            elif [ "$WORKFLOW_NAME" == "Build Linux" ]; then
+              echo "linux_run_id=$RUN_ID" >> $GITHUB_OUTPUT
+              # Get the latest successful macOS build
+              MACOS_WORKFLOW_ID=$(gh api repos/${{ github.repository }}/actions/workflows --jq '.workflows[] | select(.name=="Build macOS") | .id')
+              MACOS_RUN=$(gh api repos/${{ github.repository }}/actions/workflows/$MACOS_WORKFLOW_ID/runs --jq '.workflow_runs[0] | select(.conclusion=="success")')
+              if [ -z "$MACOS_RUN" ]; then
+                echo "No successful macOS build found"
+                exit 1
+              fi
+              echo "macos_run_id=$(echo $MACOS_RUN | jq -r '.id')" >> $GITHUB_OUTPUT
+              # Get the latest successful Windows build
+              WINDOWS_WORKFLOW_ID=$(gh api repos/${{ github.repository }}/actions/workflows --jq '.workflows[] | select(.name=="Build Windows") | .id')
+              WINDOWS_RUN=$(gh api repos/${{ github.repository }}/actions/workflows/$WINDOWS_WORKFLOW_ID/runs --jq '.workflow_runs[0] | select(.conclusion=="success")')
+              if [ -z "$WINDOWS_RUN" ]; then
+                echo "No successful Windows build found"
+                exit 1
+              fi
+              echo "windows_run_id=$(echo $WINDOWS_RUN | jq -r '.id')" >> $GITHUB_OUTPUT
             else
               echo "Unknown workflow name: $WORKFLOW_NAME"
               exit 1
@@ -102,11 +145,21 @@ jobs:
           run_id: ${{ steps.workflow_runs.outputs.windows_run_id }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Download Linux artifact
+        uses: dawidd6/action-download-artifact@v14
+        with:
+          workflow: build-linux.yml
+          name: linux-build
+          path: linux-build
+          run_id: ${{ steps.workflow_runs.outputs.linux_run_id }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Verify artifacts
         run: |
           echo "Checking artifacts..."
           ls -la macos-build/ || true
           ls -la windows-build/ || true
+          ls -la linux-build/ || true
 
           if [ ! -f "macos-build/Alien Invasion.dmg" ]; then
             echo "macOS DMG artifact not found"
@@ -114,6 +167,10 @@ jobs:
           fi
           if [ ! -f "windows-build/Alien Invasion.exe" ]; then
             echo "Windows executable artifact not found"
+            exit 1
+          fi
+          if [ ! -f "linux-build/Alien Invasion" ]; then
+            echo "Linux executable artifact not found"
             exit 1
           fi
 
@@ -155,6 +212,7 @@ jobs:
           files: |
             macos-build/Alien Invasion.dmg
             windows-build/Alien Invasion.exe
+            linux-build/Alien Invasion
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -165,6 +223,7 @@ jobs:
           echo "Included artifacts:"
           echo "- macOS: Alien Invasion.dmg"
           echo "- Windows: Alien Invasion.exe"
+          echo "- Linux: Alien Invasion"
 
       - name: Notify on failure
         if: failure()

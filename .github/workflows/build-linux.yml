@@ -1,0 +1,65 @@
+name: Build Linux
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+  repository_dispatch:
+    types: [trigger-build]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+          cache: 'pip'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build the executable
+        run: |
+          rm -rf build dist
+          npm run build:linux
+
+      - name: Verify executable exists
+        run: |
+          if [ ! -f "dist/Alien Invasion" ]; then
+            echo "Executable was not created successfully"
+            exit 1
+          fi
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v6
+        with:
+          name: linux-build
+          path: dist/Alien Invasion
+          if-no-files-found: error
+
+      - name: Notify on success
+        if: success()
+        run: |
+          echo "Build completed successfully!"
+          echo "Executable: dist/Alien Invasion"
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "Build failed!"
+          echo "Check the logs for more information."

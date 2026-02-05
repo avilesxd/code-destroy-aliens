@@ -202,8 +202,8 @@ git push --tags
 
 ### Linux
 
-- No official build; runs from source
-- Users run `npm install && npm run dev`
+- Use `npm run build:linux` (pyinstaller)
+- Creates standalone executable in `dist/Alien Invasion`
 
 ## Git Workflow
 
