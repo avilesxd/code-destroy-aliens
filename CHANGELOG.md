@@ -2,6 +2,43 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.4.0] - 2026-02-11
+
+### Added
+
+- Gamepad support with comprehensive controller mapping and configuration
+- Linux build support via PyInstaller
+- Linux download button on website for direct executable downloads
+- Node.js version specification with .nvmrc file (Node 18)
+- Security improvements with pip-audit integration
+- Dependabot configuration for automated dependency updates
+
+### Changed
+
+- Improved test coverage from 70% to 82%
+- Enhanced documentation with professional layout and organization
+- Updated multiple GitHub Actions dependencies
+- Improved contribution guidelines to enforce feature branch usage
+
+### Fixed
+
+- PyInstaller syntax for Linux build command
+- Windows locale detection support for language system
+- Fallback language retrieval using getlocale() for better compatibility
+
+### Performance
+
+- Optimized FPS counter rendering with caching and toggle
+- Removed redundant test execution from build workflows
+
+### Chore
+
+- Updated npm and Python dependencies via Dependabot
+- Added comprehensive CI/CD documentation
+- Improved code conventions and workflow documentation
+
+---
+
 ## [v1.3.0] - 2025-12-11
 
 ### Added

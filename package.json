@@ -1,6 +1,6 @@
 {
     "name": "code-destroy-aliens",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "private": true,
     "description": "Fast paced arcade shooter inspired by Space Invaders, built with Python and Pygame",
     "author": "Ignacio Avilés <nacho72001@gmail.com>",
