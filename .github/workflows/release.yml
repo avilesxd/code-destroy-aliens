@@ -128,7 +128,7 @@ jobs:
           fi
 
       - name: Download macOS DMG artifact
-        uses: dawidd6/action-download-artifact@v14
+        uses: dawidd6/action-download-artifact@v15
         with:
           workflow: build-macos.yml
           name: macos-dmg
@@ -137,7 +137,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Download Windows artifact
-        uses: dawidd6/action-download-artifact@v14
+        uses: dawidd6/action-download-artifact@v15
         with:
           workflow: build-windows.yml
           name: windows-build
@@ -146,7 +146,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Download Linux artifact
-        uses: dawidd6/action-download-artifact@v14
+        uses: dawidd6/action-download-artifact@v15
         with:
           workflow: build-linux.yml
           name: linux-build
