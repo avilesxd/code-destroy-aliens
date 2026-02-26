@@ -86,14 +86,15 @@ def get_grid_cells(rect: pygame.Rect) -> List[Tuple[int, int]]:
 
     Algorithm:
         1. Calculate start cell: rect.left // cell_size, rect.top // cell_size
-        2. Calculate end cell: rect.right // cell_size, rect.bottom // cell_size
+        2. Calculate end cell using inclusive bounds:
+           (rect.right - 1) // cell_size, (rect.bottom - 1) // cell_size
         3. Return all cells in the range [start_x to end_x, start_y to end_y]
     """
     # Calculate the grid cell indices for the rectangle boundaries
     start_x = rect.left // grid_cell_size
-    end_x = rect.right // grid_cell_size
     start_y = rect.top // grid_cell_size
-    end_y = rect.bottom // grid_cell_size
+    end_x = max(rect.left, rect.right - 1) // grid_cell_size
+    end_y = max(rect.top, rect.bottom - 1) // grid_cell_size
 
     # Collect all cells that this rectangle overlaps
     cells: List[tuple[int, int]] = []
@@ -179,7 +180,11 @@ def check_bullet_alien_collisions(game: Game) -> None:
         if cell_data["aliens"] and cell_data["bullets"]:
             # Check collisions between bullets and aliens in this cell only
             for bullet in cell_data["bullets"]:
+                if not bullet.active:
+                    continue
                 for alien in cell_data["aliens"]:
+                    if not alien.alive():
+                        continue
                     if bullet.rect.colliderect(alien.rect):
                         # Hit detected - deactivate bullet and destroy alien
                         bullet.active = False
