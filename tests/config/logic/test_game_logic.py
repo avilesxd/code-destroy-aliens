@@ -107,6 +107,15 @@ def test_get_grid_cells_edge_case(mock_game: MockGame) -> None:
     assert (1, 1) in cells
 
 
+def test_get_grid_cells_exact_cell_boundary(mock_game: MockGame) -> None:
+    """Test exact 64x64 rect maps to one cell, not four."""
+    rect = pygame.Rect(0, 0, 64, 64)
+
+    cells = get_grid_cells(rect)
+
+    assert cells == [(0, 0)]
+
+
 def test_update_spatial_grid_empty(mock_game: MockGame) -> None:
     """Test spatial grid update with no objects."""
     mock_game.aliens.empty()
@@ -191,6 +200,28 @@ def test_check_bullet_alien_collisions_no_hit(mock_game: MockGame) -> None:
     assert bullet.active is True
     # Score should not change
     assert mock_game.statistics.score == initial_score
+
+
+def test_check_bullet_alien_collisions_multicell_counts_once(mock_game: MockGame) -> None:
+    """Test that a single collision across multiple grid cells is scored once."""
+    create_alien(mock_game, alien_number=0, row_number=0)
+    alien = list(mock_game.aliens.sprites())[0]
+
+    bullet = Bullet(mock_game.ai_configuration, mock_game.screen, mock_game.ship)
+    mock_game.bullets.add(bullet)
+
+    # Force both sprites to overlap and span 4 cells: (0,0), (1,0), (0,1), (1,1)
+    overlap_rect = pygame.Rect(63, 63, 4, 4)
+    alien.rect = overlap_rect.copy()
+    bullet.rect = overlap_rect.copy()
+
+    initial_score = mock_game.statistics.score
+    alien_points_before_collision = mock_game.ai_configuration.alien_points
+
+    check_bullet_alien_collisions(mock_game)
+
+    # Collision should be counted exactly once
+    assert mock_game.statistics.score == initial_score + alien_points_before_collision
 
 
 def test_check_bullet_alien_collisions_level_complete(mock_game: MockGame) -> None:
