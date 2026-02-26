@@ -5,7 +5,6 @@ __pycache__/
 *.so
 .Python
 develop-eggs/
-dist/
 downloads/
 eggs/
 .eggs/
@@ -19,104 +18,70 @@ wheels/
 .installed.cfg
 *.egg
 
-# Virtual Environment
+# Virtual environments
 env/
 venv/
 ENV/
+.venv/
 
-# IDE
-.idea/
-*.swp
-*.swo
-
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-._*
-
-# Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-
-# Project specific
-*.log
-.coverage
-htmlcov/
-.pytest_cache/
-
-# Testing
-.tox/
-
-# Distribution
-*.exe
-*.dll
-*.so
-*.dylib
-
-# Logs
-*.log
-logs/
-
-# Local development
-.DS_Store
-Thumbs.db
-
-# Project specific
-*.pyc
-*.pyo
-*.pyd
-.Python
-*.manifest
-*.db
-*.sqlite3
-
-# Build and release
+# Build and distribution
 build/
 dist/
-*.egg-info/
+site/
+website/docs/
+*.exe
+*.dll
+*.dylib
+*.manifest
 
-# Node.js (for husky)
-node_modules/
-
-# Husky
-.husky/_/
-
-# Coverage reports
+# Python tooling and reports
+.pytest_cache/
+.tox/
 .coverage
 coverage.xml
 *.cover
 htmlcov/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# mypy
 .mypy_cache/
 .dmypy.json
 dmypy.json
-
-# Pyre type checker
 .pyre/
-
-# pytype static type analyzer
 .pytype/
-
-# Cython debug symbols
 cython_debug/
 
-# Temporary files
-*.tmp
-*.bak
+# Databases and local artifacts
+*.db
+*.sqlite3
+*.log
+logs/
+audit-report.md
+security-report.md
+*-audit-*.json
+*-audit-*.txt
+
+# Node / frontend tooling
+node_modules/
+.husky/_/
+
+# IDE and editor files
+.idea/
 *.swp
-*~.nib
-local.properties
+*.swo
 .settings/
 .loadpath
 .recommenders
 
+# Jupyter
+.ipynb_checkpoints
+
+# Temporary files
+*.tmp
+*.bak
+*~.nib
+local.properties
+
 # Windows
+Thumbs.db
+ehthumbs.db
 [Dd]esktop.ini
 $RECYCLE.BIN/
 *.cab
@@ -126,6 +91,7 @@ $RECYCLE.BIN/
 *.lnk
 
 # macOS
+.DS_Store
 .AppleDouble
 .LSOverride
 ._*
@@ -142,13 +108,5 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# MkDocs build output
-site/
-website/docs/
+# MkDocs cache
 *.mkdocs-material/*
-
-# Security audit reports
-audit-report.md
-security-report.md
-*-audit-*.json
-*-audit-*.txt

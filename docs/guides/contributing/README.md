@@ -41,8 +41,10 @@ docs: update setup instructions
 Before opening a PR, run:
 
 ```bash
-npm run verify
+npm run qa:verify
 ```
+
+Equivalent alias: `npm run verify`.
 
 This runs formatting, linting, type checks, and tests.
 
