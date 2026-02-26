@@ -257,12 +257,18 @@ python main.py
 # Development
 npm run dev                    # Run the game
 npm run verify                 # Run all quality checks (format, lint, typecheck, test)
+npm run qa:verify              # Same quality pipeline with grouped qa:* aliases
 
 # Testing
 npm run test                   # Run tests
 npm run test:coverage          # Run tests with coverage report
 
 # Code Quality
+npm run qa:format              # Format Python + repository files
+npm run qa:format:check        # Check formatting without changing files
+npm run qa:lint                # Run linter (flake8)
+npm run qa:typecheck           # Type checking (mypy)
+npm run qa:test                # Run tests (pytest)
 npm run format                 # Format code (black + isort)
 npm run lint                   # Run linter (flake8)
 npm run typecheck              # Type checking (mypy)
@@ -277,6 +283,19 @@ npm run deps:install           # Install all dependencies
 npm run build:windows          # Build .exe for Windows
 npm run build:macos            # Build .app for macOS
 ```
+
+### 🔁 Command Migration (Recommended)
+
+| Previous Command    | Recommended Command    | Notes                                  |
+| ------------------- | ---------------------- | -------------------------------------- |
+| `npm run verify`    | `npm run qa:verify`    | Same full pipeline via grouped alias   |
+| `npm run format`    | `npm run qa:format`    | Runs Python format + repository format |
+| `npm run lint`      | `npm run qa:lint`      | Keeps naming consistent under `qa:*`   |
+| `npm run typecheck` | `npm run qa:typecheck` | Keeps naming consistent under `qa:*`   |
+| `npm run test`      | `npm run qa:test`      | Keeps naming consistent under `qa:*`   |
+
+Both command styles continue to work; `qa:*` is the preferred convention for new
+scripts and docs.
 
 ### 🤝 Contributing
 

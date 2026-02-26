@@ -56,7 +56,8 @@ Make sure you follow good coding practices and maintain a clear structure.
 
 ### 5. Test Your Code
 
-- **Run all quality checks**: `npm run verify`
+- **Run all quality checks (recommended)**: `npm run qa:verify`
+    - Equivalent alias: `npm run verify`
     - This runs: format → prettier → lint → typecheck → test
 - Make sure all tests pass
 - Ensure code follows style guidelines
@@ -146,19 +147,19 @@ Go to your fork on GitHub and click "Compare & pull request".
 
     ```bash
     # Run all quality checks (includes tests)
-    npm run verify
+    npm run qa:verify
 
     # Run only tests
-    npm run test
+    npm run qa:test
 
     # Run tests with coverage
     npm run test:coverage
 
     # Run specific test file
-    npm run test tests/test_specific.py
+    npm run qa:test -- tests/test_specific.py
 
     # Run with verbose output
-    npm run test -v
+    npm run qa:test -- -v
     ```
 
 4. **Test Best Practices**
