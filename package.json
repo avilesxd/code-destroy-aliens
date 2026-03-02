@@ -57,10 +57,10 @@
         "docs:check": "node scripts/run-with-env.js python -m mkdocs build --strict"
     },
     "devDependencies": {
-        "@commitlint/cli": "^20.4.1",
-        "@commitlint/config-conventional": "^20.4.1",
+        "@commitlint/cli": "^20.4.2",
+        "@commitlint/config-conventional": "^20.4.2",
         "husky": "^9.1.7",
-        "lint-staged": "^16.2.7",
+        "lint-staged": "^16.3.1",
         "prettier": "^3.8.1"
     },
     "engines": {
