@@ -4,7 +4,7 @@ from pygame.sprite import Sprite
 from src.config.configuration import Configuration
 from src.config.music.music import Music
 from src.config.statistics.statistics import Statistics
-from src.core.path_utils import resource_path
+from src.core.resource_manager import ResourceManager
 
 
 class Ship(Sprite):
@@ -41,15 +41,18 @@ class Ship(Sprite):
         self.screen = screen
         self.ai_configuration = ai_configuration
         self.statistics = statistics
-
-        # Load the ship image and get its rect
-        self.image = pygame.image.load(resource_path("src/assets/images/ship.png"))
+        self.resource_manager = ResourceManager()
 
         # Calculate scale factor based on screen resolution
         scale_factor = min(ai_configuration.screen_width / 1280, ai_configuration.screen_height / 720)
-        original_size = self.image.get_size()
+
+        # Load the ship image through ResourceManager
+        # Using a fixed original size or getting it from resource manager
+        # Since we need new_size, we can get the base image first or let RM handle it
+        base_img = self.resource_manager.get_image("src/assets/images/ship.png")
+        original_size = base_img.get_size()
         new_size = (int(original_size[0] * scale_factor), int(original_size[1] * scale_factor))
-        self.image = pygame.transform.scale(self.image, new_size)
+        self.image = self.resource_manager.get_image("src/assets/images/ship.png", scale=new_size)
 
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
@@ -111,3 +114,17 @@ class Ship(Sprite):
         This method is called whenever the player fires a bullet.
         """
         self.music.play_shoot()
+
+    def update_image(self) -> None:
+        """Update the ship's image based on current configuration (e.g., after a resize)."""
+        scale_factor = min(self.ai_configuration.screen_width / 1280, self.ai_configuration.screen_height / 720)
+        base_img = self.resource_manager.get_image("src/assets/images/ship.png")
+        original_size = base_img.get_size()
+        new_size = (int(original_size[0] * scale_factor), int(original_size[1] * scale_factor))
+        self.image = self.resource_manager.get_image("src/assets/images/ship.png", scale=new_size)
+
+        # Keep current position
+        old_center = self.rect.center
+        self.rect = self.image.get_rect()
+        self.rect.center = old_center
+        self.screen_rect = self.screen.get_rect()

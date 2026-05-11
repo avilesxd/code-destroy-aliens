@@ -134,6 +134,16 @@ def verify_events(game: Game) -> None:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
+        elif event.type == pygame.VIDEORESIZE:
+            # Update screen dimensions in configuration
+            game.ai_configuration.screen_width = event.w
+            game.ai_configuration.screen_height = event.h
+            # Clear resource manager cache to force re-scaling of images
+            game.resource_manager.clear_cache()
+            # We might need to recreate the screen surface if not handled by pygame automatically
+            # but usually it's better to let pygame handle it or call set_mode again
+            game.screen = pygame.display.set_mode((event.w, event.h), pygame.RESIZABLE)
+            game.refresh_assets()
 
         # Handle gamepad config screen input separately
         if game.statistics.show_gamepad_config:

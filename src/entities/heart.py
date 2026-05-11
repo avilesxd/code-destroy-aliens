@@ -4,7 +4,7 @@ import pygame
 from pygame.sprite import Sprite
 
 from src.config.configuration import Configuration
-from src.core.path_utils import resource_path
+from src.core.resource_manager import ResourceManager
 
 
 class Heart(Sprite):
@@ -14,10 +14,7 @@ class Heart(Sprite):
         """Initialize the heart and set its starting position"""
         super().__init__()
         self.screen = screen
-
-        # Load the heart image and get its rect
-        image_path = resource_path("src/assets/images/heart.png")
-        self.image = pygame.image.load(image_path)
+        self.resource_manager = ResourceManager()
 
         # Calculate scale factor based on screen resolution
         if ai_configuration:
@@ -28,8 +25,11 @@ class Heart(Sprite):
 
         # Scale the heart based on screen resolution
         base_size = 30  # Base size for 1280x720 resolution
-        new_size = int(base_size * scale_factor)
-        self.image = pygame.transform.scale(self.image, (new_size, new_size))
+        new_size_val = int(base_size * scale_factor)
+        new_size = (new_size_val, new_size_val)
+
+        # Load the heart image through ResourceManager
+        self.image = self.resource_manager.get_image("src/assets/images/heart.png", scale=new_size)
 
         self.rect = self.image.get_rect()
 

@@ -2,6 +2,7 @@ import base64
 import hashlib
 import json
 import os
+import uuid
 from typing import Any, Union, cast
 
 from cryptography.fernet import Fernet
@@ -37,10 +38,28 @@ class Statistics:
         data_dir (str): Path to the data directory
     """
 
-    # Encryption key derived from a fixed password (this is not secure for real applications,
-    # but it's enough to prevent casual edits by players)
-    _SALT = b"code-destroy-aliens-salt"
-    _PASSWORD = b"code-destroy-aliens-password"
+    # Security: Use environment variables if available, otherwise fallback to machine-specific salt
+    # This makes high scores non-transferable between machines and avoids hardcoded secrets.
+    _DEFAULT_PASSWORD = b"code-destroy-aliens-default-v1"
+
+    @classmethod
+    def _get_salt(cls) -> bytes:
+        """Get the encryption salt from env or generate a machine-specific one."""
+        env_salt = os.getenv("ALIEN_INVASION_SALT")
+        if env_salt:
+            return env_salt.encode()
+
+        # Fallback: Generate a unique salt based on the machine's hardware ID
+        machine_id = str(uuid.getnode())
+        return hashlib.sha256(machine_id.encode()).digest()[:16]
+
+    @classmethod
+    def _get_password(cls) -> bytes:
+        """Get the encryption password from env or use default."""
+        env_password = os.getenv("ALIEN_INVASION_PASSWORD")
+        if env_password:
+            return env_password.encode()
+        return cls._DEFAULT_PASSWORD
 
     @classmethod
     def _get_encryption_key(cls) -> Fernet:
@@ -55,10 +74,10 @@ class Statistics:
         kdf = PBKDF2HMAC(
             algorithm=hashes.SHA256(),
             length=32,
-            salt=cls._SALT,
+            salt=cls._get_salt(),
             iterations=100000,
         )
-        key = base64.urlsafe_b64encode(kdf.derive(cls._PASSWORD))
+        key = base64.urlsafe_b64encode(kdf.derive(cls._get_password()))
         return Fernet(key)
 
     @classmethod

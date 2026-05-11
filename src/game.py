@@ -12,7 +12,7 @@ from src.config.logic.game_logic import update_aliens, update_bullets
 from src.config.music.music import Music
 from src.config.rendering.game_rendering import update_screen
 from src.config.statistics.statistics import Statistics
-from src.core.path_utils import resource_path
+from src.core.resource_manager import ResourceManager
 from src.entities.button import Button
 from src.entities.controls_screen import ControlsScreen
 from src.entities.gamepad_config_screen import GamepadConfigScreen
@@ -26,6 +26,7 @@ class Game:
     def __init__(self) -> None:
         """Initialize the game, and create game resources."""
         pygame.init()
+        self.resource_manager = ResourceManager()
         self.music = Music()
         self.ai_configuration = Configuration()
 
@@ -44,8 +45,7 @@ class Game:
         pygame.display.set_caption("Alien Invasion")
 
         # Set window icon
-        icon_path = resource_path("src/assets/icons/icon.png")
-        icon = pygame.image.load(icon_path)
+        icon = self.resource_manager.get_image("src/assets/icons/icon.png")
         pygame.display.set_icon(icon)
 
         self.language = Language()
@@ -82,3 +82,22 @@ class Game:
                 update_aliens(self)
 
             update_screen(self)
+
+    def refresh_assets(self) -> None:
+        """Refresh all game assets. This is typically called after a window resize."""
+        # Update scoreboard (it needs new dimensions and font)
+        self.scoreboard = Scoreboard(self.ai_configuration, self.screen, self.statistics, self.language)
+
+        # Update ship
+        self.ship.update_image()
+
+        # Update all aliens
+        for alien in self.aliens:
+            alien.update_image()
+
+        # Update other UI elements if necessary
+        self.play_button = Button(self.ai_configuration, self.screen, self.language.get_text("play"))
+        self.controls_screen = ControlsScreen(self.ai_configuration, self.screen, self.language)
+        self.gamepad_config_screen = GamepadConfigScreen(
+            self.ai_configuration, self.screen, self.gamepad.config, self.language
+        )

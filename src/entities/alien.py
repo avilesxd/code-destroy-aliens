@@ -3,7 +3,7 @@ from pygame.sprite import Sprite
 
 from src.config.configuration import Configuration
 from src.config.music.music import Music
-from src.core.path_utils import resource_path
+from src.core.resource_manager import ResourceManager
 
 
 class Alien(Sprite):
@@ -16,15 +16,16 @@ class Alien(Sprite):
         self.screen = screen
         self.ai_configuration = ai_configuration
         self.music = Music()
-
-        # Load the alien image and set its rect attribute
-        self.image = pygame.image.load(resource_path("src/assets/images/alien.png"))
+        self.resource_manager = ResourceManager()
 
         # Calculate scale factor based on screen resolution
         scale_factor = min(ai_configuration.screen_width / 1280, ai_configuration.screen_height / 720)
-        original_size = self.image.get_size()
+
+        # Load the alien image through ResourceManager
+        base_img = self.resource_manager.get_image("src/assets/images/alien.png")
+        original_size = base_img.get_size()
         new_size = (int(original_size[0] * scale_factor), int(original_size[1] * scale_factor))
-        self.image = pygame.transform.scale(self.image, new_size)
+        self.image = self.resource_manager.get_image("src/assets/images/alien.png", scale=new_size)
 
         self.rect = self.image.get_rect()
 
@@ -58,3 +59,16 @@ class Alien(Sprite):
     def explode(self) -> None:
         """Play explosion sound effect"""
         self.music.play_explosion()
+
+    def update_image(self) -> None:
+        """Update the alien's image based on current configuration (e.g., after a resize)."""
+        scale_factor = min(self.ai_configuration.screen_width / 1280, self.ai_configuration.screen_height / 720)
+        base_img = self.resource_manager.get_image("src/assets/images/alien.png")
+        original_size = base_img.get_size()
+        new_size = (int(original_size[0] * scale_factor), int(original_size[1] * scale_factor))
+        self.image = self.resource_manager.get_image("src/assets/images/alien.png", scale=new_size)
+
+        # Preserve position
+        old_center = self.rect.center
+        self.rect = self.image.get_rect()
+        self.rect.center = old_center
